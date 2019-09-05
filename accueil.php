@@ -86,12 +86,6 @@
                 </ul>
               </div>
             </li>
-            <li>
-              <a href="index.php?page=formulaireRecherche">
-                <i class="fa fa-calendar"></i>
-                <span>Effectuer un calcul</span>
-              </a>
-            </li>
               <li>
                   <a href="index.php?page=formulaireRecherche">
                       <i class="fa fa-calendar"></i>
