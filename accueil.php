@@ -38,7 +38,7 @@
         <div class="sidebar-menu">
           <ul>
             <li class="header-menu">
-              <span>General</span>
+              <span>Bouées</span>
             </li>
             <li class="sidebar-dropdown">
               <a href="#">
@@ -68,12 +68,12 @@
             </li>
 
             <li class="header-menu">
-              <span>Recherche</span>
+              <span>Calculs</span>
             </li>
             <li class="sidebar-dropdown">
               <a href="#">
                 <i class="fa fa-calendar"></i>
-                <span>Recherches enregistrées</span>
+                <span>Calculs enregistrés</span>
               </a>
               <div class="sidebar-submenu">
                 <ul>
@@ -89,9 +89,21 @@
             <li>
               <a href="index.php?page=formulaireRecherche">
                 <i class="fa fa-calendar"></i>
-                <span>Effectuer une recherche</span>
+                <span>Effectuer un calcul</span>
               </a>
             </li>
+              <li>
+                  <a href="index.php?page=formulaireRecherche">
+                      <i class="fa fa-calendar"></i>
+                      <span>Prévisualiser calcul</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="index.php?page=formulaireRecherche">
+                      <i class="fa fa-calendar"></i>
+                      <span>Calculs non enregistrés</span>
+                  </a>
+              </li>
 
             <li class="header-menu">
               <span>Option</span>
@@ -101,6 +113,7 @@
                 <i class="fas fa-cog"></i>
                 <span>Options graphiques</span>
               </a>
+                <!--
               <div class="sidebar-submenu">
                 <ul>
                   <li>
@@ -111,6 +124,7 @@
                   </li>
                 </ul>
               </div>
+              -->
             </li>
 
           </ul>
