@@ -31,8 +31,10 @@
       <div class="sidebar-content">
         <div class="sidebar-brand">
           <a href="#">IMR</a>
+          <div id="close-sidebar">
+              <i class="fas fa-times"></i>
+          </div>
         </div>
-
         <div class="sidebar-menu">
           <ul>
             <li class="header-menu">
