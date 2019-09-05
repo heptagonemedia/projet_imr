@@ -108,12 +108,12 @@
             <li class="header-menu">
               <span>Option</span>
             </li>
+              <!--
             <li class="sidebar-dropdown">
               <a href="#">
                 <i class="fas fa-cog"></i>
                 <span>Options graphiques</span>
               </a>
-                <!--
               <div class="sidebar-submenu">
                 <ul>
                   <li>

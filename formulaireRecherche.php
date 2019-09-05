@@ -15,116 +15,77 @@
 <body>
 
 <div class="container">
-
-    <h1>Effectuer une recherche</h1>
-    <form method="post" action="resultats.php" class="form-horizontal">
-        <h3>Intervalle :</h3>
-
+    <div class="alert alert-danger" role="alert" hidden="hidden" id="alerte">
+        <p id="text"></p>
+    </div>
+    <h1>Formulaire</h1>
+    <form class="form-horizontal">
         <div class="form-group">
-            <label for="dateDepart" class="control-label col-sm-2">Date de départ :</label>
-            <div class="col-sm-5">
-                <input type="date" class="form-control" id="dateDepart" name="dateDepart">
+            <label class="control-label col-sm-3" for="calcul" id="calculError">Calcul* </label>
+            <div class="col-sm-6">
+                <label><input type="radio" name="calcul" id="mediane" value="Médiane"> Médiane</label>
+                <label><input type="radio" name="calcul" id="moyenne" value="Moyenne"> Moyenne</label>
+                <label><input type="radio" name="calcul" id="ecartType" value="Ecart type"> Ecart type</label>
             </div>
         </div>
-
         <div class="form-group">
-            <label for="heureDepart" class="control-label col-sm-2">Heure de départ :</label>
-            <div class="col-sm-5">
-                <input type="time" class="form-control" name="heureDepart" id="heureDepart" placeholder="hh:mm:ss">
+            <label class="control-label col-sm-3" for="frequence" id="frequenceError">Fréquence* </label>
+            <div class="col-sm-8">
+                <label>Année<input type="text" class="form-control" name="frequence"></label>
+                <label>Mois<input type="text" class="form-control" name="frequence"></label>
+                <label>Jour<input type="text" class="form-control" name="frequence"></label><br>
+                <label>Heure<input type="text" class="form-control" name="frequence"></label>
+                <label>Minute<input type="text" class="form-control" name="frequence"></label>
+                <label>Seconde<input type="text" class="form-control" name="frequence"></label><br>
             </div>
         </div>
-
         <div class="form-group">
-            <label for="date_fin" class="control-label col-sm-2">Date de fin :</label>
-            <div class="col-sm-5">
-                <input type="date" class="form-control" id="date_fin" placeholder="Entrer une date" name="dateFin">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="heureFin" class="control-label col-sm-2">Heure de fin :</label>
-            <div class="col-sm-5">
-                <input type="time" class="form-control" name="heureFin" id="heureFin" placeholder="hh:mm:ss">
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <label for="choixStat" class="control-label col-sm-3">Calcul(s) à effectuer :</label>
-            <div class="col-sm-4">
-                <select class="form-control" id="choixStat">
-                    <option>Moyenne + Mediane + Ecart-type</option>
-                    <option>Moyenne</option>
-                    <option>Mediane</option>
-                    <option>Ecart-type</option>        
-                </select>
-            </div>
-        </div> 
-
-        <div class="form-group">
-            <label for="selectionBouee" class="control-label col-sm-3">Selectionner une bouée :</label>
-            <div class="col-sm-4">
-                <select class="form-control" id="selectionBouee">
-                    <?php  for ($i=0; $i < 75; $i++): ?>
-                    <option>Bouée <?php echo($i+1); ?></option>
-                    <?php endfor; ?>
-                    
-                </select>
-            </div>
-        </div>
-
-        <h3>Fréquence :</h3>
-        <div class="form-group">
-            <label for="freq_A" class="control-label col-sm-1">Année :</label>
+            <label class="control-label col-sm-3" for="bouee" id="boueeError">Bouée* </label>
             <div class="col-sm-1">
-                <input type="text" class="form-control" name="freq_A" id="freq_A">
-            </div>
-
-            <label for="freq_Mois" class="control-label col-sm-1">Mois :</label>
-            <div class="col-sm-1">
-                <input type="text" class="form-control" name="freq_Mois" id="freq_Mois">
-            </div>
-
-            <label for="freq_J" class="control-label col-sm-1">Jour :</label>
-            <div class="col-sm-1">
-                <input type="text" class="form-control" name="freq_J" id="freq_J">
-            </div>
-
-            <label for="freq_H" class="control-label col-sm-1">Heure :</label>
-            <div class="col-sm-1">
-                <input type="text" class="form-control" name="freq_H" id="freq_H">
-            </div>
-
-            <label for="freq_Min" class="control-label col-sm-1">Minute :</label>
-            <div class="col-sm-1">
-                <input type="text" class="form-control" name="freq_Min" id="freq_Min">
-            </div>
-
-            <label for="freq_S" class="control-label col-sm-1">Seconde :</label>
-            <div class="col-sm-1">
-                <input type="text" class="form-control" name="freq_S" id="freq_S">
+                <input type="text" class="form-control" id="bouee">
             </div>
         </div>
-
         <div class="form-group">
-            <label for="enregistrer" class="control-label col-sm-4">Voulez-vous enregistrer cette recherche : &nbsp&nbsp<input type="checkbox" id="enregistrer" value=""></label>
+            <label class="control-label col-sm-3" for="intervalle" id="intervalleError">Intervalle temporel* </label>
+            <div class="col-sm-8">
+                <label>Date de départ<input type="date" class="form-control" name="intervalle"></label><br>
+                <label>Heure de départ<input type="time" class="form-control" name="intervalle"></label><br>
+                <label>Date de fin<input type="date" class="form-control" name="intervalle"></label><br>
+                <label>Heure de fin<input type="time" class="form-control" name="intervalle"></label><br>
+            </div>
         </div>
-
-        
-        <div class="row" style="height: 4%;"></div>
-
-        <div class="col-sm-1">
-            <button type="submit" class="btn btn-primary">Rechercher</button>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-primary" onclick="detectErrors()">Prévisualiser calcul</button>
+                <button type="button" class="btn btn-primary" onclick="detectErrors()">Enregister calcul</button>
+            </div>
         </div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-1">
-            <a role="button" class="btn btn-secondary" href="index.php?page=accueil">Retour à la page d'accueil</a>
-        </div>
-        
     </form>
 
-</div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-target="#exampleModal" id="marche" onclick="test()" style="display:none;">  </button>
 
-    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Résultats du sondage : </h3>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalText"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
 </html>
