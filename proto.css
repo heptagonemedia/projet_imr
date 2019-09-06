@@ -1,6 +1,6 @@
 body {
 	font-family: Arial;
-	background-color: #1e2229;
+	background-color: #FFFFFF;
 }
 
 
@@ -12,4 +12,22 @@ body {
 
 div{
 	text-align: center;
+}
+
+.lien:hover{
+	text-decoration: none;
+	color: darkturquoise;
+}
+.lien{
+	color: #FFFFFF;
+}
+#bar1{
+	background-color: #1e2229;
+}
+
+#header{
+	background-color: #1e2229; font-size: 18pt;color: white
+}
+a{
+	text-decoration: none;
 }

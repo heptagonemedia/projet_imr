@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="EJSCharts/EJSChart.css">
+    <script src="https://kit.fontawesome.com/e14504e0cd.js"></script>
 
     <script type="text/javascript" src="EJSCharts/EJSChart.js"></script>
 	<link rel="stylesheet" type="text/css" href="proto.css">
@@ -22,7 +23,7 @@
     <div class="container-fluid" style=" background-color: #1e2229; font-size: 18pt;color: white">
         <div class="row align-items-start">
             <div class="col col-lg-8">IMR</div>
-            <div class="col"><i id="home" class="fas fa-home" style="width: 50px"></i></div>
+            <div class="col"><a href="index.php"><i id="home" class="fas fa-home" style="width: 50px;"></i></a></div>
             <div class="col">bouée n°1</div>
         </div>
     </div>
@@ -62,11 +63,33 @@
 		</div>
     </div>
 
-    <div class="container-fluid">
+    <?php
+
+        if(isset($_GET["type"])):
+            $type = $_GET["type"];
+            if($type == "prev"):
+    ?>
+
+    <div class="container-fluid" style = "margin-top : 2%">
         <div class="row">
-            <a href="index.php">Retour à la page d'accueil</a>
+            <div class="col-sm">
+                <button  type="button" class="btn btn-warning"><i class="fas fa-arrow-left"></i> Retour au calcul</button>
+            </div>
+            <div class="col-sm">
+                <button type="button" class="btn btn-success">Enregistrer</button>
+            </div>
         </div>
     </div>
+
+    <?php
+            endif;
+        endif;
+
+    ?>
+
+    
+
+
     
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
     <script type="text/javascript">
