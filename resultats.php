@@ -69,24 +69,51 @@
             $type = $_GET["type"];
             if($type == "prev"):
     ?>
-
+    <form action = "resultats.php" method="get">
     <div class="container-fluid" style = "margin-top : 2%">
         <div class="row">
             <div class="col-sm">
-                <button  type="button" class="btn btn-warning"><i class="fas fa-arrow-left"></i> Retour au calcul</button>
+                <a href="formulaireRecherche.php"  type="button" class="btn btn-warning"><i class="fas fa-arrow-left"></i> Retour au calcul</a>
             </div>
             <div class="col-sm">
-                <button type="button" class="btn btn-success">Enregistrer</button>
+            <input type="hidden" id="type" value="enr" name="type">
+                <input id="type" value = "Enregistrer" type="submit" class="btn btn-success">
             </div>
         </div>
     </div>
+    </form>
+    
 
+
+    <?php
+            elseif($type == "enr"):
+    ?>
+    <div id='message' class="container-fluid">
+        <div class = "row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm alert alert-success" role="alert">
+                Le calcul a bien été enregistré <button style="margin-left:20px;" type="button" class="btn btn-danger"onclick='fermer()'>+</button>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
     <?php
             endif;
         endif;
 
     ?>
 
+<pre>
+<?php print_r($_GET); ?>
+</pre>
+
+<script>
+
+    function fermer(){
+        $('#message').remove();
+    }
+
+</script>
     
 
 
