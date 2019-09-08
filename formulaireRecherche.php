@@ -56,35 +56,16 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-primary" onclick="detectErrors('prev')">Prévisualiser calcul</button>
-                <button type="button" class="btn btn-primary" onclick="detectErrors('enr')">Enregister calcul</button>
+                <button type="button" class="btn btn-primary" onclick="detectErrors()">Prévisualiser calcul</button>
+                <button type="button" class="btn btn-primary" onclick="detectErrors()">Enregister calcul</button>
             </div>
         </div>
     </form>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-target="#exampleModal" id="marche" onclick="test()" style="display:none;">  </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Résultats du sondage : </h3>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p id="modalText"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 </body>
 </html>
+<!--
 <script>
     function detectErrors(type){
         //apres la detection d erreurs
@@ -120,6 +101,7 @@
         window.location.href = lien;
     }
 </script>
+-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="script.js"></script>
