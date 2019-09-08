@@ -31,9 +31,9 @@
         <div class="form-group">
             <label class="control-label col-sm-3" for="frequence" id="frequenceError">Fréquence* </label>
             <div class="col-sm-8">
-                <label>Année<input type="text" class="form-control" name="frequence" id="annee" ></label>
-                <label>Mois<input type="text" class="form-control" name="frequence" id="mois"></label>
-                <label>Jour<input type="text" class="form-control" name="frequence" id="jour"></label><br>
+                <label id="anneeError">Année<input type="text" class="form-control" name="frequence" id="annee" ></label>
+                <label id="moisError">Mois<input type="text" class="form-control" name="frequence" id="mois"></label>
+                <label id="jourError">Jour<input type="text" class="form-control" name="frequence" id="jour"></label><br>
                 <label>Heure<input type="text" class="form-control" name="frequence" id="heure"></label>
                 <label>Minute<input type="text" class="form-control" name="frequence" id="minute"></label>
                 <label>Seconde<input type="text" class="form-control" name="frequence" id="seconde"></label><br>
