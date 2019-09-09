@@ -34,9 +34,9 @@
                 <label id="anneeError">Année<input type="text" class="form-control" name="frequence" id="annee" ></label>
                 <label id="moisError">Mois<input type="text" class="form-control" name="frequence" id="mois"></label>
                 <label id="jourError">Jour<input type="text" class="form-control" name="frequence" id="jour"></label><br>
-                <label>Heure<input type="text" class="form-control" name="frequence" id="heure"></label>
-                <label>Minute<input type="text" class="form-control" name="frequence" id="minute"></label>
-                <label>Seconde<input type="text" class="form-control" name="frequence" id="seconde"></label><br>
+                <label id="heureError">Heure<input type="text" class="form-control" name="frequence" id="heure"></label>
+                <label id="minuteError">Minute<input type="text" class="form-control" name="frequence" id="minute"></label>
+                <label id="secondeError">Seconde<input type="text" class="form-control" name="frequence" id="seconde"></label><br>
             </div>
         </div>
         <div class="form-group">
