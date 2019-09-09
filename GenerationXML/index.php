@@ -4,7 +4,7 @@ require_once("BaseDeDonnees.php");
 
 $connection = new BaseDeDonnees();
 //Connection à la BDD
-$connection->connect();
+$connection->connection();
 
 //Récupération du lien
 $c = $connection->getLien();
@@ -43,6 +43,6 @@ $doc->appendChild($racine);
 
 $doc->save('test4.xml');
 
-$connection->disconnect();
+$connection->deconnection();
 
 ?>

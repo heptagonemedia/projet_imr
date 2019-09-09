@@ -16,7 +16,7 @@
 
 <div class="container">
     <div class="alert alert-danger" role="alert" hidden="hidden" id="alerte">
-        <p id="text"></p>
+        <p id="texteAlerte"></p>
     </div>
     <h1>Formulaire</h1>
     <form class="form-horizontal">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-3" for="frequence" id="frequenceError">Fréquence* </label>
+            <label class="control-label col-sm-3" for="frequence" id="frequenceErreur">Fréquence* </label>
             <div class="col-sm-8">
                 <label id="anneeError">Année<input type="text" class="form-control" name="frequence" id="annee" ></label>
                 <label id="moisError">Mois<input type="text" class="form-control" name="frequence" id="mois"></label>
@@ -40,13 +40,13 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-3" for="bouee" id="boueeError">Bouée* </label>
+            <label class="control-label col-sm-3" for="bouee" id="boueeErreur">Bouée* </label>
             <div class="col-sm-1">
                 <input type="text" class="form-control" id="bouee">
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-3" for="intervalle" id="intervalleError">Intervalle temporel* </label>
+            <label class="control-label col-sm-3" for="intervalle" id="intervalleErreur">Intervalle temporel* </label>
             <div class="col-sm-8">
                 <label>Date de départ<input type="date" class="form-control" id="dateDepart"></label><br>
                 <label>Heure de départ<input type="time" class="form-control" id="heureDepart"></label><br>
@@ -56,8 +56,8 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-primary" onclick="detectErrors()">Prévisualiser calcul</button>
-                <button type="button" class="btn btn-primary" onclick="detectErrors()">Enregister calcul</button>
+                <button type="button" class="btn btn-primary" onclick="detecterErreurs()">Prévisualiser calcul</button>
+                <button type="button" class="btn btn-primary" onclick="detecterErreurs()">Enregister calcul</button>
             </div>
         </div>
     </form>
@@ -67,7 +67,7 @@
 </html>
 <!--
 <script>
-    function detectErrors(type){
+    function detecterErreurs(type){
         //apres la detection d erreurs
         var annee = $('#annee').val();
         var mois = $('#mois').val();

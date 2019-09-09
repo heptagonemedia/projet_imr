@@ -26,7 +26,7 @@ class BaseDeDonnees
 
     }
 
-    public function connect(){
+    public function connection(){
         $this->lien_bdd = pg_connect($this->infos_bdd);
     }
 
@@ -34,7 +34,7 @@ class BaseDeDonnees
         return $this->lien_bdd;
     }
 
-    public function disconnect(){
+    public function deconnection(){
         pg_close($this->lien_bdd);
     }
 
