@@ -1,46 +1,73 @@
 function detecterErreurs() {
-    viderTexteAlerte();
-    erreurCalcul();
-    erreurBouee();
-    erreurFrequence();
-    erreurIntervalle()
+
+    initialiserTexteAlerte();
+
+
+    //A ne pas mettre directement dans la condition du if
+    let verificationCalcul = verifierErreurCalcul();
+    let verificationFrequence = verifierErreurFrequence();
+    let verificationBouee = verifierErreurBouee();
+    let verificationIntervalle = verifierErreurIntervalle();
+
+    if (verificationCalcul && verificationFrequence && verificationBouee && verificationIntervalle) {
+        $("#texteAlerte").text("");
+        $("#divAlerte").hide();
+    }
+
 }
 
-function erreurCalcul() {
 
-    let condition = $("#mediane").is(':checked');
-    let condition2 = $("#moyenne").is(':checked');
-    let condition3 = $("#ecartType").is(':checked');
+function initialiserTexteAlerte() {
 
-    if (!condition && !condition2 && !condition3) {
-        $("#calculError").css("color","red");
-        $("#texteAlerte").append("- Calcul : veuillez choisir un calcul <br>");
-        $("#alerte").show();
+    $("#texteAlerte").text("");
+    $("#texteAlerte").append("<h4>Verifier votre saisie : </h4>");
+    $("#texteAlerte").append("<ul>");
+
+}
+
+
+function verifierErreurCalcul() {
+
+    let mediane = $("#mediane").is(':checked');
+    let moyenne = $("#moyenne").is(':checked');
+    let ecartType = $("#ecartType").is(':checked');
+
+    if (!mediane && !moyenne && !ecartType) {
+        $("#calculErreur").css("color","red");
+        $("#texteAlerte").append("<li> Calcul : veuillez choisir un calcul </li>");
+        $("#divAlerte").show();
+
+        return false;
     }
     else {
-        $("#calculError").css("color","black");
+        $("#calculErreur").css("color","black");
+        
+        return true;
     }
 
 }
 
 
-function erreurBouee() {
+function verifierErreurBouee() {
 
     let valeurBouee = $("#bouee").val();
 
-    if (valeurBouee > 75 || allLetter(valeurBouee) || valeurBouee < 0) {
+    if (valeurBouee > 75 || valeurBouee < 1 || isNaN(valeurBouee)) {
         $("#boueeErreur").css("color","red");
-        $("#texteAlerte").append("- Bouee : La valeur ne peux pas contenir de lettres et doit être comprise entre 1 et 75<br>");
-        $("#alerte").show();
+        $("#texteAlerte").append("<li> Bouee : La valeur ne peux pas contenir de lettres et doit être comprise entre 1 et 75</li>");
+        $("#divAlerte").show();
+
+        return false;
     }
     else {
         $("#boueeErreur").css("color","black");
+        return true;
     }
 
 }
 
 
-function erreurFrequence() {
+function verifierErreurFrequence() {
 
     let valeurAnnee = $("#annee").val();
     let valeurMois = $("#mois").val();
@@ -49,149 +76,171 @@ function erreurFrequence() {
     let valeurMinute = $("#minute").val();
     let valeurSeconde = $("#seconde").val();
 
-    verifierAnnee(valeurAnnee);
-    verifierMois(valeurMois);
-    verifierJour(valeurJour);
-    verifierHeure(valeurHeure);
-    verifierMinute(valeurMinute);
-    verifierSeconde(valeurSeconde);
+    $("#anneeErreur").css("color", "black");
+    $("#moisErreur").css("color", "black");
+    $("#jourErreur").css("color", "black");
+    $("#heureErreur").css("color", "black");
+    $("#minuteErreur").css("color", "black");
+    $("#secondeErreur").css("color", "black");
 
-    if (rienRempli(valeurAnnee, valeurMois, valeurJour, valeurHeure, valeurMinute, valeurSeconde)) {
+    let conditionToutesNonVides = !valeurAnnee && !valeurMois && !valeurJour && !valeurHeure && !valeurSeconde && !valeurMinute && !valeurSeconde;
+    let conditionToutesNonNulles = valeurAnnee == 0 && valeurMois == 0 && valeurJour == 0 && valeurHeure == 0 && valeurSeconde == 0 && valeurMinute == 0 && valeurSeconde == 0;
+    let conditionToutesNumeriques = isNaN(valeurAnnee) || isNaN(valeurMois) || isNaN(valeurJour) || isNaN(valeurHeure) || isNaN(valeurMinute) || isNaN(valeurSeconde);
+
+    if (conditionToutesNonVides || conditionToutesNonNulles || conditionToutesNumeriques) {
         $("#frequenceErreur").css("color","red");
-        $("#texteAlerte").append("- Frequence : Il faut remplir au moins une valeur<br>");
-        $("#alerte").show();
+        $("#texteAlerte").append("<li> Frequence : Les champs doivent tous être rempli par des nombres entiers positifs et au moins un doit être différent de 0.</li>");
+        $("#divAlerte").show();
+        
+        return false;
+
     }
     else {
-        $("#frequenceErreur").css("color","black");
+
+        //A ne pas mettre directement dans la condition du if
+        let verificationAnnee = verifierAnnee(valeurAnnee);
+        let verificationMois = verifierMois(valeurMois);
+        let verificationJour = verifierJour(valeurJour);
+        let verificationHeure = verifierHeure(valeurHeure);
+        let verificationMinute = verifierMinute(valeurMinute);
+        let verificationSeconde = verifierSeconde(valeurSeconde);
+
+        if (verificationAnnee && verificationMois && verificationJour && verificationHeure && verificationMinute && verificationSeconde) {
+
+            $("#frequenceErreur").css("color", "black");
+
+            return true;
+        }else {
+            $("#frequenceErreur").css("color", "red");
+            
+            return false;
+        }        
+
+        
     }
 
 }
 
 
-function erreurIntervalle() {
+function verifierErreurIntervalle() {
 
     let dateDebut = $("#dateDepart").val();
     let dateFin = $("#dateFin").val();
 
-    if(!(differenceDate(dateDebut, dateFin))) {
+    if(!(verifierValiditeIntervalle(dateDebut, dateFin))) {
         $("#intervalleErreur").css("color","red");
-        $("#texteAlerte").append("- Intervalle : La date de fin doit être supérieur à la date de début<br>");
-        $("#alerte").show();
+        $("#texteAlerte").append("<li> Intervalle : La date de fin doit être supérieur à la date de début</li>");
+        $("#divAlerte").show();
+
+        return false;
     }
     else {
         $("#intervalleErreur").css("color","black");
-    }
 
-}
-
-
-function rienRempli(annee, mois, jour, heure, seconde, minute, seconde) {
-
-    if (!annee && !mois && !jour && !heure && !seconde && !minute && !seconde) {
         return true;
     }
 
-    return false;
-
 }
 
 
-function verifierAnnee(value) {
+function verifierAnnee(valeur) {
 
-    if (value < 0 || value > 2) {
-        $("#anneeError").css("color", "red");
-        $("#texteAlerte").append("- Annee : La valeur doit être comprise entre 0 et 2<br>");
-        $("#alerte").show();
+    $("#anneeErreur").css("color", "black");
+
+    if (valeur < 0 || valeur > 2 || !valeur.match(/^-?[0-9]+$/)) {
+        $("#anneeErreur").css("color", "red");
+        $("#texteAlerte").append("<li> Frequence : L'année ne peux pas contenir de lettres et doit être comprise entre 0 et 2</li>");
+        $("#divAlerte").show();
         return false;
     }
-
-    $("#anneeError").css("color", "black");
 
     return true;
 
 }
 
 
-function verifierMois(value) {
+function verifierMois(valeur) {
 
-    if (value < 0 || value > 12) {
-        $("#moisError").css("color","red");
-        $("#texteAlerte").append("- Mois : La valeur doit être comprise entre 0 et 12<br>");
-        $("#alerte").show();
+    $("#moisErreur").css("color", "black");
+
+    if (valeur < 0 || valeur > 12 || !valeur.match(/^-?[0-9]+$/)) {
+        $("#moisErreur").css("color","red");
+        $("#texteAlerte").append("<li> Frequence : Le mois ne peux pas contenir de lettres et doit être comprit entre 0 et 12</li>");
+        $("#divAlerte").show();
         return false;
     }
-
-    $("#moisError").css("color","black");
     
     return true;
 
 }
 
 
-function verifierJour(value) {
+function verifierJour(valeur) {
 
-    if (value < 0 || value > 31) {
-        $("#jourError").css("color","red");
-        $("#texteAlerte").append("- Jour : La valeur doit être comprise entre 0 et 31<br>");
-        $("#alerte").show();
+    $("#jourErreur").css("color", "black");
+
+    if (valeur < 0 || valeur > 31 || !valeur.match(/^-?[0-9]+$/)) {
+        $("#jourErreur").css("color","red");
+        $("#texteAlerte").append("<li> Frequence : Le jour ne peux pas contenir de lettres et doit être comprit entre 0 et 31</li>");
+        $("#divAlerte").show();
         return false;
     }
-
-    $("#jourError").css("color","black");
 
     return true;
 
 }
 
 
-function verifierHeure(value) {
+function verifierHeure(valeur) {
+    
+    $("#heureErreur").css("color", "black");
 
-    if (value < 0 || value > 23) {
-        $("#heureError").css("color","red");
-        $("#texteAlerte").append("- Heure : La valeur doit être comprise entre 0 et 23<br>");
-        $("#alerte").show();
+    if (valeur < 0 || valeur > 23 || !valeur.match(/^-?[0-9]+$/)) {
+        $("#heureErreur").css("color","red");
+        $("#texteAlerte").append("<li> Frequence : L'heure ne peux pas contenir de lettres et doit être comprise entre 0 et 23</li>");
+        $("#divAlerte").show();
         return false;
     }
-
-    $("#heureError").css("color","black");
 
     return true;
 
 }
 
 
-function verifierMinute(value) {
+function verifierMinute(valeur) {
 
-    if (value < 0 || value > 59) {
-        $("#minuteError").css("color","red");
-        $("#texteAlerte").append("- Minute : La valeur doit être comprise entre 0 et 59<br>");
-        $("#alerte").show();
+    $("#minuteErreur").css("color", "black");
+
+    if (valeur < 0 || valeur > 59 || !valeur.match(/^-?[0-9]+$/)) {
+        $("#minuteErreur").css("color","red");
+        $("#texteAlerte").append("<li> Frequence : Les minutes ne peuvent pas contenir de lettres et doivent être comprises entre 0 et 59</li>");
+        $("#divAlerte").show();
         return false;
     }
-
-    $("#minuteError").css("color","black");
 
     return true;
 
 }
 
 
-function verifierSeconde(value) {
-    if (value < 0 || value > 59) {
-        $("#secondeError").css("color","red");
-        $("#texteAlerte").append("- Seconde : La valeur doit être comprise entre 0 et 59<br>");
-        $("#alerte").show();
+function verifierSeconde(valeur) {
+
+    $("#secondeErreur").css("color", "black");
+
+    if (valeur < 0 || valeur > 59 || !valeur.match(/^-?[0-9]+$/)) {
+        $("#secondeErreur").css("color","red");
+        $("#texteAlerte").append("<li> Frequence : Les secondes ne peuvent pas contenir de lettres et doivent être comprises entre 0 et 59</li>");
+        $("#divAlerte").show();
         return false;
     }
 
-    $("#secondeError").css("color","black");
 
     return true;
 
 }
 
 
-function differenceDate(dateDebut, dateFin) {
+function verifierValiditeIntervalle(dateDebut, dateFin) {
 
     var debut = new Date(dateDebut);
     var fin = new Date(dateFin);
@@ -213,19 +262,12 @@ function differenceDate(dateDebut, dateFin) {
 }
 
 
-function viderTexteAlerte() {
+function verifierToutesLettres(valeur) {
 
-    $("#texteAlerte").text("");
-    $("#texteAlerte").append("Verifier votre saisie : <br>");
-
-}
-
-function allLetter(value) {
-
-    var letters = /^[A-Za-z]+$/;
+    var lettres = /^[A-Za-z]+$/;
     
-    if (value) {
-        if(value.value.match(letters)) {
+    if (valeur) {
+        if(valeur.value.match(lettres)) {
             return true;
         }
         else {
@@ -234,7 +276,7 @@ function allLetter(value) {
     }
 
     return true;
-    
+
 }
 
 

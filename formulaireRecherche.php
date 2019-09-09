@@ -15,13 +15,13 @@
 <body>
 
 <div class="container">
-    <div class="alert alert-danger" role="alert" hidden="hidden" id="alerte">
+    <div class="alert alert-danger" role="alert" hidden="hidden" id="divAlerte">
         <p id="texteAlerte"></p>
     </div>
     <h1>Formulaire</h1>
     <form class="form-horizontal">
         <div class="form-group">
-            <label class="control-label col-sm-3" for="calcul" id="calculError">Calcul* </label>
+            <label class="control-label col-sm-3" for="calcul" id="calculErreur">Calcul* </label>
             <div class="col-sm-6">
                 <label><input type="radio" name="calcul" id="mediane" value="med"> Médiane</label>
                 <label><input type="radio" name="calcul" id="moyenne" value="moy"> Moyenne</label>
@@ -31,12 +31,12 @@
         <div class="form-group">
             <label class="control-label col-sm-3" for="frequence" id="frequenceErreur">Fréquence* </label>
             <div class="col-sm-8">
-                <label id="anneeError">Année<input type="text" class="form-control" name="frequence" id="annee" ></label>
-                <label id="moisError">Mois<input type="text" class="form-control" name="frequence" id="mois"></label>
-                <label id="jourError">Jour<input type="text" class="form-control" name="frequence" id="jour"></label><br>
-                <label id="heureError">Heure<input type="text" class="form-control" name="frequence" id="heure"></label>
-                <label id="minuteError">Minute<input type="text" class="form-control" name="frequence" id="minute"></label>
-                <label id="secondeError">Seconde<input type="text" class="form-control" name="frequence" id="seconde"></label><br>
+                <label id="anneeErreur">Année<input type="text" class="form-control" name="frequence" id="annee" value="0"></label>
+                <label id="moisErreur">Mois<input type="text" class="form-control" name="frequence" id="mois" value="0"></label>
+                <label id="jourErreur">Jour<input type="text" class="form-control" name="frequence" id="jour" value="0"></label><br>
+                <label id="heureErreur">Heure<input type="text" class="form-control" name="frequence" id="heure" value="0"></label>
+                <label id="minuteErreur">Minute<input type="text" class="form-control" name="frequence" id="minute" value="0"></label>
+                <label id="secondeErreur">Seconde<input type="text" class="form-control" name="frequence" id="seconde" value="0"></label><br>
             </div>
         </div>
         <div class="form-group">
