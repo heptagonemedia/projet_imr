@@ -3,6 +3,7 @@ function detectErrors() {
     errorCalcul();
     errorBouee();
     errorFrequence();
+    errorIntervalle()
 }
 
 function errorCalcul() {
@@ -53,6 +54,20 @@ function errorFrequence() {
     }
     else {
         $("#frequenceError").css("color","black");
+    }
+}
+
+function errorIntervalle() {
+    let dateDebut = $("#dateDepart").val();
+    let dateFin = $("#dateFin").val();
+
+    if(!(differenceDate(dateDebut, dateFin))) {
+        $("#intervalleError").css("color","red");
+        $("#text").append("- Intervalle : La date de fin doit être supérieur à la date de début<br>");
+        $("#alerte").show();
+    }
+    else {
+        $("#intervalleError").css("color","black");
     }
 }
 
@@ -129,6 +144,20 @@ function checkSeconde(value) {
     return true;
 }
 
+function differenceDate(dateDebut, dateFin) {
+    var debut = new Date(dateDebut);
+    var fin = new Date(dateFin);
+    if (debut.getFullYear() > fin.getFullYear()) {
+        return false;
+    }
+    if (debut.getMonth() > fin.getMonth()) {
+        return false;
+    }
+    if (debut.getDay() > fin.getDay()) {
+        return false
+    }
+    return true;
+}
 
 function resetText() {
     $("#text").text("");
@@ -137,12 +166,15 @@ function resetText() {
 
 function allLetter(value) {
     var letters = /^[A-Za-z]+$/;
-    if(value.value.match(letters)) {
-        return true;
+    if (value) {
+        if(value.value.match(letters)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
-    else {
-        return false;
-    }
+    return true;
 }
 
 
