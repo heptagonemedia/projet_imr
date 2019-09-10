@@ -23,9 +23,9 @@
         <div class="form-group">
             <label class="control-label col-sm-3" for="calcul" id="calculErreur">Calcul* </label>
             <div class="col-sm-6">
-                <label><input type="radio" name="calcul" id="mediane" value="med"> Médiane</label>
-                <label><input type="radio" name="calcul" id="moyenne" value="moy"> Moyenne</label>
-                <label><input type="radio" name="calcul" id="ecartType" value="eca"> Ecart type</label>
+                <label><input type="radio" name="calcul" id="mediane" value="mediane"> Médiane</label>
+                <label><input type="radio" name="calcul" id="moyenne" value="moyenne"> Moyenne</label>
+                <label><input type="radio" name="calcul" id="ecartType" value="ecartType"> Ecart type</label>
             </div>
         </div>
         <div class="form-group">
@@ -48,16 +48,16 @@
         <div class="form-group">
             <label class="control-label col-sm-3" for="intervalle" id="intervalleErreur">Intervalle temporel* </label>
             <div class="col-sm-8">
-                <label>Date de départ<input type="date" class="form-control" id="dateDepart"></label><br>
-                <label>Heure de départ<input type="time" class="form-control" id="heureDepart"></label><br>
+                <label>Date de départ<input type="date" class="form-control" id="dateDep"></label><br>
+                <label>Heure de départ<input type="time" class="form-control" id="heureDep"></label><br>
                 <label>Date de fin<input type="date" class="form-control" id="dateFin"></label><br>
                 <label>Heure de fin<input type="time" class="form-control" id="heureFin"></label><br>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-primary" onclick="detecterErreurs()">Prévisualiser calcul</button>
-                <button type="button" class="btn btn-primary" onclick="detecterErreurs()">Enregister calcul</button>
+                <button type="button" class="btn btn-primary" onclick="detecterErreurs('prev')">Prévisualiser calcul</button>
+                <button type="button" class="btn btn-primary" onclick="detecterErreurs('enr')">Enregister calcul</button>
             </div>
         </div>
     </form>
@@ -65,6 +65,9 @@
 </div>
 </body>
 </html>
+<script>
+
+</script>
 <!--
 <script>
     function detecterErreurs(type){

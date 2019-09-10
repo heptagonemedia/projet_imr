@@ -1,4 +1,5 @@
-function detecterErreurs() {
+initFormulaire();
+function detecterErreurs(type) {
 
     initialiserTexteAlerte();
 
@@ -12,10 +13,57 @@ function detecterErreurs() {
     if (verificationCalcul && verificationFrequence && verificationBouee && verificationIntervalle) {
         $("#texteAlerte").text("");
         $("#divAlerte").hide();
+            //apres la detection d erreurs
+            var annee = $('#annee').val();
+            var mois = $('#mois').val();
+            var jour = $('#jour').val();
+            var heure = $('#heure').val();
+            var minute = $('#minute').val();
+            var seconde = $('#seconde').val();
+            var calcul = $('input[name=calcul]:checked').val();
+            var bouee = $('#bouee').val();
+            var dateDep = $('#dateDepart').val();
+            var heureDep = $('#heureDepart').val();
+            var dateFin = $('#dateFin').val();
+            var heureFin = $('#heureFin').val();
+            var lien = "resultats.php?";
+            lien += 'annee='+annee;
+            lien += '&mois='+mois;
+            lien += '&jour='+jour;
+            lien += '&heure='+heure;
+            lien += '&minute='+minute;
+            lien += '&seconde='+seconde;
+            lien += '&calcul='+calcul;
+            lien += '&bouee='+bouee;
+            lien += '&dateDep='+dateDep;
+            lien += '&heureDep='+heureDep;
+            lien += '&dateFin='+dateFin;
+            lien += '&heureFin='+heureFin;
+            lien += '&type='+type;
+            console.log(lien);
+            window.location.href = lien;
     }
 
 }
 
+//remplit les champs du formulaire avec les données de l'url si il y en a
+function initFormulaire(){
+    donnees = window.location.href.substr(window.location.href.indexOf('?')+1);
+    var tabDonnees = donnees.split('&');
+    console.log(tabDonnees);
+    var nom;
+    var valeur;
+    for(i=0; i<tabDonnees.length-1;i++){
+        var nom = tabDonnees[i].substr(0,tabDonnees[i].indexOf("="));
+        var valeur = tabDonnees[i].substr(tabDonnees[i].indexOf("=")+1);
+        if(nom == 'calcul'){
+            $("#"+valeur).attr('checked', true);
+        }else{
+            console.log(nom+ ' ==> '+valeur);
+            $('#'+nom).val(valeur);
+        }
+    }
+}
 
 function initialiserTexteAlerte() {
 

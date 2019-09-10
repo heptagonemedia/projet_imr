@@ -73,7 +73,7 @@
     <div class="container-fluid" style = "margin-top : 2%">
         <div class="row">
             <div class="col-sm">
-                <a href="formulaireRecherche.php"  type="button" class="btn btn-warning"><i class="fas fa-arrow-left"></i> Retour au calcul</a>
+                <button href="formulaireRecherche.php"  type="button" class="btn btn-warning" onclick = 'retourFormulaire();'><i class="fas fa-arrow-left"></i> Retour au calcul</button>
             </div>
             <div class="col-sm">
             <input type="hidden" id="type" value="enr" name="type">
@@ -111,6 +111,11 @@
 
     function fermer(){
         $('#message').remove();
+    }
+
+    function retourFormulaire(){
+        var url = document.location.href;
+        window.location.href = "formulaireRecherche.php"+ url.substr(url.indexOf('?'));
     }
 
 </script>
