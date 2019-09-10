@@ -107,19 +107,6 @@
 <?php print_r($_GET); ?>
 </pre>
 
-<script>
-
-    function fermer(){
-        $('#message').remove();
-    }
-
-    function retourFormulaire(){
-        var url = document.location.href;
-        window.location.href = "formulaireRecherche.php"+ url.substr(url.indexOf('?'));
-    }
-
-</script>
-    
 
 
     
@@ -200,6 +187,7 @@
         ) );
 
     </script>
+<script type="text/javascript" src="script.js"></script>
 
 </body>
 </html>

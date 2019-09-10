@@ -22,8 +22,8 @@ function detecterErreurs(type) {
             var seconde = $('#seconde').val();
             var calcul = $('input[name=calcul]:checked').val();
             var bouee = $('#bouee').val();
-            var dateDep = $('#dateDepart').val();
-            var heureDep = $('#heureDepart').val();
+            var dateDep = $('#dateDep').val();
+            var heureDep = $('#heureDep').val();
             var dateFin = $('#dateFin').val();
             var heureFin = $('#heureFin').val();
             var lien = "resultats.php?";
@@ -45,6 +45,16 @@ function detecterErreurs(type) {
     }
 
 }
+
+function fermer(){
+    $('#message').remove();
+}
+
+function retourFormulaire(){
+    var url = document.location.href;
+    window.location.href = "formulaireRecherche.php"+ url.substr(url.indexOf('?'));
+}
+
 
 //remplit les champs du formulaire avec les données de l'url si il y en a
 function initFormulaire(){
