@@ -315,30 +315,12 @@ function verifierValiditeIntervalle(dateDebut, dateFin, heureDebut, heureFin) {
         return false;
     }
 
-    if (debut.getDay() > fin.getDay()) {
+    if (debut.getDay() > fin.getDay() && debut.getMonth() == fin.getMonth()) {
         return false
     }
 
     if ((debut.getTime() == fin.getTime()) && heureDebut > heureFin) {
         return false;
-    }
-
-    return true;
-
-}
-
-
-function verifierToutesLettres(valeur) {
-
-    var lettres = /^[A-Za-z]+$/;
-    
-    if (valeur) {
-        if(valeur.value.match(lettres)) {
-            return true;
-        }
-        else {
-            return false;
-        }
     }
 
     return true;
