@@ -513,15 +513,17 @@ h6 {
 
 }
 
-.test {
-  padding-top: 50px;
+#ligneEtat{
+  font-size: 18pt;
 }
 
 #false {
   background: darkred;
+  color: white;
 }
 
 #true {
   background: darkgreen;
+  color: white;
 }
 

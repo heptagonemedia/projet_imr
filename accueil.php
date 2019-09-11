@@ -142,18 +142,24 @@
         <div id="map">
             <!-- Ici s'affichera la carte -->
         </div>
+            <div class='row  ligneEtat'>
+                <div class='col-sm justify-content-center' align="center">
+                  <B>Fonctionnelles</B>
+                </div> 
+                <div class='col-sm justify-content-center' align="center">
+                  <B>Défaillantes</B>
+                </div>
+            </div>
             <div class="row">
-                <div class="form-group col-md-2">
-                    <h6>Bouées fonctionnelles : </h6>
-                </div>
-                <div class="test">
+                <div class='col-sm justify-content-center' align="center">
+                  <div class="test">
                     <div class="circle" id="true"><?php echo $compteurFonctionelles; ?></div>
+                  </div>
                 </div>
-                <div class="form-group col-md-2">
-                    <h6>Bouées avec probleme : </h6>
-                </div>
+                <div class='col-sm justify-content-center' align="center">
                 <div class="test">
                     <div class="circle" id="false"><?php echo $compteurProbleme; ?></div>
+                </div>
                 </div>
             </div>
       </div>
