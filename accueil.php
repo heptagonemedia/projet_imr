@@ -47,14 +47,18 @@
               </a>
               <div class="sidebar-submenu" id="scrollable">
                 <ul>
-                  <?php 
+                  <?php
+                    $compteurFonctionelles = 0;
+                    $compteurProbleme = 0;
                     $classe='';
                     $texte='';
                     for ($i=0; $i < 75; $i++): 
                       if (rand(0,10)%2==0) {
+                        $compteurFonctionelles++;
                         $classe='success';
                         $texte='Fonctionnelle';
                       }else {
+                        $compteurProbleme++;
                         $classe='danger';
                         $texte='Problème';
                       }
@@ -138,6 +142,20 @@
         <div id="map">
             <!-- Ici s'affichera la carte -->
         </div>
+            <div class="row">
+                <div class="form-group col-md-2">
+                    <h6>Bouées fonctionnelles : </h6>
+                </div>
+                <div class="test">
+                    <div class="circle" id="true"><?php echo $compteurFonctionelles; ?></div>
+                </div>
+                <div class="form-group col-md-2">
+                    <h6>Bouées avec probleme : </h6>
+                </div>
+                <div class="test">
+                    <div class="circle" id="false"><?php echo $compteurProbleme; ?></div>
+                </div>
+            </div>
       </div>
       </main>
 

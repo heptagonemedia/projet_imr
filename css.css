@@ -445,7 +445,7 @@ h1 {
 }
 
 main {
-  background-color: grey;
+  background-color: #a2b0af;
   height: 100%;
 }
 
@@ -497,3 +497,31 @@ main {
 .chiller-theme .sidebar-footer>a:last-child {
     border-right: none;
 }
+
+.circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  font-size: 30px;
+  line-height: 80px;
+  text-align: center;
+  color: black;
+}
+
+h6 {
+  padding-top: 80px;
+
+}
+
+.test {
+  padding-top: 50px;
+}
+
+#false {
+  background: darkred;
+}
+
+#true {
+  background: darkgreen;
+}
+
