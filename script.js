@@ -182,12 +182,15 @@ function verifierErreurFrequence() {
 
 function verifierErreurIntervalle() {
 
-    let dateDebut = $("#dateDepart").val();
+    let dateDebut = $("#dateDep").val();
     let dateFin = $("#dateFin").val();
+    let heureDebut = $("#heureDep").val();
+    let heureFin = $("#heureFin").val();
 
-    if(!(verifierValiditeIntervalle(dateDebut, dateFin))) {
+    if(!(verifierValiditeIntervalle(dateDebut, dateFin, heureDebut, heureFin)) ||
+            (!dateFin || !dateDebut || !heureFin || !heureDebut)) {
         $("#intervalleErreur").css("color","red");
-        $("#texteAlerte").append("<li> Intervalle : La date de fin doit être supérieur à la date de début</li>");
+        $("#texteAlerte").append("<li> Intervalle : La date de fin doit être supérieur à la date de début et tout les champs doivent être remplis</li>");
         $("#divAlerte").show();
 
         return false;
@@ -298,7 +301,7 @@ function verifierSeconde(valeur) {
 }
 
 
-function verifierValiditeIntervalle(dateDebut, dateFin) {
+function verifierValiditeIntervalle(dateDebut, dateFin, heureDebut, heureFin) {
 
     var debut = new Date(dateDebut);
     var fin = new Date(dateFin);
@@ -313,6 +316,10 @@ function verifierValiditeIntervalle(dateDebut, dateFin) {
 
     if (debut.getDay() > fin.getDay()) {
         return false
+    }
+
+    if ((debut.getTime() == fin.getTime()) && heureDebut > heureFin) {
+        return false;
     }
 
     return true;
