@@ -91,9 +91,9 @@
     <div id='message' class="container-fluid">
         <div class = "row">
             <div class="col-sm-4"></div>
-            <div class="col-sm alert alert-success" role="alert">
-                Le calcul a bien été enregistré <button style="margin-left:20px;" type="button" class="btn btn-danger"onclick='fermer()'>+</button>
-            </div>
+            <button class="col-sm alert alert-success" role="alert" onclick="fermer()";>
+                Le calcul a bien été enregistré
+            </button>
             <div class="col-sm-4"></div>
         </div>
     </div>
@@ -103,9 +103,7 @@
 
     ?>
 
-<pre>
-<?php print_r($_GET); ?>
-</pre>
+
 
 
 
