@@ -64,7 +64,7 @@
                       }
                   ?>
                   <li>
-                    <a href="#">Bouée <?php echo($i+1); ?><span class="badge badge-<?php echo($classe); ?>"><?php echo($texte); ?></span></a>
+                    <a href="accueil.php?bouee=<?php echo $i+1 ?>">Bouée <?php echo($i+1); ?><span class="badge badge-<?php echo($classe); ?>"><?php echo($texte); ?></span></a>
                   <li>
                   <?php endfor ?>
                 </ul>
@@ -130,9 +130,9 @@
       </div>
     </nav>
 
-    <main class="page-content">
+    <main class="page-content" id='page' >
         <div class="container-fluid">
-          <h1>Information bouée 2</h1>
+          <h1>Informations <?php if(!isset($_GET['bouee'])){echo "Bouées";}else{echo "Bouées ".$_GET['bouee'];} ?></h1>
           <hr>
           <div class="row">
             <div class="form-group col-md-12">
@@ -177,7 +177,8 @@
     crossorigin="anonymous">
   </script>
 
-  <script src="js.js"></script>
+  <script src="map.js"></script>
+
   <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
 
 </body>

@@ -1,4 +1,5 @@
 initFormulaire();
+
 function detecterErreurs(type) {
 
     initialiserTexteAlerte();

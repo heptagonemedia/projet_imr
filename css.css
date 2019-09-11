@@ -513,8 +513,13 @@ h6 {
 
 }
 
-#ligneEtat{
-  font-size: 18pt;
+.ligneEtat{
+  font-size: 16pt;
+  padding-top: 16px;
+
+}
+B{
+  padding-top: 24px;
 }
 
 #false {
@@ -525,5 +530,10 @@ h6 {
 #true {
   background: darkgreen;
   color: white;
+}
+
+#page{
+    background-color: whitesmoke;
+
 }
 
