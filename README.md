@@ -1,1 +1,3 @@
-# Intreface_ProjetIMR
+# imr-frontend
+
+Interfaces du projet IMR
