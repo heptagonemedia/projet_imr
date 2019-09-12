@@ -385,19 +385,21 @@ initMap();
  };
 
  function agrandirCarte() {
-    $("#body").html("<div id = 'map'></div>");
-     initMap();
+         var html = $("#body").html();
+         $("#body").html("<div id = 'map' style='height: 90%;'></div><button id='bouton' type=\"button\"class=\"btn btn-danger\" onclick='retrecirCarte()'>Danger</button>");
+         initMap();
 
-     $("#body").css("width: 100%;\n" +
-         "         height: 100%;\n" +
-         "         margin: 0;\n" +
-         "         padding: 0;");
+         $("#body").css("width: 100%;\n" +
+             "         height: 100%;\n" +
+             "         margin: 0;\n" +
+             "         padding: 0;");
 
-     $("map").css('position: absolute;\n' +
-        '         bottom: 0;\n' +
-        '         top: 0;\n' +
-        '         width: 100%;');
-
-
-
+         $("map").css('position: absolute;\n' +
+             '         bottom: 0;\n' +
+             '         top: 0;\n' +
+             '         width: 100%;heigth:1000px;');
  }
+function retrecirCarte() {
+
+    window.location.href = document.location.href;
+}
