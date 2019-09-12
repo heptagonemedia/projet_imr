@@ -90,3 +90,7 @@
 [12-Sep-2019 02:21:22] NOTICE: exiting, bye-bye!
 [12-Sep-2019 02:21:55] NOTICE: fpm is running, pid 368
 [12-Sep-2019 02:21:55] NOTICE: ready to handle connections
+[12-Sep-2019 04:10:00] NOTICE: Terminating ...
+[12-Sep-2019 04:10:00] NOTICE: exiting, bye-bye!
+[12-Sep-2019 04:10:49] NOTICE: fpm is running, pid 347
+[12-Sep-2019 04:10:49] NOTICE: ready to handle connections
