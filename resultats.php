@@ -31,7 +31,6 @@
                     echo 'Calcul enregistré';
                 endif;
                 ?></div>
-            
             <div class="col">bouée n°1</div>
         </div>
     </div>

@@ -16,12 +16,13 @@
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
-  
+    <script src="map.js"></script>
+
   <title>AccueilIMR</title>
 
 </head>
 
-<body>
+<body id="body">
 
   <div class="page-wrapper chiller-theme toggled">
     <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
@@ -52,7 +53,7 @@
                     $compteurProbleme = 0;
                     $classe='';
                     $texte='';
-                    for ($i=0; $i < 75; $i++): 
+                    for ($i=0; $i < 75; $i++):
                       if (rand(0,10)%2==0) {
                         $compteurFonctionelles++;
                         $classe='success';
@@ -139,13 +140,13 @@
               <h4>Dernière mise à jour : DATE et HEURE</h4>
             </div>
         </div>
-        <div id="map">
+        <div id="map" onclick="agrandirCarte()">
             <!-- Ici s'affichera la carte -->
         </div>
             <div class='row  ligneEtat'>
                 <div class='col-sm justify-content-center' align="center">
                   <B>Fonctionnelles</B>
-                </div> 
+                </div>
                 <div class='col-sm justify-content-center' align="center">
                   <B>Défaillantes</B>
                 </div>
@@ -177,7 +178,7 @@
     crossorigin="anonymous">
   </script>
 
-  <script src="map.js"></script>
+  <script src="script.js"></script>
 
   <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
 
