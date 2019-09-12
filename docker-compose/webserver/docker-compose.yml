@@ -1,0 +1,24 @@
+version: '3'
+services:
+  php-fpm:
+    container_name: php-fm
+    build:
+      context: ./build/php-fpm
+    volumes:
+      - ../../../webroot/imr-frontend:/var/www/html:ro
+
+  nginx:
+    container_name: nginx
+    build: 
+      context: ./build/nginx
+    volumes:
+      - ../../../webroot/imr-frontend:/var/www/html:ro
+      - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./conf/nginx/sites/:/etc/nginx/sites-available
+      - ./conf/nginx/conf.d/:/etc/nginx/conf.d
+    ports:
+      - 4343:80
+      #- 443:443
+    depends_on:
+      - php-fpm
+    restart: always

@@ -1,0 +1,17 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgresold
+    image: postgres:10.10
+    environment:
+      - PGDATA=data/postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=loicloic
+      - POSTGRES_DB=postgres
+    volumes:
+      - ../../appdata/postgresold/data:/data/postgres
+    ports:
+      - 5432:5432
+    restart: always
+
+      
