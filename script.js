@@ -181,30 +181,6 @@ function verifierErreurFrequence() {
 }
 
 
-function verifierErreurIntervalle() {
-
-    let dateDebut = $("#dateDep").val();
-    let dateFin = $("#dateFin").val();
-    let heureDebut = $("#heureDep").val();
-    let heureFin = $("#heureFin").val();
-
-    if(!(verifierValiditeIntervalle(dateDebut, dateFin, heureDebut, heureFin)) ||
-            (!dateFin || !dateDebut || !heureFin || !heureDebut)) {
-        $("#intervalleErreur").css("color","red");
-        $("#texteAlerte").append("<li> Intervalle : La date de fin doit être supérieur à la date de début et tout les champs doivent être remplis</li>");
-        $("#divAlerte").show();
-
-        return false;
-    }
-    else {
-        $("#intervalleErreur").css("color","black");
-
-        return true;
-    }
-
-}
-
-
 function verifierAnnee(valeur) {
 
     $("#anneeErreur").css("color", "black");
@@ -302,33 +278,70 @@ function verifierSeconde(valeur) {
 }
 
 
-function verifierValiditeIntervalle(dateDebut, dateFin, heureDebut, heureFin) {
+
+function verifierErreurIntervalle() {
+
+    let dateDebut = $("#dateDep").val();
+    let dateFin = $("#dateFin").val();
+    let heureDebut = $("#heureDep").val();
+    let heureFin = $("#heureFin").val();
 
     var debut = new Date(dateDebut);
     var fin = new Date(dateFin);
 
-    if (debut.getFullYear() > fin.getFullYear()) {
+
+    if (!dateFin || !dateDebut || !heureFin || !heureDebut) {
+
+        $("#intervalleErreur").css("color", "red");
+        $("#texteAlerte").append("<li> Intervalle : Tous les champs doivent être remplis</li>");
+        $("#divAlerte").show();
+
         return false;
     }
 
-    if (debut.getMonth() > fin.getMonth()) {
+    var validationDates = verifierDatesintervalle(debut, fin);
+    var validationHeures = verifierHeuresIntervalle(heureDebut, heureFin,debut,fin);
+
+    if(!validationDates || !validationHeures) {
         return false;
     }
 
-    if (debut.getDay() > fin.getDay() && debut.getMonth() == fin.getMonth()) {
-        return false
-    }
 
-    if ((debut.getTime() == fin.getTime()) && heureDebut > heureFin) {
-        return false;
-    }
-
+    $("#intervalleErreur").css("color", "black");
     return true;
 
 }
 
 
+function verifierDatesintervalle(debut,fin) {
+    
+    if (debut.getFullYear() > fin.getFullYear() || (debut.getMonth() > fin.getMonth() && debut.getFullYear()==fin.getFullYear()) ||
+        (debut.getDay() > fin.getDay() && debut.getMonth() == fin.getMonth() && debut.getFullYear() == fin.getFullYear())) {
+        
+        $("#intervalleErreur").css("color", "red");
+        $("#texteAlerte").append("<li> Intervalle : La date de fin doit être supérieur ou égale à la date de début</li>");
+        $("#divAlerte").show();        
+        
+        return false;
+    }
 
+
+    return true;
+}
+
+function verifierHeuresIntervalle(heureDebut,heureFin,dateDebut,dateFin) {
+    if ((heureDebut > heureFin || heureDebut == heureFin) && dateDebut.getFullYear()==dateFin.getFullYear() &&
+        dateDebut.getMonth() == dateFin.getMonth() && dateDebut.getDay() == dateFin.getDay()) {
+
+        $("#intervalleErreur").css("color", "red");
+        $("#texteAlerte").append("<li> Intervalle : L'heure de fin doit être strictement supérieur à l'heure de début</li>");
+        $("#divAlerte").show();
+
+        return false;
+    }
+
+    return true;
+}
 
  // On initialise la latitude et la longitude de Paris (centre de la carte)
  var lat = 48.852969;
