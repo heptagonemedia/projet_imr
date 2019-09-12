@@ -22,8 +22,16 @@
     <!-- Ligne en haut de la page -->
     <div class="container-fluid" style=" background-color: #1e2229; font-size: 18pt;color: white">
         <div class="row align-items-start">
-            <div class="col col-lg-8">IMR</div>
-            <div class="col"><a href="index.php"><i id="home" class="fas fa-home" style="width: 50px;"></i></a></div>
+        <div class="col-sm-1"><a href="index.php"><i id="home" class="fas fa-home" style="width: 50px; color: aliceblue"></i></a></div>
+            <div class="col col-lg-6">
+                <?php
+                if (isset($_GET['type']) && $_GET['type'] == 'prev'):
+                    echo 'Prévisualisation';
+                else:
+                    echo 'Calcul enregistré';
+                endif;
+                ?></div>
+            
             <div class="col">bouée n°1</div>
         </div>
     </div>
