@@ -31,7 +31,7 @@
                     echo 'Calcul enregistré';
                 endif;
                 ?></div>
-            <div class="col">bouée n°1</div>
+            <div class="col"><?php if (isset($_GET['bouee'])): echo 'bouee n° '.$_GET['bouee']; endif; ?></div>
         </div>
     </div>
     
