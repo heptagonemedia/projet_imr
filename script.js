@@ -382,24 +382,33 @@ function verifierHeuresIntervalle(heureDebut,heureFin,dateDebut,dateFin) {
  window.onload = function(){
 // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
 initMap();
+
+
  };
 
- function agrandirCarte() {
-         var html = $("#body").html();
-         $("#body").html("<div id = 'map' style='height: 90%;'></div><button id='bouton' type=\"button\"class=\"btn btn-danger\" onclick='retrecirCarte()'>Danger</button>");
-         initMap();
+ function agrandirCarte(_element) {
+     var monElement = _element||document.documentElement;
+     if (document.mozFullScreenEnabled) {
+         if (!document.mozFullScreenElement) {
+             monElement.mozRequestFullScreen();
+         } else {
+             document.mozCancelFullScreen();
+         }
+     }
+     if (document.fullscreenElement) {
+         if (!document.fullscreenElement) {
+             monElement.requestFullscreen();
+         } else {
+             document.exitFullscreen();
+         }
+     }
+     if (document.webkitFullscreenEnabled) {
+         if (!document.webkitFullscreenElement) {
+             monElement.webkitRequestFullscreen();
+         } else {
+             document.webkitExitFullscreen();
+         }
+     }
 
-         $("#body").css("width: 100%;\n" +
-             "         height: 100%;\n" +
-             "         margin: 0;\n" +
-             "         padding: 0;");
 
-         $("map").css('position: absolute;\n' +
-             '         bottom: 0;\n' +
-             '         top: 0;\n' +
-             '         width: 100%;heigth:1000px;');
  }
-function retrecirCarte() {
-
-    window.location.href = document.location.href;
-}

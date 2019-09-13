@@ -515,9 +515,13 @@ h6 {
 
 .ligneEtat{
   font-size: 16pt;
-  padding-top: 16px;
-
+  margin-top: -5px;
 }
+
+#boutonCarte{
+  margin-top: 10px;
+}
+
 B{
   padding-top: 24px;
 }

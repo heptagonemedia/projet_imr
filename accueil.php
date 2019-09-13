@@ -15,7 +15,6 @@
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
-    <script src="map.js"></script>
 
   <title>AccueilIMR</title>
 
@@ -23,7 +22,8 @@
 
 <body id="body">
 
-  <div class="page-wrapper chiller-theme toggled">
+  <div class="page-wrapper chiller-theme toggled" id="content">
+
     <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
       <i class="fas fa-bars"></i>
     </a>
@@ -139,29 +139,40 @@
               <h4>Dernière mise à jour : DATE et HEURE</h4>
             </div>
         </div>
-        <div id="map" onclick="agrandirCarte()">
+        <div id="map" >
             <!-- Ici s'affichera la carte -->
         </div>
-            <div class='row  ligneEtat'>
-                <div class='col-sm justify-content-center' align="center">
-                  <B>Fonctionnelles</B>
-                </div>
-                <div class='col-sm justify-content-center' align="center">
-                  <B>Défaillantes</B>
+            <div class="row" >
+                <div class="col-sm" align="center" id="boutonCarte">
+                    <button class="btn btn-success" onclick="agrandirCarte(document.getElementById('map'))">
+                        Plein ecran
+                    </button>
                 </div>
             </div>
+<!--            <div class='row  ligneEtat'>-->
+<!--                -->
+<!--                -->
+<!--            </div>-->
             <div class="row">
                 <div class='col-sm justify-content-center' align="center">
-                  <div class="test">
+                    <div class='col-sm justify-content-center' align="center">
+                        <B>Fonctionnelles</B>
+                    </div>
+                  <div class=" test">
                     <div class="circle" id="true"><?php echo $compteurFonctionelles; ?></div>
                   </div>
+
                 </div>
                 <div class='col-sm justify-content-center' align="center">
+                    <div class='col-sm justify-content-center' align="center">
+                        <B>Défaillantes</B>
+                    </div>
                 <div class="test">
                     <div class="circle" id="false"><?php echo $compteurProbleme; ?></div>
                 </div>
                 </div>
             </div>
+        </div>
       </div>
       </main>
 
@@ -178,6 +189,7 @@
   </script>
 
   <script src="script.js"></script>
+  <script src="map.js"></script>
 
   <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
 
