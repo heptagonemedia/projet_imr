@@ -11,3 +11,13 @@ services:
     volumes:
       - ../../appdata/pgadmin/data:/root/.pgadmin
     restart: always
+    networks:
+      - default
+      - postgres
+
+networks:
+  default:
+  postgres:
+    external:
+      name: postgres_default
+
