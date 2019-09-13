@@ -1,0 +1,20 @@
+version: '3'
+services:
+  omnidb:
+    build: ./build
+    container_name: omnidb
+    ports:
+      - 8080:8080
+    volumes:
+      - ../../appdata/omnidb/data:/etc/omnidb
+    restart: always
+    networks:
+      - default
+      - postgres
+
+networks:
+  default:
+  postgres:
+    external:
+      name: postgres_default
+
