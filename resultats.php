@@ -38,7 +38,7 @@
     <!-- Ligne de la carte et du premier Graphique -->
 	<div class="container-fluid" id="col1">
 		<div class="row">
-			<div class="map col-sm" id="map" style="padding: 0%">
+			<div class="map col-sm" id="map"  style="padding: 0%">
 				<img src="blanc.png" style="height: 150%;">
             </div>
             <div style="padding: 0%; width:2%"></div>
@@ -51,7 +51,7 @@
 	<div class="container-fluid" id='bar1' style="background-color: #1e2229;" >
         <div class="row row align-items-start">
             <div class="col-sm" style="text-align: center;">
-                Carte
+                <a onclick="agrandirCarte(document.getElementById('map'))" >Agrandir Carte</a>
             </div>
             <div class='col-sm' style="text-align: center;">
                 <a href="" style="color: white;">Consulter les données brutes</a>  <!-- TODO Changer le style -->

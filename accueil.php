@@ -132,7 +132,7 @@
 
     <main class="page-content" id='page' >
         <div class="container-fluid">
-          <h1><?php if(!isset($_GET['bouee'])){echo "Accueil";}else{echo "Information Bouée ".$_GET['bouee'];} ?></h1>
+          <h1><?php if(!isset($_GET['bouee'])){echo "Accueil";}else{echo "Informations Bouée ".$_GET['bouee'];} ?></h1>
           <hr>
           <div class="row">
             <div class="form-group col-md-12">
