@@ -8,7 +8,7 @@ CREATE TABLE public.donnee_invalides (
     , temperature numeric(4,2)  NOT NULL
     , salinite    numeric(4,2)  NOT NULL
     , debit       numeric(5,2)  NOT NULL
-    , date_temps  time without time zone NOT NULL
+    , date_temps  timestamp without time zone NOT NULL
     , longitude   numeric(10,8) NOT NULL
     , latitude    numeric(10,8) NOT NULL
     , batterie    integer       NOT NULL

@@ -8,11 +8,10 @@ CREATE TABLE public.donnee_valides (
     , temperature numeric(4,2)  NOT NULL
     , salinite    numeric(4,2)  NOT NULL
     , debit       numeric(5,2)  NOT NULL
-    , date_temps  time without time zone NOT NULL
+    , date_temps  timestamp without time zone NOT NULL
     , longitude   numeric(10,8) NOT NULL
     , latitude    numeric(10,8) NOT NULL
     , batterie    integer       NOT NULL
-    , CONSTRAINT donnee_valides_pkey PRIMARY KEY (id)
     , CONSTRAINT donnee_bouees_id_bouee_fkey FOREIGN KEY (id_bouee)
         REFERENCES public.bouees (id) MATCH SIMPLE
         ON UPDATE NO ACTION
