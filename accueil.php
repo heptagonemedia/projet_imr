@@ -106,6 +106,12 @@
             <li class="header-menu">
               <span>Option</span>
             </li>
+              <li>
+                  <a href="accueil.php">
+                      <i class="fa fa-home"></i>
+                      <span>Retour a l'accueil</span>
+                  </a>
+              </li>
               <!--
             <li class="sidebar-dropdown">
               <a href="#">
