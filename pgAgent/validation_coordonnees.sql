@@ -12,18 +12,20 @@ END
 $$ LANGUAGE plpgsql;
 
 
---test
+--fonction de validation fonctionnelle--
 CREATE OR REPLACE FUNCTION validation_donnee()
 
 RETURNS void
 AS $$
 
 DECLARE                                                   
-    curseurDonnee  donnee_bouees%rowtype;        
+    curseurDonnee donnee_bouees%rowtype;
+	curseurBouee bouees%rowtype;
 BEGIN                                                     
     FOR curseurDonnee IN SELECT * FROM donnee_bouees INNER JOIN bouees ON bouees.id = donnee_bouees.id_bouee
 		LOOP
-			IF (distance(bouees.latitude, bouees.longitude, curseurDonnee.latitude, curseurDonnee.longitude) < 0.010) THEN
+			SELECT * INTO curseurBouee FROM bouees WHERE id = curseurDonnee.id_bouee;
+			IF (distance(curseurBouee.latitude, curseurBouee.longitude, curseurDonnee.latitude, curseurDonnee.longitude) < 0.010) THEN
 				INSERT INTO donnee_valides(id_bouee, 
 										   temperature, 
 										   salinite, 
@@ -39,11 +41,30 @@ BEGIN
 												  curseurDonnee.date_temps, 
 												  curseurDonnee.longitude, 
 												  curseurDonnee.latitude, 
-												  curseurDonnee.batterie);			
+												  curseurDonnee.batterie);
+			ELSE
+				INSERT INTO donnee_invalides(id_bouee, 
+										   temperature, 
+										   salinite, 
+										   debit, 
+										   date_temps, 
+										   longitude, 
+										   latitude, 
+										   batterie)  
+										   VALUES(curseurDonnee.id_bouee, 
+												  curseurDonnee.temperature, 
+												  curseurDonnee.salinite, 
+												  curseurDonnee.debit, 
+												  curseurDonnee.date_temps, 
+												  curseurDonnee.longitude, 
+												  curseurDonnee.latitude, 
+												  curseurDonnee.batterie);
+				
 			END IF;
 		END LOOP;
 END
 $$ LANGUAGE plpgsql;
+
 
 
 
