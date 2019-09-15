@@ -68,3 +68,4 @@ $$ LANGUAGE plpgsql;
 
 
 
+-- peut-être que la commande COPY permettrait de meilleures performances que les commandes SELECT et INSERT ?

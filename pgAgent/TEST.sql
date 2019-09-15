@@ -133,36 +133,35 @@ $$ LANGUAGE plpgsql;
 
 --------------------------------------------------------------------------------
 
-CREATE OR REPLACE FUNCTION intervale_incertiture(val FLOAT, colonne TEXT, temps TIMESTAMP)
+CREATE OR REPLACE FUNCTION intervale_incertiture(val NUMERIC(5,2), colonne TEXT, temps TIMESTAMP, id_bouee_liee INTEGER)
 
     RETURNS BOOLEAN
+    LANGUAGE 'plpgsql'
 AS $$
 
 DECLARE
 
-valeurLue FLOAT;
-moyenne FLOAT;
+valeurLue NUMERIC(5,2);
+moyenne NUMERIC(5,2);
 cycles INT;
-
--- SELECT donnee_bouees.colonne INTO john FROM donnee_bouees WHERE date_temps = temps;
 
 BEGIN
 
     cycles := 25; -- On consulte ces dernières valeurs pour établir la moyenne de comparaison
 
     FOR i IN 1..cycles LOOP
-            valeurLue := (SELECT colonne FROM donnee_bouees WHERE date_temps = temps - (i * INTERVAL '1 SECOND'));
+            valeurLue := (SELECT colonne FROM donnee_bouees WHERE id_bouee = id_bouee_liee AND date_temps = temps - (i * INTERVAL '1 SECOND'));
             moyenne := moyenne + valeurLue;
     END LOOP;
-    moyenne := moyenne/cycles;
+    moyenne := moyenne/(cycles-1);
 
-    RETURN NOT (val*0.2 < moyenne OR val*1.8 > moyenne); -- Si la valeur est trop petite ou trop grande : FALSE.
+    RETURN (NOT (val*0.2 < moyenne OR val*1.8 > moyenne)); -- Si la valeur est trop petite ou trop grande : FALSE.
 
 END
-$$ LANGUAGE plpgsql;
+$$ 
 ;
 
-----------------------
+--------------------------------------------------------------------------------
 -- données de test de la fonction
 
 INSERT INTO bouees (numero, description, date_debut, longitude, latitude)
