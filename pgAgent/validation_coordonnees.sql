@@ -12,28 +12,38 @@ END
 $$ LANGUAGE plpgsql;
 
 
-INSERT INTO donnee_valides(
-	id_bouee
-	, temperature
-	, salinite
-	, debit
-	, date_temps
-	, longitude
-	, latitude
-	, batterie) 
-SELECT donnee_bouees.id_bouee
-	, donnee_bouees.temperature
-	, donnee_bouees.salinite
-	, donnee_bouees.debit
-	, donnee_bouees.date_temps
-	, donnee_bouees.longitude
-	, donnee_bouees.latitude
-	, donnee_bouees.batterie
-FROM donnee_bouees
-LEFT JOIN bouees
-ON bouees.id = donnee_bouees.id_bouee
-WHERE distance(
-	bouees.latitude
-	, bouees.longitude
-	, donnee_bouees.latitude
-	, donnee_bouees.longitude) < 0.010;
+--test
+CREATE OR REPLACE FUNCTION validation_donnee()
+
+RETURNS void
+AS $$
+
+DECLARE                                                   
+    curseurDonnee  donnee_bouees%rowtype;        
+BEGIN                                                     
+    FOR curseurDonnee IN SELECT * FROM donnee_bouees INNER JOIN bouees ON bouees.id = donnee_bouees.id_bouee
+		LOOP
+			IF (distance(bouees.latitude, bouees.longitude, curseurDonnee.latitude, curseurDonnee.longitude) < 0.010) THEN
+				INSERT INTO donnee_valides(id_bouee, 
+										   temperature, 
+										   salinite, 
+										   debit, 
+										   date_temps, 
+										   longitude, 
+										   latitude, 
+										   batterie)  
+										   VALUES(curseurDonnee.id_bouee, 
+												  curseurDonnee.temperature, 
+												  curseurDonnee.salinite, 
+												  curseurDonnee.debit, 
+												  curseurDonnee.date_temps, 
+												  curseurDonnee.longitude, 
+												  curseurDonnee.latitude, 
+												  curseurDonnee.batterie);			
+			END IF;
+		END LOOP;
+END
+$$ LANGUAGE plpgsql;
+
+
+
