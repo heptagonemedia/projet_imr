@@ -138,12 +138,15 @@ function autorisationReduireSidebar() {
     if(parseInt(getBrowserSize().width) < 1026 && fermeture) {
         reduireSideBar();
         fermeture = false;
+        ouveture = true;
     }
-    else if (parseInt(getBrowserSize().width) > 1026){
+    else if (parseInt(getBrowserSize().width) > 1026 && ouveture){
         $(".page-wrapper").addClass("toggled");
         fermeture = true;
+        ouveture = false;
     }
 }
 
 var fermeture = true;
+var ouveture = false;
 var intervalle = setInterval(autorisationReduireSidebar, 500);
