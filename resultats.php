@@ -4,16 +4,17 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="EJSCharts/EJSChart.css">
+
+    <link rel="stylesheet" href="EJSCharts/EJSChart.css">
     <script src="https://kit.fontawesome.com/e14504e0cd.js"></script>
 
     <script type="text/javascript" src="EJSCharts/EJSChart.js"></script>
-	<link rel="stylesheet" type="text/css" href="proto.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+    <link rel="stylesheet" type="text/css" href="proto.css">
 
 	<title>Resultats</title>
 </head>
@@ -51,7 +52,7 @@
 	<div class="container-fluid" id='bar1' style="background-color: #1e2229;" >
         <div class="row row align-items-start">
             <div class="col-sm" style="text-align: center;">
-                <a onclick="agrandirCarte(document.getElementById('map'))" >Agrandir Carte</a>
+                <a href="#" id="takik"  style="color: white;" onclick="agrandirCarte(document.getElementById('map'))" >Agrandir la Carte</a>
             </div>
             <div class='col-sm' style="text-align: center;">
                 <a href="" style="color: white;">Consulter les données brutes</a>  <!-- TODO Changer le style -->
@@ -114,36 +115,13 @@
 
 
 
-    
+
 <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
     <script type="text/javascript">
-    
-            // On initialise la latitude et la longitude de Paris (centre de la carte)
-            var lat = 48.852969;
-            var lon = -67.533555;
-            var macarte = null;
-
-            // Fonction d'initialisation de la carte
-            function initMap() {
-
-                // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-                macarte = L.map('map').setView([lat, lon], 11);
-
-                // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
-                L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-
-                    // Il est toujours bien de laisser le lien vers la source des données
-                    attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-                    minZoom: 1,
-                    maxZoom: 20
-                    
-                }).addTo(macarte);
-
-            }
 
             window.onload = function(){
                 // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
-                initMap(); 
+                initMap();
             };
 
     </script>
