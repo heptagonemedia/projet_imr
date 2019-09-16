@@ -155,10 +155,6 @@
                     </button>
                 </div>
             </div>
-<!--            <div class='row  ligneEtat'>-->
-<!--                -->
-<!--                -->
-<!--            </div>-->
             <div class="row">
                 <div class='col-sm justify-content-center' align="center">
                     <div class='col-sm justify-content-center' align="center">
