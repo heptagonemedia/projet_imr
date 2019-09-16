@@ -75,7 +75,7 @@ var intervalle = setInterval(autorisationReduireSidebar, 1000);
  // Fonction d'initialisation de la carte
  function initMap() {
      // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-     macarte = L.map('map').setView([49.210186, -67.433494], 8);
+     macarte = L.map('map', {zoomControl : false, attributionControl : false}).setView([49.210186, -67.433494], 8);
      // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
      L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
          // Il est toujours bien de laisser le lien vers la source des données
