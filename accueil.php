@@ -37,6 +37,12 @@
         </div>
         <div class="sidebar-menu">
           <ul>
+              <li>
+                  <a href="accueil.php">
+                      <i class="fa fa-home"></i>
+                      <span>Accueil</span>
+                  </a>
+              </li>
             <li class="header-menu">
               <span>Bouées</span>
             </li>
@@ -106,12 +112,6 @@
             <li class="header-menu">
               <span>Option</span>
             </li>
-              <li>
-                  <a href="accueil.php">
-                      <i class="fa fa-home"></i>
-                      <span>Retour a l'accueil</span>
-                  </a>
-              </li>
               <!--
             <li class="sidebar-dropdown">
               <a href="#">
