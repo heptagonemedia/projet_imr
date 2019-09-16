@@ -140,9 +140,10 @@ function autorisationReduireSidebar() {
         fermeture = false;
     }
     else if (parseInt(getBrowserSize().width) > 1026){
+        $(".page-wrapper").addClass("toggled");
         fermeture = true;
     }
 }
 
 var fermeture = true;
-var intervalle = setInterval(autorisationReduireSidebar, 1000);
+var intervalle = setInterval(autorisationReduireSidebar, 500);

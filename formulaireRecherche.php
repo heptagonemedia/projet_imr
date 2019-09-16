@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -13,12 +14,17 @@
 
 </head>
 <body>
-
-<div class="container">
+<!-- Ligne en haut de la page -->
+<div class="container-fluid" style=" background-color: #1e2229; font-size: 18pt;color: white">
+    <div class="row align-items-start">
+        <div class="col-sm-1"><a href="index.php"><i id="home" class="fas fa-home" style="width: 50px; color: aliceblue; padding-top: 5px;"></i></a></div>
+        <div class="col-sm-10" style="text-align: center;">Recherche</div>
+    </div>
+</div>
+<div class="container" style="padding-top: 50px;">
     <div class="alert alert-danger" role="alert" hidden="hidden" id="divAlerte">
         <p id="texteAlerte"></p>
     </div>
-    <h1>Formulaire</h1>
     <form class="form-horizontal">
         <div class="form-group">
             <label class="control-label col-sm-3" for="calcul" id="calculErreur">Calcul* </label>
