@@ -12,13 +12,7 @@ div{
 	text-align: center;
 }
 
-.lien:hover{
-	text-decoration: none;
-	color: darkturquoise;
-}
-.lien{
-	color: #FFFFFF;
-}
+
 #bar1{
 	background-color: #1e2229;
 }
