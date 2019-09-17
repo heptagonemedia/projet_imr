@@ -71,7 +71,7 @@
   <table id="TAB17" populated="true" UUID="19c46326-aa8b-4ed6-a9f9-2577c6d9c91d" name="region" objectType="TABLE" physicalName="region" >
    <remarks></remarks>
    <folder id="FOLTAB171" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL18" populated="true" UUID="faa9b111-8198-4662-b427-deff903b6ba2" autoIncrement="true" autoIncrementSequenceName="region_id_region_seq" defaultValue="" name="id_region" nullable="0" physicalName="id_region" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL18" populated="true" UUID="faa9b111-8198-4662-b427-deff903b6ba2" autoIncrement="true" autoIncrementSequenceName="region_id_region_seq_1" defaultValue="" name="id_region" nullable="0" physicalName="id_region" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL19" populated="true" UUID="239a2a03-1743-4254-be67-7a9ca379c972" autoIncrement="false" autoIncrementSequenceName="region_etiquette_seq" defaultValue="" name="etiquette" nullable="0" physicalName="etiquette" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -117,7 +117,7 @@
     <column id="COL29" populated="true" UUID="d6b7d2cb-7ebe-4ebe-8bc8-e51050cd5b08" autoIncrement="true" autoIncrementSequenceName="calcul_enregistre_id_calcul_enregistre_seq" defaultValue="" name="id_calcul_enregistre" nullable="0" physicalName="id_calcul_enregistre" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL30" populated="true" UUID="697bc6bb-3d10-4854-b6da-9386f7fb060a" autoIncrement="false" autoIncrementSequenceName="bouee_id_bouee_seq" defaultValue="" name="id_bouee" nullable="0" physicalName="id_bouee" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL30" populated="true" UUID="697bc6bb-3d10-4854-b6da-9386f7fb060a" autoIncrement="false" autoIncrementSequenceName="bouee_id_bouee_seq_1" defaultValue="" name="id_bouee" nullable="0" physicalName="id_bouee" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL31" populated="true" UUID="f84f2304-11ae-4692-ab5a-07d562a6b3d2" autoIncrement="false" autoIncrementSequenceName="calcul_enregistre_date_debut_seq" defaultValue="" name="date_debut" nullable="0" physicalName="date_debut" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="92" userDefinedTypeUUID="10d6960f-169d-47c2-860a-37341342b1d5" >
@@ -132,7 +132,7 @@
     <column id="COL34" populated="true" UUID="6f78401d-5587-4c8f-8ae7-70973fdc493b" autoIncrement="false" autoIncrementSequenceName="calcul_enregistre_valeur_seq" defaultValue="" name="valeur" nullable="0" physicalName="valeur" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
-    <column id="COL35" populated="true" UUID="cd6cb582-c003-4d90-a679-f5862d83ea3d" autoIncrement="false" autoIncrementSequenceName="donnee_mesuree_id_donnee_mesuree_seq" defaultValue="" name="id_donnee_mesuree" nullable="0" physicalName="id_donnee_mesuree" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL35" populated="true" UUID="cd6cb582-c003-4d90-a679-f5862d83ea3d" autoIncrement="false" autoIncrementSequenceName="donnee_mesuree_id_donnee_mesuree_seq" defaultValue="" name="id_type_donnee_mesuree" nullable="0" physicalName="id_type_donnee_mesuree" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL36" populated="true" UUID="e1fdea16-64f0-44e5-9ead-b9cb69b779a3" autoIncrement="false" autoIncrementSequenceName="type_calcul_id_type_calcul_seq" defaultValue="" name="id_type_calcul" nullable="0" physicalName="id_type_calcul" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -155,7 +155,7 @@
   <table id="TAB40" populated="true" UUID="4fec4be3-e4fd-4777-858c-90addb69c7bb" name="type_calcul" objectType="TABLE" physicalName="type_calcul" >
    <remarks></remarks>
    <folder id="FOLTAB401" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL41" populated="true" UUID="08c6a62f-3a33-4ce9-8f96-be27cf3c155d" autoIncrement="true" autoIncrementSequenceName="type_calcul_id_type_calcul_seq" defaultValue="" name="id_type_calcul" nullable="0" physicalName="id_type_calcul" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL41" populated="true" UUID="08c6a62f-3a33-4ce9-8f96-be27cf3c155d" autoIncrement="true" autoIncrementSequenceName="type_calcul_id_type_calcul_seq_1" defaultValue="" name="id_type_calcul" nullable="0" physicalName="id_type_calcul" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL42" populated="true" UUID="b485db33-0ae3-47fb-abce-6ee16e788ec6" autoIncrement="false" autoIncrementSequenceName="type_calcul_etiquette_seq" defaultValue="" name="etiquette" nullable="0" physicalName="etiquette" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -172,13 +172,13 @@
     </index>
    </folder>
   </table>
-  <table id="TAB45" populated="true" UUID="7d18fddb-ad55-45e7-86f2-2af4cbb3fbd6" name="donnee_mesuree" objectType="TABLE" physicalName="donnee_mesuree" >
+  <table id="TAB45" populated="true" UUID="7d18fddb-ad55-45e7-86f2-2af4cbb3fbd6" name="type_donnee_mesuree" objectType="TABLE" physicalName="type_donnee_mesuree" >
    <remarks></remarks>
    <folder id="FOLTAB451" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL46" populated="true" UUID="641e08bc-1bbd-4f6d-b136-a7db8fa7cc75" autoIncrement="true" autoIncrementSequenceName="donnee_mesuree_id_donnee_mesuree_seq" defaultValue="" name="id_donnee_mesuree" nullable="0" physicalName="id_donnee_mesuree" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL46" populated="true" UUID="641e08bc-1bbd-4f6d-b136-a7db8fa7cc75" autoIncrement="true" autoIncrementSequenceName="type_donnee_mesuree_id_type_donnee_mesuree_seq" defaultValue="" name="id_type_donnee_mesuree" nullable="0" physicalName="id_type_donnee_mesuree" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL47" populated="true" UUID="94c3a4b4-0253-4b10-b570-a7682aa8a571" autoIncrement="false" autoIncrementSequenceName="donnee_mesuree_etiquette_seq" defaultValue="" name="etiquette" nullable="0" physicalName="etiquette" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL47" populated="true" UUID="94c3a4b4-0253-4b10-b570-a7682aa8a571" autoIncrement="false" autoIncrementSequenceName="type_donnee_mesuree_etiquette_seq" defaultValue="" name="etiquette" nullable="0" physicalName="etiquette" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     </folder>
@@ -187,8 +187,8 @@
     <folder id="FOLTAB452" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
     <folder id="FOLTAB454" populated="true" name="Indices" physicalName="Indices" type="4">
-    <index id="IDX48" populated="true" UUID="40d6bd21-d0d5-424e-9dce-9017ede59137" clustered="false" name="id_donnee_mesuree" physicalName="id_donnee_mesuree" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC49" populated="true" UUID="1e574c87-c08a-4c76-94fe-51cbb69fc0c7" ascendingOrDescending="UNSPECIFIED" column-ref="COL46" name="id_donnee_mesuree" physicalName="id_donnee_mesuree" />
+    <index id="IDX48" populated="true" UUID="40d6bd21-d0d5-424e-9dce-9017ede59137" clustered="false" name="id_type_donnee_mesuree" physicalName="id_type_donnee_mesuree" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC49" populated="true" UUID="1e574c87-c08a-4c76-94fe-51cbb69fc0c7" ascendingOrDescending="UNSPECIFIED" column-ref="COL46" name="id_type_donnee_mesuree" physicalName="id_type_donnee_mesuree" />
     </index>
    </folder>
   </table>
@@ -201,7 +201,7 @@
     <column id="COL52" populated="true" UUID="70967f9a-5b41-44ca-99db-e08994354db6" autoIncrement="false" autoIncrementSequenceName="mesure_id_historique_donnee_bouee_seq" defaultValue="" name="id_historique_donnee_bouee" nullable="0" physicalName="id_historique_donnee_bouee" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL53" populated="true" UUID="27428c91-60b0-44ba-be7e-557f2ed1b09f" autoIncrement="false" autoIncrementSequenceName="donnee_mesuree_id_donnee_mesuree_seq" defaultValue="" name="id_donnee_mesuree" nullable="0" physicalName="id_donnee_mesuree" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL53" populated="true" UUID="27428c91-60b0-44ba-be7e-557f2ed1b09f" autoIncrement="false" autoIncrementSequenceName="donnee_mesuree_id_donnee_mesuree_seq_1" defaultValue="" name="id_type_donnee_mesuree" nullable="0" physicalName="id_type_donnee_mesuree" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL54" populated="true" UUID="b5a86de0-8163-4986-ac0b-476612550d10" autoIncrement="false" autoIncrementSequenceName="mesure_valeur_seq" defaultValue="" name="valeur" nullable="0" physicalName="valeur" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
@@ -245,7 +245,7 @@
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.GenericDDLGenerator" allow-connection="true"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
