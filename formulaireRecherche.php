@@ -1,117 +1,160 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="formulaireCss.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-    <title>Recherche</title>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- jQuery -->
 </head>
-<body>
-<!-- Ligne en haut de la page -->
-<div class="container-fluid" style=" background-color: #1e2229; font-size: 18pt;color: white">
-    <div class="row align-items-start">
-        <div class="col-sm-1"><a href="index.php"><i id="home" class="fas fa-home" style="width: 50px; color: aliceblue; padding-top: 5px;"></i></a></div>
-        <div class="col-sm-10" style="text-align: center;">Recherche</div>
-    </div>
-</div>
-<div class="container" style="padding-top: 50px;">
-    <div class="alert alert-danger" role="alert" hidden="hidden" id="divAlerte">
-        <p id="texteAlerte"></p>
-    </div>
-    <form class="form-horizontal">
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="calcul" id="calculErreur">Calcul* </label>
-            <div class="col-sm-6">
-                <label><input type="radio" name="calcul" id="mediane" value="mediane"> Médiane</label>
-                <label><input type="radio" name="calcul" id="moyenne" value="moyenne"> Moyenne</label>
-                <label><input type="radio" name="calcul" id="ecartType" value="ecartType"> Ecart type</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="frequence" id="frequenceErreur">Fréquence* </label>
-            <div class="col-sm-8">
-                <label id="anneeErreur">Année<input type="text" class="form-control" name="frequence" id="annee" value="0"></label>
-                <label id="moisErreur">Mois<input type="text" class="form-control" name="frequence" id="mois" value="0"></label>
-                <label id="jourErreur">Jour<input type="text" class="form-control" name="frequence" id="jour" value="0"></label><br>
-                <label id="heureErreur">Heure<input type="text" class="form-control" name="frequence" id="heure" value="0"></label>
-                <label id="minuteErreur">Minute<input type="text" class="form-control" name="frequence" id="minute" value="0"></label>
-                <label id="secondeErreur">Seconde<input type="text" class="form-control" name="frequence" id="seconde" value="0"></label><br>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="bouee" id="boueeErreur">Bouée* </label>
-            <div class="col-sm-1">
-                <input type="text" class="form-control" id="bouee">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3" for="intervalle" id="intervalleErreur">Intervalle temporel* </label>
-            <div class="col-sm-8">
-                <label>Date de départ<input type="date" class="form-control" id="dateDep"></label><br>
-                <label>Heure de départ<input type="time" class="form-control" id="heureDep"></label><br>
-                <label>Date de fin<input type="date" class="form-control" id="dateFin"></label><br>
-                <label>Heure de fin<input type="time" class="form-control" id="heureFin"></label><br>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-primary" onclick="detecterErreurs('prev')">Prévisualiser calcul</button>
-                <button type="button" class="btn btn-primary" onclick="detecterErreurs('enr')">Enregister calcul</button>
-            </div>
-        </div>
-    </form>
+<title>webdamn.com : Create Material Design Login and Register Form</title>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+
+<nav>
+    <div class="nav-wrapper grey">
+        <a href="#!" class="brand-logo right"><img src="https://cdn.discordapp.com/attachments/614172601337643142/615001645788430366/Final1.png" width="50px" height="50px"></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="left hide-on-med-and-down">
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="#">Formulaire</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="index.php">Accueil</a></li>
+            <li><a href="#">Formulaire</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container" style="padding-top: 50px">
+
+    <div id="register-page" class="row">
+        <div class="col s12 z-depth-6 card-panel">
+            <form class="register-form">
+                <div class="row margin">
+                    <div class="input-field col s2">
+                        <i class="mdi-content-add prefix"></i>
+                        <label>Calcul</label>
+                    </div>
+                    <div class="input-field col s10">
+                        <input type="checkbox" id="moyenne" />
+                        <label for="moyenne">Moyenne</label><br>
+                        <input type="checkbox" id="mediane" />
+                        <label for="mediane">Mediane</label><br>
+                        <input type="checkbox" id="ecartType" />
+                        <label for="ecartType">Ecart-Type</label>
+                    </div>
+                </div>
+                <div class="row margin">
+                    <div class="input-field col s2">
+                        <i class="mdi-action-settings-backup-restore prefix"></i>
+                        <label>Fréquence</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="annee" type="number">
+                        <label for="annee" class="center-align">Année</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="mois" type="number">
+                        <label for="mois" class="center-align">Mois</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="jour" type="number">
+                        <label for="jour" class="center-align">Jour</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="heure" type="number">
+                        <label for="heure" class="center-align">Heure</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="minute" type="number">
+                        <label for="minute" class="center-align">Minute</label>
+                    </div>
+                </div>
+                <div class="row margin">
+                    <div class="input-field col s2">
+                        <i class="mdi-action-list prefix"></i>
+                        <label>Bouée</label>
+                    </div>
+                    <div class="input-field col s10">
+                        <input id="bouee" type="number">
+                        <label id="bouee" for="bouee" style="width: 500px">Numero</label>
+                    </div>
+                </div>
+                <div class="row margin">
+                    <div class="input-field col s2">
+                        <i class="mdi-editor-insert-invitation prefix"></i>
+                        <label>Intervalle temporel</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="dateDebut" type="date" class="datepicker">
+                        <label for="dateDebut" data-error="Please enter your first name.">Date début</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="heureDebut" type="text">
+                        <label for="heureDebut">Heure début</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="dateFin" type="date" class="datepicker">
+                        <label for="dateFin">Date fin</label>
+                    </div>
+                    <div class="input-field col s2">
+                        <input id="heureFin" type="text">
+                        <label for="heureFin">Heure fin</label>
+                    </div>
+                </div>
+                <div class="row margin">
+                    <div class="input-field col s2">
+                        <i class="mdi-content-save prefix"></i>
+                        <label>Enregistrer calcul</label>
+                    </div>
+                    <div class="input-field col s10">
+                        <!-- Switch -->
+                        <div class="switch">
+                            <label>
+                                Non
+                                <input type="checkbox">
+                                <span class="lever"></span>
+                                Oui
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row margin">
+                    <div class="input-field col s12">
+                        <a href="#" class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs('prev')">Valider</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
+
 </body>
+
+
 </html>
-<script>
-
-</script>
-<!--
-<script>
-    function detecterErreurs(type){
-        //apres la detection d erreurs
-        var annee = $('#annee').val();
-        var mois = $('#mois').val();
-        var jour = $('#jour').val();
-        var heure = $('#heure').val();
-        var minute = $('#minute').val();
-        var seconde = $('#seconde').val();
-        var calcul = $('input[name=calcul]:checked').val();
-        var bouee = $('#bouee').val();
-        var dateDep = $('#dateDepart').val();
-        var heureDep = $('#heureDepart').val();
-        var dateFin = $('#dateFin').val();
-        var heureFin = $('#heureFin').val();
-        var lien = "resultats.php?";
-        lien += 'annee='+annee;
-        lien += '&mois='+mois;
-        lien += '&jour='+jour;
-        lien += '&heure='+heure;
-        lien += '&minute='+minute;
-        lien += '&seconde='+seconde;
-        lien += '&calcul='+calcul;
-        lien += '&bouee='+bouee;
-        lien += '&dateDep='+dateDep;
-        lien += '&heureDep='+heureDep;
-        lien += '&dateFin='+dateFin;
-        lien += '&heureFin='+heureFin;
-        lien += '&type='+type;
-        
-
-        console.log(lien);
-        window.location.href = lien;
-    }
-</script>
--->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="script.js"></script>
+<script>$('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+</script>
+<script>
+
+    $(".button-collapse").sideNav();
+</script>
 </html>

@@ -1,7 +1,7 @@
 initFormulaire();
 
 function detecterErreurs(type) {
-
+    console.log("here");
     initialiserTexteAlerte();
 
 
@@ -112,14 +112,15 @@ function verifierErreurBouee() {
     let valeurBouee = $("#bouee").val();
 
     if (valeurBouee > 75 || valeurBouee < 1 || isNaN(valeurBouee)) {
-        $("#boueeErreur").css("color","red");
-        $("#texteAlerte").append("<li> Bouee : La valeur ne peux pas contenir de lettres et doit être comprise entre 1 et 75</li>");
-        $("#divAlerte").show();
+        $("#bouee").next("label").attr('data-error','Ce champ doit être un entier compris entre 1 et 75');
+        $("#bouee").removeClass("valid");
+        $("#bouee").addClass("invalid");
 
         return false;
     }
     else {
-        $("#boueeErreur").css("color","black");
+        $("#bouee").removeClass("invalid");
+        $("#bouee").addClass("valid");
         return true;
     }
 
