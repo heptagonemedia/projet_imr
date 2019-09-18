@@ -1,71 +1,33 @@
-CREATE OR REPLACE FUNCTION distance(lat1 FLOAT, lon1 FLOAT, lat2 FLOAT, lon2 FLOAT)
+CREATE OR REPLACE FUNCTION verification_distance(lat1 FLOAT, lon1 FLOAT, lat2 FLOAT, lon2 FLOAT)
 
-RETURNS FLOAT
+RETURNS boolean
 AS $$
 
 DECLARE                                                   
     x float = 111.12 * (lat2 - lat1);                           
     y float = 111.12 * (lon2 - lon1) * cos(lat1 / 92.215);        
 BEGIN                                                     
-    RETURN sqrt(x * x + y * y);                               
+    RETURN sqrt(x * x + y * y)<0.010;                               
 END
 $$ LANGUAGE plpgsql;
 
 
---fonction de validation fonctionnelle--
 CREATE OR REPLACE FUNCTION validation_donnee()
 
 RETURNS void
 AS $$
 
 DECLARE                                                   
-    curseurDonnee donnee_bouees%rowtype;
-	curseurBouee bouees%rowtype;
+    curseurDonnee historique_donnee_bouee%rowtype;
+	latRef float;
+	lonRef float;
+	isValide boolean;
 BEGIN                                                     
-    FOR curseurDonnee IN SELECT * FROM donnee_bouees
+    FOR curseurDonnee IN SELECT * FROM historique_donnee_bouee
 		LOOP
-			SELECT * INTO curseurBouee FROM bouees WHERE id = curseurDonnee.id_bouee;
-			IF (distance(curseurBouee.latitude, curseurBouee.longitude, curseurDonnee.latitude, curseurDonnee.longitude) < 0.010) THEN
-				INSERT INTO donnee_valides(	id_bouee, 
-											temperature, 
-											salinite, 
-											debit, 
-											date_temps, 
-											longitude, 
-											latitude, 
-											batterie)  
-										   VALUES(	curseurDonnee.id_bouee, 
-													curseurDonnee.temperature, 
-													curseurDonnee.salinite, 
-													curseurDonnee.debit, 
-													curseurDonnee.date_temps, 
-													curseurDonnee.longitude, 
-													curseurDonnee.latitude, 
-													curseurDonnee.batterie);
-			ELSE
-				INSERT INTO donnee_invalides(id_bouee, 
-											temperature, 
-											salinite, 
-											debit, 
-											date_temps, 
-											longitude, 
-											latitude, 
-											batterie)  
-										   VALUES(	curseurDonnee.id_bouee, 
-													curseurDonnee.temperature, 
-													curseurDonnee.salinite, 
-													curseurDonnee.debit, 
-													curseurDonnee.date_temps, 
-													curseurDonnee.longitude, 
-													curseurDonnee.latitude, 
-													curseurDonnee.batterie);
-				
-			END IF;
+			SELECT latitude_reference,longitude_reference INTO latRef,lonRef FROM bouee WHERE id_bouee = curseurDonnee.id_bouee;
+			SELECT INTO isValide verification_distance(latRef,lonRef, curseurDonnee.latitude_reelle, curseurDonnee.longitude_reelle);
+			INSERT INTO donnee_traitee(id_historique_donnee_bouee,valide) VALUES(curseurDonnee.id_historique_donnee_bouee,isValide);
 		END LOOP;
 END
 $$ LANGUAGE plpgsql;
-
-
-
-
--- peut-être que la commande COPY permettrait de meilleures performances que les commandes SELECT et INSERT ?
