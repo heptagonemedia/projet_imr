@@ -1,7 +1,7 @@
 initFormulaire();
 $('.dropdown-trigger').dropdown();
 function detecterErreurs(type) {
-    console.log("here");
+
     initialiserTexteAlerte();
 
 
@@ -118,18 +118,14 @@ function verifierErreurCalcul() {
 
 function verifierErreurBouee() {
 
-    let valeurBouee = $("#bouee").val();
+    let valeurBouee = $("#champBouee").val();
 
     if (valeurBouee > 75 || valeurBouee < 1 || isNaN(valeurBouee)) {
-        $("#bouee").next("label").attr('data-error','Ce champ doit être un entier compris entre 1 et 75');
-        $("#bouee").removeClass("valid");
-        $("#bouee").addClass("invalid");
-
+        $("#bouee").show();
         return false;
     }
     else {
-        $("#bouee").removeClass("invalid");
-        $("#bouee").addClass("valid");
+        $("#bouee").css('display','none');
         return true;
     }
 
@@ -143,26 +139,14 @@ function verifierErreurFrequence() {
     let valeurJour = $("#jour").val();
     let valeurHeure = $("#heure").val();
     let valeurMinute = $("#minute").val();
-    let valeurSeconde = $("#seconde").val();
 
-    $("#anneeErreur").css("color", "black");
-    $("#moisErreur").css("color", "black");
-    $("#jourErreur").css("color", "black");
-    $("#heureErreur").css("color", "black");
-    $("#minuteErreur").css("color", "black");
-    $("#secondeErreur").css("color", "black");
-
-    let conditionToutesNonVides = !valeurAnnee && !valeurMois && !valeurJour && !valeurHeure && !valeurSeconde && !valeurMinute && !valeurSeconde;
-    let conditionToutesNonNulles = valeurAnnee == 0 && valeurMois == 0 && valeurJour == 0 && valeurHeure == 0 && valeurSeconde == 0 && valeurMinute == 0 && valeurSeconde == 0;
-    let conditionToutesNumeriques = isNaN(valeurAnnee) || isNaN(valeurMois) || isNaN(valeurJour) || isNaN(valeurHeure) || isNaN(valeurMinute) || isNaN(valeurSeconde);
+    let conditionToutesNonVides = !valeurAnnee && !valeurMois && !valeurJour && !valeurHeure && !valeurMinute;
+    let conditionToutesNonNulles = valeurAnnee == 0 && valeurMois == 0 && valeurJour == 0 && valeurHeure == 0 && valeurMinute == 0;
+    let conditionToutesNumeriques = isNaN(valeurAnnee) || isNaN(valeurMois) || isNaN(valeurJour) || isNaN(valeurHeure) || isNaN(valeurMinute);
 
     if (conditionToutesNonVides || conditionToutesNonNulles || conditionToutesNumeriques) {
-        $("#frequenceErreur").css("color","red");
-        $("#texteAlerte").append("<li> Frequence : Les champs doivent tous être rempli par des nombres entiers positifs et au moins un doit être différent de 0.</li>");
-        $("#divAlerte").show();
-        
+        $("#frequence").show();
         return false;
-
     }
     else {
 
@@ -172,16 +156,13 @@ function verifierErreurFrequence() {
         let verificationJour = verifierJour(valeurJour);
         let verificationHeure = verifierHeure(valeurHeure);
         let verificationMinute = verifierMinute(valeurMinute);
-        let verificationSeconde = verifierSeconde(valeurSeconde);
 
-        if (verificationAnnee && verificationMois && verificationJour && verificationHeure && verificationMinute && verificationSeconde) {
-
-            $("#frequenceErreur").css("color", "black");
-
+        console.log(verificationMois);
+        if (verificationAnnee && verificationMois && verificationJour && verificationHeure && verificationMinute) {
+            $("#frequence").css('display','none');
             return true;
         }else {
-            $("#frequenceErreur").css("color", "red");
-            
+            $("#frequence").show();
             return false;
         }        
 
@@ -193,12 +174,7 @@ function verifierErreurFrequence() {
 
 function verifierAnnee(valeur) {
 
-    $("#anneeErreur").css("color", "black");
-
-    if (valeur < 0 || valeur > 2 || !valeur.match(/^-?[0-9]+$/)) {
-        $("#anneeErreur").css("color", "red");
-        $("#texteAlerte").append("<li> Frequence : L'année ne peux pas contenir de lettres et doit être comprise entre 0 et 2</li>");
-        $("#divAlerte").show();
+    if (valeur < 0 || valeur > 2) {
         return false;
     }
 
@@ -209,12 +185,7 @@ function verifierAnnee(valeur) {
 
 function verifierMois(valeur) {
 
-    $("#moisErreur").css("color", "black");
-
-    if (valeur < 0 || valeur > 12 || !valeur.match(/^-?[0-9]+$/)) {
-        $("#moisErreur").css("color","red");
-        $("#texteAlerte").append("<li> Frequence : Le mois ne peux pas contenir de lettres et doit être comprit entre 0 et 12</li>");
-        $("#divAlerte").show();
+    if (valeur < 0 || valeur > 2) {
         return false;
     }
     
@@ -222,15 +193,10 @@ function verifierMois(valeur) {
 
 }
 
-
+//!valeur.match(/^-?[0-9]+$/)
 function verifierJour(valeur) {
 
-    $("#jourErreur").css("color", "black");
-
-    if (valeur < 0 || valeur > 31 || !valeur.match(/^-?[0-9]+$/)) {
-        $("#jourErreur").css("color","red");
-        $("#texteAlerte").append("<li> Frequence : Le jour ne peux pas contenir de lettres et doit être comprit entre 0 et 31</li>");
-        $("#divAlerte").show();
+    if (valeur < 0 || valeur > 31) {
         return false;
     }
 
@@ -240,13 +206,8 @@ function verifierJour(valeur) {
 
 
 function verifierHeure(valeur) {
-    
-    $("#heureErreur").css("color", "black");
 
-    if (valeur < 0 || valeur > 23 || !valeur.match(/^-?[0-9]+$/)) {
-        $("#heureErreur").css("color","red");
-        $("#texteAlerte").append("<li> Frequence : L'heure ne peux pas contenir de lettres et doit être comprise entre 0 et 23</li>");
-        $("#divAlerte").show();
+    if (valeur < 0 || valeur > 23) {
         return false;
     }
 
@@ -257,55 +218,27 @@ function verifierHeure(valeur) {
 
 function verifierMinute(valeur) {
 
-    $("#minuteErreur").css("color", "black");
-
-    if (valeur < 0 || valeur > 59 || !valeur.match(/^-?[0-9]+$/)) {
-        $("#minuteErreur").css("color","red");
-        $("#texteAlerte").append("<li> Frequence : Les minutes ne peuvent pas contenir de lettres et doivent être comprises entre 0 et 59</li>");
-        $("#divAlerte").show();
+    if (valeur < 0 || valeur > 59) {
         return false;
     }
 
     return true;
 
 }
-
-
-function verifierSeconde(valeur) {
-
-    $("#secondeErreur").css("color", "black");
-
-    if (valeur < 0 || valeur > 59 || !valeur.match(/^-?[0-9]+$/)) {
-        $("#secondeErreur").css("color","red");
-        $("#texteAlerte").append("<li> Frequence : Les secondes ne peuvent pas contenir de lettres et doivent être comprises entre 0 et 59</li>");
-        $("#divAlerte").show();
-        return false;
-    }
-
-
-    return true;
-
-}
-
-
 
 function verifierErreurIntervalle() {
 
-    let dateDebut = $("#dateDep").val();
+    let dateDebut = $("#dateDebut").val();
     let dateFin = $("#dateFin").val();
-    let heureDebut = $("#heureDep").val();
+    let heureDebut = $("#heureDebut").val();
     let heureFin = $("#heureFin").val();
 
     var debut = new Date(dateDebut);
     var fin = new Date(dateFin);
 
-
     if (!dateFin || !dateDebut || !heureFin || !heureDebut) {
-
-        $("#intervalleErreur").css("color", "red");
-        $("#texteAlerte").append("<li> Intervalle : Tous les champs doivent être remplis</li>");
-        $("#divAlerte").show();
-
+        console.log(!dateDebut);
+        $("#heureTest").show();
         return false;
     }
 
@@ -313,11 +246,12 @@ function verifierErreurIntervalle() {
     var validationHeures = verifierHeuresIntervalle(heureDebut, heureFin,debut,fin);
 
     if(!validationDates || !validationHeures) {
+        $("#heureTest").show();
         return false;
     }
 
 
-    $("#intervalleErreur").css("color", "black");
+    $("#heureTest").css('display','none');
     return true;
 
 }
@@ -421,4 +355,29 @@ initMap();
  }
 $(document).ready(function(){
     $('.fixed-action-btn').floatingActionButton();
+});
+
+
+
+$(document).ready(function(){
+    $('.datepicker').datepicker({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 2, // Creates a dropdown of 15 years to control year
+        labelMonthNext: 'Mois suivant',
+        labelMonthPrev: 'Mois précédent',
+        labelMonthSelect: 'Selectionner le mois',
+        labelYearSelect: 'Selectionner une année',
+        monthsFull: [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
+        monthsShort: [ 'Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec' ],
+        weekdaysFull: [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi' ],
+        weekdaysShort: [ 'Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam' ],
+        weekdaysLetter: [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+        today: 'Aujourd\'hui',
+        clear: 'Réinitialiser',
+        close: 'Fermer',
+        format: 'dd/mm/yyyy'
+    });
+    $('.timepicker').timepicker({
+        twelveHour: false
+    });
 });
