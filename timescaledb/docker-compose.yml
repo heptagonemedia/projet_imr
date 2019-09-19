@@ -1,0 +1,19 @@
+version: '3'
+services:
+  timescaledb:
+    container_name: timescaledb
+    #image: timescale/timescaledb:latest-pg10
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+    command: postgres -c port=1132
+    environment:
+      - PGDATA=data
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=timescaledb
+    #volumes:
+    #  - ./data:/data
+    ports:
+      - 1132:1132
+    restart: always
