@@ -12,6 +12,8 @@ defmodule GenerateurScenario.Application do
       GenerateurScenario.Repo,
     ]
 
+    **TODO: Add choix des proportions des scénarios**
+
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: GenerateurScenario.Supervisor]
