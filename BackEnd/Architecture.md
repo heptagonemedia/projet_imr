@@ -1,4 +1,4 @@
-# Generateur Scenario
+# Generateur Scenario (Adrian)
 
 ## Définir les scenarios de 10 min
 Les scénario sont des tableaux de delta pointdonnées
@@ -32,7 +32,7 @@ etc.
 Pour chaque scénario, générer les delta pour chaque seconde (10min = 600s)
 
 
-# Simulateur Elixir
+# Simulateur Elixir (Christophe)
 
 - Lire les scénario de la BD
 
