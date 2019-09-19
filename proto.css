@@ -1,11 +1,18 @@
 body {
 	font-family: Arial;
 	background-color: #FFFFFF;
+	margin:0px;
 }
 
-#bar1 {
+#ligne1 {
+	margin-bottom: -20px;
+}
+
+#ligne2 {
+	margin-top: -20px;
 	font-size: 18pt;
 	color: #FFFFFF;
+	background-color: #1e2229;
 }
 
 div{
@@ -13,9 +20,6 @@ div{
 }
 
 
-#bar1{
-	background-color: #1e2229;
-}
 
 #header{
 	background-color: #1e2229; font-size: 18pt;color: white
@@ -23,3 +27,7 @@ div{
 a{
 	text-decoration: none;
 }
+.chart{
+	height: 270px;
+}
+

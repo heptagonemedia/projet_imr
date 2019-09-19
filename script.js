@@ -1,5 +1,5 @@
 initFormulaire();
-
+$('.dropdown-trigger').dropdown();
 function detecterErreurs(type) {
     console.log("here");
     initialiserTexteAlerte();
@@ -55,6 +55,11 @@ function retourFormulaire(){
     var url = document.location.href;
     window.location.href = "formulaireRecherche.php"+ url.substr(url.indexOf('?'));
 }
+
+function enregistrer(){
+    $('.modal').modal();
+}
+
 
 
 //remplit les champs du formulaire avec les données de l'url si il y en a
@@ -410,3 +415,6 @@ initMap();
 
 
  }
+$(document).ready(function(){
+    $('.fixed-action-btn').floatingActionButton();
+});
