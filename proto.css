@@ -1,12 +1,28 @@
 body {
-	font-family: Arial;
+	font-family: 'Rubik', sans-serif;
 	background-color: #FFFFFF;
 	margin:0px;
+
+	/*font-family: 'Squada One', cursive;*/
+
+
+
+	/*font-family: 'Hind Guntur', sans-serif;*/
 }
 
 #ligne1 {
 	margin-bottom: -20px;
+
+
+	/*font-family: 'Squada One', cursive;*/
+
+
+
+	/*font-family: 'Hind Guntur', sans-serif;*/
+
 }
+
+
 
 #ligne2 {
 	margin-top: -20px;
@@ -29,5 +45,6 @@ a{
 }
 .chart{
 	height: 270px;
+	width: 300px;
 }
 

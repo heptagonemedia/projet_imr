@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="proto.css">
     <link rel="stylesheet" href="css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script src="js/materialize.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -26,15 +26,13 @@
 <!-- Ligne en haut de la page -->
 <div id="ligne1" style=" background-color: #1e2229; font-size: 18pt;color: white">
     <div class="row  ">
-        <div class="col s12 m1 l2">  <!-- Dropdown Trigger -->
-            <a style="color: white" class='dropdown-trigger valign-wrapper ' href='#' data-target='dropdown1'><i class=" material-icons">menu</i></a>
-        </div>
-        <div class="col  l3 show-on-large valign-wrapper  ">
+
+        <div class="col s12 m4 l3  ">
             <a href="accueil.php" class="breadcrumb">accueil</a>
             <a href="formulaireRecherche.php" class="breadcrumb">formulaire</a>
             <a href="#" class="breadcrumb">résultat</a>
         </div>
-        <div class="col s12 m4 l3 valign-wrapper">
+        <div class="col s12 m4 l6">
             <?php
             if (isset($_GET['type']) && $_GET['type'] == 'prev'):
                 echo 'Prévisualisation';
@@ -42,7 +40,7 @@
                 echo 'Calcul enregistré';
             endif;
             ?></div>
-        <div class="col s12 m2 l4 right-align"><?php if (isset($_GET['bouee'])): echo 'bouee n° '.$_GET['bouee']; endif; ?></div>
+        <div class="col s12 m4 l3  right-align"><?php if (isset($_GET['bouee'])): echo 'Bouée '.$_GET['bouee']; endif; ?></div>
     </div>
 </div>
 
@@ -79,11 +77,31 @@
     </div>
 </div>
 
-<!-- Dropdown Structure -->
-<ul id='dropdown1' class='dropdown-content '>
-    <li><a href="accueil.php"><i class="material-icons">house</i>accueil</a></li>
-    <li><a href="formulaireRecherche.php"><i class="material-icons">assignment</i>nouveau calcul</a></li>
-</ul>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">more_vert</i>
+    </a>
+    <ul>
+
+        <li><a class="btn-floating purple tooltipped" data-position="left" data-tooltip="Agrandir la carte" onclick="agrandirCarte(document.getElementById('map'))"><i class="material-icons">crop_free</i></a></li>
+        <li><a class="btn-floating blue tooltipped" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i></a></li>
+        <li><a class="btn-floating pink tooltipped" data-position="left" data-tooltip="Accueil" href="accueil.php"><i class="material-icons">home</i></a></li>
+
+        <?php if(isset($_GET["type"]) && $_GET['type']=='prev' ): ?>
+        <li><a class="btn-floating yellow darken-1 tooltipped" data-position="left" data-tooltip="Retourner au formulaire" onclick="retourFormulaire()"><i class="material-icons">arrow_back</i></a></li>
+        <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped" data-position="left" data-tooltip="Enregistrer le calcul" href="#modal1" onclick = "enregistrer()"><i class="material-icons">save</i></a></li>
+        <?php endif;?>
+    </ul>
+</div>
+
+<footer class="page-footer white">
+    <div class="footer-copyright black pied">
+        <div class="container valign-wrapper">
+            © 2019 Heptagone Media
+        </div>
+    </div>
+</footer>
 
 <?php
 
@@ -91,18 +109,6 @@ if(isset($_GET["type"])):
     $type = $_GET["type"];
     if($type == "prev"):
         ?>
-        <div class="fixed-action-btn">
-            <a class="btn-floating btn-large red">
-                <i class="large material-icons">more_vert</i>
-            </a>
-            <ul>
-
-                <li><a class="btn-floating yellow darken-1" onclick="retourFormulaire()"><i class="material-icons">arrow_back</i></a></li>
-                <li><a class="btn-floating green waves-effect waves-light btn modal-trigger" href="#modal1" onclick = "enregistrer()"><i class="material-icons">save</i></a></li>
-
-            </ul>
-        </div>
-
         <div id="modal1" class="modal row s6" style="width: 20%;">
             <div class="modal-content col s12">
                 <h4>Calcul enregistré</h4>

@@ -60,6 +60,10 @@ function enregistrer(){
     $('.modal').modal();
 }
 
+$(document).ready(function(){
+    $('.tooltipped').tooltip();
+});
+
 
 
 //remplit les champs du formulaire avec les données de l'url si il y en a
