@@ -108,3 +108,56 @@ Vous pouvez aussi compiler les fichiers en tapant `mix compile` ce qui vous perm
 
 Je ne peux que vous recommander [le site officiel](https://elixir-lang.org/getting-started/introduction.html) qui est très complet et très clair. Tout reste relativement basique pour l’instant, mais si vous avez la moindre question n’hésiter pas à demander !
 
+## Quelques pistes vers la complexité
+
+### Interactions avec une base de données
+
+On utilisera pour cela la dépendance [PostGrex](https://hexdocs.pm/postgrex/readme.html). Rien de trop particulier, surtout que [ce guide](https://hexdocs.pm/ecto/getting-started.html
+) explique vraiment très bien les différentes étapes pour pouvoir faire des insert, des updates, et des selects sur une base de données.
+
+### Bases de la communication avec un autre ordinateur
+
+Assurez-vous que les deux ordinateurs soient sur le même réseau. Récupérer les adresses IP, gardez les dans le presse papier par exemple.
+
+Maintenant, sur chacun des ordinateurs, choisissez un nom pour votre ordinateur et un genre de mot de passe. Tapez ceci dans votre terminal (sur les deux ordinateurs) en remplaçant `nom`, `adresseIP` et `acookiepliz` par les valeurs que vous avez récupérées ou choisies plus haut.
+
+```elixir
+iex --name nom@adresseIP --cookie acookiepliz
+```
+
+> Attention, si vos deux ordinateurs ont un nom et une adresse différente, le “cookie” ou mot de passe **doit être le même**. Je rappelle aussi que vos ordinateurs **doivent être connectés au même réseau** pour ce petit tutoriel
+
+Dans votre session iex vous pouvez maintenant prendre un des ordinateurs et vous connectez à l’autre. Pour cela, tapez :
+
+```elixir
+Node.connect(:"nom@adresseIP")
+```
+
+> N’oubliez pas le ‘:’ **avant les quotes !** De plus, utilisez bien le nom et l’adresse IP de **l’autre **machine !
+
+Vos deux machines sont maintenant connectées. Vous pouvez le vérifier en tapant :
+
+```elixir
+Node.list()
+```
+
+Vous devriez maintenant voir apparaître toutes les “nodes” connectés au même réseau.
+
+Pour exécuter du code sur le nœud distant (celui sur l’autre machine), un peu plus complexe :
+
+```elixir
+greetings = fn -> IO.puts "Hello from #{Node.self}" end
+# fn permet de définir une fonction ici, la flèche indique ce qu'on effectue dedans
+# Le #{Node.self} permet de récupérer les informations du noeud de notre machine, celui qui envoie la fonction
+
+iex(machine1@172.16.0.1)5> Node.spawn(:"machine2@172.16.0.2", greetings)
+# spawm permet de lancer un process, le premier paramètre définit le noeud sur lequel on le lance et on passe la fonction définit plus haut en tant que variable pour qu'elle soit exécutée sur le noeud distant de notre choix
+
+Hello from machine2@172.16.0.2
+#Et voici le résultat !
+```
+
+Je chercherai d’autres tutoriels ou informations sur le sujet pour notre projet, mais vous avez ici les bases, que vous pouvez retrouver [ici](https://pedroassumpcao.ghost.io/connecting-machines-in-a-local-network-using-elixir-nodes/), entre autres.
+
+### Framework Phoenix
+
