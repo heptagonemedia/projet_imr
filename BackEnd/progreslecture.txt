@@ -5,3 +5,4 @@ https://elixir-lang.org/getting-started/basic-types.html
 https://elixir-lang.org/getting-started/basic-operators.html
 https://elixir-lang.org/getting-started/pattern-matching.html
 https://elixir-lang.org/getting-started/case-cond-and-if.html
+https://elixir-lang.org/getting-started/binaries-strings-and-char-lists.html
