@@ -24,15 +24,15 @@
 <body>
 
 <!-- Ligne en haut de la page -->
-<div id="ligne1" style=" background-color: #1e2229; font-size: 18pt;color: white">
+<div id="ligne1" >
     <div class="row  ">
 
-        <div class="col s12 m4 l3  ">
+        <div class="col l3  ">
             <a href="accueil.php" class="breadcrumb">accueil</a>
             <a href="formulaireRecherche.php" class="breadcrumb">formulaire</a>
             <a href="#" class="breadcrumb">résultat</a>
         </div>
-        <div class="col s12 m4 l6">
+        <div class="col l6">
             <?php
             if (isset($_GET['type']) && $_GET['type'] == 'prev'):
                 echo 'Prévisualisation';
@@ -40,29 +40,27 @@
                 echo 'Calcul enregistré';
             endif;
             ?></div>
-        <div class="col s12 m4 l3  right-align"><?php if (isset($_GET['bouee'])): echo 'Bouée '.$_GET['bouee']; endif; ?></div>
+        <div class="col l3  right-align"><?php if (isset($_GET['bouee'])): echo 'Bouée '.$_GET['bouee']; endif; ?></div>
     </div>
 </div>
 
 <!-- Ligne de la carte et du premier Graphique -->
 <div  id="col1">
     <div class="row">
-        <div class="map col s6 " id="map"  style="padding: 0%; height: 300px;">
+        <div class="map col s6 " id="map"  >
         </div>
-        <div style="padding: 0%; width:2%"></div>
-        <div class="stat1 col s6 chart" id="myChart" style="padding: 0%"></div>
-        <div style="padding: 0%; width:0.5%"></div>
+        <div class="stat1 col s6 chart" id="myChart" ></div>
     </div>
 </div>
 
 <!-- Ligne du bandeau au milieu de la page -->
-<div class="container-fluid" id='ligne2' style="background-color: #1e2229;" >
+<div class="container-fluid" id='ligne2' >
     <div class="row ">
-        <div class="col s6" style="text-align: center;">
-            <a href="#" id="takik"  style="color: white;" onclick="agrandirCarte(document.getElementById('map'))" >Agrandir la Carte</a>
+        <div class="col s6 colLigne2">
+            <a href="#" id="btnCarte" class="lien" onclick="agrandirCarte(document.getElementById('map'))" >Agrandir la Carte</a>
         </div>
-        <div class='col s6' style="text-align: center;">
-            <a href="" style="color: white;">Consulter les données brutes</a>  <!-- TODO Changer le style -->
+        <div class='col s6 colLigne2' >
+            <a class="lien" href="" >Consulter les données brutes</a>  <!-- TODO Changer le style -->
         </div>
     </div>
 </div>
@@ -70,10 +68,10 @@
 <!-- Ligne du bas avec les 2 derniers Graphiques -->
 <div>
     <div class="row">
-        <div class="col s6 chart" id="myChart2" style="padding: 0%"></div>
-        <div style="padding: 0%; width:2%"></div>
-        <div class="col s6 chart" id="myChart3" style="padding: 0%"></div>
-        <div style="padding: 0%; width:0.5%"></div>
+        <div class="col s6 chart" id="myChart2"></div>
+
+        <div class="col s6 chart" id="myChart3"></div>
+
     </div>
 </div>
 
@@ -95,7 +93,7 @@
     </ul>
 </div>
 
-<footer class="page-footer white">
+<footer class="page-footer white foot">
     <div class="footer-copyright black pied">
         <div class="container valign-wrapper">
             © 2019 Heptagone Media
@@ -109,7 +107,7 @@ if(isset($_GET["type"])):
     $type = $_GET["type"];
     if($type == "prev"):
         ?>
-        <div id="modal1" class="modal row s6" style="width: 20%;">
+        <div id="modal1" class="modal row s6">
             <div class="modal-content col s12">
                 <h4>Calcul enregistré</h4>
                 <p>le calcul a bien été enregitré</p>

@@ -3,6 +3,7 @@ body {
 	background-color: #FFFFFF;
 	margin:0px;
 
+
 	/*font-family: 'Squada One', cursive;*/
 
 
@@ -12,7 +13,7 @@ body {
 
 #ligne1 {
 	margin-bottom: -20px;
-
+	background-color: #1e2229; font-size: 18pt;color: white
 
 	/*font-family: 'Squada One', cursive;*/
 
@@ -22,6 +23,9 @@ body {
 
 }
 
+#map{
+	padding: 0%; height: 300px;
+}
 
 
 #ligne2 {
@@ -40,11 +44,27 @@ div{
 #header{
 	background-color: #1e2229; font-size: 18pt;color: white
 }
-a{
+.lien{
 	text-decoration: none;
+	color: whitesmoke;
 }
 .chart{
 	height: 270px;
 	width: 300px;
 }
+#myChart{
+	padding: 0%;
+}
+#myChart2{
+	padding: 0%; width: 50%;
+}
+#myChart2{
+	padding: 0%; width: 49%;
+}
 
+#modal1{
+	width: 30%;
+}
+.foot{
+	margin-top: -0.10%;
+}
