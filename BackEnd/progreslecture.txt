@@ -6,3 +6,7 @@ https://elixir-lang.org/getting-started/basic-operators.html
 https://elixir-lang.org/getting-started/pattern-matching.html
 https://elixir-lang.org/getting-started/case-cond-and-if.html
 https://elixir-lang.org/getting-started/binaries-strings-and-char-lists.html
+
+
+Rendu la :
+https://hexdocs.pm/ecto/getting-started.html
