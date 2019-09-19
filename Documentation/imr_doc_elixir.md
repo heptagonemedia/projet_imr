@@ -150,10 +150,10 @@ greetings = fn -> IO.puts "Hello from #{Node.self}" end
 # fn permet de définir une fonction ici, la flèche indique ce qu'on effectue dedans
 # Le #{Node.self} permet de récupérer les informations du noeud de notre machine, celui qui envoie la fonction
 
-iex(machine1@172.16.0.1)5> Node.spawn(:"machine2@172.16.0.2", greetings)
+iex(nom1@adresseIP1)5> Node.spawn(:"nom@adresseIP2", greetings)
 # spawm permet de lancer un process, le premier paramètre définit le noeud sur lequel on le lance et on passe la fonction définit plus haut en tant que variable pour qu'elle soit exécutée sur le noeud distant de notre choix
 
-Hello from machine2@172.16.0.2
+Hello from nom1@adresseIP1
 #Et voici le résultat !
 ```
 
