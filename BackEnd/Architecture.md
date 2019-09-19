@@ -1,4 +1,5 @@
 # Generateur Scenario
+
 ## Définir les scenarios de 10 min
 Les scénario sont des tableaux de delta pointdonnées
 ex:
@@ -27,12 +28,22 @@ etc.
 - 5 Troubles mélangé 
 - 10 de base
 
-Écrire le code de génération
+## Écrire le code de génération de scénario
+Pour chaque scénario, générer les delta pour chaque seconde (10min = 600s)
 
 
-Simulateur Elixir
+# Simulateur Elixir
 
+- Lire les scénario de la BD
 
+- (Méta-récepteur)
+- Spawn les simulateurs
+    - Attribuer les numéros de bouées séquentiellement aux simulateurs
 
-Recepteur (en attente)
+- Attribuer au hasard 5-10 des scénarios à toutes les bouées
 
+# Recepteur
+
+- (Méta-récepteur)
+- Spawn les récepteurs Endpoint
+    - Attribuer les récepteur
