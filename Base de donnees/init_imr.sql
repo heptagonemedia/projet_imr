@@ -20,18 +20,18 @@ CREATE TABLE bouee(
     latitude_reference float NOT NULL,
     id_region integer NOT NULL,
     CONSTRAINT region_bouee_fk
-        FOREIGN KEY (id_bouee)
-        REFERENCES region(id_bouee)
+        FOREIGN KEY (id_region)
+        REFERENCES region(id_region)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
 CREATE TABLE historique_donnee_bouee(
-    id_historique_donnee_bouee serial NOT NULL,
+    id_historique_donnee_bouee serial PRIMARY KEY,
     id_bouee integer NOT NULL,
     longitude_reelle float NOT NULL,
     latitude_reelle float NOT NULL,
-    date_saisie datetime NOT NULL,
+    date_saisie time with time zone NOT NULL,
     CONSTRAINT bouee_historique_donnee_bouee_fk
         FOREIGN KEY (id_bouee)
         REFERENCES bouee(id_bouee)
@@ -40,7 +40,7 @@ CREATE TABLE historique_donnee_bouee(
 );
 
 CREATE TABLE donnee_traitee(
-    id_donnee_traitee serial NOT NULL,
+    id_donnee_traitee serial PRIMARY KEY,
     id_historique_donnee_bouee integer NOT NULL,
     valide boolean NOT NULL,
     CONSTRAINT historique_donnee_bouee_donnee_traitee_fk
@@ -51,7 +51,7 @@ CREATE TABLE donnee_traitee(
 );
 
 CREATE TABLE type_donnee_mesuree(
-    id_type_donnee_mesuree serial NOT NULL,
+    id_type_donnee_mesuree serial PRIMARY KEY,
     etiquette text NOT NULL
 );
 
@@ -79,16 +79,21 @@ CREATE TABLE type_calcul(
 
 CREATE TABLE calcul_enregistre(
     id_calcul_enregistre serial PRIMARY KEY,
-    date_debut datetime NOT NULL,
-    date_fin datetime NOT NULL,
+    date_debut time with time zone NOT NULL,
+    date_fin time with time zone NOT NULL,
     frequence float NOT NULL,
     valeur float NOT NULL,
     id_type_donnee_mesuree integer NOT NULL,
     id_type_calcul integer NOT NULL,
     prevu boolean NOT NULL,
-    CONSTRAINT donnee_mesuree_calcul_enregistre_fk
-        FOREIGN KEY (id_calcul_enregistre)
-        REFERENCES donnee_mesuree(id_calcul_enregistre)
+    CONSTRAINT type_donnee_mesuree_calcul_enregistre_fk
+        FOREIGN KEY (id_type_donnee_mesuree)
+        REFERENCES type_donnee_mesuree(id_type_donnee_mesuree)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT type_calcul_calcul_enregistre_fk
+        FOREIGN KEY (id_type_calcul)
+        REFERENCES type_calcul(id_type_calcul)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
