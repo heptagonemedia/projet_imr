@@ -1,23 +1,7 @@
 --------------------------------------------------------------------------------
--- -- PURGE TOTALE
--- DROP DATABASE projet_imr;
--- CREATE DATABASE projet_imr;
--- -- USE projet_imr;
+-- Mise en place du modèle
 
---------------------------------------------------------------------------------
--- Suppression de tous vestige de l'ancien modèle
-
--- DROP TABLE IF EXISTS public.recherche_enregistrees;
--- DROP TABLE IF EXISTS public.donnee_valides;
--- DROP TABLE IF EXISTS public.donnee_invalides;
--- DROP TABLE IF EXISTS public.donnee_bouees;
--- DROP TABLE IF EXISTS public.bouees;
--- DROP FUNCTION IF EXISTS distance;
--- DROP FUNCTION IF EXISTS intervale_incertiture;
-
---------------------------------------------------------------------------------
--- Mise en place du nouveau modèle
-
+DROP FUNCTION IF EXISTS verification_donnees_bouee;
 DROP FUNCTION IF EXISTS nouveau_intervale_incertitude;
 
 DROP TABLE IF EXISTS calcul_enregistre;
@@ -127,7 +111,7 @@ CREATE TABLE calcul_enregistre(
 
 
 --------------------------------------------------------------------------------
--- Nouvelle version de la fonction de vérification des données.
+-- Nouvelle version de la fonction de vérification de la fiabilité d'une donnée.
 
 CREATE OR REPLACE FUNCTION nouveau_intervale_incertitude(id_historique INT, type_donnee TEXT)
 
@@ -141,7 +125,7 @@ DECLARE
     valeur_mesure NUMERIC(5,2); -- valeur à vérifier
     temps_present TIMESTAMP; -- valeur de x dans l'équation.
     -- On ne peut pas prendre l'id → 75 000 entrées par secondes.
-    -- dans l'équation, y(x) désigne "SELECT mesure.qqch WHERE temps = x";
+    -- dans l'équation, y(x) désigne "SELECT mesure.qqch WHERE temps = x"; x-i désigne "x - i secondes"
 
     profondeur_verification INT; -- valeur de n dans l'équation
     moyenne NUMERIC(5,2);
@@ -181,8 +165,8 @@ BEGIN
         WHERE hdb.id_historique_donnee_bouee = id_historique
     ); -- temps à x
 
+    -- En début d'insertion des données, si la profondeur 'sort' des données précédentes → la moyenne vaut NULL
     profondeur_verification := 2; -- On consulte ces valeurs pour établir la moyenne de l'intervale d'incertitude.
-    -- Attention ! En début d'insertion des données, si la profondeur 'sort' des données précédentes → la moyenne vaut NULL
     constante_confiance := 2; -- k = 1 : confiance à 68% ; 2 : 95% ; 3 : 99,7%.
 
     -- Calcul de la moyenne
@@ -197,17 +181,18 @@ BEGIN
             AND tdm.etiquette = type_donnee
         ); -- val actu - x
 
-        RAISE INFO 'itération %, moyenne=%.', i, moyenne;
+        -- RAISE INFO 'itération %, moyenne=%.', i, moyenne;
 
     END LOOP;
 
-    RAISE INFO 'fin de boucle, moyenne=%.', moyenne;
+    -- RAISE INFO 'fin de boucle, moyenne=%.', moyenne;
 
-    --PROBLÈME : ICI LA MOYENNE EST A NULL SI ON SORT DU JEU DE DONNÉES.
+    -- PROBLÈME : ICI LA MOYENNE EST A NULL SI ON SORT DU JEU DE DONNÉES.
+    -- On peut le tourner à notre avantage dans verification_donnees_bouee() → Laisser tel quel.
 
     moyenne := moyenne/(profondeur_verification); -- pas n-1 !
 
-    RAISE INFO 'réctification, moyenne=%.', moyenne;
+    -- RAISE INFO 'réctification, moyenne=%.', moyenne;
 
     -- Calcul de l'écart type
     FOR i IN 1..profondeur_verification LOOP
@@ -223,15 +208,15 @@ BEGIN
 
         -- REMPLACER LE SELECT PAR UN ARRAY (on utilise le même SELECT pour la moyenne et l'écart-type)
 
-        RAISE INFO 'itération %, écart-type=%.', i, ecart_type;
+        -- RAISE INFO 'itération %, écart-type=%.', i, ecart_type;
 
     END LOOP;
 
-    RAISE INFO 'fin de boucle, écart-type=%.', ecart_type;
+    -- RAISE INFO 'fin de boucle, écart-type=%.', ecart_type;
 
     ecart_type := SQRT((1/profondeur_verification) * ecart_type);
 
-    RAISE INFO 'réctification, écart-type=%.', ecart_type;
+    -- RAISE INFO 'réctification, écart-type=%.', ecart_type;
 
     -- Calcul de l'intervale de confiance.
 
@@ -242,11 +227,50 @@ BEGIN
     	resultat := FALSE;
     END IF;
 
+    RAISE INFO 'Le test donnée_historique % type % renvoie %', id_historique, type_donnee, resultat;
     RETURN resultat;
 
 END;
 
 $BODY$;
+
+--------------------------------------------------------------------------------
+-- fonction de vérification des données reçues d'une bouée.
+
+CREATE OR REPLACE FUNCTION verification_donnees_bouee(id_historique INT)
+
+    RETURNS BOOLEAN
+    LANGUAGE 'plpgsql'
+
+AS $BODY$
+
+DECLARE
+    verification_salinite BOOLEAN;
+    verification_debit BOOLEAN;
+    verification_temperature BOOLEAN;
+
+BEGIN
+    verification_salinite := nouveau_intervale_incertitude(id_historique, 'salinite');
+    verification_debit := nouveau_intervale_incertitude(id_historique, 'debit');
+    verification_temperature := nouveau_intervale_incertitude(id_historique, 'temperature');
+
+    -- plpgsql ne gère pas de return direct, on doit passer par if then else
+    IF verification_salinite <> FALSE
+      AND verification_debit <> FALSE
+      AND verification_temperature <> FALSE
+      THEN
+        RETURN TRUE;
+        -- Si l'échantillon n'est pas assez représentatif pour executer nouveau_intervale_incertitude
+        -- on considère que la valeur fiable (pour les n premières données d'une bouées, 25 par exemple).
+    ELSE
+        RETURN FALSE;
+    END IF;
+
+END;
+
+$BODY$;
+
+
 
 --------------------------------------------------------------------------------
 -- données de test de la fonction
@@ -260,25 +284,53 @@ VALUES ('bouée 1', 12, 12, 1);
 INSERT INTO type_donnee_mesuree (etiquette)
 VALUES ('salinite'); -- type 1 = salinite
 
+INSERT INTO type_donnee_mesuree (etiquette)
+VALUES ('debit'); -- type 2 = debit
+
+INSERT INTO type_donnee_mesuree (etiquette)
+VALUES ('temperature'); -- type 3 = temperature
+
 INSERT INTO historique_donnee_bouee (id_bouee, longitude_reelle, latitude_reelle, date_saisie)
 VALUES (1, 12, 12, '2019-09-19 15:00:00'); -- historique 1
 
 INSERT INTO mesure (id_historique_donnee_bouee, id_type_donnee_mesuree, valeur)
-VALUES (1, 1, 25); -- historique 1 et type 1
+VALUES (1, 1, 24.990); -- historique 1 et type 1
+
+INSERT INTO mesure (id_historique_donnee_bouee, id_type_donnee_mesuree, valeur)
+VALUES (1, 2, 24.990); -- historique 1 et type 2
+
+INSERT INTO mesure (id_historique_donnee_bouee, id_type_donnee_mesuree, valeur)
+VALUES (1, 3, 24.990); -- historique 1 et type 3
 
 INSERT INTO historique_donnee_bouee (id_bouee, longitude_reelle, latitude_reelle, date_saisie)
 VALUES (1, 12, 12, '2019-09-19 15:00:01'); -- histo 2
 
 INSERT INTO mesure (id_historique_donnee_bouee, id_type_donnee_mesuree, valeur)
-VALUES (2, 1, 25);
+VALUES (2, 1, 25.010); -- histo 2 type 1
+
+INSERT INTO mesure (id_historique_donnee_bouee, id_type_donnee_mesuree, valeur)
+VALUES (2, 2, 24.990); -- histo 2 et type 2
+
+INSERT INTO mesure (id_historique_donnee_bouee, id_type_donnee_mesuree, valeur)
+VALUES (2, 3, 24.990); -- histo 2 et type 3
 
 INSERT INTO historique_donnee_bouee (id_bouee, longitude_reelle, latitude_reelle, date_saisie)
 VALUES (1, 12, 12, '2019-09-19 15:00:02'); -- histo 3
 
 INSERT INTO mesure (id_historique_donnee_bouee, id_type_donnee_mesuree, valeur)
-VALUES (3, 1, 25);
+VALUES (3, 1, 25.004); -- marge de 5%, donc 25.004 == true; 25.005 == false. -- histo 3 type 1
 
-SELECT nouveau_intervale_incertitude(3, 'salinite');
+INSERT INTO mesure (id_historique_donnee_bouee, id_type_donnee_mesuree, valeur)
+VALUES (3, 2, 24.990); -- histo 3 et type 2
+
+INSERT INTO mesure (id_historique_donnee_bouee, id_type_donnee_mesuree, valeur)
+VALUES (3, 3, 24.990); -- histo 3 et type 3
+
+-- SELECT nouveau_intervale_incertitude(3, 'salinite'); -- type 1
+-- SELECT nouveau_intervale_incertitude(3, 'debit'); -- type 2
+-- SELECT nouveau_intervale_incertitude(3, 'temperature'); -- type 3
+
+SELECT verification_donnees_bouee(3) -- vérification de tous les types.
 
 
 
