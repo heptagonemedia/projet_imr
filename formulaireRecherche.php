@@ -2,14 +2,16 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="formulaireCss.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
+
     <!-- jQuery -->
+    <script src="js/materialize.js"></script>
+
+
 </head>
 <title>Formulaire</title>
 <!-- Compiled and minified CSS -->
@@ -19,18 +21,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <nav>
-    <div class="nav-wrapper grey">
-        <a href="#" class="brand-logo right"><img src="https://cdn.discordapp.com/attachments/614172601337643142/615001645788430366/Final1.png" width="50px" height="50px"></a>
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="accueil.php">Accueil</a></li>
-            <li><a href="formulaireRecherche.php">Formulaire</a></li>
-        </ul>
+    <div class="nav-wrapper black">
+        <div class="row">
+        <a href="#" class="brand-logo right col l4 right-align"><img src="https://cdn.discordapp.com/attachments/614172601337643142/615001645788430366/Final1.png" width="50px" height="50px"></a>
+        <div class="col l4 center aligned ">
+            <a href="accueil.php" class="breadcrumb">accueil</a>
+            <a href="#" class="breadcrumb">formulaire</a>
+        </div>
+        <div class="col l4 center-align" style="font-size: 18pt">Formulaire de recherche</div>
+        </div>
     </div>
 </nav>
 
 
 
-<div class="container" style="padding-top: 30px">
+<div class="container" style="padding-top: 20px">
 
     <div id="register-page" class="row">
         <div class="col s12 z-depth-6 card-panel">
@@ -161,6 +166,13 @@
         </div>
     </div>
 </div>
+<footer class="page-footer white foot">
+    <div class="footer-copyright foot black pied">
+        <div class="container valign-wrapper">
+            © 2019 Heptagone Media
+        </div>
+    </div>
+</footer>
 
 
 </body>

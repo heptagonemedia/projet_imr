@@ -5,6 +5,10 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
+body{
+    font-family: 'Rubik', sans-serif;
+}
+
 input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
@@ -16,4 +20,20 @@ input[type=number] {
 
 #marge {
     margin-top: -30px;
+}
+
+.foot{
+    position :fixed;
+    width: 100%;
+    padding-top: -40px;
+    bottom: 0px;
+}
+
+#ligne1 {
+    margin-bottom: -20px;
+    background-color: #1e2229; font-size: 18pt;color: white
+}
+
+img{
+    margin-top: 5px;
 }

@@ -11,12 +11,12 @@
     <script type="text/javascript" src="EJSCharts/EJSChart.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
-    <link rel="stylesheet" type="text/css" href="proto.css">
     <link rel="stylesheet" href="css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="proto.css">
+
     <!-- Compiled and minified JavaScript -->
-    <script src="js/materialize.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>Resultats</title>
@@ -121,7 +121,7 @@
 </div>
 
 <footer class="page-footer white foot">
-    <div class="footer-copyright black pied">
+    <div class="footer-copyright foot black pied">
         <div class="container valign-wrapper">
             © 2019 Heptagone Media
         </div>
