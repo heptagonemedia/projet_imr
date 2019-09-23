@@ -38,3 +38,27 @@ input[type=number] {
 img{
     margin-top: 5px;
 }
+
+.container {
+    padding-top: 20px;
+}
+
+#radio {
+    padding-top: 10px;
+}
+
+#labelBouee {
+    width: 500px;
+}
+
+.switch {
+    padding-top: 12px;
+}
+
+.helper-text {
+    display: none;
+}
+
+#alerte {
+    color: red;
+}

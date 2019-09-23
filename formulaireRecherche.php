@@ -35,7 +35,7 @@
 
 
 
-<div class="container" style="padding-top: 20px">
+<div class="container">
 
     <div id="register-page" class="row">
         <div class="col s12 z-depth-6 card-panel">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="input-field col s10">
                         <p>
-                            <label style="padding-top: 10px">
+                            <label id="radio">
                                 <input name="calcul" type="radio" value="moyenne" id="moyenne" checked />
                                 <span>Moyenne</span>
                             </label>
@@ -94,7 +94,7 @@
                     <div class="col s2">
                     </div>
                     <div class="col s10">
-                        <span class="helper-text" id="frequence" style="display: none"><label style="color: red">Il faut saisir au moins une valeur et uniquement des entiers</label></span>
+                        <span class="helper-text" id="frequence"><label id="alerte">Il faut saisir au moins une valeur et uniquement des entiers</label></span>
                     </div>
                 </div>
                 <div class="row" id="marge">
@@ -104,12 +104,12 @@
                     </div>
                     <div class="input-field col s10">
                         <input type="number" id="bouee">
-                        <label for="bouee" style="width: 500px;">Numero</label>
+                        <label for="bouee" id="labelBouee">Numero</label>
                     </div>
                     <div class="col s2">
                     </div>
                     <div class="col s10">
-                        <span class="helper-text" id="HelperBouee" style="display: none"><label style="color: red">Il faut entrer un entier compris entre 1 et 75</label></span>
+                        <span class="helper-text" id="HelperBouee"><label id="alerte">Il faut entrer un entier compris entre 1 et 75</label></span>
                     </div>
                 </div>
                 <div class="row" id="marge">
@@ -136,7 +136,7 @@
                     <div class="col s2">
                     </div>
                     <div class="col s10">
-                        <span class="helper-text" id="heureTest" style="display: none"><label style="color: red">Il faut que la date de fin soit supérieure à celle de début</label></span>
+                        <span class="helper-text" id="heureTest"><label id="alerte">Il faut que la date de fin soit supérieure à celle de début</label></span>
                     </div>
                 </div>
                 <div class="row" id="marge">
@@ -146,7 +146,7 @@
                     </div>
                     <div class="input-field col s10">
                         <!-- Switch -->
-                        <div class="switch" style="padding-top: 12px">
+                        <div class="switch">
                             <label>
                                 Non
                                 <input type="checkbox">

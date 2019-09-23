@@ -1,8 +1,7 @@
 initFormulaire();
 $('.dropdown-trigger').dropdown();
-function detecterErreurs() {
-    initialiserTexteAlerte();
 
+function detecterErreurs() {
 
     //A ne pas mettre directement dans la condition du if
     let verificationFrequence = verifierErreurFrequence();
@@ -86,14 +85,7 @@ function initFormulaire(){
     }
 }
 
-function initialiserTexteAlerte() {
-
-    $("#texteAlerte").text("");
-    $("#texteAlerte").append("<h4>Verifier votre saisie : </h4>");
-    $("#texteAlerte").append("<ul>");
-
-}
-
+//fonction qui affiche le message d'erreur pour le champ bouée
 function verifierErreurBouee() {
 
     let valeurBouee = $("#bouee").val();
@@ -106,10 +98,9 @@ function verifierErreurBouee() {
         $("#HelperBouee").css('display','none');
         return true;
     }
-
 }
 
-
+//fonction qui affiche le message d'erreur pour le champ fréquence
 function verifierErreurFrequence() {
 
     let valeurAnnee = $("#annee").val();
@@ -127,7 +118,6 @@ function verifierErreurFrequence() {
         return false;
     }
     else {
-
         //A ne pas mettre directement dans la condition du if
         let verificationAnnee = verifierAnnee(valeurAnnee);
         let verificationMois = verifierMois(valeurMois);
@@ -135,75 +125,52 @@ function verifierErreurFrequence() {
         let verificationHeure = verifierHeure(valeurHeure);
         let verificationMinute = verifierMinute(valeurMinute);
 
-        console.log(verificationMois);
         if (verificationAnnee && verificationMois && verificationJour && verificationHeure && verificationMinute) {
             $("#frequence").css('display','none');
             return true;
         }else {
             $("#frequence").show();
             return false;
-        }        
-
-        
+        }
     }
-
 }
-
 
 function verifierAnnee(valeur) {
-
     if (valeur < 0 || valeur > 2) {
         return false;
     }
-
     return true;
-
 }
-
 
 function verifierMois(valeur) {
-
     if (valeur < 0 || valeur > 2) {
         return false;
     }
-    
     return true;
-
 }
 
-//!valeur.match(/^-?[0-9]+$/)
 function verifierJour(valeur) {
-
     if (valeur < 0 || valeur > 31) {
         return false;
     }
-
     return true;
-
 }
 
-
 function verifierHeure(valeur) {
-
     if (valeur < 0 || valeur > 23) {
         return false;
     }
-
     return true;
-
 }
 
-
 function verifierMinute(valeur) {
-
     if (valeur < 0 || valeur > 59) {
         return false;
     }
-
     return true;
-
 }
 
+//fonction qui affiche le message d'erreur pour le champ intervalle
 function verifierErreurIntervalle() {
 
     let dateDebut = $("#dateDeb").val();
@@ -251,8 +218,6 @@ function verifierDatesintervalle(debut,fin) {
         
         return false;
     }
-
-
     return true;
 }
 
@@ -263,7 +228,6 @@ function verifierHeuresIntervalle(heureDebut,heureFin,dateDebut,dateFin) {
         $("#heureTest").show();
         return false;
     }
-
     return true;
 }
 
@@ -303,8 +267,6 @@ function initMap() {
  window.onload = function(){
 // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
 initMap();
-
-
  };
 
  function agrandirCarte(_element) {
@@ -330,14 +292,11 @@ initMap();
              document.webkitExitFullscreen();
          }
      }
-
-
  }
+
 $(document).ready(function(){
     $('.fixed-action-btn').floatingActionButton();
 });
-
-
 
 $(document).ready(function(){
     $('.datepicker').datepicker({
