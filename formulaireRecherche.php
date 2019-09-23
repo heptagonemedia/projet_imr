@@ -30,7 +30,7 @@
 
 
 
-<div class="container" style="padding-top: 50px">
+<div class="container" style="padding-top: 30px">
 
     <div id="register-page" class="row">
         <div class="col s12 z-depth-6 card-panel">

@@ -5,12 +5,11 @@ function detecterErreurs() {
 
 
     //A ne pas mettre directement dans la condition du if
-    let verificationCalcul = verifierErreurCalcul();
     let verificationFrequence = verifierErreurFrequence();
     let verificationBouee = verifierErreurBouee();
     let verificationIntervalle = verifierErreurIntervalle();
 
-    if (verificationCalcul && verificationFrequence && verificationBouee && verificationIntervalle) {
+    if (verificationFrequence && verificationBouee && verificationIntervalle) {
         $("#texteAlerte").text("");
         $("#divAlerte").hide();
             //apres la detection d erreurs
@@ -49,10 +48,6 @@ function detecterErreurs() {
             window.location.href = lien;
     }
 
-}
-
-function fermer(){
-    $('#message').remove();
 }
 
 function retourFormulaire(){
@@ -99,34 +94,11 @@ function initialiserTexteAlerte() {
 
 }
 
-
-function verifierErreurCalcul() {
-
-    let mediane = $("#mediane").is(':checked');
-    let moyenne = $("#moyenne").is(':checked');
-    let ecartType = $("#ecartType").is(':checked');
-
-    if (!mediane && !moyenne && !ecartType) {
-        $("#calculErreur").css("color","red");
-        $("#texteAlerte").append("<li> Calcul : veuillez choisir un calcul </li>");
-        $("#divAlerte").show();
-
-        return false;
-    }
-    else {
-        $("#calculErreur").css("color","black");
-        
-        return true;
-    }
-
-}
-
-
 function verifierErreurBouee() {
 
     let valeurBouee = $("#bouee").val();
 
-    if (valeurBouee > 75 || valeurBouee < 1 || isNaN(valeurBouee)) {
+    if (valeurBouee > 75 || valeurBouee < 1 || isNaN(valeurBouee) || !valeurBouee) {
         $("#HelperBouee").show();
         return false;
     }
@@ -235,15 +207,25 @@ function verifierMinute(valeur) {
 function verifierErreurIntervalle() {
 
     let dateDebut = $("#dateDeb").val();
+    var jour = dateDebut[0] + dateDebut[1];
+    jour++;
+    var mois = dateDebut[3] + dateDebut[4];
+    var annee = dateDebut[6] + dateDebut[7] + dateDebut[8] + dateDebut[9];
+    var dateEntiere = annee + '-' + mois + '-' + jour;
+    var debut = new Date(dateEntiere);
+
     let dateFin = $("#dateFin").val();
+    jour = dateFin[0] + dateFin[1];
+    jour++;
+    mois = dateFin[3] + dateFin[4];
+    annee = dateFin[6] + dateFin[7] + dateFin[8] + dateFin[9];
+    dateEntiere = annee + '-' + mois + '-' + jour;
+    var fin = new Date(dateEntiere);
+
     let heureDebut = $("#heureDeb").val();
     let heureFin = $("#heureFin").val();
 
-    var debut = new Date(dateDebut);
-    var fin = new Date(dateFin);
-
     if (!dateFin || !dateDebut || !heureFin || !heureDebut) {
-        console.log(!dateDebut);
         $("#heureTest").show();
         return false;
     }
@@ -255,22 +237,17 @@ function verifierErreurIntervalle() {
         $("#heureTest").show();
         return false;
     }
-
-
     $("#heureTest").css('display','none');
     return true;
-
 }
 
 
 function verifierDatesintervalle(debut,fin) {
     
     if (debut.getFullYear() > fin.getFullYear() || (debut.getMonth() > fin.getMonth() && debut.getFullYear()==fin.getFullYear()) ||
-        (debut.getDay() > fin.getDay() && debut.getMonth() == fin.getMonth() && debut.getFullYear() == fin.getFullYear())) {
-        
-        $("#intervalleErreur").css("color", "red");
-        $("#texteAlerte").append("<li> Intervalle : La date de fin doit être supérieur ou égale à la date de début</li>");
-        $("#divAlerte").show();        
+        (debut.getDate() > fin.getDate() && debut.getMonth() == fin.getMonth() && debut.getFullYear() == fin.getFullYear())) {
+
+        $("#heureTest").show();
         
         return false;
     }
@@ -281,12 +258,9 @@ function verifierDatesintervalle(debut,fin) {
 
 function verifierHeuresIntervalle(heureDebut,heureFin,dateDebut,dateFin) {
     if ((heureDebut > heureFin || heureDebut == heureFin) && dateDebut.getFullYear()==dateFin.getFullYear() &&
-        dateDebut.getMonth() == dateFin.getMonth() && dateDebut.getDay() == dateFin.getDay()) {
+        dateDebut.getMonth() == dateFin.getMonth() && dateDebut.getDate() == dateFin.getDate()) {
 
-        $("#intervalleErreur").css("color", "red");
-        $("#texteAlerte").append("<li> Intervalle : L'heure de fin doit être strictement supérieur à l'heure de début</li>");
-        $("#divAlerte").show();
-
+        $("#heureTest").show();
         return false;
     }
 
