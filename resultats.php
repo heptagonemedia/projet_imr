@@ -24,7 +24,7 @@
 <body>
 
 <!-- Ligne en haut de la page -->
-<div id="ligne1" >
+<div id="ligne1" class="black" >
     <div class="row  ">
 
         <div class="col l3  ">
@@ -55,11 +55,7 @@
                     <div class="chart" id="myChart" ></div>
                 </div>
                 <div class="card-content">
-                    <p><?php if (isset($_GET['calcul'])){
-                        echo $_GET['calcul'];
-                        }else{
-                        echo 'calcul';
-                        } ?></p>
+                    <p>Vitesse du courant</p>
                 </div>
             </div>
         </div>
@@ -67,7 +63,7 @@
 </div>
 
 <!-- Ligne du bandeau au milieu de la page -->
-<div class="container-fluid" id='ligne2' >
+<div class="container-fluid black" id='ligne2' >
     <div class="row ">
         <div class="col s6 colLigne2">
             <a href="#" id="btnCarte" class="lien" onclick="agrandirCarte(document.getElementById('map'))" >Agrandir la Carte</a>
@@ -87,11 +83,7 @@
                     <div class="chart" id="myChart2" ></div>
                 </div>
                 <div class="card-content">
-                    <p><?php if (isset($_GET['calcul'])){
-                            echo $_GET['calcul'];
-                        }else{
-                            echo 'calcul';
-                        } ?></p>
+                    <p>Salinité</p>
                 </div>
             </div>
         </div>
@@ -102,11 +94,7 @@
                     <div class="chart" id="myChart3" ></div>
                 </div>
                 <div class="card-content">
-                    <p><?php if (isset($_GET['calcul'])){
-                            echo $_GET['calcul'];
-                        }else{
-                            echo 'calcul';
-                        } ?></p>
+                    <p>Température</p>
                 </div>
             </div>
         </div>

@@ -67,9 +67,9 @@ div{
 	width: 30%;
 }
 .foot{
-    position :absolute;
+    position :fixed;
     width: 100%;
-    
+
 	bottom: 0px;
 }
 .card{
