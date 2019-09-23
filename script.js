@@ -1,7 +1,6 @@
 initFormulaire();
 $('.dropdown-trigger').dropdown();
-function detecterErreurs(type) {
-
+function detecterErreurs() {
     initialiserTexteAlerte();
 
 
@@ -23,8 +22,8 @@ function detecterErreurs(type) {
             var seconde = $('#seconde').val();
             var calcul = $('input[name=calcul]:checked').val();
             var bouee = $('#bouee').val();
-            var dateDep = $('#dateDep').val();
-            var heureDep = $('#heureDep').val();
+            var dateDeb = $('#dateDeb').val();
+            var heureDeb = $('#heureDeb').val();
             var dateFin = $('#dateFin').val();
             var heureFin = $('#heureFin').val();
             var lien = "resultats.php?";
@@ -36,10 +35,15 @@ function detecterErreurs(type) {
             lien += '&seconde='+seconde;
             lien += '&calcul='+calcul;
             lien += '&bouee='+bouee;
-            lien += '&dateDep='+dateDep;
-            lien += '&heureDep='+heureDep;
+            lien += '&dateDeb='+dateDeb;
+            lien += '&heureDeb='+heureDeb;
             lien += '&dateFin='+dateFin;
             lien += '&heureFin='+heureFin;
+            if($("input[type='checkbox']:checked").val()=='on'){
+                var type = 'enr';
+            }else {
+                var type = 'prev;'
+            }
             lien += '&type='+type;
             console.log(lien);
             window.location.href = lien;
@@ -120,14 +124,14 @@ function verifierErreurCalcul() {
 
 function verifierErreurBouee() {
 
-    let valeurBouee = $("#champBouee").val();
+    let valeurBouee = $("#bouee").val();
 
     if (valeurBouee > 75 || valeurBouee < 1 || isNaN(valeurBouee)) {
-        $("#bouee").show();
+        $("#HelperBouee").show();
         return false;
     }
     else {
-        $("#bouee").css('display','none');
+        $("#HelperBouee").css('display','none');
         return true;
     }
 
@@ -230,9 +234,9 @@ function verifierMinute(valeur) {
 
 function verifierErreurIntervalle() {
 
-    let dateDebut = $("#dateDebut").val();
+    let dateDebut = $("#dateDeb").val();
     let dateFin = $("#dateFin").val();
-    let heureDebut = $("#heureDebut").val();
+    let heureDebut = $("#heureDeb").val();
     let heureFin = $("#heureFin").val();
 
     var debut = new Date(dateDebut);

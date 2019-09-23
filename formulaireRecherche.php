@@ -43,19 +43,19 @@
                     <div class="input-field col s10">
                         <p>
                             <label style="padding-top: 10px">
-                                <input name="group1" type="radio" checked />
+                                <input name="calcul" type="radio" value="moyenne" id="moyenne" checked />
                                 <span>Moyenne</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input name="group1" type="radio" />
+                                <input name="calcul" type="radio" value="mediane" id="mediane" />
                                 <span>Mediane</span>
                             </label>
                         </p>
                         <p>
                             <label>
-                                <input name="group1" type="radio"  />
+                                <input name="calcul" type="radio"  value = "ecart" id="ecart" />
                                 <span>Ecart type</span>
                             </label>
                         </p>
@@ -98,13 +98,13 @@
                         <label>Bouée</label>
                     </div>
                     <div class="input-field col s10">
-                        <input type="number" id="champBouee">
-                        <label for="champBouee" style="width: 500px;">Numero</label>
+                        <input type="number" id="bouee">
+                        <label for="bouee" style="width: 500px;">Numero</label>
                     </div>
                     <div class="col s2">
                     </div>
                     <div class="col s10">
-                        <span class="helper-text" id="bouee" style="display: none"><label style="color: red">Il faut entrer un entier compris entre 1 et 75</label></span>
+                        <span class="helper-text" id="HelperBouee" style="display: none"><label style="color: red">Il faut entrer un entier compris entre 1 et 75</label></span>
                     </div>
                 </div>
                 <div class="row" id="marge">
@@ -113,12 +113,12 @@
                         <label>Intervalle temporel</label>
                     </div>
                     <div class="input-field col s3">
-                        <input id="dateDebut" type="text" class="datepicker">
-                        <label for="dateDebut">Date début</label>
+                        <input id="dateDeb" type="text" class="datepicker">
+                        <label for="dateDeb">Date début</label>
                     </div>
                     <div class="input-field col s2">
-                        <input id="heureDebut" type="text" class="timepicker">
-                        <label for="heureDebut">Heure début</label>
+                        <input id="heureDeb" type="text" class="timepicker">
+                        <label for="heureDeb">Heure début</label>
                     </div>
                     <div class="input-field col s3">
                         <input id="dateFin" type="text" class="datepicker">
@@ -154,7 +154,7 @@
                 <br><br>
                 <div class="row" id="marge">
                     <div class="input-field col s12">
-                        <a href="#" class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs('prev')">Valider</a>
+                        <a href="#" class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">Valider</a>
                     </div>
                 </div>
             </form>
