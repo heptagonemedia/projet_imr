@@ -9,6 +9,7 @@ body {
 
 
 	/*font-family: 'Hind Guntur', sans-serif;*/
+
 }
 
 #ligne1 {
@@ -66,7 +67,9 @@ div{
 	width: 30%;
 }
 .foot{
-	margin-top: -0.10%;
+    position :absolute;
+    width: 100%;
+	bottom: 0px;
 }
 .card{
     margin-bottom: -15px;
