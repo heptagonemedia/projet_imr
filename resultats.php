@@ -49,7 +49,20 @@
     <div class="row">
         <div class="map col s6 " id="map"  >
         </div>
-        <div class="stat1 col s6 chart" id="myChart" ></div>
+        <div class="stat1 col s6 "  >
+            <div class="card">
+                <div class="card-image">
+                    <div class="chart" id="myChart" ></div>
+                </div>
+                <div class="card-content">
+                    <p><?php if (isset($_GET['calcul'])){
+                        echo $_GET['calcul'];
+                        }else{
+                        echo 'calcul';
+                        } ?></p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -68,9 +81,35 @@
 <!-- Ligne du bas avec les 2 derniers Graphiques -->
 <div>
     <div class="row">
-        <div class="col s6 chart" id="myChart2"></div>
+        <div class="col s6 chart" >
+            <div class="card">
+                <div class="card-image">
+                    <div class="chart" id="myChart2" ></div>
+                </div>
+                <div class="card-content">
+                    <p><?php if (isset($_GET['calcul'])){
+                            echo $_GET['calcul'];
+                        }else{
+                            echo 'calcul';
+                        } ?></p>
+                </div>
+            </div>
+        </div>
 
-        <div class="col s6 chart" id="myChart3"></div>
+        <div class="col s6 chart" >
+            <div class="card">
+                <div class="card-image">
+                    <div class="chart" id="myChart3" ></div>
+                </div>
+                <div class="card-content">
+                    <p><?php if (isset($_GET['calcul'])){
+                            echo $_GET['calcul'];
+                        }else{
+                            echo 'calcul';
+                        } ?></p>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
