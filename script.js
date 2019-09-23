@@ -41,7 +41,7 @@ function detecterErreurs() {
             if($("input[type='checkbox']:checked").val()=='on'){
                 var type = 'enr';
             }else {
-                var type = 'prev;'
+                var type = 'prev';
             }
             lien += '&type='+type;
             console.log(lien);
