@@ -57,7 +57,9 @@ function retourFormulaire(){
 }
 
 function enregistrer(){
+    // $('#formulaire').submit();
     $('.modal').modal();
+
 }
 
 $(document).ready(function(){
