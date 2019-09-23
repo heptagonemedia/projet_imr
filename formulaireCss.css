@@ -8,3 +8,12 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
+
+.material-icons {
+    vertical-align: middle !important;
+    padding-bottom: 3px;
+}
+
+#marge {
+    margin-top: -30px;
+}
