@@ -1,6 +1,8 @@
 initFormulaire();
 $('.dropdown-trigger').dropdown();
-
+$(document).ready(function(){
+    $('.fixed-action-btn').floatingActionButton();
+});
 function detecterErreurs() {
 
     //A ne pas mettre directement dans la condition du if
@@ -294,9 +296,6 @@ initMap();
      }
  }
 
-$(document).ready(function(){
-    $('.fixed-action-btn').floatingActionButton();
-});
 
 $(document).ready(function(){
     $('.datepicker').datepicker({

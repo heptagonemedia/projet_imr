@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="proto.css">
-
+    <script src="js/materialize.js"></script>
     <!-- Compiled and minified JavaScript -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
