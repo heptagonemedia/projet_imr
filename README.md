@@ -27,7 +27,7 @@ Les fichiers :
 
 Il faut donc maintenant construire les briques de notre application, à savoir les différentes fonctions qui génèrent nos courbes, qu'elles soient correctes ou non, puis nos maillages (c'est à dire les fonctions qui vont "mélanger" le tout pour forger notre scénario).
 
-![Capture d’écran geogebra](C:\Users\1938092\Documents\Cours\Cegep\Projet Base de données\generateur_scenario\Fonction de base.png)
+![Capture d’écran geogebra](Fonction de base.png)
 
 > * a : amplitude, c’est donc (température_max - température_min)/2
 >
