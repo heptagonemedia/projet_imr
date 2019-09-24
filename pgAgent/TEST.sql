@@ -132,6 +132,8 @@ DECLARE
     ecart_type NUMERIC(5,2);
     constante_confiance INT; -- valeur de k dans l'intervalle de confiance
 
+    copie_valeurs NUMERIC(5,2)[]; -- tableau de données pour ne faire qu'un SELECT sur la bdd.
+
     -- soit l'équation :
     -- moyenne = ( SIGMA de i = 1 à n, de y(x-i) ) le tout divisé par n-1
     -- ecart_type = racine carrée de 1/n multiplié par SIGMA de i = 1 à n, de y(x-i)^2 - moyenne^2
@@ -171,7 +173,7 @@ BEGIN
 
     -- Calcul de la moyenne
     FOR i IN 1..profondeur_verification LOOP
-        moyenne := moyenne + (
+        copie_valeurs[i] := (
             SELECT m.valeur
             FROM historique_donnee_bouee AS hdb
             JOIN mesure m ON hdb.id_historique_donnee_bouee = m.id_historique_donnee_bouee
@@ -180,46 +182,26 @@ BEGIN
             AND hdb.date_saisie = temps_present::timestamp - (i * INTERVAL '1 SECOND')
             AND tdm.etiquette = type_donnee
         ); -- val actu - x
-
-        -- RAISE INFO 'itération %, moyenne=%.', i, moyenne;
+        moyenne := moyenne + copie_valeurs[i];
 
     END LOOP;
 
-    -- RAISE INFO 'fin de boucle, moyenne=%.', moyenne;
+    moyenne := moyenne/(profondeur_verification);
 
     -- PROBLÈME : ICI LA MOYENNE EST A NULL SI ON SORT DU JEU DE DONNÉES.
     -- On peut le tourner à notre avantage dans verification_donnees_bouee() → Laisser tel quel.
 
-    moyenne := moyenne/(profondeur_verification); -- pas n-1 !
-
-    -- RAISE INFO 'réctification, moyenne=%.', moyenne;
-
     -- Calcul de l'écart type
     FOR i IN 1..profondeur_verification LOOP
-        ecart_type := ecart_type + POWER((
-            SELECT m.valeur
-            FROM historique_donnee_bouee AS hdb
-            JOIN mesure m ON hdb.id_historique_donnee_bouee = m.id_historique_donnee_bouee
-            JOIN type_donnee_mesuree tdm ON m.id_type_donnee_mesuree = tdm.id_type_donnee_mesuree
-            WHERE hdb.id_bouee = id_bouee_a_check
-            AND hdb.date_saisie = temps_present::timestamp - (i * INTERVAL '1 SECOND')
-            AND tdm.etiquette = type_donnee
-        )-moyenne, 2);
 
-        -- REMPLACER LE SELECT PAR UN ARRAY (on utilise le même SELECT pour la moyenne et l'écart-type)
-
-        -- RAISE INFO 'itération %, écart-type=%.', i, ecart_type;
+        ecart_type := ecart_type + POWER((copie_valeurs[i])-moyenne, 2);
+        -- L'array évite un deuxième SELECT identique au premier : gain de performances.
 
     END LOOP;
 
-    -- RAISE INFO 'fin de boucle, écart-type=%.', ecart_type;
-
     ecart_type := SQRT((1/profondeur_verification) * ecart_type);
 
-    -- RAISE INFO 'réctification, écart-type=%.', ecart_type;
-
     -- Calcul de l'intervale de confiance.
-
 	-- PLPGSQL ne gère pas un return direct, je suis obligé de passer par des IF ELSE
     IF ((moyenne - constante_confiance * (ecart_type / SQRT(profondeur_verification)) <= valeur_mesure) AND (valeur_mesure <= moyenne + constante_confiance * (ecart_type / SQRT(profondeur_verification)))) THEN
     	resultat := TRUE;
