@@ -1,23 +1,32 @@
-# GenerateurScenario
+# Générateur de scénarios
 
-**TODO: Add description**
+[TOC]
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `generateur_scenario` to your list of dependencies in `mix.exs`:
+* [Télécharger et installer Elixir et Erlang.](https://elixir-lang.org/install.html)
+* Cloner ou télécharger le repository
+* Dans l’invite de commande (cmd !) taper ­­­­`mix deps.get`
+* Ensuite un simple ´mix run´ devrait lancer la compilation et lancer le programme
 
-```elixir
-def deps do
-  [
-    {:generateur_scenario, "~> 0.1.0"}
-  ]
-end
-```
+## But
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/generateur_scenario](https://hexdocs.pm/generateur_scenario).
+Le but de ce “module” est de nous créer différents scénarios que les bouées suivraient. Ainsi, on pourrait, au cours d’une dizaine de minutes, voir les bouées qui suivent les scénarios “défaillance” en “non fiable” sur notre application.
+
+On va pour cela enregistrer les variations sur 600 secondes par rapport à une valeur de base (celle de départ donc) dans notre base de données.
+
+Les scénarios seront séparés dans 4 catégories :
+
+* Les scénarios de base, qui sont au nombre de 10. Ils prennent en compte des erreurs sur uniquement une donnée ou sont des scénarios “normaux”.
+* Les scénarios hybrides, qui sont tous considérés comme comportant plusieurs données “corrompues”.
+* Les scénarios retardés, qui sont donc des scénarios hybrides ou de base mais dont les erreurs apparaissent x secondes après le début du scénario.
+* Les scénarios “normaux” qui ne comportent donc (normalement) aucune erreur.
+
+La proportion de chaque catégorie de scénario sera à définir au lancement du programme, soit écrite en dur quelque part dans le programme ou un fichier de configuration.
+
+Ces scénarios comporteront aussi une région qui définit des standards de données (minimum, maximum, zone géographique, moyenne etc.) pour que nos données restent uniformes et relativement réalistes.
+
+**Il faut en effet prendre en compte que nous ne modélisons pas des données, il s’agit surtout de tester notre application. Nos fonctions “normales” seront donc pour la plupart de simples fonctions sinusoïdales et celles “anormales” soit des fonctions sinusoïdales différentes, soit de simples fonctions affines.**
 
 ## Quoi travailler ?
 
