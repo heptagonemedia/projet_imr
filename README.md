@@ -1,6 +1,7 @@
 # SimulateurBouees
 
-**TODO: Add description**
+Simulateur de bouées modulaire rapide. Permet de générer une quantité volumineuse de données,
+à partir de scénario décrivant l'évolution des données produites par les bouées.
 
 ## Installation
 
