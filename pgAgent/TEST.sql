@@ -135,7 +135,7 @@ DECLARE
     copie_valeurs NUMERIC(5,2)[]; -- tableau de données pour ne faire qu'un SELECT sur la bdd.
 
     -- soit l'équation :
-    -- moyenne = ( SIGMA de i = 1 à n, de y(x-i) ) le tout divisé par n-1
+    -- moyenne = ( SIGMA de i = 1 à n, de y(x-i) ) le tout divisé par n
     -- ecart_type = racine carrée de 1/n multiplié par SIGMA de i = 1 à n, de y(x-i)^2 - moyenne^2
     -- confiance : [moyenne - k*ecart_type/racine carrée de n ; moyenne + k*ecart_type/racine carrée de n ]
 
@@ -188,8 +188,8 @@ BEGIN
 
     moyenne := moyenne/(profondeur_verification);
 
-    -- PROBLÈME : ICI LA MOYENNE EST A NULL SI ON SORT DU JEU DE DONNÉES.
-    -- On peut le tourner à notre avantage dans verification_donnees_bouee() → Laisser tel quel.
+    -- PROBLÈME : ICI LA MOYENNE EST À NULL SI ON SORT DU JEU DE DONNÉES.
+    -- On peut le tourner à notre avantage dans verification_donnees_bouee() → LAISSER TEL QUEL.
 
     -- Calcul de l'écart type
     FOR i IN 1..profondeur_verification LOOP
@@ -243,7 +243,8 @@ BEGIN
       THEN
         RETURN TRUE;
         -- Si l'échantillon n'est pas assez représentatif pour executer nouveau_intervale_incertitude
-        -- on considère que la valeur fiable (pour les n premières données d'une bouées, 25 par exemple).
+        -- on considère que la valeur est fiable (pour les n premières données d'une bouées, 25 par exemple).
+        -- Le but est de permettre la constitution d'un échatillon pour pouvoir, ensuite, vérifier les données.
     ELSE
         RETURN FALSE;
     END IF;
