@@ -26,5 +26,6 @@ mix run
 
 * simulateur_bouees.ex: Fichier où la fonction `main/0` est définie.
 * bouee.ex: Génération de données et envoi au concentrateur.
-* concentrateur.ex: Process qui reçoit les données et les stock en attente de l'émission. 
+* concentrateur.ex: Process qui reçoit les données et les stocke en attente de l'émission. 
+* emetteur.ex: Lit les données stockées dans le concentrateur et les envoie au récepteur.
 * simulateur.ex: Superviseur général.
