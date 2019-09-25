@@ -3,6 +3,10 @@ $('.dropdown-trigger').dropdown();
 $(document).ready(function(){
     $('.fixed-action-btn').floatingActionButton();
 });
+
+$(document).ready(function(){
+        $('.sidenav').sidenav();
+});
 function detecterErreurs() {
 
     //A ne pas mettre directement dans la condition du if
