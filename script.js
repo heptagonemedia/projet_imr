@@ -57,8 +57,12 @@ function retourFormulaire(){
 }
 
 function enregistrer(){
-    // $('#formulaire').submit();
     $('.modal').modal();
+}
+function enregistrerForm(){
+    var url = document.location.href;
+    console.log(url.substr(0,url.indexOf('type')));
+    window.location.href =url.substr(0,url.indexOf('prev'))+'enr';
 
 }
 

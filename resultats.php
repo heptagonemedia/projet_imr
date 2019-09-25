@@ -27,12 +27,12 @@
 <div id="ligne1" class="black" >
     <div class="row  ">
 
-        <div class="col l3  ">
+        <div class="col   l4 ">
             <a href="accueil.php" class="breadcrumb">accueil</a>
             <a href="formulaireRecherche.php" class="breadcrumb">formulaire</a>
             <a href="#" class="breadcrumb">résultat</a>
         </div>
-        <div class="col l6">
+        <div class="col m4  l4">
             <?php
             if (isset($_GET['type']) && $_GET['type'] == 'prev'):
                 echo 'Prévisualisation';
@@ -40,7 +40,7 @@
                 echo 'Calcul enregistré';
             endif;
             ?></div>
-        <div class="col l3  right-align"><?php if (isset($_GET['bouee'])): echo 'Bouée '.$_GET['bouee']; endif; ?></div>
+        <div class="col m3 l4  right-align"><?php if (isset($_GET['bouee'])): echo 'Bouée '.$_GET['bouee']; endif; ?></div>
     </div>
 </div>
 
@@ -143,7 +143,7 @@ if(isset($_GET["type"])):
                 <p>le calcul a bien été enregitré</p>
             </div>
             <div class="modal-footer green col s12">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">ok</a>
+                <a onclick="enregistrerForm()" class="modal-close waves-effect waves-green btn-flat">ok</a>
             </div>
         </div>
 

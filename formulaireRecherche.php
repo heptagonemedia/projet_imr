@@ -23,7 +23,6 @@
 <nav>
     <div class="nav-wrapper black">
         <div class="row">
-        <a href="#" class="brand-logo right col l4 right-align"><img src="https://cdn.discordapp.com/attachments/614172601337643142/615001645788430366/Final1.png" width="50px" height="50px"></a>
         <div class="col l4 center aligned ">
             <a href="accueil.php" class="breadcrumb">accueil</a>
             <a href="#" class="breadcrumb">formulaire</a>
@@ -166,13 +165,6 @@
         </div>
     </div>
 </div>
-<footer class=" page-footer white foot">
-    <div class="footer-copyright foot black pied">
-        <div class="container valign-wrapper">
-            © 2019 Heptagone Media
-        </div>
-    </div>
-</footer>
 
 
 </body>
