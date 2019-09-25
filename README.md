@@ -1,22 +1,30 @@
-# SimulateurBouees
+# Simulateur de Bouées
 
 Simulateur de bouées modulaire rapide. Permet de générer une quantité volumineuse de données,
 à partir de scénario décrivant l'évolution des données produites par les bouées.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `simulateur_bouees` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:simulateur_bouees, "~> 0.1.0"}
-  ]
-end
+* [Télécharger et installer Elixir et Erlang.](https://elixir-lang.org/install.html)
+* Cloner ou télécharger le repository
+* Dans l’invite de commande taper: 
+	 `mix deps.get`
+```shell
+curl -O https://repo.hex.pm/elixir-websetup.exe
+.\elixir-websetup.exe
+git clone https://github.com/heptagonemedia/SimulateurElixir
+cd SimulateurElixir
+mix deps.get
+mix run
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/simulateur_bouees](https://hexdocs.pm/simulateur_bouees).
+## But
 
+À partir des scénario obtenu du [générateur de scénario](https://github.com/heptagonemedia/generateur_scenario), ce module doit gérer 75 000 bouées  simulées et générer pour chacune une lecture par seconde, et transmettre toutes les données au [récepteur de données](https://github.com/heptagonemedia/RecepteurEndpoint).
+
+## Où commencer?
+
+* simulateur_bouees.ex: Fichier où la fonction `main/0` est définie.
+* bouee.ex: Génération de données et envoi au concentrateur.
+* concentrateur.ex: Process qui reçoit les données et les stock en attente de l'émission. 
+* simulateur.ex: Superviseur général.
