@@ -17,10 +17,22 @@ defmodule GenerateurScenario.Application do
     saliniteRegion = GenerateurScenario.LireXml.getSaliniteRegion
     debitRegion = GenerateurScenario.LireXml.getDebitRegion
 
+    nbScenario = GenerateurScenario.LireXml.getNbScenario
+    scenarioNormaux = GenerateurScenario.LireXml.getScenarioNormaux
+    scenarioBase = GenerateurScenario.LireXml.getScenarioBase
+    scenarioHybride = GenerateurScenario.LireXml.getScenarioHybride
+    scenarioRetardes = GenerateurScenario.LireXml.getScenarioRetarde
+
     IO.puts nomRegion
     IO.puts temperatureRegion
     IO.puts saliniteRegion
     IO.puts debitRegion
+
+    IO.puts nbScenario
+    IO.puts scenarioNormaux
+    IO.puts scenarioBase
+    IO.puts scenarioHybride
+    IO.puts scenarioRetardes
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
