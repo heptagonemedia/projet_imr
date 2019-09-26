@@ -26,7 +26,8 @@ defmodule GenerateurScenario.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
-      {:math, ">= 0.0.0"}
+      {:math, ">= 0.0.0"},
+      {:json, "~> 1.2"}
     ]
   end
 end

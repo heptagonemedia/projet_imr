@@ -23,3 +23,5 @@ erl_crash.dump
 generateur_scenario-*.tar
 
 generateur_scenario.code-workspace
+
+.elixir_ls/
