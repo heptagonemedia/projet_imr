@@ -1,0 +1,29 @@
+{
+    "regions":[
+        {
+            "nom": "region1",
+            "temperatures": [],
+            "salinites": [],
+            "debit": []
+        },
+        {
+            "nom": "region2",
+            "temperatures": [],
+            "salinites": [],
+            "debit": []
+        },
+        {
+            "nom": "region3",
+            "temperatures": [],
+            "salinites": [],
+            "debit": []
+        }
+    ],
+    "proportions": {
+        "nombre_scenario": 50,
+        "scenarios_normaux": 30,
+        "scenarios_base": 10,
+        "scenarios_hybrides": 5,
+        "scenarios_retardes": 5
+    }
+}
