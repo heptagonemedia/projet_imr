@@ -3,6 +3,9 @@ $('.dropdown-trigger').dropdown();
 $(document).ready(function(){
     $('.fixed-action-btn').floatingActionButton();
 });
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+});
 
 $(document).ready(function(){
         $('.sidenav').sidenav();
