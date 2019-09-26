@@ -62,7 +62,6 @@
     </div>
 </div>
         <div class="container">
-          <div class="row">
 
             <div class=" col l10">
               <h4>Dernière mise à jour : DATE et HEURE</h4>
@@ -71,7 +70,7 @@
             <div class="row">
                 <div class="col l8">
             <div class="card">
-                <div class="card-image">
+                <div >
                     <div class="" id="map" ></div>
                 </div>
                 <div class="card-content">
@@ -84,10 +83,10 @@
             </div>
                 </div>
                 <div class="col l4">
-                    <div class="card white center-align">
+                    <div class="card white">
                         <div class="card-content white-text">
-                            <span class="card-title black-text">Bouées non conforme</span>
-                            <div class="container center-align">
+                            <span class="card-title black-text center-align">Bouées non conforme</span>
+                            <div class="container">
                                 <div class="circle " id="false"><?php echo $compteurProbleme; ?></div>
                             </div>
                         </div>
@@ -104,13 +103,8 @@
 
                 </div>
 
-            </div>
 
         </div>
-      </div>
-
-
-  </div>
 <footer class="page-footer white foot">
     <div class="footer-copyright foot black pied">
         <div class="container valign-wrapper">

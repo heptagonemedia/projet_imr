@@ -502,6 +502,7 @@ body{
 }
 
 .circle {
+  margin-left: 2%;
   width: 155px;
   height: 155px;
   border-radius: 50%;
@@ -552,6 +553,11 @@ B{
 #map{
   width: 100%;
 }
+
+#ligne1{
+  font-size: 30pt;
+}
+
 .foot{
   position :fixed;
   width: 100%;
