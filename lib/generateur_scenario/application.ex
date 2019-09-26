@@ -12,7 +12,15 @@ defmodule GenerateurScenario.Application do
       GenerateurScenario.Repo,
     ]
 
-    
+    nomRegion = GenerateurScenario.LireXml.getNomRegion
+    temperatureRegion = GenerateurScenario.LireXml.getTemperatureRegion
+    saliniteRegion = GenerateurScenario.LireXml.getSaliniteRegion
+    debitRegion = GenerateurScenario.LireXml.getDebitRegion
+
+    IO.puts nomRegion
+    IO.puts temperatureRegion
+    IO.puts saliniteRegion
+    IO.puts debitRegion
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

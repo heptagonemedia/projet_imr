@@ -1,0 +1,15 @@
+<config>
+    <region>
+        <nom>Ocean Atlantique</nom>
+        <temperature>5;30</temperature>
+        <salinite>30</salinite>
+        <debit>0,2</debit>
+    </region>
+    <proportion>
+        <nbScenario>50</nbScenario>
+        <scenarioNormaux>30</scenarioNormaux>
+        <scenarioBase>10</scenarioBase>
+        <scenarioHybride>5</scenarioHybride>
+        <scenarioRetardes>5</scenarioRetardes>
+    </proportion>
+</config>
