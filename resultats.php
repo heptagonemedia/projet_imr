@@ -106,13 +106,13 @@
     </a>
     <ul>
 
-        <li><a class="btn-floating purple tooltipped" data-position="left" data-tooltip="Agrandir la carte" onclick="agrandirCarte(document.getElementById('map'))"><i class="material-icons">crop_free</i></a></li>
-        <li><a class="btn-floating blue tooltipped" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i></a></li>
-        <li><a class="btn-floating pink tooltipped" data-position="left" data-tooltip="Accueil" href="accueil.php"><i class="material-icons">home</i></a></li>
+        <li><a class="btn-floating purple tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Agrandir la carte" onclick="agrandirCarte(document.getElementById('map'))"><i class="material-icons">crop_free</i></a></li>
+        <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i></a></li>
+        <li><a class="btn-floating pink tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Accueil" href="accueil.php"><i class="material-icons">home</i></a></li>
 
         <?php if(isset($_GET["type"]) && $_GET['type']=='prev' ): ?>
-        <li><a class="btn-floating yellow darken-1 tooltipped" data-position="left" data-tooltip="Retourner au formulaire" onclick="retourFormulaire()"><i class="material-icons">arrow_back</i></a></li>
-        <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped" data-position="left" data-tooltip="Enregistrer le calcul" href="#modal1" onclick = "enregistrer()"><i class="material-icons">save</i></a></li>
+        <li><a class="btn-floating yellow darken-1 tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Retourner au formulaire" onclick="retourFormulaire()"><i class="material-icons">arrow_back</i></a></li>
+        <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Enregistrer le calcul" href="#modal1" onclick = "enregistrer()"><i class="material-icons">save</i></a></li>
         <?php endif;?>
     </ul>
 </div>
@@ -144,15 +144,17 @@
             <a href="#user"><img src="logo.png" width="60px" height="50px"></a>
             <a href="#name"><span class="white-text name">Institut Maritime de Rimouski</span></a>
         </div></li>
+    <li><a class="waves-effect waves-teal" href="accueil.php"><i class="material-icons">home</i>Accueil</a></li>
+    <li><div class="divider"></div></li>
     <li><a class="subheader">Accéder aux calculs</a></li>
     <li class="no-padding">
-        <ul class="collapsible collapsible-accordion  waves-green">
+        <ul class="collapsible collapsible-accordion  waves-teal">
             <li>
                 <a class="collapsible-header">Calculs Enregistrés<i class="material-icons">arrow_drop_down</i></a>
                 <div class="collapsible-body">
                     <ul>
                         <?php for ($i = 0; $i<6;$i++):
-                            echo '<li><a class="waves-effect" href="resultats.php?bouee='.$i.'&type=enr"><i class="material-icons">insert_chart_outlined</i>Calcul '.$i.'</a></li>';
+                            echo '<li><a class="waves-effect waves-teal" href="resultats.php?bouee='.$i.'&type=enr"><i class="material-icons">insert_chart_outlined</i>Calcul '.$i.'</a></li>';
                         endfor;
                         ?>
                     </ul>
@@ -160,10 +162,10 @@
             </li>
         </ul>
     </li>
-    <li><a class="waves-effect" href="resultats.php?bouee=2&type=prev"><i class="material-icons">new_releases</i>Calcul en cours</a></li>
+    <li><a class="waves-effect waves-teal" href="resultats.php?bouee=2&type=prev"><i class="material-icons">new_releases</i>Calcul en cours</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">Faire des calculs</a></li>
-    <li><a class="waves-effect" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i>Nouveau calcul</a></li>
+    <li><a class="waves-effect waves-teal" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i>Nouveau calcul</a></li>
 </ul>
 
 <?php

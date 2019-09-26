@@ -48,13 +48,13 @@
             </div></li>
         <li><a class="subheader">Accéder aux calculs</a></li>
         <li class="no-padding">
-            <ul class="collapsible collapsible-accordion  waves-green">
+            <ul class="collapsible collapsible-accordion  waves-teal">
                 <li>
                     <a class="collapsible-header">Calculs Enregistrés<i class="material-icons">arrow_drop_down</i></a>
                     <div class="collapsible-body">
                         <ul>
                             <?php for ($i = 0; $i<6;$i++):
-                            echo '<li><a class="waves-effect" href="resultats.php?bouee='.$i.'&type=enr"><i class="material-icons">insert_chart_outlined</i>Calcul '.$i.'</a></li>';
+                            echo '<li><a class="waves-effect waves-teal" href="resultats.php?bouee='.$i.'&type=enr"><i class="material-icons">insert_chart_outlined</i>Calcul '.$i.'</a></li>';
                             endfor;
                             ?>
                         </ul>
@@ -62,10 +62,10 @@
                 </li>
             </ul>
         </li>
-        <li><a class="waves-effect" href="resultats.php?bouee=2&type=prev"><i class="material-icons">new_releases</i>Calcul en cours</a></li>
+        <li><a class="waves-effect waves-teal" href="resultats.php?bouee=2&type=prev"><i class="material-icons">new_releases</i>Calcul en cours</a></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">Faire des calculs</a></li>
-        <li><a class="waves-effect" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i>Nouveau calcul</a></li>
+        <li><a class="waves-effect waves-teal" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i>Nouveau calcul</a></li>
     </ul>
 <div id="ligne1" class="black" >
     <div class="row  ">
