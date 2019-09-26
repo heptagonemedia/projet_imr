@@ -6,7 +6,6 @@
         <debit>0,2</debit>
     </region>
     <proportion>
-        <nbScenario>50</nbScenario>
         <scenarioNormaux>30</scenarioNormaux>
         <scenarioBase>10</scenarioBase>
         <scenarioHybride>5</scenarioHybride>
