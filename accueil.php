@@ -53,7 +53,7 @@
                     <a class="collapsible-header">Calculs Enregistrés<i class="material-icons">arrow_drop_down</i></a>
                     <div class="collapsible-body">
                         <ul>
-                            <?php for ($i = 0; $i<5;$i++):
+                            <?php for ($i = 0; $i<6;$i++):
                             echo '<li><a class="waves-effect" href="resultats.php?bouee='.$i.'&type=enr"><i class="material-icons">insert_chart_outlined</i>Calcul '.$i.'</a></li>';
                             endfor;
                             ?>
@@ -69,9 +69,9 @@
     </ul>
 <div id="ligne1" class="black" >
     <div class="row  ">
-        <div class="col l1 center-align"><a href="#" data-target="slide-out" class="sidenav-trigger white-text" ><i class="material-icons">menu</i></a></div>
+        <div class="col l1 center-align"><a href="#" data-target="slide-out" class="sidenav-trigger white-text" ><i class="material-icons" id="menu">menu</i></a></div>
         <div class="col l10 center-align">
-            <?php if(!isset($_GET['bouee'])){echo "Accueil";}else{echo "Informations Bouée ".$_GET['bouee'];} ?>
+            Accueil
         </div>
     </div>
 </div>

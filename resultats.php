@@ -27,11 +27,8 @@
 <div id="ligne1" class="black" >
     <div class="row  ">
 
-        <div class="col   l4 ">
-            <a href="accueil.php" class="breadcrumb">accueil</a>
-            <a href="formulaireRecherche.php" class="breadcrumb">formulaire</a>
-            <a href="#" class="breadcrumb">résultat</a>
-        </div>
+        <div class="col l4 left-align"><a href="#" data-target="slide-out" class="sidenav-trigger white-text" ><i class="material-icons" id="menu">menu</i></a></div>
+
         <div class="col m4  l4">
             <?php
             if (isset($_GET['type']) && $_GET['type'] == 'prev'):
@@ -122,14 +119,52 @@
 
 <footer class="page-footer white foot">
     <div class="footer-copyright foot black pied">
-        <div class="container valign-wrapper">
-            © 2019 Heptagone Media
+        <div class="container ">
+        <div class="row" id="ligneFooter">
+            <div class="col l4 left-align">
+                © 2019 Heptagone Media
+            </div>
+            <div class="col   l8 ">
+                <a href="accueil.php" class="breadcrumb">accueil</a>
+                <a href="formulaireRecherche.php" class="breadcrumb">formulaire</a>
+                <a href="#" class="breadcrumb">résultat</a>
+            </div>
+        </div>
         </div>
     </div>
 </footer>
 <form method="post" id='formulaire' action="resultats.php">
     <input type="hidden" value="enr" name="type">
 </form>
+<ul id="slide-out" class="sidenav draggable">
+    <li><div class="user-view">
+            <div class="background">
+                <img src="eau.jpg" height="300px">
+            </div>
+            <a href="#user"><img src="logo.png" width="60px" height="50px"></a>
+            <a href="#name"><span class="white-text name">Institut Maritime de Rimouski</span></a>
+        </div></li>
+    <li><a class="subheader">Accéder aux calculs</a></li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion  waves-green">
+            <li>
+                <a class="collapsible-header">Calculs Enregistrés<i class="material-icons">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                    <ul>
+                        <?php for ($i = 0; $i<6;$i++):
+                            echo '<li><a class="waves-effect" href="resultats.php?bouee='.$i.'&type=enr"><i class="material-icons">insert_chart_outlined</i>Calcul '.$i.'</a></li>';
+                        endfor;
+                        ?>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li><a class="waves-effect" href="resultats.php?bouee=2&type=prev"><i class="material-icons">new_releases</i>Calcul en cours</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Faire des calculs</a></li>
+    <li><a class="waves-effect" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i>Nouveau calcul</a></li>
+</ul>
 
 <?php
 
