@@ -1,6 +1,7 @@
 --------------------------------------------------------------------------------
 -- Mise en place du modèle
 
+DROP FUNCTION IF EXISTS verification_journaliere;
 DROP FUNCTION IF EXISTS verification_donnees_bouee;
 DROP FUNCTION IF EXISTS nouveau_intervale_incertitude;
 
@@ -209,12 +210,38 @@ BEGIN
     	resultat := FALSE;
     END IF;
 
+    -- LIGNE UTILE AU DÉBUG UNIQUEMENT. À COMMENTER.
     RAISE INFO 'Le test donnée_historique % type % renvoie %', id_historique, type_donnee, resultat;
     RETURN resultat;
 
 END;
 
 $BODY$;
+
+--------------------------------------------------------------------------------
+--fonction permettant de verifier si la bouée est a moins de 10m de l'emplacement de référence
+CREATE OR REPLACE FUNCTION verification_distance(id_historique INT)
+
+    RETURNS boolean
+AS $$
+
+DECLARE
+    lat1 float;
+    lon1 float;
+    lat2 float;
+    lon2 float;
+    x float;
+    y float;
+BEGIN
+    SELECT bouee.latitude_reference,bouee.longitude_reference,hdb.latitude_reelle,hdb.longitude_reelle
+    INTO lat1,lon1,lat2,lon2
+    FROM historique_donnee_bouee AS hdb
+             JOIN bouee ON bouee.id_bouee = hdb.id_bouee;
+    x = 111.12 * (lat2 - lat1);
+    y = 111.12 * (lon2 - lon1) * cos(lat1 / 92.215);
+    RETURN sqrt(x * x + y * y)<0.010;
+END
+$$ LANGUAGE plpgsql;
 
 --------------------------------------------------------------------------------
 -- fonction de vérification des données reçues d'une bouée.
@@ -230,17 +257,20 @@ DECLARE
     verification_salinite BOOLEAN;
     verification_debit BOOLEAN;
     verification_temperature BOOLEAN;
+    verification_distance BOOLEAN;
 
 BEGIN
     verification_salinite := nouveau_intervale_incertitude(id_historique, 'salinite');
     verification_debit := nouveau_intervale_incertitude(id_historique, 'debit');
     verification_temperature := nouveau_intervale_incertitude(id_historique, 'temperature');
+    verification_distance := verification_distance(id_historique);
 
     -- plpgsql ne gère pas de return direct, on doit passer par if then else
     IF verification_salinite <> FALSE
-      AND verification_debit <> FALSE
-      AND verification_temperature <> FALSE
-      THEN
+        AND verification_debit <> FALSE
+        AND verification_temperature <> FALSE
+        AND verification_distance <> FALSE
+    THEN
         RETURN TRUE;
         -- Si l'échantillon n'est pas assez représentatif pour executer nouveau_intervale_incertitude
         -- on considère que la valeur est fiable (pour les n premières données d'une bouées, 25 par exemple).
@@ -258,8 +288,8 @@ $BODY$;
 
 CREATE OR REPLACE FUNCTION verification_journaliere(heure_lancement TIMESTAMP)
 
-    RETURNS BOOLEAN -- il faudra voir ce qu'il faut return dans le cas où on se fout du return
-    LANGUAGE  'plpgsql'
+    RETURNS VOID
+    LANGUAGE 'plpgsql'
 
 AS $BODY$
 
@@ -282,17 +312,17 @@ BEGIN
                 WHERE id_bouee = no_bouee_a_verifier
                 AND date_saisie = heure_a_verifier
             );
-            IF verification_donnees_bouee(id_historique) <> FALSE THEN
-                INSERT INTO donnee_traitee (id_historique_donnee_bouee, valide)
-                VALUES (id_historique, TRUE);
-            ELSE
-                INSERT INTO donnee_traitee (id_historique_donnee_bouee, valide)
-                VALUES (id_historique, FALSE);
-            END IF;
+
+            INSERT INTO donnee_traitee (id_historique_donnee_bouee, valide)
+            VALUES (id_historique, verification_donnees_bouee(id_historique));
+            -- LIGNE UTILE AU DÉBUG UNIQUEMENT. À COMMENTER.
+            RAISE INFO 'La donnée liée à id_historique = % a valide = %', id_historique, verification_donnees_bouee(id_historique);
+
             heure_a_verifier := heure_a_verifier::timestamp + (INTERVAL '1 SECOND');
         END LOOP; -- fin du While (cadre temporel par bouée)
         heure_a_verifier := heure_lancement; -- On change de bouée, donc on reprend à 0s
     END LOOP; -- fin du For (cadre du nombre des bouées)
+
 END;
 
 $BODY$;
