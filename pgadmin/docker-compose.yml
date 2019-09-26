@@ -8,19 +8,19 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: password
-    #volumes:
-    #  - ./data:/root/.pgadmin
+    volumes:
+      - ./data:/root/.pgadmin
     restart: always
     networks:
       - default
-      # - postgres
+      - postgres
       - timescaledb
 
 networks:
   default:
-  # postgres:
-  #   external:
-  #     name: postgres_default
+  postgres:
+    external:
+      name: postgres_default
   timescaledb:
     external:
       name: timescaledb_default
