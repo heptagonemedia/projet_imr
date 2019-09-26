@@ -27,7 +27,6 @@ defmodule GenerateurScenario.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:math, ">= 0.0.0"},
-      {:json, "~> 1.2"},
       {:sweet_xml, "~> 0.6.5"}
     ]
   end
