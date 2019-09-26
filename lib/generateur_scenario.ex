@@ -1,17 +1,4 @@
 defmodule GenerateurScenario do
-  @moduledoc """
-  Documentation for GenerateurScenario.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> GenerateurScenario.hello()
-      :world
-
-  """
   def start(scenario_normaux, scenarios_base, scenarios_hybrides, scenarios_retardes) do
     if scenario_normaux != 0 do
       loop("normal", scenario_normaux)
@@ -25,15 +12,17 @@ defmodule GenerateurScenario do
     if scenarios_retardes != 0 do
       loop("retarde", scenarios_retardes)
     end
-end
+  end
 
 
-def loop(type, n) when n <= 1 do
-    GenerateurScenario.Constructeur.construire(type)
+  def loop(type, n) when n <= 1 do
+    Agents.Compteur.increment
+    spawn GenerateurScenario.Constructeur.construire(Agents.Compteur.value, type)
   end
 
   def loop(type, n) do
-    GenerateurScenario.Constructeur.construire(type)
+    Agents.Compteur.increment
+    spawn GenerateurScenario.Constructeur.construire(Agents.Compteur.value, type)
     loop(type, n - 1)
   end
 end

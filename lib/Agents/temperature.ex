@@ -1,4 +1,4 @@
-defmodule Intervalles.Temperature do
+defmodule Agents.Temperature do
     use Agent
 
     def start_link(opts) do
