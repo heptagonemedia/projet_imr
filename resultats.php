@@ -174,12 +174,12 @@ if(isset($_GET["type"])):
     $type = $_GET["type"];
     if($type == "prev"):
         ?>
-        <div id="modal1" class="modal row s6">
-            <div class="modal-content col s12">
+        <div id="modal1" class="modal row">
+            <div class="modal-content">
                 <h4>Calcul enregistré</h4>
                 <p>le calcul a bien été enregitré</p>
             </div>
-            <div class="modal-footer green col s12">
+            <div class="modal-footer green">
                 <a onclick="enregistrerForm()" class="modal-close waves-effect waves-green btn-flat">ok</a>
             </div>
         </div>
