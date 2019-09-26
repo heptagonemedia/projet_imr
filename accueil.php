@@ -20,38 +20,6 @@
 </head>
 
 <body id="body">
-<!---->
-<!--  <div class="page-wrapper chiller-theme toggled" id="content">-->
-<!---->
-<!--    <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">-->
-<!--      <i class="fas fa-bars"></i>-->
-<!--    </a>-->
-<!--    <nav id="sidebar" class="sidebar-wrapper">-->
-<!--      <div class="sidebar-content">-->
-<!--        <div class="sidebar-brand">-->
-<!--          <a href="#">IMR</a>-->
-<!--          <div id="close-sidebar">-->
-<!--              <i class="fas fa-times"></i>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="sidebar-menu">-->
-<!--          <ul>-->
-<!--              <li>-->
-<!--                  <a href="accueil.php">-->
-<!--                      <i class="fa fa-home"></i>-->
-<!--                      <span>Accueil</span>-->
-<!--                  </a>-->
-<!--              </li>-->
-<!--            <li class="header-menu">-->
-<!--              <span>Bouées</span>-->
-<!--            </li>-->
-<!--            <li class="sidebar-dropdown">-->
-<!--              <a href="#">-->
-<!--                <i class="far fa-life-ring"></i>-->
-<!--                <span>Bouées</span>-->
-<!--              </a>-->
-<!--              <div class="sidebar-submenu" id="scrollable">-->
-<!--                <ul>-->
                   <?php
                     $compteurFonctionelles = 0;
                     $compteurProbleme = 0;
@@ -68,70 +36,7 @@
                         $texte='Problème';
                       }
                   ?>
-<!--                  <li>-->
-<!--                    <a href="accueil.php?bouee=--><?php //echo $i+1 ?><!--">Bouée --><?php //echo($i+1); ?><!--<span class="badge badge---><?php //echo($classe); ?><!--">--><?php //echo($texte); ?><!--</span></a>-->
-<!--                  <li>-->
                   <?php endfor ?>
-<!--                </ul>-->
-<!--              </div>-->
-<!--            </li>-->
-<!---->
-<!--            <li class="header-menu">-->
-<!--              <span>Calculs</span>-->
-<!--            </li>-->
-<!--            <li class="sidebar-dropdown">-->
-<!--              <a href="#">-->
-<!--                <i class="fa fa-calendar"></i>-->
-<!--                <span>Calculs enregistrés</span>-->
-<!--              </a>-->
-<!--              <div class="sidebar-submenu">-->
-<!--                <ul>-->
-<!--                  <li>-->
-<!--                    <a href="index.php?page=resultats">26-02-2018</a>-->
-<!--                  </li>-->
-<!--                  <li>-->
-<!--                    <a href="index.php?page=resultats">29-08-2019</a>-->
-<!--                  </li>-->
-<!--                </ul>-->
-<!--              </div>-->
-<!--            </li>-->
-<!--              <li>-->
-<!--                  <a href="index.php?page=formulaireRecherche">-->
-<!--                      <i class="fa fa-calendar"></i>-->
-<!--                      <span>Prévisualiser calcul</span>-->
-<!--                  </a>-->
-<!--              </li>-->
-<!--              <li>-->
-<!--                  <a href="index.php?page=formulaireRecherche">-->
-<!--                      <i class="fa fa-calendar"></i>-->
-<!--                      <span>Calculs non enregistrés</span>-->
-<!--                  </a>-->
-<!--              </li>-->
-<!--            <li class="header-menu">-->
-<!--              <span>Option</span>-->
-<!--            </li>-->
-<!--            <li class="sidebar-dropdown">-->
-<!--              <a href="#">-->
-<!--                <i class="fas fa-cog"></i>-->
-<!--                <span>Options graphiques</span>-->
-<!--              </a>-->
-<!--              <div class="sidebar-submenu">-->
-<!--                <ul>-->
-<!--                  <li>-->
-<!--                    <a href="#">Option 1</a>-->
-<!--                  </li>-->
-<!--                  <li>-->
-<!--                    <a href="#">Option 2</a>-->
-<!--                  </li>-->
-<!--                </ul>-->
-<!--              </div>-->
-<!--              -->
-<!--            </li>-->
-<!---->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </nav>-->
 
     <ul id="slide-out" class="sidenav">
         <li><div class="user-view">
@@ -142,8 +47,8 @@
                 <a href="#name"><span class="white-text name">Institut Maritime de Rimouski</span></a>
             </div></li>
         <li><a class="subheader">Accéder aux calculs</a></li>
-        <li><a href="resultats.php?bouee=2&type=enr"><i class="material-icons">save</i>Calculs Enregistrés</a></li>
-        <li><a href="resultats.php?bouee=2&type=prev"><i class="material-icons">new_releases</i>Calcul en cours</a></li>
+        <li><a class="waves-effect" href="resultats.php?bouee=2&type=enr"><i class="material-icons">save</i>Calculs Enregistrés</a></li>
+        <li><a class="waves-effect" href="resultats.php?bouee=2&type=prev"><i class="material-icons">new_releases</i>Calcul en cours</a></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">Faire des calculs</a></li>
         <li><a class="waves-effect" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i>Nouveau calcul</a></li>
@@ -167,7 +72,7 @@
                 <div class="col l8">
             <div class="card">
                 <div class="card-image">
-                    <div class="chart" id="map" ></div>
+                    <div class="" id="map" ></div>
                 </div>
                 <div class="card-content">
                     <div class="row">
