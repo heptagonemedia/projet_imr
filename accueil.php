@@ -157,15 +157,9 @@
 
 		</div>
 
-		<footer class="page-footer white foot">
-
-			<div class="footer-copyright foot black pied">
-				<div class="container valign-wrapper">
-					© 2019 Heptagone Media
-				</div>
-			</div>
-
-		</footer>
+		<?php
+            include('footer.php');
+        ?>
 
 	</body>
 

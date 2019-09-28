@@ -24,9 +24,9 @@ input[type=number] {
 }
 
 .foot{
-    position :fixed;
+    display: flex;
     width: 100%;
-    padding-top: -40px;
+    padding: 0;
     bottom: 0px;
 }
 
