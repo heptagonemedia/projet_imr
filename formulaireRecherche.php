@@ -23,8 +23,8 @@
     <body>
 
         <?php
-            include('navigation_side_bar_formulaire_calculs.php');
-        include "header_formulaire.php";
+            include('navigation_side_bar_formulaires.php');
+            include('header_formulaire.php');
         ?>
 
 
