@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf3c5e605853a4b8b421183a90737dde8
+class ComposerStaticInit7b6f107c111663750dc82ccae496019d
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -22,6 +22,7 @@ class ComposerStaticInitf3c5e605853a4b8b421183a90737dde8
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -639,6 +640,7 @@ class ComposerStaticInitf3c5e605853a4b8b421183a90737dde8
         'Facade\\Ignition\\ErrorPage\\ErrorPageViewModel' => __DIR__ . '/..' . '/facade/ignition/src/ErrorPage/ErrorPageViewModel.php',
         'Facade\\Ignition\\ErrorPage\\IgnitionWhoopsHandler' => __DIR__ . '/..' . '/facade/ignition/src/ErrorPage/IgnitionWhoopsHandler.php',
         'Facade\\Ignition\\ErrorPage\\Renderer' => __DIR__ . '/..' . '/facade/ignition/src/ErrorPage/Renderer.php',
+        'Facade\\Ignition\\Exceptions\\InvalidConfig' => __DIR__ . '/..' . '/facade/ignition/src/Exceptions/InvalidConfig.php',
         'Facade\\Ignition\\Exceptions\\UnableToShareErrorException' => __DIR__ . '/..' . '/facade/ignition/src/Exceptions/UnableToShareErrorException.php',
         'Facade\\Ignition\\Exceptions\\ViewException' => __DIR__ . '/..' . '/facade/ignition/src/Exceptions/ViewException.php',
         'Facade\\Ignition\\Exceptions\\ViewExceptionWithSolution' => __DIR__ . '/..' . '/facade/ignition/src/Exceptions/ViewExceptionWithSolution.php',
@@ -648,6 +650,7 @@ class ComposerStaticInitf3c5e605853a4b8b421183a90737dde8
         'Facade\\Ignition\\Http\\Controllers\\ScriptController' => __DIR__ . '/..' . '/facade/ignition/src/Http/Controllers/ScriptController.php',
         'Facade\\Ignition\\Http\\Controllers\\ShareReportController' => __DIR__ . '/..' . '/facade/ignition/src/Http/Controllers/ShareReportController.php',
         'Facade\\Ignition\\Http\\Controllers\\StyleController' => __DIR__ . '/..' . '/facade/ignition/src/Http/Controllers/StyleController.php',
+        'Facade\\Ignition\\Http\\Middleware\\IgnitionConfigValueEnabled' => __DIR__ . '/..' . '/facade/ignition/src/Http/Middleware/IgnitionConfigValueEnabled.php',
         'Facade\\Ignition\\Http\\Middleware\\IgnitionEnabled' => __DIR__ . '/..' . '/facade/ignition/src/Http/Middleware/IgnitionEnabled.php',
         'Facade\\Ignition\\Http\\Requests\\ExecuteSolutionRequest' => __DIR__ . '/..' . '/facade/ignition/src/Http/Requests/ExecuteSolutionRequest.php',
         'Facade\\Ignition\\Http\\Requests\\ShareReportRequest' => __DIR__ . '/..' . '/facade/ignition/src/Http/Requests/ShareReportRequest.php',
@@ -4210,10 +4213,10 @@ class ComposerStaticInitf3c5e605853a4b8b421183a90737dde8
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf3c5e605853a4b8b421183a90737dde8::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf3c5e605853a4b8b421183a90737dde8::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitf3c5e605853a4b8b421183a90737dde8::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitf3c5e605853a4b8b421183a90737dde8::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7b6f107c111663750dc82ccae496019d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7b6f107c111663750dc82ccae496019d::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit7b6f107c111663750dc82ccae496019d::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit7b6f107c111663750dc82ccae496019d::$classMap;
 
         }, null, ClassLoader::class);
     }
