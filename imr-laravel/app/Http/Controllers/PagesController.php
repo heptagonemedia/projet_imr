@@ -10,4 +10,10 @@ class PagesController extends Controller
     {
         return view('accueil');
     }
+
+    public function naviguerVersFormulaire()
+    {
+        return view('formulaire');
+    }
+
 }

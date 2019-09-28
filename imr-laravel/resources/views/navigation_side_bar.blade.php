@@ -37,6 +37,6 @@
 
     <li><a class="subheader">Faire des calculs</a></li>
 
-    <li><a class="waves-effect waves-teal" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i>Nouveau calcul</a></li>
+    <li><a class="waves-effect waves-teal" href="nouveauCalcul"><i class="material-icons">add_circle_outline</i>Nouveau calcul</a></li>
 
 </ul>

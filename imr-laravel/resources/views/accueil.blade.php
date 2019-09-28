@@ -12,14 +12,9 @@
 
 @section('title', 'Accueil IMR')
 
-@section('navigation_side_bar')
-
-@endsection
-
-
 @section('header')
 
-<!-- mock pour bouées valides, non valides -->
+    <!-- mock pour bouées valides, non valides -->
 
     @php
         $compteurFonctionelles = 0;
@@ -47,80 +42,80 @@
     @endfor
 
 
-<nav>
-    <div class="nav-wrapper black" >
-        <div class="row  ">
-            <div class="col l4 center-align"><button href="#" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button></div>
-                <div class="col l4 center-align" style="font-size: 30pt">Accueil</div>
+    <nav>
+        <div class="nav-wrapper black" >
+            <div class="row  ">
+                <div class="col l4 center-align"><button href="#" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button></div>
+                    <div class="col l4 center-align" style="font-size: 30pt">Accueil</div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class=" col l10">
+            <p>Dernière mise à jour : DATE et HEURE</p>
         </div>
     </div>
-</nav>
-
-
-<div class="container">
-    <div class=" col l10">
-        <p>Dernière mise à jour : DATE et HEURE</p>
-    </div>
-</div>
 
 @endsection
 
 
 
 @section('main')
-<div class="row">
+    <div class="row">
 
-    <div class="col l8">
+        <div class="col l8">
 
-        <div class="card">
-            <div >
-                <div class="" id="map" ></div>
-            </div>
+            <div class="card">
+                <div >
+                    <div class="" id="map" ></div>
+                </div>
 
-            <div class="card-content">
+                <div class="card-content">
 
-                <div class="row">
-                    <div class="col s6 center-align">Carte des bouées</div>
-                        <div class="col s6 center-align">
-                            <button class="btn green" onclick="agrandirCarte(document.getElementById('map'))">Plein ecran</button>
+                    <div class="row">
+                        <div class="col s6 center-align">Carte des bouées</div>
+                            <div class="col s6 center-align">
+                                <button class="btn green" onclick="agrandirCarte(document.getElementById('map'))">Plein ecran</button>
+                            </div>
                         </div>
                     </div>
+
+                </div>
+
+            </div>
+
+            <div class="col l4">
+
+                <div class="card white">
+
+                    <div class="card-content white-text">
+                        <span class="card-title black-text center-align">Bouées non conforme</span>
+                        <div class="container">
+                            <div class="circle " id="false">{{$compteurProbleme}}</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card white center-align">
+                    <div class="card-content white-text">
+
+                        <span class="card-title black-text">Bouées conformes</span>
+                        <div class="container center-align">
+                            <div class="circle " id="true">{{$compteurFonctionelles}}</div>
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
 
         </div>
 
-        <div class="col l4">
-
-            <div class="card white">
-
-                <div class="card-content white-text">
-                    <span class="card-title black-text center-align">Bouées non conforme</span>
-                    <div class="container">
-                        <div class="circle " id="false">{{$compteurProbleme}}</div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="card white center-align">
-                <div class="card-content white-text">
-
-                    <span class="card-title black-text">Bouées conformes</span>
-                    <div class="container center-align">
-                        <div class="circle " id="true">{{$compteurFonctionelles}}</div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
 
     </div>
-
-
-</div>
 
 @endsection
 

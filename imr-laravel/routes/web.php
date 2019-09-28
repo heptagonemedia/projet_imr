@@ -13,3 +13,4 @@
 
 Route::get('/', 'PagesController@naviguerVersAccueil');
 
+Route::get('/nouveauCalcul', 'PagesController@naviguerVersFormulaire');
