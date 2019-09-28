@@ -32,7 +32,6 @@ footer{
 }
 
 #menu{
-  margin-top: 10px;
 
   font-size: 30pt;
 }
@@ -56,4 +55,11 @@ footer{
 }
 .sidenav-trigger{
   margin-top: 10px;
+}
+.foot{
+  position :fixed;
+  width: 100%;
+  padding-top: -40px;
+  padding-bottom: -40px;
+  bottom: 0px;
 }
