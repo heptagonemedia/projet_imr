@@ -21,7 +21,11 @@
 
 	</head>
 
-	<body id="body">
+	<body>
+		
+		<?php
+			include('navigation_side_bar.php')
+		?>
 
 		<!-- mock pour bouées valides, non valides -->
 		<?php
@@ -45,117 +49,89 @@
 			} 
 		?>
 
-		<ul id="slide-out" class="sidenav draggable">
-
-			<li>
-				<div class="user-view">
-
-					<div class="background">
-						<img src="fond_header_navigation_side_bar.jpg" height="300px">
+			<div id="ligne1" class="black" >
+				<div class="row  ">
+					<div class="col l1 center-align"><a href="#" data-target="slide-out" class="sidenav-trigger white-text" ><i class="material-icons" id="menu">menu</i></a></div>
+					<div class="col l10 center-align">
+						Accueil
 					</div>
-					<a href="#user"><img src="logo_imr.png" width="60px" height="50px"></a>
-					<a href="#name"><span class="white-text name">Institut Maritime de Rimouski</span></a>
-
 				</div>
-			</li>
-
-			<li><a class="subheader">Accéder aux calculs</a></li>
-
-			<li class="no-padding">
-				<ul class="collapsible collapsible-accordion  waves-teal">
-					<li>
-						<a class="collapsible-header">Calculs Enregistrés<i class="material-icons">arrow_drop_down</i></a>
-						<div class="collapsible-body">
-							<ul>
-								<?php 
-									for ($i = 0; $i<6;$i++){
-										echo '<li><a class="waves-effect waves-teal" href="resultats.php?bouee='.$i.'&type=enr"><i class="material-icons">insert_chart_outlined</i>Calcul '.$i.'</a></li>';
-									}
-								?>
-							</ul>
+			</div>
+			<!-- <nav>
+				<div class="nav-wrapper black">
+					<div class="row">
+						<div class="col l4 center-align"><button href="#" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button></div>
+						<div class="col l4 center-align" style="font-size: 18pt">Accueil</div>
+						<div class="col l4 center align ">
+							<a href="accueil.php" class="breadcrumb">accueil</a>
+							<a href="#" class="breadcrumb">formulaire</a>
 						</div>
-					</li>
-				</ul>
-			</li>
+					</div>
+				</div>
+			</nav> -->
 
-			<li><a class="waves-effect waves-teal" href="resultats.php?bouee=2&type=prev"><i class="material-icons">new_releases</i>Calcul en cours</a></li>
-
-			<li><div class="divider"></div></li>
-
-			<li><a class="subheader">Faire des calculs</a></li>
-
-			<li><a class="waves-effect waves-teal" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i>Nouveau calcul</a></li>
-
-		</ul>
-
-		<div id="ligne1" class="black" >
-			<div class="row  ">
-				<div class="col l1 center-align"><a href="#" data-target="slide-out" class="sidenav-trigger white-text" ><i class="material-icons" id="menu">menu</i></a></div>
-				<div class="col l10 center-align">
-					Accueil
+			<div class="container">
+				<div class=" col l10">
+					<p>Dernière mise à jour : DATE et HEURE</p>
 				</div>
 			</div>
-		</div>
+		<!-- <main> -->	
 
-		<div class="container">
-			<div class=" col l10">
-				<h4>Dernière mise à jour : DATE et HEURE</h4>
-			</div>
-		</div>
+			<div class="row">
 
-		<div class="row">
+				<div class="col l8">
 
-			<div class="col l8">
+					<div class="card">
+						<div >
+							<div class="" id="map" ></div>
+						</div>
 
-				<div class="card">
-					<div >
-						<div class="" id="map" ></div>
-					</div>
-
-					<div class="card-content">
-					
-						<div class="row">
-							<div class="col s6 center-align">Carte des bouées</div>
-								<div class="col s6 center-align">
-									<button class="btn green" onclick="agrandirCarte(document.getElementById('map'))">Plein ecran</button>
+						<div class="card-content">
+						
+							<div class="row">
+								<div class="col s6 center-align">Carte des bouées</div>
+									<div class="col s6 center-align">
+										<button class="btn green" onclick="agrandirCarte(document.getElementById('map'))">Plein ecran</button>
+									</div>
 								</div>
 							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col l4">
+
+						<div class="card white">
+
+							<div class="card-content white-text">
+								<span class="card-title black-text center-align">Bouées non conforme</span>
+								<div class="container">
+									<div class="circle " id="false"><?php echo $compteurProbleme; ?></div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="card white center-align">
+							<div class="card-content white-text">
+
+								<span class="card-title black-text">Bouées conformes</span>
+								<div class="container center-align">
+									<div class="circle " id="true"><?php echo $compteurFonctionelles; ?></div>
+								</div>
+
+							</div>
 						</div>
 
 					</div>
 
 				</div>
 
-				<div class="col l4">
-
-					<div class="card white">
-
-						<div class="card-content white-text">
-							<span class="card-title black-text center-align">Bouées non conforme</span>
-							<div class="container">
-								<div class="circle " id="false"><?php echo $compteurProbleme; ?></div>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="card white center-align">
-						<div class="card-content white-text">
-
-							<span class="card-title black-text">Bouées conformes</span>
-							<div class="container center-align">
-								<div class="circle " id="true"><?php echo $compteurFonctionelles; ?></div>
-							</div>
-
-						</div>
-					</div>
-
-				</div>
 
 			</div>
 
-
-		</div>
+		<!-- </main> -->
 
 		<?php
             include('footer.php');
