@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="css/materialize.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="proto.css">
+        <link rel="stylesheet" type="text/css" href="css/proto.css">
 
 
         <script src="https://kit.fontawesome.com/e14504e0cd.js"></script>
@@ -31,6 +31,10 @@
 
 
     <body>
+
+    <?php
+        include('navigation_side_bar.php')
+    ?>
 
         <!-- Ligne en haut de la page -->
         <div id="ligne1" class="black" >
@@ -153,48 +157,7 @@
             <input type="hidden" value="enr" name="type">
         </form>
 
-        <ul id="slide-out" class="sidenav draggable">
-
-                <li>
-                    <div class="user-view">
-
-                        <div class="background">
-                            <img src="fond_header_navigation_side_bar.jpg" height="300px">
-                        </div>
-                        <a href="#user"><img src="logo_imr.png" width="60px" height="50px"></a>
-                        <a href="#name"><span class="white-text name">Institut Maritime de Rimouski</span></a>
-
-                    </div>
-                </li>
-
-                <li><a class="subheader">Accéder aux calculs</a></li>
-
-                <li class="no-padding">
-                    <ul class="collapsible collapsible-accordion  waves-teal">
-                        <li>
-                            <a class="collapsible-header">Calculs Enregistrés<i class="material-icons">arrow_drop_down</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <?php 
-                                        for ($i = 0; $i<6;$i++){
-                                            echo '<li><a class="waves-effect waves-teal" href="resultats.php?bouee='.$i.'&type=enr"><i class="material-icons">insert_chart_outlined</i>Calcul '.$i.'</a></li>';
-                                        }
-                                    ?>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-
-                <li><a class="waves-effect waves-teal" href="resultats.php?bouee=2&type=prev"><i class="material-icons">new_releases</i>Calcul en cours</a></li>
-
-                <li><div class="divider"></div></li>
-
-                <li><a class="subheader">Faire des calculs</a></li>
-
-                <li><a class="waves-effect waves-teal" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i>Nouveau calcul</a></li>
-
-            </ul>
+        
 
 
 
@@ -321,7 +284,7 @@
 
     </script>
 
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 </html>

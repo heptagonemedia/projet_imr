@@ -3,6 +3,8 @@ body {
 	background-color: #FFFFFF;
 	margin:0px;
 
+	
+
 
 	/*font-family: 'Squada One', cursive;*/
 
@@ -55,12 +57,6 @@ div{
 }
 #myChart{
 	padding: 0%;
-}
-#myChart2{
-
-}
-#myChart3{
-
 }
 
 #modal1{
