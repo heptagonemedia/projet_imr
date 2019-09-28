@@ -3,6 +3,7 @@
 
 DROP FUNCTION IF EXISTS verification_journaliere;
 DROP FUNCTION IF EXISTS verification_donnees_bouee;
+DROP FUNCTION IF EXISTS verification_distance;
 DROP FUNCTION IF EXISTS nouveau_intervale_incertitude;
 
 DROP TABLE IF EXISTS calcul_enregistre;
