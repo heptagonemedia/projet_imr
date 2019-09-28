@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="css/materialize.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="proto.css">
+        <link rel="stylesheet" type="text/css" href="css/proto.css">
 
 
         <script src="https://kit.fontawesome.com/e14504e0cd.js"></script>
@@ -284,7 +284,7 @@
 
     </script>
 
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
 </html>

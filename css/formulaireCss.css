@@ -5,6 +5,10 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
+main {
+  flex: 1 0 auto;
+}
+
 body{
     font-family: 'Rubik', sans-serif;
     margin: 0%;

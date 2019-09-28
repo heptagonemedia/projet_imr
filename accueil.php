@@ -13,7 +13,7 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
 		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css.css">
+		<link rel="stylesheet" type="text/css" href="css/css.css">
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
 		<link rel="stylesheet" href="css/materialize.css">
 
@@ -22,7 +22,7 @@
 	</head>
 
 	<body>
-		
+
 		<?php
 			include('navigation_side_bar.php')
 		?>
@@ -49,33 +49,23 @@
 			} 
 		?>
 
-			<div id="ligne1" class="black" >
-				<div class="row  ">
-					<div class="col l1 center-align"><a href="#" data-target="slide-out" class="sidenav-trigger white-text" ><i class="material-icons" id="menu">menu</i></a></div>
-					<div class="col l10 center-align">
-						Accueil
-					</div>
-				</div>
-			</div>
-			<!-- <nav>
-				<div class="nav-wrapper black">
-					<div class="row">
+			<nav>
+				<div class="nav-wrapper black" >
+					<div class="row  ">
 						<div class="col l4 center-align"><button href="#" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button></div>
-						<div class="col l4 center-align" style="font-size: 18pt">Accueil</div>
-						<div class="col l4 center align ">
-							<a href="accueil.php" class="breadcrumb">accueil</a>
-							<a href="#" class="breadcrumb">formulaire</a>
-						</div>
+							<div class="col l4 center-align" style="font-size: 30pt">Accueil</div>
 					</div>
 				</div>
-			</nav> -->
+			</nav>
+			
 
 			<div class="container">
 				<div class=" col l10">
 					<p>Dernière mise à jour : DATE et HEURE</p>
 				</div>
 			</div>
-		<!-- <main> -->	
+
+		<main>	
 
 			<div class="row">
 
@@ -131,7 +121,7 @@
 
 			</div>
 
-		<!-- </main> -->
+		</main>
 
 		<?php
             include('footer.php');
@@ -148,8 +138,8 @@
 	</script>
 
 	<script src="js/materialize.js"></script>
-	<script src="script.js"></script>
-	<script src="map.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/map.js"></script>
 
 	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
 

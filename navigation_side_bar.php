@@ -4,9 +4,9 @@
         <div class="user-view">
 
             <div class="background">
-                <img src="fond_header_navigation_side_bar.jpg" height="300px">
+                <img src="img/fond_header_navigation_side_bar.jpg" height="300px">
             </div>
-            <a href="#user"><img src="logo_imr.png" width="60px" height="50px"></a>
+            <a href="#user"><img src="img/logo_imr.png" width="60px" height="50px"></a>
             <a href="#name"><span class="white-text name">Institut Maritime de Rimouski</span></a>
 
         </div>

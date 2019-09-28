@@ -4,12 +4,8 @@
 }
 
 main {
-  margin-top: -50px;
-  font-family: Rubik;
-  /* background-color: #a2b0af; */
-  /*height: 100%;*/
+  flex: 1 0 auto;
 }
-
 
 body{
   margin: 0%;
@@ -61,8 +57,3 @@ footer{
 .sidenav-trigger{
   margin-top: 10px;
 }
-
-#ligne1{
-  font-size: 30pt;
-}
-

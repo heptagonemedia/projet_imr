@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        <link rel="stylesheet" href="formulaireCss.css">
+        <link rel="stylesheet" href="css/formulaireCss.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
         
@@ -220,6 +220,6 @@
     </body>
 
 
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 
 </html>
