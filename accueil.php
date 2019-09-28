@@ -5,14 +5,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
     <link rel="stylesheet" href="css/materialize.css">
 
   <title>AccueilIMR</title>
@@ -41,9 +42,9 @@
     <ul id="slide-out" class="sidenav draggable">
         <li><div class="user-view">
                 <div class="background">
-                    <img src="eau.jpg" height="300px">
+                    <img src="fond_header_navigation_side_bar.jpg" height="300px">
                 </div>
-                <a href="#user"><img src="logo.png" width="60px" height="50px"></a>
+                <a href="#user"><img src="logo_imr.png" width="60px" height="50px"></a>
                 <a href="#name"><span class="white-text name">Institut Maritime de Rimouski</span></a>
             </div></li>
         <li><a class="subheader">Accéder aux calculs</a></li>
