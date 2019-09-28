@@ -16,4 +16,9 @@ class PagesController extends Controller
         return view('formulaire');
     }
 
+    public function test()
+    {
+        return view('layoutResultat');
+    }
+
 }

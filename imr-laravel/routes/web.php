@@ -15,3 +15,5 @@ Route::get('/' , 'PagesController@naviguerVersAccueil');
 Route::get('/accueil' , 'PagesController@naviguerVersAccueil');
 
 Route::get('/nouveauCalcul', 'PagesController@naviguerVersFormulaire');
+
+Route::get('/test', 'PagesController@test');
