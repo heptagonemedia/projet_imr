@@ -10,7 +10,10 @@ defmodule GenerateurScenario.Application do
       # Starts a worker by calling: GenerateurScenario.Worker.start_link(arg)
       # {GenerateurScenario.Worker, arg}
       GenerateurScenario.Repo,
-      {Agents.Compteur, 0}
+      {Agents.Compteur, 0},
+      {Agents.Temperature, GenerateurScenario.LireXml.getTemperatureRegion},
+      {Agents.Debit, GenerateurScenario.LireXml.getDebitRegion},
+      {Agents.Salinite, GenerateurScenario.LireXml.getSaliniteRegion}
     ]
     # Agents.start
     scenarioNormaux = GenerateurScenario.LireXml.getScenarioNormaux
@@ -25,6 +28,7 @@ defmodule GenerateurScenario.Application do
     Supervisor.start_link(children, opts)
 
     IO.puts Agents.Compteur.value
+    IO.puts Agents.Temperature.value
 
 
     {:ok, self}
