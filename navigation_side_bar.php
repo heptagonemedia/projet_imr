@@ -11,7 +11,10 @@
 
         </div>
     </li>
-
+    <li><a class="waves-effect waves-teal" href="accueil.php"><i class="material-icons">home</i>Accueil</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
     <li><a class="subheader">Accéder aux calculs</a></li>
 
     <li class="no-padding">
@@ -20,10 +23,10 @@
                 <a class="collapsible-header">Calculs Enregistrés<i class="material-icons">arrow_drop_down</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <?php 
-                            for ($i = 0; $i<6;$i++){
-                                echo '<li><a class="waves-effect waves-teal" href="resultats.php?bouee='.$i.'&type=enr"><i class="material-icons">insert_chart_outlined</i>Calcul '.$i.'</a></li>';
-                            }
+                        <?php
+                        for ($i = 0; $i < 6; $i++) {
+                            echo '<li><a class="waves-effect waves-teal" href="resultats.php?bouee=' . $i . '&type=enr"><i class="material-icons">insert_chart_outlined</i>Calcul ' . $i . '</a></li>';
+                        }
                         ?>
                     </ul>
                 </div>
@@ -33,7 +36,9 @@
 
     <li><a class="waves-effect waves-teal" href="resultats.php?bouee=2&type=prev"><i class="material-icons">new_releases</i>Calcul en cours</a></li>
 
-    <li><div class="divider"></div></li>
+    <li>
+        <div class="divider"></div>
+    </li>
 
     <li><a class="subheader">Faire des calculs</a></li>
 

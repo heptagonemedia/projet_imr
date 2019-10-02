@@ -33,8 +33,8 @@
 <body>
 
     <?php
-    include('navigation_side_bar_formulaire_calculs.php');
-    include 'header_calcul.php';
+        include('navigation_side_bar.php');
+        include('header.php');
     ?>
     <!-- Ligne de la carte et du premier Graphique -->
     <div id="col1">
