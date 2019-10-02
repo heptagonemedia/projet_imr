@@ -7,17 +7,17 @@
         <link rel="stylesheet" href="css/formulaireCss.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
-        
+
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <title>Formulaire</title>
 
     </head>
 
-    
+
     <script src="js/materialize.js"></script>
 
     <body>
@@ -28,7 +28,6 @@
         ?>
 
 
-
         <main>
 
             <div class="container">
@@ -36,7 +35,7 @@
 
                     <div class="col s12 z-depth-6 card-panel">
 
-                        <form class="register-form">
+                        <form class="register-form" id="formulaire" method="post" action="resultats.php">
 
                             <div class="row">
 
@@ -76,34 +75,34 @@
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="annee" type="text">
+                                    <input name="annee" id="annee" type="text">
                                     <label for="annee" class="center-align">Année</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="mois" type="text">
+                                    <input id="mois" name="mois" type="text">
                                     <label for="mois" class="center-align">Mois</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="jour" type="text">
+                                    <input id="jour" name="jour" type="text">
                                     <label for="jour" class="center-align">Jour</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="heure" type="text">
+                                    <input id="heure" name="heure" type="text">
                                     <label for="heure" class="center-align">Heure</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="minute" type="text">
+                                    <input id="minute" name="minute" type="text">
                                     <label for="minute" class="center-align">Minute</label>
                                 </div>
 
                                 <div class="col s2"></div>
 
                                 <div class="col s10">
-                                    <span class="helper-text" id="frequence"><label id="alerte">Il faut saisir au moins une valeur et uniquement des entiers</label></span>
+                                    <span class="helper-text" id="frequence" name=" frequence"><label id="alerte">Il faut saisir au moins une valeur et uniquement des entiers</label></span>
                                 </div>
 
                             </div>
@@ -116,7 +115,7 @@
                                 </div>
 
                                 <div class="input-field col s10">
-                                    <input type="number" id="bouee">
+                                    <input type="number" name="bouee" id="bouee">
                                     <label for="bouee" id="labelBouee">Numero</label>
                                 </div>
 
@@ -136,22 +135,22 @@
                                 </div>
 
                                 <div class="input-field col s3">
-                                    <input id="dateDeb" type="text" class="datepicker">
+                                    <input id="dateDeb" type="text"  name="dateDeb" class="datepicker">
                                     <label for="dateDeb">Date début</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="heureDeb" type="text" class="timepicker">
+                                    <input id="heureDeb" type="text" name="heureDeb" class="timepicker">
                                     <label for="heureDeb">Heure début</label>
                                 </div>
 
                                 <div class="input-field col s3">
-                                    <input id="dateFin" type="text" class="datepicker">
+                                    <input id="dateFin" type="text" name="dateFin" class="datepicker">
                                     <label for="dateFin">Date fin</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="heureFin" type="text" class="timepicker">
+                                    <input id="heureFin" type="text" name="heureFin" class="timepicker">
                                     <label for="heureFin">Heure fin</label>
                                 </div>
 
@@ -175,7 +174,7 @@
                                     <div class="switch">
                                         <label>
                                             Non
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="type" value="enr">
                                             <span class="lever"></span>
                                             Oui
                                         </label>
@@ -197,7 +196,7 @@
                         </form>
 
                     </div>
-                    
+
                 </div>
             </div>
 

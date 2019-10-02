@@ -36,7 +36,6 @@
     include('navigation_side_bar_formulaire_calculs.php');
     include 'header_calcul.php';
     ?>
-
     <!-- Ligne de la carte et du premier Graphique -->
     <div id="col1">
         <div class="row">
@@ -122,7 +121,7 @@
             <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i></a></li>
             <li><a class="btn-floating pink tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Accueil" href="accueil.php"><i class="material-icons">home</i></a></li>
 
-            <?php if (isset($_GET["type"]) && $_GET['type'] == 'prev') : ?>
+            <?php if (!isset($_POST["type"]) | (isset($_POST["type"]) && $_POST["type"]!="enr")) : ?>
                 <li><a class="btn-floating yellow darken-1 tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Retourner au formulaire" onclick="retourFormulaire()"><i class="material-icons">arrow_back</i></a></li>
                 <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Enregistrer le calcul" href="#modal1" onclick="enregistrer()"><i class="material-icons">save</i></a></li>
             <?php endif; ?>
@@ -131,7 +130,7 @@
     </div>
 
 
-    <form method="post" id='formulaire' action="resultats.php">
+    <form method="post" id='formulaireType' action="resultats.php">
         <input type="hidden" value="enr" name="type">
     </form>
 
@@ -141,11 +140,8 @@
 
     <?php
 
-    if (isset($_GET["type"])) :
+    if (!isset($_POST["type"]) | (isset($_POST["type"]) && $_POST["type"]!="enr")) :
 
-        $type = $_GET["type"];
-
-        if ($type == "prev") :
             ?>
             <div id="modal1" class="modal row">
                 <div class="modal-content">
@@ -172,7 +168,6 @@
             <!--    -->
     <?php
 
-        endif;
     endif;
 
     ?>

@@ -21,39 +21,40 @@ function detecterErreurs() {
         $("#texteAlerte").text("");
         $("#divAlerte").hide();
             //apres la detection d erreurs
-            var annee = $('#annee').val();
-            var mois = $('#mois').val();
-            var jour = $('#jour').val();
-            var heure = $('#heure').val();
-            var minute = $('#minute').val();
-            var seconde = $('#seconde').val();
-            var calcul = $('input[name=calcul]:checked').val();
-            var bouee = $('#bouee').val();
-            var dateDeb = $('#dateDeb').val();
-            var heureDeb = $('#heureDeb').val();
-            var dateFin = $('#dateFin').val();
-            var heureFin = $('#heureFin').val();
-            var lien = "resultats.php?";
-            lien += 'annee='+annee;
-            lien += '&mois='+mois;
-            lien += '&jour='+jour;
-            lien += '&heure='+heure;
-            lien += '&minute='+minute;
-            lien += '&seconde='+seconde;
-            lien += '&calcul='+calcul;
-            lien += '&bouee='+bouee;
-            lien += '&dateDeb='+dateDeb;
-            lien += '&heureDeb='+heureDeb;
-            lien += '&dateFin='+dateFin;
-            lien += '&heureFin='+heureFin;
-            if($("input[type='checkbox']:checked").val()=='on'){
-                var type = 'enr';
-            }else {
-                var type = 'prev';
-            }
-            lien += '&type='+type;
-            console.log(lien);
-            window.location.href = lien;
+            // var annee = $('#annee').val();
+            // var mois = $('#mois').val();
+            // var jour = $('#jour').val();
+            // var heure = $('#heure').val();
+            // var minute = $('#minute').val();
+            // var seconde = $('#seconde').val();
+            // var calcul = $('input[name=calcul]:checked').val();
+            // var bouee = $('#bouee').val();
+            // var dateDeb = $('#dateDeb').val();
+            // var heureDeb = $('#heureDeb').val();
+            // var dateFin = $('#dateFin').val();
+            // var heureFin = $('#heureFin').val();
+            // var lien = "resultats.php?";
+            // lien += 'annee='+annee;
+            // lien += '&mois='+mois;
+            // lien += '&jour='+jour;
+            // lien += '&heure='+heure;
+            // lien += '&minute='+minute;
+            // lien += '&seconde='+seconde;
+            // lien += '&calcul='+calcul;
+            // lien += '&bouee='+bouee;
+            // lien += '&dateDeb='+dateDeb;
+            // lien += '&heureDeb='+heureDeb;
+            // lien += '&dateFin='+dateFin;
+            // lien += '&heureFin='+heureFin;
+            // if($("input[type='checkbox']:checked").val()=='on'){
+            //     var type = 'enr';
+            // }else {
+            //     var type = 'prev';
+            // }
+            // lien += '&type='+type;
+            // console.log(lien);
+            // window.location.href = lien;
+        $('#formulaire').submit();
     }
 
 }
@@ -67,9 +68,7 @@ function enregistrer(){
     $('.modal').modal();
 }
 function enregistrerForm(){
-    var url = document.location.href;
-    console.log(url.substr(0,url.indexOf('type')));
-    window.location.href =url.substr(0,url.indexOf('prev'))+'enr';
+    $("#formulaireType").submit();
 
 }
 
