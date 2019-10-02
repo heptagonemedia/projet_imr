@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
-
+<?php
+    if (isset($_GET['type'])){
+        $type = $_GET['type'];
+    }elseif (isset($_POST['type'])){
+        $type = $_POST['type'];
+    }else{
+        $type = 'prev';
+    }
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,7 +129,7 @@
             <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i></a></li>
             <li><a class="btn-floating pink tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Accueil" href="accueil.php"><i class="material-icons">home</i></a></li>
 
-            <?php if (!isset($_POST["type"]) | (isset($_POST["type"]) && $_POST["type"]!="enr")) : ?>
+            <?php if (!isset($type) | (isset($type) && $type=='prev') ) : ?>
                 <li><a class="btn-floating yellow darken-1 tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Retourner au formulaire" onclick="retourFormulaire()"><i class="material-icons">arrow_back</i></a></li>
                 <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Enregistrer le calcul" href="#modal1" onclick="enregistrer()"><i class="material-icons">save</i></a></li>
             <?php endif; ?>
@@ -140,7 +148,7 @@
 
     <?php
 
-    if (!isset($_POST["type"]) | (isset($_POST["type"]) && $_POST["type"]!="enr")) :
+    if (!isset($type) | (isset($type) && $type=='prev') ) :
 
             ?>
             <div id="modal1" class="modal row">
