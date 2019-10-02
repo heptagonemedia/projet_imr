@@ -137,10 +137,28 @@ function verifierErreurFrequence() {
         let verificationHeure = verifierHeure(valeurHeure);
         let verificationMinute = verifierMinute(valeurMinute);
 
+        var erreur = "";
+
         if (verificationAnnee && verificationMois && verificationJour && verificationHeure && verificationMinute) {
             $("#frequence").css('display','none');
             return true;
         }else {
+            if (!verificationAnnee) {
+                erreur = "Annee, ";
+            }
+            if (!verificationMois) {
+                erreur = erreur + "Mois, "
+            }
+            if (!verificationJour) {
+                erreur = erreur + "Jour, "
+            }
+            if (!verificationHeure) {
+                erreur = erreur + "Heure, "
+            }
+            if (!verificationMinute) {
+                erreur = erreur + "Minute, "
+            }
+            $("#frequence").html( "<label id=\"alerte\"> " + erreur + "Il faut entrer un entier non négatif cohérent</label>");
             $("#frequence").show();
             return false;
         }
@@ -155,7 +173,7 @@ function verifierAnnee(valeur) {
 }
 
 function verifierMois(valeur) {
-    if (valeur < 0 || valeur > 2) {
+    if (valeur < 0 || valeur > 12) {
         return false;
     }
     return true;
@@ -169,14 +187,14 @@ function verifierJour(valeur) {
 }
 
 function verifierHeure(valeur) {
-    if (valeur < 0 || valeur > 23) {
+    if (valeur < 0 || valeur > 24) {
         return false;
     }
     return true;
 }
 
 function verifierMinute(valeur) {
-    if (valeur < 0 || valeur > 59) {
+    if (valeur < 0 || valeur > 60) {
         return false;
     }
     return true;
