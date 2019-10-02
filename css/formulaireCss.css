@@ -69,3 +69,14 @@ img{
     color: #FFFFFF;
     width: 20px;
 }
+
+@media screen and (max-width: 700px) {
+    #cacheSurTelephone {
+        visibility: hidden;
+        clear: both;
+        float: left;
+        margin: 10px auto 5px 20px;
+        width: 28%;
+        display: none;
+    }
+}
