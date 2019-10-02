@@ -126,9 +126,15 @@ DECLARE
     frequence_calcul FLOAT; -- Que représente ce nombre ? Comment l'interpréter ?
     fk_type_donnee_mesuree INT;
     fk_type_calcul INT;
+    calcul_prevu BOOLEAN;
     champ_type_calcul TEXT;
 
     valeurs_lues FLOAT[];
+    valeur_lue FLOAT;
+
+    moyenne FLOAT;
+    resultat FLOAT;
+    nb_valeurs INT;
 
 BEGIN
     fk_bouee := (
@@ -161,6 +167,11 @@ BEGIN
         FROM calcul_enregistre
         WHERE id_calcul_enregistre = id_calcul
     );
+    calcul_prevu := (
+        SELECT prevu
+        FROM calcul_enregistre
+        WHERE id_type_calcul = fk_type_calcul
+    );
     champ_type_calcul := (
         SELECT etiquette
         FROM type_calcul
@@ -184,8 +195,36 @@ BEGIN
         AND hdb.date_saisie > date_debut_calcul
         AND dt.valide = true
     );
+    valeur_lue := 0;
+    resultat := 0;
+    nb_valeurs := 0;
 
+    IF champ_type_calcul = 'moyenne' THEN
+        FOREACH valeur_lue IN ARRAY valeurs_lues
+        LOOP
+            resultat := resultat + valeur_lue;
+            nb_valeurs := nb_valeurs + 1;
+        END LOOP;
+        resultat := resultat / nb_valeurs;
 
+        INSERT INTO calcul_enregistre (date_debut, date_fin, frequence, valeur, id_bouee, id_type_donnee_mesuree, id_type_calcul, prevu)
+        VALUES (date_debut_calcul, date_fin_calcul, frequence_calcul, resultat, fk_bouee, fk_type_donnee_mesuree, fk_type_calcul, calcul_prevu);
+
+    ELSEIF champ_type_calcul = 'ecart type' THEN
+        FOREACH valeur_lue IN ARRAY valeurs_lues
+            LOOP
+                moyenne := moyenne + valeur_lue;
+                nb_valeurs := nb_valeurs + 1;
+            END LOOP;
+        moyenne := moyenne / nb_valeurs;
+
+        FOREACH valeur_lue IN ARRAY valeurs_lues
+            LOOP
+                resultat := resultat + POWER((valeur_lue)-moyenne, 2);
+            END LOOP;
+        resultat := SQRT((1/nb_valeurs) * resultat);
+
+    END IF;
 
 END;
 
