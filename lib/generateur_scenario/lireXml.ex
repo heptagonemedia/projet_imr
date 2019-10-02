@@ -1,57 +1,63 @@
 defmodule GenerateurScenario.LireXml do
 
 
-    def getNomRegion() do
+    def get_nom_region() do
         import SweetXml
-        {:ok, xmldoc} = File.read(Path.expand("./configuration.xml"))
+        {:ok, xmldoc} = File.read(Path.expand("./config/configuration.xml"))
         xmldoc |> xpath(~x"/config/region/nom/text()"l)
     end
 
-    def getTemperatureRegion() do
+    def get_temperature_basse_region() do
         import SweetXml
-        {:ok, xmldoc} = File.read(Path.expand("./configuration.xml"))
-        xmldoc |> xpath(~x"/config/region/temperature/text()"l)
+        {:ok, xmldoc} = File.read(Path.expand("./config/configuration.xml"))
+        xmldoc |> xpath(~x"/config/region/temperature_la_plus_basse/text()"l)
     end
 
-    def getSaliniteRegion() do
+    def get_temperature_eleve_region() do
         import SweetXml
-        {:ok, xmldoc} = File.read(Path.expand("./configuration.xml"))
+        {:ok, xmldoc} = File.read(Path.expand("./config/configuration.xml"))
+        xmldoc |> xpath(~x"/config/region/temperature_la_plus_eleve/text()"l)
+    end
+
+    def get_salinite_region() do
+        import SweetXml
+        {:ok, xmldoc} = File.read(Path.expand("./config/configuration.xml"))
         xmldoc |> xpath(~x"/config/region/salinite/text()"l)
     end
 
-    def getDebitRegion() do
+    def get_debit_region() do
         import SweetXml
-        {:ok, xmldoc} = File.read(Path.expand("./configuration.xml"))
+        {:ok, xmldoc} = File.read(Path.expand("./config/configuration.xml"))
         xmldoc |> xpath(~x"/config/region/debit/text()"l)
     end
 
-    def getScenarioBase() do
+    def get_scenario_base() do
         import SweetXml
-        {:ok, xmldoc} = File.read(Path.expand("./configuration.xml"))
+        {:ok, xmldoc} = File.read(Path.expand("./config/configuration.xml"))
         xmldoc |> xpath(~x"/config/proportion/scenarioBase/text()"l)
     end
 
-    def getNbScenario() do
+    def get_nb_scenario() do
         import SweetXml
-        {:ok, xmldoc} = File.read(Path.expand("./configuration.xml"))
+        {:ok, xmldoc} = File.read(Path.expand("./config/configuration.xml"))
         xmldoc |> xpath(~x"/config/proportion/nbScenario/text()"l)
     end
 
-    def getScenarioNormaux() do
+    def get_scenario_normaux() do
         import SweetXml
-        {:ok, xmldoc} = File.read(Path.expand("./configuration.xml"))
+        {:ok, xmldoc} = File.read(Path.expand("./config/configuration.xml"))
         xmldoc |> xpath(~x"/config/proportion/scenarioNormaux/text()"l)
     end
 
-    def getScenarioHybride() do
+    def get_scenario_hybride() do
         import SweetXml
-        {:ok, xmldoc} = File.read(Path.expand("./configuration.xml"))
+        {:ok, xmldoc} = File.read(Path.expand("./config/configuration.xml"))
         xmldoc |> xpath(~x"/config/proportion/scenarioHybride/text()"l)
     end
 
-    def getScenarioRetarde() do
+    def get_scenario_retarde() do
         import SweetXml
-        {:ok, xmldoc} = File.read(Path.expand("./configuration.xml"))
+        {:ok, xmldoc} = File.read(Path.expand("./config/configuration.xml"))
         xmldoc |> xpath(~x"/config/proportion/scenarioRetardes/text()"l)
     end
 

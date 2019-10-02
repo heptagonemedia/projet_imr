@@ -1,7 +1,8 @@
 <config>
     <region>
         <nom>Ocean Atlantique</nom>
-        <temperature>[5,30]</temperature>
+        <temperature_la_plus_basse>5</temperature_la_plus_basse>
+        <temperature_la_plus_eleve>30</temperature_la_plus_eleve>
         <salinite>30</salinite>
         <debit>0,2</debit>
     </region>

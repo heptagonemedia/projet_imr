@@ -11,15 +11,15 @@ defmodule GenerateurScenario.Application do
       # {GenerateurScenario.Worker, arg}
       GenerateurScenario.Repo,
       {Agents.Compteur, 0},
-      {Agents.Temperature, GenerateurScenario.LireXml.getTemperatureRegion},
-      {Agents.Debit, GenerateurScenario.LireXml.getDebitRegion},
-      {Agents.Salinite, GenerateurScenario.LireXml.getSaliniteRegion}
+      {Agents.Temperature, GenerateurScenario.LireXml.get_temperature_basse_region},
+      {Agents.Debit, GenerateurScenario.LireXml.get_debit_region},
+      {Agents.Salinite, GenerateurScenario.LireXml.get_salinite_region}
     ]
     # Agents.start
-    scenarioNormaux = GenerateurScenario.LireXml.getScenarioNormaux
-    scenarioBase = GenerateurScenario.LireXml.getScenarioBase
-    scenarioHybride = GenerateurScenario.LireXml.getScenarioHybride
-    scenarioRetardes = GenerateurScenario.LireXml.getScenarioRetarde
+    scenarioNormaux = GenerateurScenario.LireXml.get_scenario_normaux
+    scenarioBase = GenerateurScenario.LireXml.get_scenario_base
+    scenarioHybride = GenerateurScenario.LireXml.get_scenario_hybride
+    scenarioRetardes = GenerateurScenario.LireXml.get_scenario_retarde
 
 
     # See https://hexdocs.pm/elixir/Supervisor.html
