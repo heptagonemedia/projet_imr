@@ -386,7 +386,4 @@ VALUES (3, 3, 24.990); -- histo 3 et type 3
 -- SELECT nouveau_intervale_incertitude(3, 'debit'); -- type 2
 -- SELECT nouveau_intervale_incertitude(3, 'temperature'); -- type 3
 
-SELECT verification_donnees_bouee(3) -- vérification de tous les types.
-
-
-
+SELECT verification_donnees_bouee(3); -- vérification de tous les types.
