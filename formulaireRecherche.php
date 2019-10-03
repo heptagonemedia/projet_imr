@@ -35,7 +35,7 @@
 
                     <div class="col s12 z-depth-6 card-panel">
 
-                        <form class="register-form">
+                        <form id="formulaire" method="post" action="resultats.php" class="register-form">
 
                             <div class="row">
 
@@ -75,27 +75,27 @@
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="annee" type="text">
+                                    <input id="annee" name="annee" type="text">
                                     <label for="annee" class="center-align">Année</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="mois" type="text">
+                                    <input id="mois" name="mois" type="text">
                                     <label for="mois" class="center-align">Mois</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="jour" type="text">
+                                    <input id="jour" name="jour" type="text">
                                     <label for="jour" class="center-align">Jour</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="heure" type="text">
+                                    <input id="heure" name="heure" type="text">
                                     <label for="heure" class="center-align">Heure</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="minute" type="text">
+                                    <input id="minute" name="minute" type="text">
                                     <label for="minute" class="center-align">Minute</label>
                                 </div>
 
@@ -115,7 +115,7 @@
                                 </div>
 
                                 <div class="input-field col s10">
-                                    <input type="number" id="bouee">
+                                    <input type="number" name="bouee" id="bouee">
                                     <label for="bouee" id="labelBouee">Numero</label>
                                 </div>
 
@@ -135,22 +135,22 @@
                                 </div>
 
                                 <div class="input-field col s3">
-                                    <input id="dateDeb" type="text" class="datepicker">
+                                    <input id="dateDeb" type="text" name="dateDeb" class="datepicker">
                                     <label for="dateDeb">Date début</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="heureDeb" type="text" class="timepicker">
+                                    <input id="heureDeb" type="text" name="heureDeb" class="timepicker">
                                     <label for="heureDeb">Heure début</label>
                                 </div>
 
                                 <div class="input-field col s3">
-                                    <input id="dateFin" type="text" class="datepicker">
+                                    <input id="dateFin" type="text" name="dateFin" class="datepicker">
                                     <label for="dateFin">Date fin</label>
                                 </div>
 
                                 <div class="input-field col s2">
-                                    <input id="heureFin" type="text" class="timepicker">
+                                    <input id="heureFin" type="text" name="heureFin" class="timepicker">
                                     <label for="heureFin">Heure fin</label>
                                 </div>
 
@@ -174,7 +174,7 @@
                                     <div class="switch">
                                         <label>
                                             Non
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="type" value="enr">
                                             <span class="lever"></span>
                                             Oui
                                         </label>

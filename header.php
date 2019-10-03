@@ -43,7 +43,9 @@
                     <a href="formulaireRecherche.php" class="breadcrumb">formulaire</a>
                     <a href="#" class="breadcrumb">Calcul : <?php if (isset($_POST['bouee'])) {
                                                                     echo $_POST['bouee'];
-                                                                } else {
+                                                                }elseif (isset($_GET["bouee"])){
+                                                                    echo $_GET["bouee"];
+                                                                }else {
                                                                     echo " nom";
                                                                 } ?></a>
                 </div>
