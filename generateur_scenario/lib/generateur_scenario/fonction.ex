@@ -14,7 +14,7 @@ defmodule GenerateurScenario.Fonction do
         Map.put_new(map, :decalage_en_x, Enum.random(map.min..map.max))
     end
 
-    def fonction_sinusoidale_normale(map, instant) do
+    def fonction_sinusoidale(map, instant) do
         map.amplitude + Math.sin(map.pulsation * instant) + map.decalage_en_x
     end
 
@@ -29,5 +29,11 @@ defmodule GenerateurScenario.Fonction do
 
     def fonction_affine_anormale_decroissante(instant) do
         -40*instant + 5
+    end
+
+    def forger_parametres(map) do
+        calcul_amplitude(map)
+        |> calcul_pulsation()
+        |> calcul_decalage_en_x()
     end
 end
