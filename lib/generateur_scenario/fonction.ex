@@ -1,25 +1,21 @@
 defmodule GenerateurScenario.Fonction do
 
 
-    def calcul_amplitude(min, max) do
-        (max - min)/2
+    def calcul_amplitude(map) do
+        Map.put_new(map, :amplitude, (map.max - map.min)/2)
     end
 
-    def calcul_pulsation(duree_cycle) do
-        2 * Math.pi() / duree_cycle
+    def calcul_pulsation(map) do
+        duree_cycle = 600
+        Map.put_new(map, :pulsation, 2 * Math.pi() / duree_cycle)
     end
 
-    def calcul_decalage_en_x(min, max) do
-        max - calcul_amplitude(min, max)
+    def calcul_decalage_en_x(map) do
+        Map.put_new(map, :decalage_en_x, Enum.random(map.min..map.max))
     end
 
-    @spec fonction_sinusoidale_normale(number, number, number, number) :: float
-    def fonction_sinusoidale_normale(instant, min, max, duree_cycle) do
-        calcul_amplitude(min, max)*Math.sin(calcul_pulsation(duree_cycle)*instant) + calcul_decalage_en_x(min, max)
-    end
-
-    def fonction_sinusoidale_anormale(instant, duree_cycle, decalage) do
-        calcul_amplitude(decalage - 2, decalage + 2)*Math.sin(calcul_pulsation(duree_cycle)*instant) + decalage
+    def fonction_sinusoidale_normale(map, instant) do
+        map.amplitude + Math.sin(map.pulsation * instant) + map.decalage_en_x
     end
 
     @spec fonction_batterie_normale(number, number, number) :: number
