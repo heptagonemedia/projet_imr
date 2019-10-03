@@ -19,5 +19,6 @@
         <scenarioBase>10</scenarioBase>
         <scenarioHybride>5</scenarioHybride>
         <scenarioRetardes>5</scenarioRetardes>
+        <scenarioDureeCycle>600</scenarioDureeCycle>
     </proportion>
 </config>

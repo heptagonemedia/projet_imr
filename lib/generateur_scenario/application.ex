@@ -24,6 +24,7 @@ defmodule GenerateurScenario.Application do
     scenarioBase = GenerateurScenario.LireXml.get_scenario_base
     scenarioHybride = GenerateurScenario.LireXml.get_scenario_hybride
     scenarioRetardes = GenerateurScenario.LireXml.get_scenario_retarde
+    scenarioDureeCycle = GenerateurScenario.LireXml.get_scenario_duree_cycle
 
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -35,6 +36,8 @@ defmodule GenerateurScenario.Application do
     IO.puts Agents.Temperature.value.min
     IO.puts Agents.Salinite.value.min
     IO.puts Agents.Debit.value.min
+
+    IO.puts scenarioDureeCycle
 
     {:ok, self}
   end

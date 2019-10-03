@@ -88,4 +88,10 @@ defmodule GenerateurScenario.LireXml do
         xmldoc |> xpath(~x"/config/proportion/scenarioRetardes/text()"l)
     end
 
+    def get_scenario_duree_cycle() do
+        import SweetXml
+        {:ok, xmldoc} = File.read(Path.expand("./config/configuration.xml"))
+        xmldoc |> xpath(~x"/config/proportion/scenarioDureeCycle/text()"l)
+    end
+
 end
