@@ -12,6 +12,11 @@
         </div>
     </li>
 
+    <li><a class="waves-effect waves-teal" href="accueil"><i class="material-icons">home</i>Accueil</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+
     <li><a class="subheader">Accéder aux calculs</a></li>
 
     <li class="no-padding">
