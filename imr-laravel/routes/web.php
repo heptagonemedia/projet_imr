@@ -17,3 +17,6 @@ Route::get('/accueil' , 'PagesController@naviguerVersAccueil');
 Route::get('/nouveauCalcul', 'PagesController@naviguerVersFormulaire');
 
 Route::get('/test', 'PagesController@test');
+
+Route::post('/resultat', 'ResultatController@store');
+// Route::post('/resultat/{resultat}', 'ResultatController@showOne');

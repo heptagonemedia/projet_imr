@@ -1,15 +1,18 @@
 initFormulaire();
 $('.dropdown-trigger').dropdown();
-$(document).ready(function(){
+
+$(document).ready(function () {
     $('.fixed-action-btn').floatingActionButton();
 });
-$(document).ready(function(){
+
+$(document).ready(function () {
     $('.collapsible').collapsible();
 });
 
-$(document).ready(function(){
-        $('.sidenav').sidenav();
+$(document).ready(function () {
+    $('.sidenav').sidenav();
 });
+
 function detecterErreurs() {
 
     //A ne pas mettre directement dans la condition du if
@@ -20,80 +23,46 @@ function detecterErreurs() {
     if (verificationFrequence && verificationBouee && verificationIntervalle) {
         $("#texteAlerte").text("");
         $("#divAlerte").hide();
-            //apres la detection d erreurs
-            var annee = $('#annee').val();
-            var mois = $('#mois').val();
-            var jour = $('#jour').val();
-            var heure = $('#heure').val();
-            var minute = $('#minute').val();
-            var seconde = $('#seconde').val();
-            var calcul = $('input[name=calcul]:checked').val();
-            var bouee = $('#bouee').val();
-            var dateDeb = $('#dateDeb').val();
-            var heureDeb = $('#heureDeb').val();
-            var dateFin = $('#dateFin').val();
-            var heureFin = $('#heureFin').val();
-            var lien = "resultats.php?";
-            lien += 'annee='+annee;
-            lien += '&mois='+mois;
-            lien += '&jour='+jour;
-            lien += '&heure='+heure;
-            lien += '&minute='+minute;
-            lien += '&seconde='+seconde;
-            lien += '&calcul='+calcul;
-            lien += '&bouee='+bouee;
-            lien += '&dateDeb='+dateDeb;
-            lien += '&heureDeb='+heureDeb;
-            lien += '&dateFin='+dateFin;
-            lien += '&heureFin='+heureFin;
-            if($("input[type='checkbox']:checked").val()=='on'){
-                var type = 'enr';
-            }else {
-                var type = 'prev';
-            }
-            lien += '&type='+type;
-            console.log(lien);
-            window.location.href = lien;
+
+        $('#formulaire').submit();
     }
 
 }
 
-function retourFormulaire(){
+function retourFormulaire() {
     var url = document.location.href;
-    window.location.href = "formulaireRecherche.php"+ url.substr(url.indexOf('?'));
+    // window.location.href = "formulaireRecherche.php"+ url.substr(url.indexOf('?'));
 }
 
-function enregistrer(){
+function enregistrer() {
     $('.modal').modal();
 }
-function enregistrerForm(){
-    var url = document.location.href;
-    console.log(url.substr(0,url.indexOf('type')));
-    window.location.href =url.substr(0,url.indexOf('prev'))+'enr';
+function enregistrerForm() {
+    $("#formulaireType").submit();
 
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('.tooltipped').tooltip();
 });
 
 
 
 //remplit les champs du formulaire avec les données de l'url si il y en a
-function initFormulaire(){
-    donnees = window.location.href.substr(window.location.href.indexOf('?')+1);
+function initFormulaire() {
+    donnees = window.location.href.substr(window.location.href.indexOf('?') + 1);
     var tabDonnees = donnees.split('&');
     console.log(tabDonnees);
     var nom;
     var valeur;
-    for(i=0; i<tabDonnees.length-1;i++){
-        var nom = tabDonnees[i].substr(0,tabDonnees[i].indexOf("="));
-        var valeur = tabDonnees[i].substr(tabDonnees[i].indexOf("=")+1);
-        if(nom == 'calcul'){
-            $("#"+valeur).attr('checked', true);
-        }else{
-            console.log(nom+ ' ==> '+valeur);
-            $('#'+nom).val(valeur);
+    for (i = 0; i < tabDonnees.length - 1; i++) {
+        var nom = tabDonnees[i].substr(0, tabDonnees[i].indexOf("="));
+        var valeur = tabDonnees[i].substr(tabDonnees[i].indexOf("=") + 1);
+        if (nom == 'calcul') {
+            $("#" + valeur).attr('checked', true);
+        } else {
+            console.log(nom + ' ==> ' + valeur);
+            $('#' + nom).val(valeur);
         }
     }
 }
@@ -108,7 +77,7 @@ function verifierErreurBouee() {
         return false;
     }
     else {
-        $("#HelperBouee").css('display','none');
+        $("#HelperBouee").css('display', 'none');
         return true;
     }
 }
@@ -138,10 +107,28 @@ function verifierErreurFrequence() {
         let verificationHeure = verifierHeure(valeurHeure);
         let verificationMinute = verifierMinute(valeurMinute);
 
+        var erreur = "";
+
         if (verificationAnnee && verificationMois && verificationJour && verificationHeure && verificationMinute) {
-            $("#frequence").css('display','none');
+            $("#frequence").css('display', 'none');
             return true;
-        }else {
+        } else {
+            if (!verificationAnnee) {
+                erreur = "Annee, ";
+            }
+            if (!verificationMois) {
+                erreur = erreur + "Mois, "
+            }
+            if (!verificationJour) {
+                erreur = erreur + "Jour, "
+            }
+            if (!verificationHeure) {
+                erreur = erreur + "Heure, "
+            }
+            if (!verificationMinute) {
+                erreur = erreur + "Minute, "
+            }
+            $("#frequence").html("<label id=\"alerte\"> " + erreur + "Il faut entrer un entier non négatif cohérent</label>");
             $("#frequence").show();
             return false;
         }
@@ -156,7 +143,7 @@ function verifierAnnee(valeur) {
 }
 
 function verifierMois(valeur) {
-    if (valeur < 0 || valeur > 2) {
+    if (valeur < 0 || valeur > 12) {
         return false;
     }
     return true;
@@ -170,14 +157,14 @@ function verifierJour(valeur) {
 }
 
 function verifierHeure(valeur) {
-    if (valeur < 0 || valeur > 23) {
+    if (valeur < 0 || valeur > 24) {
         return false;
     }
     return true;
 }
 
 function verifierMinute(valeur) {
-    if (valeur < 0 || valeur > 59) {
+    if (valeur < 0 || valeur > 60) {
         return false;
     }
     return true;
@@ -211,31 +198,31 @@ function verifierErreurIntervalle() {
     }
 
     var validationDates = verifierDatesintervalle(debut, fin);
-    var validationHeures = verifierHeuresIntervalle(heureDebut, heureFin,debut,fin);
+    var validationHeures = verifierHeuresIntervalle(heureDebut, heureFin, debut, fin);
 
-    if(!validationDates || !validationHeures) {
+    if (!validationDates || !validationHeures) {
         $("#heureTest").show();
         return false;
     }
-    $("#heureTest").css('display','none');
+    $("#heureTest").css('display', 'none');
     return true;
 }
 
 
-function verifierDatesintervalle(debut,fin) {
-    
-    if (debut.getFullYear() > fin.getFullYear() || (debut.getMonth() > fin.getMonth() && debut.getFullYear()==fin.getFullYear()) ||
+function verifierDatesintervalle(debut, fin) {
+
+    if (debut.getFullYear() > fin.getFullYear() || (debut.getMonth() > fin.getMonth() && debut.getFullYear() == fin.getFullYear()) ||
         (debut.getDate() > fin.getDate() && debut.getMonth() == fin.getMonth() && debut.getFullYear() == fin.getFullYear())) {
 
         $("#heureTest").show();
-        
+
         return false;
     }
     return true;
 }
 
-function verifierHeuresIntervalle(heureDebut,heureFin,dateDebut,dateFin) {
-    if ((heureDebut > heureFin || heureDebut == heureFin) && dateDebut.getFullYear()==dateFin.getFullYear() &&
+function verifierHeuresIntervalle(heureDebut, heureFin, dateDebut, dateFin) {
+    if ((heureDebut > heureFin || heureDebut == heureFin) && dateDebut.getFullYear() == dateFin.getFullYear() &&
         dateDebut.getMonth() == dateFin.getMonth() && dateDebut.getDate() == dateFin.getDate()) {
 
         $("#heureTest").show();
@@ -251,7 +238,7 @@ var macarte = null;
 // Fonction d'initialisation de la carte
 function initMap() {
     // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-    macarte = L.map('map', {zoomControl : false, attributionControl : false}).setView([49.210186, -67.433494], 8);    // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
+    macarte = L.map('map', { zoomControl: false, attributionControl: false }).setView([49.210186, -67.433494], 8);    // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
         // Il est toujours bien de laisser le lien vers la source des données
         attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
@@ -259,56 +246,56 @@ function initMap() {
         maxZoom: 20
     }).addTo(macarte);
     var url = document.location.href;
-    if(url.indexOf('bouee')==-1){
+    if (url.indexOf('bouee') == -1) {
         var listeCoords = new Array();
-        listeCoords.push(49.0523948);listeCoords.push(-68.283337);
-        for(var i=2;i<15;i+=2){
-            listeCoords.push(listeCoords[i-2]+0.1);
-            listeCoords.push(listeCoords[i-1 ]+0.33);
+        listeCoords.push(49.0523948); listeCoords.push(-68.283337);
+        for (var i = 2; i < 15; i += 2) {
+            listeCoords.push(listeCoords[i - 2] + 0.1);
+            listeCoords.push(listeCoords[i - 1] + 0.33);
         }
-        for(var i=0;i<29;i+=2){
-            L.marker([listeCoords[i], listeCoords[i+1]]).addTo(macarte);
-            console.log(listeCoords[i]+','+listeCoords[i+1])
+        for (var i = 0; i < 29; i += 2) {
+            L.marker([listeCoords[i], listeCoords[i + 1]]).addTo(macarte);
+            console.log(listeCoords[i] + ',' + listeCoords[i + 1])
 
         }
-    }else{
+    } else {
         macarte.setView([49.0523948, -68.283337], 10);
         L.marker([49.0523948, -68.283337]).addTo(macarte);
     }
 
 }
- window.onload = function(){
-// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
-initMap();
- };
+window.onload = function () {
+    // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+    initMap();
+};
 
- function agrandirCarte(_element) {
-     var monElement = _element||document.documentElement;
-     if (document.mozFullScreenEnabled) {
-         if (!document.mozFullScreenElement) {
-             monElement.mozRequestFullScreen();
-         } else {
-             document.mozCancelFullScreen();
-         }
-     }
-     if (document.fullscreenElement) {
-         if (!document.fullscreenElement) {
-             monElement.requestFullscreen();
-         } else {
-             document.exitFullscreen();
-         }
-     }
-     if (document.webkitFullscreenEnabled) {
-         if (!document.webkitFullscreenElement) {
-             monElement.webkitRequestFullscreen();
-         } else {
-             document.webkitExitFullscreen();
-         }
-     }
- }
+function agrandirCarte(_element) {
+    var monElement = _element || document.documentElement;
+    if (document.mozFullScreenEnabled) {
+        if (!document.mozFullScreenElement) {
+            monElement.mozRequestFullScreen();
+        } else {
+            document.mozCancelFullScreen();
+        }
+    }
+    if (document.fullscreenElement) {
+        if (!document.fullscreenElement) {
+            monElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+    if (document.webkitFullscreenEnabled) {
+        if (!document.webkitFullscreenElement) {
+            monElement.webkitRequestFullscreen();
+        } else {
+            document.webkitExitFullscreen();
+        }
+    }
+}
 
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('.datepicker').datepicker({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 2, // Creates a dropdown of 15 years to control year
@@ -316,11 +303,11 @@ $(document).ready(function(){
         labelMonthPrev: 'Mois précédent',
         labelMonthSelect: 'Selectionner le mois',
         labelYearSelect: 'Selectionner une année',
-        monthsFull: [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
-        monthsShort: [ 'Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec' ],
-        weekdaysFull: [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi' ],
-        weekdaysShort: [ 'Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam' ],
-        weekdaysLetter: [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+        monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+        monthsShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
+        weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+        weekdaysShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
+        weekdaysLetter: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
         today: 'Aujourd\'hui',
         clear: 'Réinitialiser',
         close: 'Fermer',

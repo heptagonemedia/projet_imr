@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout.layout')
 
 
 @section('head')
@@ -43,7 +43,7 @@
 
             <div class="col s12 z-depth-6 card-panel">
 
-                <form method="" class="register-form">
+                <form id="formulaire" method="POST" action="/resultat" class="register-form">
                     @csrf
 
                     <div class="row">
@@ -191,8 +191,6 @@
                         </div>
 
                     </div>
-
-                    <!-- <br><br> -->
 
                     <div class="row" id="marge">
 
