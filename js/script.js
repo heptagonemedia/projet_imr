@@ -61,7 +61,7 @@ function detecterErreurs() {
 
 function retourFormulaire(){
     var url = document.location.href;
-    window.location.href = "formulaireRecherche.php"+ url.substr(url.indexOf('?'));
+    // window.location.href = "formulaireRecherche.php"+ url.substr(url.indexOf('?'));
 }
 
 function enregistrer(){

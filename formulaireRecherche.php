@@ -102,7 +102,7 @@
                                 <div class="col s2"></div>
 
                                 <div class="col s10">
-                                    <span class="helper-text" id="frequence"><label id="alerte">Il faut saisir au moins une valeur et uniquement des entiers</label></span>
+                                    <span class="helper-text"  id="frequence"><label id="alerte">Il faut saisir au moins une valeur et uniquement des entiers</label></span>
                                 </div>
 
                             </div>
