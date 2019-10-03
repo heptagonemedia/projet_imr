@@ -196,6 +196,7 @@ BEGIN
         AND dt.valide = true
     );
     valeur_lue := 0;
+    moyenne := 0;
     resultat := 0;
     nb_valeurs := 0;
 
@@ -206,9 +207,6 @@ BEGIN
             nb_valeurs := nb_valeurs + 1;
         END LOOP;
         resultat := resultat / nb_valeurs;
-
-        INSERT INTO calcul_enregistre (date_debut, date_fin, frequence, valeur, id_bouee, id_type_donnee_mesuree, id_type_calcul, prevu)
-        VALUES (date_debut_calcul, date_fin_calcul, frequence_calcul, resultat, fk_bouee, fk_type_donnee_mesuree, fk_type_calcul, calcul_prevu);
 
     ELSEIF champ_type_calcul = 'ecart type' THEN
         FOREACH valeur_lue IN ARRAY valeurs_lues
@@ -224,7 +222,14 @@ BEGIN
             END LOOP;
         resultat := SQRT((1/nb_valeurs) * resultat);
 
+    ELSEIF champ_type_calcul = 'mediane' THEN
+        -- calcul de l'écart type.
+
     END IF;
+
+    -- insert du résultat obtenu à la suite du calcul dans la BDD.
+    INSERT INTO calcul_enregistre (date_debut, date_fin, frequence, valeur, id_bouee, id_type_donnee_mesuree, id_type_calcul, prevu)
+    VALUES (date_debut_calcul, date_fin_calcul, frequence_calcul, resultat, fk_bouee, fk_type_donnee_mesuree, fk_type_calcul, calcul_prevu);
 
 END;
 
