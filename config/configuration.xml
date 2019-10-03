@@ -1,0 +1,23 @@
+<config>
+    <region>
+        <nom>Ocean Atlantique</nom>
+        <temperature>
+            <temperature_la_plus_basse>5</temperature_la_plus_basse>
+            <temperature_la_plus_haute>30</temperature_la_plus_haute>
+        </temperature>
+        <salinite>
+            <salinite_la_plus_basse>28</salinite_la_plus_basse>
+            <salinite_la_plus_haute>30</salinite_la_plus_haute>
+        </salinite>
+        <debit>
+            <debit_le_plus_bas>0,2</debit_le_plus_bas>
+            <debit_le_plus_haut>0,4</debit_le_plus_haut>
+        </debit>
+    </region>
+    <proportion>
+        <scenarioNormaux>30</scenarioNormaux>
+        <scenarioBase>10</scenarioBase>
+        <scenarioHybride>5</scenarioHybride>
+        <scenarioRetardes>5</scenarioRetardes>
+    </proportion>
+</config>
