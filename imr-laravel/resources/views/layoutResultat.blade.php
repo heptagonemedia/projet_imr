@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="{{asset('resources\css\EJSChart.css')}}">
+        <link rel="stylesheet" href="{{asset('resources\css\EJSChart.css')}}">
 
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
         <link rel="stylesheet" href="{{asset('resources\css\materialize.css')}}">
@@ -136,10 +136,10 @@
                     <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i></a></li>
                     <li><a class="btn-floating pink tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Accueil" href="accueil.php"><i class="material-icons">home</i></a></li>
 
-                    <?php if(isset($_GET["type"]) && $_GET['type']=='prev' ): ?>
+                    @php if(isset($_GET["type"]) && $_GET['type']=='prev' ): @endphp
                         <li><a class="btn-floating yellow darken-1 tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Retourner au formulaire" onclick="retourFormulaire()"><i class="material-icons">arrow_back</i></a></li>
                         <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Enregistrer le calcul" href="#modal1" onclick = "enregistrer()"><i class="material-icons">save</i></a></li>
-                    <?php endif;?>
+                    @php endif;@endphp
                 </ul>
 
             </div>
@@ -149,14 +149,14 @@
                 <input type="hidden" value="enr" name="type">
             </form>
 
-            <?php
+            @php
 
                 if(isset($_GET["type"])):
 
                     $type = $_GET["type"];
 
                     if($type == "prev"):
-            ?>
+            @endphp
                         <div id="modal1" class="modal row">
                             <div class="modal-content">
                                 <h4>Calcul enregistré</h4>
@@ -167,9 +167,9 @@
                             </div>
                         </div>
 
-            <?php
+            @php
             //    elseif($type == "enr"):
-            ?>
+            @endphp
                     <!--        <div id='message' class="container-fluid">-->
                     <!--            <div class = "row">-->
                     <!--                <div class="col-sm-4"></div>-->
@@ -180,12 +180,12 @@
                     <!--            </div>-->
                     <!--        </div>-->
                     <!--    -->
-            <?php
+            @php
 
                     endif;
                 endif;
 
-            ?>
+            @endphp
 
         </main>
 
