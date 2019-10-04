@@ -1,7 +1,10 @@
 defmodule GenerateurScenario do
   def start(scenario_normaux, scenarios_base, scenarios_hybrides, scenarios_retardes) do
     if scenario_normaux != 0 do
-      loop("normal", scenario_normaux)
+      # loop("normal", scenario_normaux)
+      GenerateurScenario.Constructeur.construire(1, "base")
+      spawn fn -> send(2, :normal) end
+      # spawn fn -> GenerateurScenario.Constructeur.construire(2, "base") end
     end
     if scenarios_base != 0 do
       loop("base", scenarios_base)
@@ -18,6 +21,7 @@ defmodule GenerateurScenario do
   def loop(type, n) when n <= 1 do
     Agents.Compteur.increment
     spawn GenerateurScenario.Constructeur.construire(Agents.Compteur.value, type)
+    {Agents.Compteur.value, type}
   end
 
   def loop(type, n) do

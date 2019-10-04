@@ -1,7 +1,15 @@
 defmodule GenerateurScenario.Constructeur do
+
+    receive do
+        {id_scenario, :normal} -> GenerateurScenario.Constructeur.construire(id_scenario, "normal")
+    end
+
+
     def construire(id_scenario, type) do
         preparer_scenario(id_scenario)
-        |> loop(600, type)
+        |> loop(5, type)
+        IO.puts "Hey"
+
     end
 
     def loop(parametres, n, type) when n <= 1 do
