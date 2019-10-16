@@ -13,6 +13,25 @@ $(document).ready(function () {
     $('.sidenav').sidenav();
 });
 
+
+var ctx = document.getElementById('camembertBouees').getContext('2d');
+data = {
+    datasets: [{
+        data: [60, 15],
+        backgroundColor: ["#07CA38", "#EF0000"]
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+        'Conformes',
+        'Non conformes'
+    ]
+};
+var myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: data
+});
+
 function detecterErreurs() {
 
     //A ne pas mettre directement dans la condition du if

@@ -81,37 +81,18 @@
 						</div>
 
 					</div>
-
-					<div class="col l4">
+					<div class="col l4 s12 m6" >
 
 						<div class="card white">
 
 							<div class="card-content white-text">
 								<span class="card-title black-text center-align">Bouées non conforme</span>
-								<div class="container">
-									<div class="circle " id="false"><?php echo $compteurProbleme; ?></div>
-								</div>
-							</div>
-
-						</div>
-
-						<div class="card white center-align">
-							<div class="card-content white-text">
-
-								<span class="card-title black-text">Bouées conformes</span>
-								<div class="container center-align">
-									<div class="circle " id="true"><?php echo $compteurFonctionelles; ?></div>
-								</div>
-
+                                    <canvas id="camembertBouees"></canvas>
 							</div>
 						</div>
-
 					</div>
-
-				</div>
-
-
 			</div>
+
 
 		</main>
 
@@ -129,6 +110,7 @@
 			crossorigin="anonymous">
 	</script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 	<script src="js/materialize.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/map.js"></script>
