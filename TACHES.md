@@ -20,7 +20,7 @@
 
 ## Théo
 
-- Écrire des fichiers de données mock d'au moins 20 enregistrements pour chaque table du scéma de la base de données.
+- Écrire des fichiers de données mock d'au moins 20 enregistrements pour chaque table du schéma de la base de données.
 - Écrire le script SQL d'insertion des données mock dans la base de données Timescaledb.
 
 ## Christophe
