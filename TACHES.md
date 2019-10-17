@@ -1,5 +1,7 @@
 # TACHES
 
+ATTENTION:  CRÉEZ UNE BRANCHE LORSQUE VOUS TRAVAILLEZ, NE TRAVAILLEZ PAS SUR LE MASTER DIRECTEMENT.
+
 ## Estevan
 
 * Remettre en forme le Trello / mettre à jour charte de production
