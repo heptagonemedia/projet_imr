@@ -5,7 +5,7 @@ ATTENTION:  CRÉEZ UNE BRANCHE LORSQUE VOUS TRAVAILLEZ, NE TRAVAILLEZ PAS SUR LE
 ## Estevan
 
 * Remettre en forme le Trello / mettre à jour charte de production
-* Documenter le développement Laravel
+* Documenter le développement Laravel                                                        FAIT
 * Faire les interview des 2 équipes / faire la synthèse des interviews
 
 ## Louis
