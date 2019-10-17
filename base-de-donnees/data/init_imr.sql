@@ -16,9 +16,9 @@ CREATE TABLE region(
 CREATE TABLE bouee(
     id_bouee serial PRIMARY KEY,
     etiquette text,
-    longitude_reference float NOT NULL,
-    latitude_reference float NOT NULL,
-    id_region integer NOT NULL,
+    longitude_reference float,
+    latitude_reference float,
+    id_region integer,
     CONSTRAINT region_bouee_fk
         FOREIGN KEY (id_region)
         REFERENCES region(id_region)
@@ -28,10 +28,10 @@ CREATE TABLE bouee(
 
 CREATE TABLE historique_donnee_bouee(
     id_historique_donnee_bouee serial PRIMARY KEY,
-    id_bouee integer NOT NULL,
-    longitude_reelle float NOT NULL,
-    latitude_reelle float NOT NULL,
-    date_saisie time with time zone NOT NULL,
+    id_bouee integer,
+    longitude_reelle float,
+    latitude_reelle float,
+    date_saisie time with time zone,
     CONSTRAINT bouee_historique_donnee_bouee_fk
         FOREIGN KEY (id_bouee)
         REFERENCES bouee(id_bouee)
@@ -41,8 +41,8 @@ CREATE TABLE historique_donnee_bouee(
 
 CREATE TABLE donnee_traitee(
     id_donnee_traitee serial PRIMARY KEY,
-    id_historique_donnee_bouee integer NOT NULL,
-    valide boolean NOT NULL,
+    id_historique_donnee_bouee integer,
+    valide boolean,
     CONSTRAINT historique_donnee_bouee_donnee_traitee_fk
         FOREIGN KEY (id_historique_donnee_bouee)
         REFERENCES historique_donnee_bouee(id_historique_donnee_bouee)
@@ -52,14 +52,14 @@ CREATE TABLE donnee_traitee(
 
 CREATE TABLE type_donnee_mesuree(
     id_type_donnee_mesuree serial PRIMARY KEY,
-    etiquette text NOT NULL
+    etiquette text
 );
 
 CREATE TABLE mesure(
     id_mesure serial PRIMARY KEY,
-    id_historique_donnee_bouee integer NOT NULL,
-    id_type_donnee_mesuree integer NOT NULL,
-    valeur float NOT NULL,
+    id_historique_donnee_bouee integer,
+    id_type_donnee_mesuree integer,
+    valeur float,
     CONSTRAINT historique_donnee_bouee_mesure_fk
         FOREIGN KEY (id_historique_donnee_bouee)
         REFERENCES historique_donnee_bouee(id_historique_donnee_bouee)
@@ -79,13 +79,16 @@ CREATE TABLE type_calcul(
 
 CREATE TABLE calcul_enregistre(
     id_calcul_enregistre serial PRIMARY KEY,
-    date_debut time with time zone NOT NULL,
-    date_fin time with time zone NOT NULL,
-    frequence float NOT NULL,
-    valeur float NOT NULL,
-    id_type_donnee_mesuree integer NOT NULL,
-    id_type_calcul integer NOT NULL,
-    prevu boolean NOT NULL,
+    date_debut time with time zone,
+    date_fin time with time zone,
+    frequence float,
+    valeur float,
+    id_type_donnee_mesuree integer,
+    id_type_calcul integer,
+    prevu boolean,
+    chemin_fichier_xml text,
+    etiquette text,
+    enregistre boolean,
     CONSTRAINT type_donnee_mesuree_calcul_enregistre_fk
         FOREIGN KEY (id_type_donnee_mesuree)
         REFERENCES type_donnee_mesuree(id_type_donnee_mesuree)
