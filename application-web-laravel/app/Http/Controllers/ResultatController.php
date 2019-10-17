@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ResultatController extends Controller
 {
     public function store(){
-        //TODO
+        //TODO:
         /* Création d'un nouveau résultat et remplissage des champs
         (sous-entend la création d'un modèle Resultat (mettre le nom de la tale du MR à la place)) */
 
@@ -27,7 +27,7 @@ class ResultatController extends Controller
 
     }
 
-    // Ne pas utiliser
+    // CF routes > web.php
     // public function showOne($nomResultat){
     //     dd($nomResultat);
     // }
