@@ -30,7 +30,10 @@
         </main>
 
 
-        @include('footer')
+        <footer>
+            @include('footer')
+        </footer>
+
 
 
     </body>
