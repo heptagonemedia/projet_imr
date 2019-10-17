@@ -10,8 +10,8 @@ ATTENTION:  CRÉEZ UNE BRANCHE LORSQUE VOUS TRAVAILLEZ, NE TRAVAILLEZ PAS SUR LE
 
 ## Louis
 
-* Implémenter le service web php de lecture
-* Implémenter le service web php d'écriture
+* Implémenter les Classes modèles dans l'application Laravel
+* Adapter les interfaces (pour le résultat, cf doc) dans l'application Laravel
 * Implémenter les accesseurs à la base de données sur l'application Laravel
 
 ## Loïc
