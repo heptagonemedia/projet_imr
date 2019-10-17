@@ -88,6 +88,7 @@ CREATE TABLE calcul_enregistre(
     prevu boolean,
     chemin_fichier_xml text,
     etiquette text,
+    enregistre boolean,
     CONSTRAINT type_donnee_mesuree_calcul_enregistre_fk
         FOREIGN KEY (id_type_donnee_mesuree)
         REFERENCES type_donnee_mesuree(id_type_donnee_mesuree)
