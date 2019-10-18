@@ -16,5 +16,8 @@ defmodule Recepteur.Bouee do
     bouee
     |> cast(attrs, [:id_bouee, :etiquette, :longitude_reference, :latitude_reference, :id_region])
     |> validate_required([:id_bouee, :etiquette, :longitude_reference, :latitude_reference, :id_region])
+
+    cast(bouee, attrs, [:id_region])
+    |> foreign_key_constraint(:id_region)
   end
 end
