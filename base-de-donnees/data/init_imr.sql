@@ -31,7 +31,7 @@ CREATE TABLE historique_donnee_bouee(
     id_bouee integer,
     longitude_reelle float,
     latitude_reelle float,
-    date_saisie time with time zone,
+    date_saisie timestamp without time zone,
     CONSTRAINT bouee_historique_donnee_bouee_fk
         FOREIGN KEY (id_bouee)
         REFERENCES bouee(id_bouee)
