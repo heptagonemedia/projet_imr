@@ -4,7 +4,7 @@ use Mix.Config
 config :recepteur, Recepteur.Repo,
   username: "postgres",
   password: "mission",
-  database: "recepteur_dev",
+  database: "recepteur_test",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10

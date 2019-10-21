@@ -20,6 +20,26 @@ defmodule Recepteur.Application do
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Recepteur.Supervisor]
     Supervisor.start_link(children, opts)
+
+
+    region = %Recepteur.Region{etiquette: "Ocean Pacifique"}
+    bouee = %Recepteur.Bouee{etiquette: "Bouee de test d'insertion des donnees", longitude_reference: 100.0, latitude_reference: 100.0}
+
+    data = %Recepteur.HistoriqueDonneeBouee{id_bouee: 1, longitude_reelle: 105.5, latitude_reelle: 99.92, date_saisie: DateTime.truncate(DateTime.utc_now, :second)}
+
+    verif = %Recepteur.DonneeTraitee{id_historique_donnee_bouee: 1, valide: true}
+    type_data = %Recepteur.TypeDonneeMesuree{etiquette: "temperature"}
+    mesure = %Recepteur.Mesure{id_historique_donnee_bouee: 1, id_type_donnee_mesuree: 1, valeur: 24.42}
+
+    Recepteur.Repo.insert(region)
+    Recepteur.Repo.insert(bouee)
+    Recepteur.Repo.insert(data)
+    Recepteur.Repo.insert(verif)
+    Recepteur.Repo.insert(type_data)
+    Recepteur.Repo.insert(mesure)
+
+    {:ok, self()}
+
   end
 
   # Tell Phoenix to update the endpoint configuration
