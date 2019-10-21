@@ -11,6 +11,7 @@ defmodule Recepteur.Bouee do
     field :id_region, :integer
 
     belongs_to :region, Recepteur.Region, foreign_key: :id_region, references: :id_region, define_field: false
+    has_many :historique_donnee_bouee, Recepteur.HistoriqueDonneeBouee, foreign_key: :id_bouee, references: :id_bouee
   end
 
   @doc false

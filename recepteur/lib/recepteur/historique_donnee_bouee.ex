@@ -9,6 +9,10 @@ defmodule Recepteur.HistoriqueDonneeBouee do
     field :longitude_reelle, :float
     field :latitude_reelle, :float
     field :date_saisie, :date
+    field :id_bouee, :integer
+
+    belongs_to :bouee, Recepteur.Bouee, foreign_key: :id_bouee, references: :id_bouee, define_field: false
+
   end
 
   @doc false
