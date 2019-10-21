@@ -5,5 +5,7 @@ defmodule Recepteur.Region do
 
   schema "region" do
     field :etiquette, :string
+
+    has_many :bouee, Recepteur.Bouee, foreign_key: :id_region, references: :id_region
   end
 end

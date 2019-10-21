@@ -5,6 +5,7 @@
               {description,"recepteur"},
               {modules,['Elixir.Recepteur','Elixir.Recepteur.Application',
                         'Elixir.Recepteur.Bouee','Elixir.Recepteur.DataCase',
+                        'Elixir.Recepteur.HistoriqueDonneeBouee',
                         'Elixir.Recepteur.Region','Elixir.Recepteur.Repo',
                         'Elixir.RecepteurWeb',
                         'Elixir.RecepteurWeb.ChannelCase',

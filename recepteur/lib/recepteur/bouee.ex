@@ -9,6 +9,8 @@ defmodule Recepteur.Bouee do
     field :longitude_reference, :float
     field :latitude_reference, :float
     field :id_region, :integer
+
+    belongs_to :region, Recepteur.Region, foreign_key: :id_region, references: :id_region, define_field: false
   end
 
   @doc false
