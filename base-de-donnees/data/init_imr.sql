@@ -42,7 +42,7 @@ CREATE TABLE historique_donnee_bouee(
         ON UPDATE CASCADE
 );
 
-SELECT create_hypertable(historique_donnee_bouee, date_saisie);
+SELECT create_hypertable('historique_donnee_bouee', 'date_saisie');
 
 CREATE TABLE donnee_traitee(
     id_donnee_traitee serial PRIMARY KEY,
