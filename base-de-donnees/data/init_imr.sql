@@ -34,7 +34,7 @@ CREATE TABLE historique_donnee_bouee(
     id_bouee integer,
     longitude_reelle float,
     latitude_reelle float,
-    date_saisie timestamp without time zone,
+    date_saisie timestamp without time zone NOT NULL,
     CONSTRAINT bouee_historique_donnee_bouee_fk
         FOREIGN KEY (id_bouee)
         REFERENCES bouee(id_bouee)
@@ -77,7 +77,7 @@ CREATE TABLE mesure(
         ON UPDATE CASCADE
 );
 
-SELECT create_table(mesure, id_historique_donnee_bouee);
+SELECT create_table('mesure', 'id_historique_donnee_bouee');
 
 CREATE INDEX ON mesure (id_type_donnee_mesuree, id_historique_donnee_bouee DESC);
 
