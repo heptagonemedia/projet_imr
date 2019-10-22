@@ -42,6 +42,7 @@ CREATE TABLE historique_donnee_bouee(
         ON UPDATE CASCADE
 );
 
+SELECT set_chunk_time_interval('historique_donnee_bouee', interval '24 hours');
 SELECT create_hypertable('historique_donnee_bouee', 'date_saisie');
 
 CREATE TABLE donnee_traitee(
