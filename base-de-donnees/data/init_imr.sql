@@ -79,8 +79,8 @@ CREATE TABLE type_calcul(
 
 CREATE TABLE calcul_enregistre(
     id_calcul_enregistre serial PRIMARY KEY,
-    date_debut time with time zone,
-    date_fin time with time zone,
+    date_debut timestamp without time zone,
+    date_fin timestamp without time zone,
     frequence float,
     valeur float,
     id_type_donnee_mesuree integer,
