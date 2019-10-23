@@ -7,10 +7,10 @@ defmodule SimulateurBouees.Emetteur do
       GenServer.start_link(__MODULE__, [ip, port], [])
     end
   
-    def init(state) do
-      opts = [:binary, active: false]
-      {:ok, socket} = :gen_tcp.connect('127.0.0.1', 6379, opts)
-      {:ok, %{state | socket: socket}}
+    def init [ip, port] do
+      {:ok,listen_socket} = :gen_tcp.connect(port,[:binary,{:packet, 0},{:active,true},{:ip,ip}])
+      {:ok,socket } = :gen_tcp.accept listen_socket
+      {:ok, %{ip: ip, port: port, socket: socket}}
     end
 
     def command(pid, cmd) do
