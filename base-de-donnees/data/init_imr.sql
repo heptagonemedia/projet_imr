@@ -31,7 +31,8 @@ CREATE TABLE historique_donnee_bouee(
     id_bouee integer,
     longitude_reelle float,
     latitude_reelle float,
-    date_saisie time with time zone,
+    date_saisie timestamp without time zone,
+    batterie integer,
     CONSTRAINT bouee_historique_donnee_bouee_fk
         FOREIGN KEY (id_bouee)
         REFERENCES bouee(id_bouee)
@@ -79,8 +80,8 @@ CREATE TABLE type_calcul(
 
 CREATE TABLE calcul_enregistre(
     id_calcul_enregistre serial PRIMARY KEY,
-    date_debut time with time zone,
-    date_fin time with time zone,
+    date_debut timestamp without time zone,
+    date_fin timestamp without time zone,
     frequence float,
     valeur float,
     id_type_donnee_mesuree integer,
