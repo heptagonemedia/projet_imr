@@ -58,7 +58,8 @@ CREATE TABLE donnee_traitee(
 
 CREATE TABLE type_donnee_mesuree(
     id_type_donnee_mesuree serial PRIMARY KEY,
-    etiquette text
+    etiquette text,
+    unite text
 );
 
 CREATE TABLE mesure(
