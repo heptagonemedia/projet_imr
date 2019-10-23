@@ -1,0 +1,9 @@
+<donnees-resultat>
+<calcul>
+	<etiquette></etiquette>
+	<bouee><latitude></latitude><longitude></longitude></bouee>
+	<calcul-enregistré-temperature><chemin-xml></chemin-xml></calcul-enregistré-temperature>
+	<calcul-enregistré-salinité><chemin-xml></chemin-xml></calcul-enregistré-salinité>
+	<calcul-enregistré-courant><chemin-xml></chemin-xml></calcul-enregistré-courant>
+</calcul>
+</donnees-resultat>
