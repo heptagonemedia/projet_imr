@@ -58,4 +58,13 @@ class HistoriqueDonneeBouee
         return $this->dateSaisie;
     }
 
+    public static function mockHistoriqueDonneesBouees(){
+        $tableauHistoriqueDonneeBouees = array();
+        $tableauBouees = Bouee::mockBouee();
+        array_push($tableauHistoriqueDonneeBouees, new HistoriqueDonneeBouee(0, $tableauBouees[0], 49.620013, -65.347493, "2019-05-23"));
+        array_push($tableauHistoriqueDonneeBouees, new HistoriqueDonneeBouee(0, $tableauBouees[1], 45.620013, -67.347493, "2019-10-21"));
+        array_push($tableauHistoriqueDonneeBouees, new HistoriqueDonneeBouee(0, $tableauBouees[2], 42.620013, -63.347493, "2019-08-12"));
+        return $tableauHistoriqueDonneeBouees;
+    }
+
 }

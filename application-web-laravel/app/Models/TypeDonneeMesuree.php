@@ -12,6 +12,15 @@ class TypeDonneeMesuree
         $this->etiquette = $etiquette;
     }
 
+    public static function mockDonneesMesurees()
+    {
+        $tableauTypeDonneeMesuree = array();
+        array_push($tableauTypeDonneeMesuree, new TypeDonneeMesuree(0, "température"));
+        array_push($tableauTypeDonneeMesuree, new TypeDonneeMesuree(1, "salinité"));
+        array_push($tableauTypeDonneeMesuree, new TypeDonneeMesuree(2, "vitesse courant"));
+        return $tableauTypeDonneeMesuree;
+    }
+
     public function setId($id){
         $this->id = $id;
     }

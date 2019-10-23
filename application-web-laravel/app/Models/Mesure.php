@@ -48,6 +48,15 @@ class Mesure
     public function getValeur(){
         return $this->valeur;
     }
+    public function mockMesure(){
+        $tableauMesures = array();
+        $tableauHistoriqueDonneesBouees = HistoriqueDonneeBouee::mockHistoriqueDonneesBouees();
+        $tableauTypesDonneesMesurees = TypeDonneeMesuree::mockDonneesMesurees();
+        array_push($tableauMesures, new Mesure(0, $tableauHistoriqueDonneesBouees[0], $tableauTypesDonneesMesurees[0], 8.5));
+        array_push($tableauMesures, new Mesure(1, $tableauHistoriqueDonneesBouees[1], $tableauTypesDonneesMesurees[1], 12.7));
+        array_push($tableauMesures, new Mesure(2, $tableauHistoriqueDonneesBouees[2], $tableauTypesDonneesMesurees[2], 45.5));
+        return $tableauMesures;
+    }
 
 
 }

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 
+use DemeterChain\C;
+
 class CalculEnregistre
 {
     protected $id;
@@ -111,6 +113,16 @@ class CalculEnregistre
 
     public function setEtiquette($etiquette){
         $this->etiquette = $etiquette;
+    }
+
+    public static function mockCalculEnregistre(){
+        $tableauCalculsEnregitres = array();
+        $tableauDonneesMesurees = TypeDonneeMesuree::mockDonneesMesurees();
+        $tableauTypesDeCalcul = TypeCalcul::mockTypesCalcul();
+        array_push($tableauCalculsEnregitres, new CalculEnregistre(0, "2018-04-08", "2019-05-06", 25.2, 415.12, $tableauDonneesMesurees[0] , $tableauTypesDeCalcul[0], false, "xml/fichier.xml", "Calcul moyenne 2018-04-08"));
+        array_push($tableauCalculsEnregitres, new CalculEnregistre(1, "2019-08-08", "2019-09-07", 78.0, 320.2, $tableauDonneesMesurees[1] , $tableauTypesDeCalcul[1], true, "xml/fichier.xml", "Calcul mediane 2019-08-08"));
+        array_push($tableauCalculsEnregitres, new CalculEnregistre(2, "2019-01-08", "2019-05-04", 80.0, 720.1, $tableauDonneesMesurees[2] , $tableauTypesDeCalcul[2], true, "xml/fichier.xml", "Calcul ecart-type 2019-01-08"));
+        return $tableauCalculsEnregitres;
     }
 
 

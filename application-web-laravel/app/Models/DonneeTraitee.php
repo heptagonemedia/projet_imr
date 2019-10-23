@@ -40,4 +40,13 @@ class DonneeTraitee extends Model
         return $this->valide;
     }
 
+    public static function mockDonneesTraitees(){
+        $tableauDonneesTraitees = array();
+        $tableauHistiriquesDonneesBouees = HistoriqueDonneeBouee::mockHistoriqueDonneesBouees();
+        array_push($tableauDonneesTraitees, new DonneeTraitee(0, $tableauHistiriquesDonneesBouees[0], true));
+        array_push($tableauDonneesTraitees, new DonneeTraitee(1, $tableauHistiriquesDonneesBouees[1], false));
+        array_push($tableauDonneesTraitees, new DonneeTraitee(2, $tableauHistiriquesDonneesBouees[2], true));
+        return $tableauDonneesTraitees;
+    }
+
 }

@@ -13,6 +13,15 @@ class TypeCalcul
         $this->etiquette = $etiquette;
     }
 
+    public static function mockTypesCalcul()
+    {
+        $tableauTypesDeCalculs = array();
+        array_push($tableauTypesDeCalculs, new TypeCalcul(0, "moyenne"));
+        array_push($tableauTypesDeCalculs, new TypeCalcul(1, "mediane"));
+        array_push($tableauTypesDeCalculs, new TypeCalcul(2, "ecart-type"));
+        return $tableauTypesDeCalculs;
+    }
+
     public function setId($id){
         $this->id = $id;
     }

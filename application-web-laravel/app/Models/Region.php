@@ -33,4 +33,12 @@ class Region
     public function getEtiquette(){
         return $this->etiquette;
     }
+
+    public static function mockRegions(){
+        $tableauRegions = array();
+        array_push($tableauRegions, new Region(0, "Atlantique"));
+        array_push($tableauRegions, new Region(1, "Pacifique"));
+        array_push($tableauRegions, new Region(2, "Méditerannée"));
+        return $tableauRegions;
+    }
 }
