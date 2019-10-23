@@ -1,4 +1,4 @@
-defmodule SimulateurBouees.Recepteur_test do
+defmodule SimulateurBouees.RecepteurTest do
   use GenServer
   
   def start_link do
@@ -25,6 +25,7 @@ defmodule SimulateurBouees.Recepteur_test do
   end   
 
   def handle_info({:tcp_error,socket,reason},state) do
-    IO.inspect socket,label: "Connexion terminée pour la raison : #{reason}"    {:noreply,state}
+    IO.inspect socket,label: "Connexion terminée pour la raison : #{reason}"
+    {:noreply,state}
   end
 end

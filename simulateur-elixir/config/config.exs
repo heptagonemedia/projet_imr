@@ -8,4 +8,4 @@ hostname: "192.168.56.10"
 
 config :simulateur_bouees, ecto_repos: [SimulateurBouees.Repo]
 
-config :gen_tcp, ip: {127,0,0,1}, port: 6379
+config :simulateur_bouees, ip: {127,0,0,1}, port: 6379
