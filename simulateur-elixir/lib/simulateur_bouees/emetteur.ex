@@ -1,13 +1,13 @@
 defmodule SimulateurBouees.Emetteur do
     use GenServer
     
-    def start_link(concentrateur) do
-      GenServer.start_link(__MODULE__, concentrateur)
+    def start_link do
+      GenServer.start_link(__MODULE__, @initial_state)
     end
   
     def init(state) do
       opts = [:binary, active: false]
-      {:ok, socket} = :gen_tcp.connect('localhost', 6379, opts)
+      {:ok, socket} = :gen_tcp.connect('127.0.0.1', 6379, opts)
       {:ok, %{state | socket: socket}}
     end
 
