@@ -2,7 +2,9 @@ defmodule SimulateurBouees.Emetteur do
     use GenServer
     
     def start_link do
-      GenServer.start_link(__MODULE__, @initial_state)
+      ip = Application.get_env :gen_tcp, :ip, {127,0,0,1}
+      port = Application.get_env :gen_tcp, :port, 6379
+      GenServer.start_link(__MODULE__, [ip, port], [])
     end
   
     def init(state) do
