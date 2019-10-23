@@ -35,6 +35,7 @@ CREATE TABLE historique_donnee_bouee(
     longitude_reelle float,
     latitude_reelle float,
     date_saisie timestamp without time zone NOT NULL,
+    batterie integer,
     CONSTRAINT bouee_historique_donnee_bouee_fk
         FOREIGN KEY (id_bouee)
         REFERENCES bouee(id_bouee)
@@ -58,7 +59,8 @@ CREATE TABLE donnee_traitee(
 
 CREATE TABLE type_donnee_mesuree(
     id_type_donnee_mesuree serial PRIMARY KEY,
-    etiquette text
+    etiquette text,
+    unite text
 );
 
 CREATE TABLE mesure(
