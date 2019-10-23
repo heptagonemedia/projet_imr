@@ -7,11 +7,14 @@ DROP TABLE IF EXISTS historique_donnee_bouee;
 DROP TABLE IF EXISTS bouee;
 DROP TABLE IF EXISTS region;
 
+CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
+
 
 CREATE TABLE region(
     id_region serial PRIMARY KEY,
     etiquette text
 );
+
 
 CREATE TABLE bouee(
     id_bouee serial PRIMARY KEY,
@@ -31,7 +34,7 @@ CREATE TABLE historique_donnee_bouee(
     id_bouee integer,
     longitude_reelle float,
     latitude_reelle float,
-    date_saisie timestamp without time zone,
+    date_saisie timestamp without time zone NOT NULL,
     batterie integer,
     CONSTRAINT bouee_historique_donnee_bouee_fk
         FOREIGN KEY (id_bouee)
@@ -39,6 +42,8 @@ CREATE TABLE historique_donnee_bouee(
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+SELECT create_hypertable('historique_donnee_bouee', 'date_saisie');
 
 CREATE TABLE donnee_traitee(
     id_donnee_traitee serial PRIMARY KEY,
@@ -72,6 +77,10 @@ CREATE TABLE mesure(
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+SELECT create_table('mesure', 'id_historique_donnee_bouee');
+
+CREATE INDEX ON mesure (id_type_donnee_mesuree, id_historique_donnee_bouee DESC);
 
 CREATE TABLE type_calcul(
     id_type_calcul serial PRIMARY KEY,
