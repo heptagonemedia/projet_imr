@@ -22,20 +22,23 @@ defmodule Recepteur.Application do
     Supervisor.start_link(children, opts)
 
 
-    #region = %Recepteur.Region{etiquette: "Ocean Pacifique"}
-    #bouee = %Recepteur.Bouee{etiquette: "Bouee de test d'insertion des donnees", longitude_reference: 100.0, latitude_reference: 100.0}
+    region = %Recepteur.Region{etiquette: "Ocean Pacifique"}
+    bouee = %Recepteur.Bouee{etiquette: "Bouee de test d'insertion des donnees sous TimeScaleDB", longitude_reference: 100.0, latitude_reference: 100.0}
 
-    #data = %Recepteur.HistoriqueDonneeBouee{id_bouee: 1, longitude_reelle: 105.5, latitude_reelle: 99.92, date_saisie: DateTime.truncate(DateTime.utc_now, :second)}
+    timestamp = DateTime.truncate(DateTime.utc_now, :second);
 
-    #verif = %Recepteur.DonneeTraitee{id_historique_donnee_bouee: 1, valide: true}
-    #mesure = %Recepteur.Mesure{id_historique_donnee_bouee: 1, id_type_donnee_mesuree: 1, valeur: 24.42}
+    data = %Recepteur.HistoriqueDonneeBouee{id_bouee: 1, longitude_reelle: 105.5, latitude_reelle: 99.92, date_saisie: timestamp, batterie: 100}
 
-    #Recepteur.Repo.insert(region)
-    #Recepteur.Repo.insert(bouee)
-    #Recepteur.Repo.insert(data)
-    #Recepteur.Repo.insert(verif)
-    #Recepteur.Repo.insert(type_data)
-    #Recepteur.Repo.insert(mesure)
+    verif = %Recepteur.DonneeTraitee{id_historique_donnee_bouee: 1, date_saisie: timestamp, valide: true}
+    type_data = %Recepteur.TypeDonneeMesuree{etiquette: "Temperature", unite: "degres celsius"}
+    mesure = %Recepteur.Mesure{id_historique_donnee_bouee: 1, date_saisie: timestamp, id_type_donnee_mesuree: 1, valeur: 24.42}
+
+    Recepteur.Repo.insert(region)
+    Recepteur.Repo.insert(bouee)
+    Recepteur.Repo.insert(data)
+    Recepteur.Repo.insert(verif)
+    Recepteur.Repo.insert(type_data)
+    Recepteur.Repo.insert(mesure)
 
     {:ok, self()}
 

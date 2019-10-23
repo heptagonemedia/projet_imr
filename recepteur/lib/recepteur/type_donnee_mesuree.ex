@@ -6,8 +6,7 @@ defmodule Recepteur.TypeDonneeMesuree do
 
   schema "type_donnee_mesuree" do
     field :etiquette, :string
-
-    has_many :mesure, Recepteur.Mesure, foreign_key: :id_type_donnee_mesuree, references: :id_type_donnee_mesuree
+    field :unite, :string
   end
 
 end

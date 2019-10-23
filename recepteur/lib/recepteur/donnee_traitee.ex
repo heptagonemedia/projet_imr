@@ -6,9 +6,8 @@ defmodule Recepteur.DonneeTraitee do
 
   schema "donnee_traitee" do
     field :id_historique_donnee_bouee, :integer
+    field :date_saisie, :utc_datetime
     field :valide, :boolean
-
-    belongs_to :historique_donnee_bouee, Recepteur.HistoriqueDonneeBouee, foreign_key: :id_historique_donnee_bouee, references: :id_historique_donnee_bouee, define_field: false
   end
 
 end
