@@ -2,7 +2,7 @@ defmodule RecepteurWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "room:*", RecepteurWeb.RoomChannel
+  channel "room:lobby", RecepteurWeb.RoomChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
