@@ -2,12 +2,14 @@ use Mix.Config
 
 # Configure your database
 config :recepteur, Recepteur.Repo,
-  username: "postgres",
-  password: "mission",
-  database: "recepteur_dev",
-  hostname: "localhost",
+  username: "fd",
+  password: "cxzcxc",
+  database: "imr",
+  hostname: "cxzcxs",
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 10,
+  port: 2232
+
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
