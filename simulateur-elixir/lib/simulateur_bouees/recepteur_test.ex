@@ -9,8 +9,11 @@ defmodule SimulateurBouees.RecepteurTest do
 
   def init [ip, port] do
     {:ok,listen_socket} = :gen_tcp.listen(port,[:binary,{:packet, 0},{:active,true},{:ip,ip}])
-    {:ok,socket } = :gen_tcp.accept listen_socket
-    {:ok, %{ip: ip, port: port, socket: socket}}
+    case :gen_tcp.accept listen_socket do
+      {:ok,socket } -> {:ok, %{ip: ip, port: port, socket: socket}}
+      {:error, :einval} -> {:error, :einval}
+    end 
+
   end
 
   def handle_info({:tcp,socket,packet},state) do
