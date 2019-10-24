@@ -2,10 +2,10 @@ use Mix.Config
 
 # Configure your database
 config :recepteur, Recepteur.Repo,
-  username: "username",
-  password: "password",
+  username: "fd",
+  password: "cxzcxc",
   database: "imr",
-  hostname: "hellothere",
+  hostname: "cxzcxs",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10,
   port: 2232
