@@ -1,10 +1,6 @@
-# Documentation développeur
+# Documentation Base de données
 
-## Outils de développement
-
-* https://heimdall.vpsloic.loicbertrand.net
-
-## Base de données
+## Accès
 
 ### pgAdmin
 
@@ -14,11 +10,65 @@
 
 ### Connexion à la base de données
 
-| Hôte        | vpsloic.loicbertrand.net |
-| ----------- | ------------------------ |
-| Port        | 1132                     |
-| Utilisateur | heptagonemedia           |
+| Hôte                | vpsloic.loicbertrand.net |
+| ------------------- | ------------------------ |
+| Port                | 1132                     |
+| Utilisateur         | heptagonemedia           |
+| Nom base de données | imr                      |
 
-### Bases de données existantes
+## Schéma de la base de données
 
-* imr
+### Table: region
+
+| champ | type | explication |
+| ----- | ---- | ----------- |
+|       |      |             |
+
+### Table: bouee
+
+| champ | type | explication |
+| ----- | ---- | ----------- |
+|       |      |             |
+
+### Table: calcul
+
+| champ | type | explication |
+| ----- | ---- | ----------- |
+|       |      |             |
+
+### Table: type_calcul
+
+| champ | type | explication |
+| ----- | ---- | ----------- |
+|       |      |             |
+
+### Table: historique_donnee_bouee
+
+| champ | type | explication |
+| ----- | ---- | ----------- |
+|       |      |             |
+
+### Table: resultat
+
+| champ | type | explication |
+| ----- | ---- | ----------- |
+|       |      |             |
+
+### Table: Region
+
+| champ | type | explication |
+| ----- | ---- | ----------- |
+|       |      |             |
+
+### Table: Region
+
+| champ | type | explication |
+| ----- | ---- | ----------- |
+|       |      |             |
+
+### Table: Region
+
+| champ | type | explication |
+| ----- | ---- | ----------- |
+|       |      |             |
+
