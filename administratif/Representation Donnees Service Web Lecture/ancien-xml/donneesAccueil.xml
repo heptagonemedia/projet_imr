@@ -1,6 +1,6 @@
-<donnees-accueil>
-<date_derniere_maj>jj/mm/aaaa hh:mm:ss</date_derniere_maj>
-<bouees>
+<donnee-accueil>
+<date-maj>jj/mm/aaaa HH:MM:SS</date-maj>
+<liste-bouee>
 	<bouee>
 		<etiquette>bouee1</etiquette>
 		<latitude>45.2125</latitude>
@@ -31,5 +31,5 @@
 		<longitude>34.2514</longitude>
 		<conforme>true</conforme>
 	</bouee>
-</bouees>
-</donnees-accueil>
+</liste-bouee>
+</donnee-accueil>
