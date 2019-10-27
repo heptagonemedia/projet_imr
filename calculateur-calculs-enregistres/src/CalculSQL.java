@@ -26,10 +26,6 @@ public interface CalculSQL {
         = "SELECT id_type_calcul\n"
         + "FROM calcul_enregistre\n"
         + "WHERE id_calcul_enregistre = ?"; //id_calcul
-    public static final String SQL_OBTENIR_CALCUL_PREVU
-        = "SELECT prevu\n"
-        + "FROM calcul_enregistre\n"
-        + "WHERE id_calcul_enregistre = ?"; //id_calcul
 
     //Nouveauté de la base de données
     public static final String SQL_OBTENIR_CHEMIN_FICHIER_XML

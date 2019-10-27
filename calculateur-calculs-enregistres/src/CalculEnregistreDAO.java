@@ -10,7 +10,25 @@ public class CalculEnregistreDAO implements CalculSQL {
             this.connection = ConnexionBDD.getInstance().getConnection();
     }
 
-    public Date obtenirDateDebutCalcul(int idCalcul) {
+    public long obtenirFKboueeLiee(long idCalcul) {
+        PreparedStatement requeteBaseDeDonnees;
+        try {
+            //On prépare la requête à la base de données
+            requeteBaseDeDonnees = connection.prepareStatement(SQL_OBTENIR_FK_BOUEE);
+            requeteBaseDeDonnees.setLong(1, idCalcul);
+
+            //On exécute la requête
+            ResultSet curseurReponseBaseDeDonnees = requeteBaseDeDonnees.executeQuery();
+
+            //On récupère la réponse de la base de données
+            return curseurReponseBaseDeDonnees.getLong("id_bouee");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; //Signal d'erreur
+    }
+
+    public Date obtenirDateDebutCalcul(long idCalcul) {
         PreparedStatement requeteBaseDeDonnees;
         try {
             //On prépare la requête à la base de données
@@ -28,7 +46,7 @@ public class CalculEnregistreDAO implements CalculSQL {
         return null;
     }
 
-    public Date obtenirDateFinCalcul(int idCalcul) {
+    public Date obtenirDateFinCalcul(long idCalcul) {
         PreparedStatement requeteBaseDeDonnees;
         try {
             //On prépare la requête à la base de données
@@ -46,7 +64,41 @@ public class CalculEnregistreDAO implements CalculSQL {
         return null;
     }
 
-    //wip.
+    public int obtenirFKtypeCalcul(long idCalcul) {
+        PreparedStatement requeteBaseDeDonnees;
+        try {
+            //On prépare la requête à la base de données
+            requeteBaseDeDonnees = connection.prepareStatement(SQL_OBTENIR_FK_TYPE_CALCUL);
+            requeteBaseDeDonnees.setLong(1, idCalcul);
+
+            //On exécute la requête
+            ResultSet curseurReponseBaseDeDonnees = requeteBaseDeDonnees.executeQuery();
+
+            //On récupère la réponse de la base de données
+            return curseurReponseBaseDeDonnees.getInt("id_type_calcul");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1; //Signal d'erreur
+    }
+
+    public String obtenirChampTypeCalcul(int fkTypeCalcul) {
+        PreparedStatement requeteBaseDeDonnees;
+        try {
+            //On prépare la requête à la base de données
+            requeteBaseDeDonnees = connection.prepareStatement(SQL_OBTENIR_TYPE_CALCUL);
+            requeteBaseDeDonnees.setLong(1, fkTypeCalcul);
+
+            //On exécute la requête
+            ResultSet curseurReponseBaseDeDonnees = requeteBaseDeDonnees.executeQuery();
+
+            //On récupère la réponse de la base de données
+            return curseurReponseBaseDeDonnees.getString("etiquette");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public List<Float> obtenirValeursPourCalcul(long idBouee, Date dateDebutCalcul, Date dateFinCalcul) {
 
@@ -72,12 +124,30 @@ public class CalculEnregistreDAO implements CalculSQL {
         return valeursLues;
     }
 
-    public void modifierValeurCalcul(float valeurAinserer, long idCalcul) {
+    public List<Float> obtenirValeursPretesAuCalcul(long idCalcul) {
+        long fkBoueeLiee;
+        Date dateDebutCalcul, dateFinCalcul;
+
+        fkBoueeLiee = obtenirFKboueeLiee(idCalcul);
+        dateDebutCalcul = obtenirDateDebutCalcul(idCalcul);
+        dateFinCalcul = obtenirDateFinCalcul(idCalcul);
+
+        return obtenirValeursPourCalcul(fkBoueeLiee, dateDebutCalcul, dateFinCalcul);
+    }
+
+    public String obtenirChampTypeCalculPretAuCalcul(long idCalcul) {
+        int fkTypeCalcul;
+
+        fkTypeCalcul = obtenirFKtypeCalcul(idCalcul);
+        return obtenirChampTypeCalcul(fkTypeCalcul);
+    }
+
+    public void modifierValeurCalcul(double valeurAinserer, long idCalcul) {
         System.out.println("CalculEnregistreDAO.modifierValeurCalcul()");
         try {
             //On prépare la requête à la base de données
-            PreparedStatement requetePourModifierCalcul = connection.prepareStatement(SQL_MISE_A_JOUR_COMPLETE_CALCUL);
-            requetePourModifierCalcul.setFloat(1, valeurAinserer);
+            PreparedStatement requetePourModifierCalcul = connection.prepareStatement(SQL_MISE_A_JOUR_VALEUR_CALCUL);
+            requetePourModifierCalcul.setDouble(1, valeurAinserer);
             requetePourModifierCalcul.setLong(2, idCalcul); //WHERE CLAUSE
 
             //On l'exécute
