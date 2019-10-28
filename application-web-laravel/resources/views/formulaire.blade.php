@@ -191,6 +191,28 @@
                         </div>
 
                     </div>
+                    <div class="row" id="marge">
+                        <div class="input-field col s2">
+                            <i class="small material-icons prefix">save</i>
+                            <label>Repéter</label>
+                        </div>
+
+                        <div class=" input-field col l3 s10">
+                            <!-- Switch -->
+                            <div class="switch">
+                                <label>
+                                    Non
+                                    <input id="recursif" type="checkbox" oninput="afficherRecursivite()">
+                                    <span class="lever"></span>
+                                    Oui
+                                </label>
+                            </div>
+                        </div>
+                        <div id="ligne-select">
+
+                        </div>
+                    </div>
+
 
                     <div class="row" id="marge">
 
@@ -210,5 +232,15 @@
 
 
 @section('script')
+    <script type="text/plain" id="select-recursivite">
+        <div class="input-field col l4 ">
+    <select>
+      <option value="" disabled selected>Quand répéter le calcul</option>
+      <option value="1">Tous les jours</option>
+      <option value="2">Toutes les semaines</option>
+      <option value="3">Tous les ans</option>
+    </select>
+  </div>
+    </script>
     <script type="text/javascript" src="{{asset('resources\js\script.js')}}"></script>
 @endsection
