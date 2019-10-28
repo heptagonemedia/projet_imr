@@ -336,3 +336,14 @@ $(document).ready(function () {
         twelveHour: false
     });
 });
+
+function afficherRecursivite(){
+    if($("#recursif").is(":checked")){
+        document.getElementById("ligne-select").innerHTML = document.getElementById("select-recursivite").innerHTML;
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+    }else{
+        document.getElementById("ligne-select").innerHTML = " ";
+    }
+}
