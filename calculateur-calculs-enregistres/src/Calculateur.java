@@ -8,7 +8,7 @@ public class Calculateur {
     private final String ECART_TYPE = "ecart type";
     private final String MEDIANE = "mediane";
 
-    private List<Float> tableauDeValeurs = new ArrayList<Float>();
+    private List<Double> tableauDeValeurs = new ArrayList<Double>();
     private String typeCalcul;
     private double moyenne, resultat;
     private int tailleTableauValeursLues;
@@ -27,23 +27,31 @@ public class Calculateur {
         tailleTableauValeursLues = tableauDeValeurs.size();
         typeCalcul = calculDAO.obtenirChampTypeCalculPretAuCalcul(idCalcul);
 
+        //DÉBUG
+        //for(double valeurLue : tableauDeValeurs) {
+        //    System.out.println("val : " + valeurLue);
+        //}
+
         if(typeCalcul.equals(MOYENNE)) {
-            for(float valeurLue : tableauDeValeurs) {
+            //System.out.println("MOYENNE");
+            for(double valeurLue : tableauDeValeurs) {
                 resultat += valeurLue;
             }
             resultat /= tailleTableauValeursLues;
 
         } else if(typeCalcul.equals(ECART_TYPE)) {
-            for(float valeurLue : tableauDeValeurs) {
+            //System.out.println("ÉCART TYPE");
+            for(double valeurLue : tableauDeValeurs) {
                 moyenne += valeurLue;
             }
             moyenne /= tailleTableauValeursLues;
-            for(float valeurLue : tableauDeValeurs) {
+            for(double valeurLue : tableauDeValeurs) {
                 resultat = Math.pow((valeurLue-moyenne), 2.0);
             }
             resultat = Math.sqrt((1.0/tailleTableauValeursLues)*resultat);
 
         } else if(typeCalcul.equals(MEDIANE)) {
+            //System.out.println("MÉDIANE");
             Collections.sort(tableauDeValeurs);
             if(tailleTableauValeursLues%2!=0) {
                 resultat = tableauDeValeurs.get(tailleTableauValeursLues/2);
@@ -52,9 +60,10 @@ public class Calculateur {
             }
         } else {
             // Erreur
+            System.out.println("ERREUR idCalcul : " + idCalcul + " → mauvais type_calcul");
             resultat = -1;
         }
-
+        //System.out.println("résultat = " + resultat);
         calculDAO.modifierValeurCalcul(resultat, idCalcul);
     }
 }

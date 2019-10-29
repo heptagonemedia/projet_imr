@@ -1,4 +1,5 @@
 import java.sql.*;
+// import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class CalculEnregistreDAO implements CalculSQL {
 
             //On exécute la requête
             ResultSet curseurReponseBaseDeDonnees = requeteBaseDeDonnees.executeQuery();
+            curseurReponseBaseDeDonnees.next();
 
             //On récupère la réponse de la base de données
             return curseurReponseBaseDeDonnees.getLong("id_bouee");
@@ -28,7 +30,7 @@ public class CalculEnregistreDAO implements CalculSQL {
         return -1; //Signal d'erreur
     }
 
-    public Date obtenirDateDebutCalcul(long idCalcul) {
+    public Timestamp obtenirDateDebutCalcul(long idCalcul) {
         PreparedStatement requeteBaseDeDonnees;
         try {
             //On prépare la requête à la base de données
@@ -37,16 +39,17 @@ public class CalculEnregistreDAO implements CalculSQL {
 
             //On exécute la requête
             ResultSet curseurReponseBaseDeDonnees = requeteBaseDeDonnees.executeQuery();
+            curseurReponseBaseDeDonnees.next();
 
             //On récupère la réponse de la base de données
-            return curseurReponseBaseDeDonnees.getDate("date_debut");
+            return curseurReponseBaseDeDonnees.getTimestamp("date_debut");
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public Date obtenirDateFinCalcul(long idCalcul) {
+    public Timestamp obtenirDateFinCalcul(long idCalcul) {
         PreparedStatement requeteBaseDeDonnees;
         try {
             //On prépare la requête à la base de données
@@ -55,9 +58,10 @@ public class CalculEnregistreDAO implements CalculSQL {
 
             //On exécute la requête
             ResultSet curseurReponseBaseDeDonnees = requeteBaseDeDonnees.executeQuery();
+            curseurReponseBaseDeDonnees.next();
 
             //On récupère la réponse de la base de données
-            return curseurReponseBaseDeDonnees.getDate("date_fin");
+            return curseurReponseBaseDeDonnees.getTimestamp("date_fin");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -73,6 +77,7 @@ public class CalculEnregistreDAO implements CalculSQL {
 
             //On exécute la requête
             ResultSet curseurReponseBaseDeDonnees = requeteBaseDeDonnees.executeQuery();
+            curseurReponseBaseDeDonnees.next();
 
             //On récupère la réponse de la base de données
             return curseurReponseBaseDeDonnees.getInt("id_type_calcul");
@@ -91,6 +96,7 @@ public class CalculEnregistreDAO implements CalculSQL {
 
             //On exécute la requête
             ResultSet curseurReponseBaseDeDonnees = requeteBaseDeDonnees.executeQuery();
+            curseurReponseBaseDeDonnees.next();
 
             //On récupère la réponse de la base de données
             return curseurReponseBaseDeDonnees.getString("etiquette");
@@ -100,23 +106,27 @@ public class CalculEnregistreDAO implements CalculSQL {
         return null;
     }
 
-    public List<Float> obtenirValeursPourCalcul(long idBouee, Date dateDebutCalcul, Date dateFinCalcul) {
+    public List<Double> obtenirValeursPourCalcul(long idBouee, Timestamp dateDebutCalcul, Timestamp dateFinCalcul) {
+        //débug
+        //System.out.println("idBouee : " + idBouee
+        //        + "date début : " + dateDebutCalcul
+        //        + "date fin : " + dateFinCalcul);
 
-        List<Float> valeursLues = new ArrayList<Float>();
+        List<Double> valeursLues = new ArrayList<Double>();
         PreparedStatement requeteLectureCalculEnregistre;
         try {
             //On prépare la requête à la base de données
             requeteLectureCalculEnregistre = connection.prepareStatement(SQL_OBTENIR_VALEURS_LUES);
             requeteLectureCalculEnregistre.setLong(1, idBouee);
-            requeteLectureCalculEnregistre.setDate(2, dateFinCalcul);
-            requeteLectureCalculEnregistre.setDate(3, dateDebutCalcul);
+            requeteLectureCalculEnregistre.setTimestamp(2, dateFinCalcul);
+            requeteLectureCalculEnregistre.setTimestamp(3, dateDebutCalcul);
 
             //On exécute la requête
             ResultSet curseurCalculEnregistre = requeteLectureCalculEnregistre.executeQuery();
 
             //On récupère la réponse de la base de données
             while(curseurCalculEnregistre.next()) {
-                valeursLues.add(curseurCalculEnregistre.getFloat("valeur"));
+                valeursLues.add(curseurCalculEnregistre.getDouble("valeur"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -124,9 +134,9 @@ public class CalculEnregistreDAO implements CalculSQL {
         return valeursLues;
     }
 
-    public List<Float> obtenirValeursPretesAuCalcul(long idCalcul) {
+    public List<Double> obtenirValeursPretesAuCalcul(long idCalcul) {
         long fkBoueeLiee;
-        Date dateDebutCalcul, dateFinCalcul;
+        Timestamp dateDebutCalcul, dateFinCalcul;
 
         fkBoueeLiee = obtenirFKboueeLiee(idCalcul);
         dateDebutCalcul = obtenirDateDebutCalcul(idCalcul);
@@ -143,7 +153,7 @@ public class CalculEnregistreDAO implements CalculSQL {
     }
 
     public void modifierValeurCalcul(double valeurAinserer, long idCalcul) {
-        System.out.println("CalculEnregistreDAO.modifierValeurCalcul()");
+        //System.out.println("CalculEnregistreDAO.modifierValeurCalcul()");
         try {
             //On prépare la requête à la base de données
             PreparedStatement requetePourModifierCalcul = connection.prepareStatement(SQL_MISE_A_JOUR_VALEUR_CALCUL);
