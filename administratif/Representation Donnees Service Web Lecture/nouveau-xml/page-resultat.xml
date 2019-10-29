@@ -1,18 +1,18 @@
-<application-donnees-page-resultat>
-    <donnees-carte>
+<application_donnees_page_resultat>
+    <donnees_carte>
         <bouee>
             <etiquette>bouee23</etiquette>
-            <latitude-reelle>45.2125</latitude-reelle>
-            <longitude-reelle>68.235</longitude-reelle>
+            <latitude_reelle>45.2125</latitude_reelle>
+            <longitude_reelle>68.235</longitude_reelle>
         </bouee>
-    </donnees-carte>
-    <donnees-courant>
-        <chemin-xml>resultat/chemin</chemin-xml>
-    </donnees-courant>
-    <donnees-salinite>
-        <chemin-xml></chemin-xml>
-    </donnees-courant>
-    <donnees-courant>
-        <chemin-xml></chemin-xml>
-    </donnees-salinite>
-</application-donnees-page-resultat>
+    </donnees_carte>
+    <donnees_courant>
+        <chemin_xml>resultat/chemin</chemin_xml>
+    </donnees_courant>
+    <donnees_salinite>
+        <chemin_xml></chemin_xml>
+    </donnees_salinite>
+    <donnees_temperature>
+        <chemin_xml></chemin_xml>
+    </donnees_temperature>
+</application_donnees_page_resultat>

@@ -27,6 +27,28 @@ class ResultatController extends Controller
 
     }
 
+    function lireXml(){
+
+        $fichierXml = simplexml_load_file("C:\\wamp64\\www\\fonction_lecture\\fichier.xml");
+
+        foreach($fichierXml->donnees_carte->bouee as $bouee) {
+            $etiquette = $bouee->etiquette;
+            $longitudeReelle = $bouee->latitude_reelle;
+            $latitudeReelle = $bouee->longitude_reelle;
+            //$bouee = new Bouee($etiquette, $longitudeReelle,$latitudeReelle);
+        }
+        foreach ($fichierXml->donnees_courant as $donnee_courant) {
+            $cheminXmlCourant = $donnee_courant->chemin_xml;
+        }
+        foreach ($fichierXml->donnees_temperature as $donnee_temperature) {
+            $cheminXmlTemperature = $donnee_temperature->chemin_xml;
+        }
+        foreach ($fichierXml->donnees_salinite as $donnee_salinite) {
+            $cheminXmlSalinite = $donnee_salinite->chemin_xml;
+        }
+
+    }
+
     // CF routes > web.php
     // public function showOne($nomResultat){
     //     dd($nomResultat);

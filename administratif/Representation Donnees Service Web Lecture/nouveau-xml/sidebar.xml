@@ -1,14 +1,14 @@
-<application-donnees-sidebar>
-    <liste-calculs-enregistres>
+<application_donnees_sidebar>
+    <liste_calculs_enregistres>
         <calcul>
             <id></id>
             <etiquette></etiquette>
         </calcul>
-    </liste-calculs-enregistres>
-    <liste-calculs-previsualises>
+    </liste_calculs_enregistres>
+    <liste_calculs_previsualises>
         <calcul>
             <id></id>
             <etiquette></etiquette>
         </calcul>
-    </liste-calculs-previsualises>
-</application-donnees-sidebar>
+    </liste_calculs_previsualises>
+</application_donnees_sidebar>
