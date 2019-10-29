@@ -29,7 +29,7 @@ class ResultatController extends Controller
 
     function lireXml(){
 
-        $fichierXml = simplexml_load_file("C:\\wamp64\\www\\fonction_lecture\\fichier.xml");
+        $fichierXml = simplexml_load_file("..\\administratif\\Representation Donnees Service Web Lecture\\nouveau-xml\\page-resultat.xml");
 
         foreach($fichierXml->donnees_carte->bouee as $bouee) {
             $etiquette = $bouee->etiquette;
@@ -47,6 +47,33 @@ class ResultatController extends Controller
             $cheminXmlSalinite = $donnee_salinite->chemin_xml;
         }
 
+    }
+
+    function lireXmlAccueil(){
+
+        $fichierXml = simplexml_load_file("..\\administratif\\Representation Donnees Service Web Lecture\\nouveau-xml\\page-accueil.xml");
+        $dateMaj = $fichierXml->date_maj;
+        $nombreConformes = $fichierXml->etat_bouees->conformes;
+        $nombreNonConformes = $fichierXml->etat_bouees->non_conformes;
+        foreach($fichierXml->liste_bouees->bouee as $bouee) {
+            $longitudeReelle = $bouee->latitude_reelle;
+            $latitudeReelle = $bouee->longitude_reelle;
+        }
+
+    }
+
+    function lireXmlsideBar(){
+
+        $fichierXml = simplexml_load_file("..\\administratif\\Representation Donnees Service Web Lecture\\nouveau-xml\\sidebar.xml");
+
+        foreach($fichierXml->liste_calculs_enregistres->calcul as $calcul) {
+            $etiquette = $calcul->etiquette;
+            $id = $calcul->id;
+        }
+        foreach($fichierXml->liste_calculs_previsualises->calcul as $calcul) {
+            $etiquette = $calcul->etiquette;
+            $id = $calcul->id;
+        }
     }
 
     // CF routes > web.php
