@@ -1,52 +1,69 @@
 <!DOCTYPE html>
 <html >
 <head>
-  <meta charset="UTF-8">
-  <title>Daily UI 001 Sign Up Form</title>
-  
-  
-  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css'>
-  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+    <meta charset="UTF-8">
+    <title>Daily UI 001 Sign Up Form</title>
 
-  <link rel="stylesheet" href="css/style.css">
 
-  
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css'>
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+    <link rel="stylesheet" href="css/style.css">
+
+
 </head>
 
 <body>
 
-  <div class="signupSection"> 
+    <div class="signupSection"> 
 
-  <form action="#" method="POST" class="signupForm" name="signupform">
+        <form action="#" method="POST" class="signupForm" name="signupform">
 
-    <h2>Nouveau Scénario</h2>
+            <h2>Nouveau Scénario</h2>
 
-    <div class="conteneur-input">
+            <div class="conteneur-input">
 
-      <div class="gauche">
-        <label for="type-scenario"></label>
-        <input type="text" class="inputFields" id="type-scenario" name="type-scenario" placeholder="Type du scenario" value=""
-          oninput="return " required />
-      </div>
+                <div class="gauche">
+                    <label for="type-scenario"></label>
+                    <input type="text" class="inputFields" id="type-scenario" name="type-scenario" placeholder="Type du scenario" value=""
+                    oninput="return " required />
+                </div>
 
-      <div class="droite">
-        <label for="username"></label>
-        <input type="text" class="inputFields" id="username" name="username" placeholder="Username" value=""
-          oninput="return userNameValidation(this.value)" required />
-      </div>
+                <div class="droite">
+                    <label for="username"></label>
+                    <input type="text" class="inputFields" id="username" name="username" placeholder="Username" value=""
+                    oninput="return userNameValidation(this.value)" required />
+                </div>
+
+            </div>
+
+            <div class="conteneur-input">
+                
+                <div class="gauche">
+                    <label for="username"></label>
+                    <input type="text" class="inputFields" id="username" name="username" placeholder="Username" value=""
+                        oninput="return userNameValidation(this.value)" required />
+                </div>
+
+                <div class="droite">
+                    <label for="username"></label>
+                    <input type="text" class="inputFields" id="username" name="username" placeholder="Username" value=""
+                        oninput="return userNameValidation(this.value)" required />
+                </div>
+
+            </div>
+
+            <div>
+                <input type="submit" id="join-btn" name="join" alt="Join" value="Join">
+            </div>
+
+        </form> 
+
 
     </div>
 
-    <div>
-      <input type="submit" id="join-btn" name="join" alt="Join" value="Join">
-    </div>
-
-  </form> 
-
-
-</div>
-  
-<script src="js/index.js"></script>
+    <script src="js/index.js"></script>
 
 </body>
+
 </html>
