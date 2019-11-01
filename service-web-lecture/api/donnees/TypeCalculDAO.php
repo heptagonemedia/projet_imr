@@ -1,7 +1,7 @@
 <?php
 
 
-class TypeCalculDAO
+class TypeCalculDAO implements TypeCalculSQL
 {
 
 }

@@ -1,7 +1,7 @@
 <?php
 
 
-class RegionDAO
+class RegionDAO implements RegionSQL
 {
 
 }
