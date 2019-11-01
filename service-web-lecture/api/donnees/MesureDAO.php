@@ -1,7 +1,7 @@
 <?php
 
 
-class MesureDAO
+class MesureDAO implements MesureSQL
 {
 
 }

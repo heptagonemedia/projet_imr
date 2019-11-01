@@ -1,7 +1,7 @@
 <?php
 
 
-class DonneeTraitee
+class DonneeTraitee extends HistoriqueDonneMesuree
 {
     const CLE_ID_DONNEE_TRAITEE = "id_donnee_traitee";
     const CLE_ID_HISTORIQUE_DONNEE_BOUEE = "id_historique_donnee_bouee";
