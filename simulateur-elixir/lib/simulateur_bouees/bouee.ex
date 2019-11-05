@@ -1,16 +1,20 @@
 defmodule SimulateurBouees.Bouee do
-  
-  def start_link do
-    Task.start_link(fn -> loop(%{}) end)
+  use Agent
+
+  def start_link(state) do
+    Agent.start_link(process(state))
   end
 
-  defp loop(map) do
+  def process(state) do
     receive do
-      {:get, key, caller} ->
-        send caller, Map.get(map, key)
-        loop(map)
-      {:put, key, value} ->
-        loop(Map.put(map, key, value))
+      after
+        1_000 ->
+          generer(state)
+          process(state)
+      end
     end
-  end
+
+    def generer(state) do
+      
+    end
 end
