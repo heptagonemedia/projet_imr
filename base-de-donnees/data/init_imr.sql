@@ -1,7 +1,8 @@
-DROP TABLE IF EXISTS calcul_enregistre;
+DROP TABLE IF EXISTS resultat;
+DROP TABLE IF EXISTS calcul;
 DROP TABLE IF EXISTS type_calcul;
 DROP TABLE IF EXISTS mesure;
-DROP TABLE IF EXISTS type_donnee_mesuree;
+DROP TABLE IF EXISTS type_donnee;
 DROP TABLE IF EXISTS donnee_traitee;
 DROP TABLE IF EXISTS historique_donnee_bouee;
 DROP TABLE IF EXISTS bouee;
