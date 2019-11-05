@@ -51,25 +51,25 @@ CREATE TABLE donnee_traitee(
         ON UPDATE CASCADE
 );
 
-CREATE TABLE type_donnee_mesuree(
-    id_type_donnee_mesuree serial PRIMARY KEY,
+CREATE TABLE type_donnee(
+    id_type_donnee serial PRIMARY KEY,
     etiquette text,
-    unite text,
+    unite text
 );
 
 CREATE TABLE mesure(
     id_mesure serial PRIMARY KEY,
     valeur float,
     id_historique_donnee_bouee integer,
-    id_type_donnee_mesuree integer,
+    id_type_donnee integer,
     CONSTRAINT historique_donnee_bouee_mesure_fk
         FOREIGN KEY (id_historique_donnee_bouee)
         REFERENCES historique_donnee_bouee(id_historique_donnee_bouee)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    CONSTRAINT type_donnee_mesuree_mesure_fk
-        FOREIGN KEY (id_type_donnee_mesuree)
-        REFERENCES type_donnee_mesuree(id_type_donnee_mesuree)
+    CONSTRAINT type_donnee_mesure_fk
+        FOREIGN KEY (id_type_donnee)
+        REFERENCES type_donnee(id_type_donnee)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
@@ -79,25 +79,42 @@ CREATE TABLE type_calcul(
     etiquette text
 );
 
-CREATE TABLE calcul_enregistre(
-    id_calcul_enregistre serial PRIMARY KEY,
+CREATE TABLE calcul(
+    id_calcul serial PRIMARY KEY,
     etiquette text,
     date_generation timestamp without time zone,
     date_prochaine_generation timestamp without time zone,
     date_debut_plage timestamp without time zone,
     date_fin_plage timestamp without time zone,
-    frequence_valeur float
+    frequence_valeur float,
     enregistre boolean,
     id_bouee integer,
     id_type_calcul integer,
-    CONSTRAINT bouee_calcul_enregistre_fk
+    CONSTRAINT bouee_calcul_fk
         FOREIGN KEY (id_bouee)
         REFERENCES bouee(id_bouee)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    CONSTRAINT type_calcul_calcul_enregistre_fk
+    CONSTRAINT type_calcul_calcul_fk
         FOREIGN KEY (id_type_calcul)
         REFERENCES type_calcul(id_type_calcul)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE resultat(
+    id_resultat serial PRIMARY KEY,
+    id_type_donnee integer,
+    id_calcul integer,
+    chemin_fichier_xml text,
+    CONSTRAINT calcul_resultat
+        FOREIGN KEY (id_calcul)
+        REFERENCES calcul(id_calcul)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT type_donnee_resultat
+        FOREIGN KEY (id_type_donnee)
+        REFERENCES type_donnee(id_type_donnee)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
