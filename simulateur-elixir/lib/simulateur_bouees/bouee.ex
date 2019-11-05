@@ -1,24 +1,25 @@
 defmodule SimulateurBouees.Bouee do
   use Agent
+  
+  state = %{}
 
   def start_link(initial) do
-    state = init(initial)
+    init(initial)
     Agent.start_link(process(state))
   end
 
-def init(initial) do
-  state = %{id_bouee: initial.idbouee, scenario: initial.scenario}
-  temperature = Enum.random(5..10)
-  salinite = Enum.random(5..10)
-  debit = Enum.random(5..10)
-  valsInit = %{temperature: temperature, salinite: salinite, debit: debit}
-  latitude = :rand.uniform(20)
-  longitude = :rand.uniform(20)
-  batterie = 100
-  valsInit = %{valsInit | longitude: longitude, latitude: latitude}
-  state = %{state | valeurs_initiales: valsInit}
-  state
-end
+  def init(initial) do
+    state = %{id_bouee: initial.idbouee, scenario: initial.scenario}
+    temperature = Enum.random(5..10)
+    salinite = Enum.random(5..10)
+    debit = Enum.random(5..10)
+    valeurs_initiales = %{temperature: temperature, salinite: salinite, debit: debit}
+    latitude = :rand.uniform(20)
+    longitude = :rand.uniform(20)
+    batterie = 100
+    valeurs_initiales = %{valeurs_initiales | longitude: longitude, latitude: latitude, batterie: batterie}
+    state = %{state | valeurs_initiales: valeurs_initiales}
+  end
 
   def process(state) do
     receive do
@@ -26,11 +27,23 @@ end
         1_000 ->
           generer(state)
           process(state)
-      end
     end
+  end
 
-    def generer(state) do
+  def generer(state) do
+    if state.dernieres_valeurs do
+      # Si il existe des dernieres valeurs 
+      temperature = state.dernieres_valeurs.temperature + #GestionnaireScenario.GetRandomValue(id, value)
+      salinite = state.dernieres_valeurs.salinite + #GestionnaireScenario.GetRandomValue(id, value)
+      debit = state.dernieres_valeurs.debit + #GestionnaireScenario.GetRandomValue(id, value)
+      valeurs_initiales = %{temperature: temperature, salinite: salinite, debit: debit}
+      latitude = :rand.uniform(20)
+      longitude = :rand.uniform(20)
+      batterie = 100
+    else
+      # Si il n'existe aucune dernieres valeurs 
 
-      SimulateurBouees.Concentrateur.put()
     end
+    SimulateurBouees.Concentrateur.put()
+  end
 end
