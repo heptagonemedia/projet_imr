@@ -5,12 +5,12 @@ defmodule RecepteurWeb.RoomChannel do
     #message = "hello there"
     bouee = Recepteur.Bouee |> Ecto.Query.last |> Recepteur.Repo.one
     if(bouee != nil) do
-      message = bouee.id + 1
+      {:ok, bouee.id_bouee + 1, socket}
+    else
+      {:ok, 1, socket}
     end
-      message = "1"
-
-    {:ok, message, socket}
   end
+  
   def join("room:" <> _private_room_id, _params, _socket) do
     {:error, %{reason: "unauthorized"}}
   end
