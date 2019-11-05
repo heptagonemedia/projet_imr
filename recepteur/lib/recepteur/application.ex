@@ -29,16 +29,15 @@ defmodule Recepteur.Application do
 
     data = %Recepteur.HistoriqueDonneeBouee{id_bouee: 1, longitude_reelle: 105.5, latitude_reelle: 99.92, date_saisie: timestamp, batterie: 100}
 
-    verif = %Recepteur.DonneeTraitee{id_historique_donnee_bouee: 1, date_saisie: timestamp, valide: true}
-    changeset = Recepteur.DonneeTraitee.changeset(verif, %{})
+    verif = %Recepteur.DonneeTraitee{id_historique_donnee_bouee: 1, valide: true}
 
     type_data = %Recepteur.TypeDonneeMesuree{etiquette: "Temperature", unite: "degres celsius"}
-    mesure = %Recepteur.Mesure{id_historique_donnee_bouee: 1, date_saisie: timestamp, id_type_donnee_mesuree: 1, valeur: 24.42}
+    mesure = %Recepteur.Mesure{id_historique_donnee_bouee: 1, id_type_donnee: 1, valeur: 24.42}
 
     Recepteur.Repo.insert(region)
     Recepteur.Repo.insert(bouee)
     Recepteur.Repo.insert(data)
-    Recepteur.Repo.insert(changeset)
+    Recepteur.Repo.insert(verif)
     Recepteur.Repo.insert(type_data)
     Recepteur.Repo.insert(mesure)
 
