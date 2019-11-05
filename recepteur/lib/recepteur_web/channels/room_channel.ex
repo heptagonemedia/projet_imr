@@ -10,7 +10,7 @@ defmodule RecepteurWeb.RoomChannel do
       {:ok, 1, socket}
     end
   end
-  
+
   def join("room:" <> _private_room_id, _params, _socket) do
     {:error, %{reason: "unauthorized"}}
   end

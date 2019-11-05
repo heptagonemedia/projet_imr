@@ -23,7 +23,7 @@ defmodule Recepteur.Application do
 
 
     #region = %Recepteur.Region{etiquette: "Ocean Pacifique"}
-    #bouee = %Recepteur.Bouee{etiquette: "Bouee de test d'insertion des donnees sous TimeScaleDB", longitude_reference: 100.0, latitude_reference: 100.0}
+    #bouee = %Recepteur.Bouee{etiquette: "Bouee de test d'insertion des donnees apres reception", longitude_reference: 100.0, latitude_reference: 100.0}
 
     #timestamp = DateTime.truncate(DateTime.utc_now, :second);
 
