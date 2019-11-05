@@ -39,7 +39,7 @@
             if($connection) {
                 $connection->insert($_POST, "scenario", $c);
             } else {
-                die("Erreur valeurs");
+                die("Erreur de connection");
             }
 
             $connection->disconnect();

@@ -38,7 +38,7 @@ class BaseDeDonnees
         pg_close($this->lien_bdd);
     }
 
-    //TODO
+   
     public function insert($champs,$nomTable,$link){
 
         array_pop($champs);
@@ -78,14 +78,7 @@ class BaseDeDonnees
 
     //TODO
     public function select($champs,$nomTable,$condition){
-        // foreach ($champ as $key => $value) {
-        //     # code...
-        // }
-
-        // $result = pg_query($c,"SELECT * FROM account ");
-        // $row = pg_fetch_all($result); 
-
-        // return $row;
+        
     }
 
 
