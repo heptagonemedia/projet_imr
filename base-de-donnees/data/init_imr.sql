@@ -31,7 +31,7 @@ CREATE TABLE historique_donnee_bouee(
     id_bouee integer,
     longitude_reelle float,
     latitude_reelle float,
-    batterie, integer,
+    batterie integer,
     date_saisie timestamp without time zone,
     CONSTRAINT bouee_historique_donnee_bouee_fk
         FOREIGN KEY (id_bouee)
@@ -53,14 +53,15 @@ CREATE TABLE donnee_traitee(
 
 CREATE TABLE type_donnee_mesuree(
     id_type_donnee_mesuree serial PRIMARY KEY,
-    etiquette text
+    etiquette text,
+    unite text,
 );
 
 CREATE TABLE mesure(
     id_mesure serial PRIMARY KEY,
+    valeur float,
     id_historique_donnee_bouee integer,
     id_type_donnee_mesuree integer,
-    valeur float,
     CONSTRAINT historique_donnee_bouee_mesure_fk
         FOREIGN KEY (id_historique_donnee_bouee)
         REFERENCES historique_donnee_bouee(id_historique_donnee_bouee)
@@ -80,19 +81,18 @@ CREATE TABLE type_calcul(
 
 CREATE TABLE calcul_enregistre(
     id_calcul_enregistre serial PRIMARY KEY,
-    date_debut timestamp without time zone,
-    date_fin timestamp without time zone,
-    frequence float,
-    valeur float,
-    id_type_donnee_mesuree integer,
-    id_type_calcul integer,
-    prevu boolean,
-    chemin_fichier_xml text,
     etiquette text,
+    date_generation timestamp without time zone,
+    date_prochaine_generation timestamp without time zone,
+    date_debut_plage timestamp without time zone,
+    date_fin_plage timestamp without time zone,
+    frequence_valeur float
     enregistre boolean,
-    CONSTRAINT type_donnee_mesuree_calcul_enregistre_fk
-        FOREIGN KEY (id_type_donnee_mesuree)
-        REFERENCES type_donnee_mesuree(id_type_donnee_mesuree)
+    id_bouee integer,
+    id_type_calcul integer,
+    CONSTRAINT bouee_calcul_enregistre_fk
+        FOREIGN KEY (id_bouee)
+        REFERENCES bouee(id_bouee)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     CONSTRAINT type_calcul_calcul_enregistre_fk
