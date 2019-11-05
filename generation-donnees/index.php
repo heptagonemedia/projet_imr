@@ -20,9 +20,9 @@
 
     <?php 
 
-        echo '<pre>';
-        print_r($_POST);
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r($_POST);
+        // echo '</pre>';
 
         $connection = null;
         $c = null;
@@ -163,7 +163,7 @@
                 <div class="droite">
                     <label for="decr-batterie"></label>
                     <input type="text" class="inputFields" id="decr-batterie" name="decr-batterie" placeholder="Batterie décrémentation"
-                        value="" oninput="return erreurValidation(this.value, this.id)" required />
+                        value="" oninput="" required />
                 </div>
             
             </div>
