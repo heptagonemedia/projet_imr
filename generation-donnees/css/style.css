@@ -6,7 +6,7 @@
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
   background: #111;
   background-repeat: no-repeat;
 }
@@ -44,7 +44,7 @@ body {
   outline: none;
 }
 
-#join-btn {
+#ajouter-btn {
   border: 1px solid #0ab4b4;
   background: rgba(20, 20, 20, 0.6);
   font-size: 18px;
@@ -55,7 +55,7 @@ body {
   transition: .4s;
 }
 
-#join-btn:hover {
+#ajouter-btn:hover {
   background: rgba(20, 20, 20, 0.8);
   padding: 10px 80px;
 }
