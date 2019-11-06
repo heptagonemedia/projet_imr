@@ -27,7 +27,6 @@ class ResultatController extends Controller
 
     }
 
-
     // CF routes > web.php
     // public function showOne($nomResultat){
     //     dd($nomResultat);
