@@ -1,6 +1,6 @@
 initFormulaire();
 $('.dropdown-trigger').dropdown();
-
+$('select').formSelect();
 $(document).ready(function () {
     $('.fixed-action-btn').floatingActionButton();
 });

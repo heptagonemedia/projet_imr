@@ -124,8 +124,12 @@
                         </div>
 
                         <div class="input-field col s10">
-                            <input type="number" id="bouee">
-                            <label for="bouee" id="labelBouee">Numero</label>
+                            <select id="bouee">
+                                <option value="" disabled selected>Région de la bouée</option>
+                                <option value="1">Saint-Laurent</option>
+                                <option value="2">Atlantique</option>
+                                <option value="3">Pacifique</option>
+                            </select>
                         </div>
 
                         <div class="col s2"></div>
