@@ -2,7 +2,6 @@ defmodule RecepteurWeb.RoomChannel do
   use RecepteurWeb, :channel
 
   def join("room:lobby", _message, socket) do
-    #message = "hello there"
     bouee = Recepteur.Bouee |> Ecto.Query.last |> Recepteur.Repo.one
     if(bouee != nil) do
       {:ok, bouee.id_bouee + 1, socket}
@@ -17,6 +16,12 @@ defmodule RecepteurWeb.RoomChannel do
 
   def handle_in("new_msg", %{"body" => body}, socket) do
     broadcast!(socket, "new_msg", %{body: body})
+    #test = Poison.decode!(body, as: %Recepteur.Region{})
+    #IO.puts test.etiquette
+    IO.puts body
+    testRegion = Poison.decode!(body, as: %Recepteur.Region{}) # {"etiquette": "Ocean Antartique"}
+    Recepteur.Repo.insert(testRegion)
+
     {:noreply, socket}
   end
 end
