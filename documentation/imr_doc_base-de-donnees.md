@@ -7,12 +7,13 @@
 | Adresse     | https://pgadmin.vpsloic.loicbertrand.net/ |
 | ----------- | ----------------------------------------- |
 | Identifiant | pgadmin@heptagonemedia.com                |
+| serveur     | postgres                                  |
 
 ### Connexion à la base de données
 
 | Hôte                | vpsloic.loicbertrand.net |
 | ------------------- | ------------------------ |
-| Port                | 1132                     |
+| Port                | 2232                     |
 | Utilisateur         | heptagonemedia           |
 | Nom base de données | imr                      |
 
