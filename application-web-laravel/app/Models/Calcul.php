@@ -57,11 +57,13 @@ class Calcul
 
 
     public static function mockCalculEnregistre(){
-        $tableauCalculsEnregitres = array();
-        array_push($tableauCalculsEnregitres, new Calcul(0, "temperature" , "xml/fichier.xml", "moyenne"));
-        array_push($tableauCalculsEnregitres, new Calcul(0, "courant" , "xml/fichier.xml", "ecart-type"));
-        array_push($tableauCalculsEnregitres, new Calcul(0, "salinite" , "xml/fichier.xml", "mediane"));
-        return $tableauCalculsEnregitres;
+        $tableauTypeDonnee = TypeDonneeMesuree::mockDonneesMesurees();
+        $tableauTypeCalcul = TypeCalcul::mockTypesCalcul();
+        $tableauCalculs = array();
+        array_push($tableauCalculs, new Calcul(0, $tableauTypeDonnee[0], "xml/fichier.xml", $tableauTypeCalcul[0]));
+        array_push($tableauCalculs, new Calcul(0, $tableauTypeDonnee[1], "xml/fichier.xml", $tableauTypeCalcul[1]));
+        array_push($tableauCalculs, new Calcul(0, $tableauTypeDonnee[2] , "xml/fichier.xml", $tableauTypeCalcul[2]));
+        return $tableauCalculs;
     }
 
 
