@@ -135,7 +135,7 @@
                         <div class="col s2"></div>
 
                         <div class="col s10">
-                            <span class="helper-text" id="HelperBouee"><label id="alerte">Il faut entrer un entier compris entre 1 et 75</label></span>
+                            <span class="helper-text" id="HelperBouee"><label id="alerte">Veuillez choisir une région</label></span>
                         </div>
 
                     </div>

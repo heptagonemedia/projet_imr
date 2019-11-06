@@ -42,7 +42,6 @@ function detecterErreurs() {
     if (verificationFrequence && verificationBouee && verificationIntervalle) {
         $("#texteAlerte").text("");
         $("#divAlerte").hide();
-
         $('#formulaire').submit();
     }
 
@@ -87,11 +86,11 @@ function initFormulaire() {
 }
 
 //fonction qui affiche le message d'erreur pour le champ bouée
-function verifierErreurBouee() {
+function verifierErreurRegion() {
 
-    let valeurBouee = $("#bouee").val();
+    let valeurBouee = $("#region").value();
 
-    if (valeurBouee > 75 || valeurBouee < 1 || isNaN(valeurBouee) || !valeurBouee) {
+    if (valeurBouee == "") {
         $("#HelperBouee").show();
         return false;
     }
