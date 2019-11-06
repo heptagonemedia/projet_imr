@@ -1,13 +1,12 @@
-DROP TABLE IF EXISTS calcul_enregistre;
+DROP TABLE IF EXISTS resultat;
+DROP TABLE IF EXISTS calcul;
 DROP TABLE IF EXISTS type_calcul;
 DROP TABLE IF EXISTS mesure;
-DROP TABLE IF EXISTS type_donnee_mesuree;
+DROP TABLE IF EXISTS type_donnee;
 DROP TABLE IF EXISTS donnee_traitee;
 DROP TABLE IF EXISTS historique_donnee_bouee;
 DROP TABLE IF EXISTS bouee;
 DROP TABLE IF EXISTS region;
-
-CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 
 
 CREATE TABLE region(
@@ -15,9 +14,8 @@ CREATE TABLE region(
     etiquette text
 );
 
-
 CREATE TABLE bouee(
-    id_bouee bigserial PRIMARY KEY,
+    id_bouee serial PRIMARY KEY,
     etiquette text,
     longitude_reference float,
     latitude_reference float,
@@ -30,13 +28,12 @@ CREATE TABLE bouee(
 );
 
 CREATE TABLE historique_donnee_bouee(
-    id_historique_donnee_bouee bigserial,
+    id_historique_donnee_bouee serial PRIMARY KEY,
     id_bouee integer,
     longitude_reelle float,
     latitude_reelle float,
-    date_saisie timestamp without time zone NOT NULL ,
     batterie integer,
-    primary key (id_historique_donnee_bouee, date_saisie),
+    date_saisie timestamp without time zone,
     CONSTRAINT bouee_historique_donnee_bouee_fk
         FOREIGN KEY (id_bouee)
         REFERENCES bouee(id_bouee)
@@ -44,71 +41,81 @@ CREATE TABLE historique_donnee_bouee(
         ON UPDATE CASCADE
 );
 
-SELECT create_hypertable('historique_donnee_bouee', 'date_saisie');
-
 CREATE TABLE donnee_traitee(
-    id_donnee_traitee bigserial PRIMARY KEY,
+    id_donnee_traitee serial PRIMARY KEY,
     id_historique_donnee_bouee integer,
-    date_saisie timestamp without time zone,
     valide boolean,
     CONSTRAINT historique_donnee_bouee_donnee_traitee_fk
-        FOREIGN KEY (id_historique_donnee_bouee, date_saisie)
-        REFERENCES historique_donnee_bouee(id_historique_donnee_bouee, date_saisie)
+        FOREIGN KEY (id_historique_donnee_bouee)
+        REFERENCES historique_donnee_bouee(id_historique_donnee_bouee)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
-CREATE TABLE type_donnee_mesuree(
-    id_type_donnee_mesuree bigserial PRIMARY KEY,
+CREATE TABLE type_donnee(
+    id_type_donnee serial PRIMARY KEY,
     etiquette text,
     unite text
 );
 
 CREATE TABLE mesure(
-    id_historique_donnee_bouee integer,
-    date_saisie timestamp without time zone NOT NULL,
-    id_type_donnee_mesuree integer,
+    id_mesure serial PRIMARY KEY,
     valeur float,
-    primary key(id_historique_donnee_bouee, date_saisie),
+    id_historique_donnee_bouee integer,
+    id_type_donnee integer,
     CONSTRAINT historique_donnee_bouee_mesure_fk
-        FOREIGN KEY (id_historique_donnee_bouee, date_saisie)
-        REFERENCES historique_donnee_bouee(id_historique_donnee_bouee, date_saisie)
+        FOREIGN KEY (id_historique_donnee_bouee)
+        REFERENCES historique_donnee_bouee(id_historique_donnee_bouee)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    CONSTRAINT type_donnee_mesuree_mesure_fk
-        FOREIGN KEY (id_type_donnee_mesuree)
-        REFERENCES type_donnee_mesuree(id_type_donnee_mesuree)
+    CONSTRAINT type_donnee_mesure_fk
+        FOREIGN KEY (id_type_donnee)
+        REFERENCES type_donnee(id_type_donnee)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
-SELECT create_hypertable('mesure', 'date_saisie');
-
 CREATE TABLE type_calcul(
-    id_type_calcul bigserial PRIMARY KEY,
+    id_type_calcul serial PRIMARY KEY,
     etiquette text
 );
 
-CREATE TABLE calcul_enregistre(
-    id_calcul_enregistre bigserial PRIMARY KEY,
-    date_debut timestamp without time zone,
-    date_fin timestamp without time zone,
-    frequence float,
-    valeur float,
-    id_type_donnee_mesuree integer,
-    id_type_calcul integer,
-    prevu boolean,
-    chemin_fichier_xml text,
+CREATE TABLE calcul(
+    id_calcul serial PRIMARY KEY,
     etiquette text,
+    date_generation timestamp without time zone,
+    date_prochaine_generation timestamp without time zone,
+    date_debut_plage timestamp without time zone,
+    date_fin_plage timestamp without time zone,
+    frequence_valeur float,
     enregistre boolean,
-    CONSTRAINT type_donnee_mesuree_calcul_enregistre_fk
-        FOREIGN KEY (id_type_donnee_mesuree)
-        REFERENCES type_donnee_mesuree(id_type_donnee_mesuree)
+    id_bouee integer,
+    id_type_calcul integer,
+    CONSTRAINT bouee_calcul_fk
+        FOREIGN KEY (id_bouee)
+        REFERENCES bouee(id_bouee)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
-    CONSTRAINT type_calcul_calcul_enregistre_fk
+    CONSTRAINT type_calcul_calcul_fk
         FOREIGN KEY (id_type_calcul)
         REFERENCES type_calcul(id_type_calcul)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE resultat(
+    id_resultat serial PRIMARY KEY,
+    id_type_donnee integer,
+    id_calcul integer,
+    chemin_fichier_xml text,
+    CONSTRAINT calcul_resultat
+        FOREIGN KEY (id_calcul)
+        REFERENCES calcul(id_calcul)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    CONSTRAINT type_donnee_resultat
+        FOREIGN KEY (id_type_donnee)
+        REFERENCES type_donnee(id_type_donnee)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );

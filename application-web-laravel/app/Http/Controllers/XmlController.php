@@ -10,7 +10,7 @@ class XmlController extends Controller
 {
     function lireXml(){
 
-        $fichierXml = simplexml_load_file("..\\administratif\\Representation Donnees Service Web Lecture\\nouveau-xml\\page-resultat.xml");
+        $fichierXml = simplexml_load_file("..\\administratif\\Representation Data Service Web Lecture\\nouveau-xml\\page-resultat.xml");
 
         foreach($fichierXml->donnees_carte->bouee as $bouee) {
             $etiquette = $bouee->etiquette;
@@ -32,7 +32,7 @@ class XmlController extends Controller
 
     function lireXmlAccueil(){
 
-        $fichierXml = simplexml_load_file("..\\administratif\\Representation Donnees Service Web Lecture\\nouveau-xml\\page-accueil.xml");
+        $fichierXml = simplexml_load_file("..\\administratif\\Representation Data Service Web Lecture\\nouveau-xml\\page-accueil.xml");
         $dateMaj = $fichierXml->date_maj;
         $nombreConformes = $fichierXml->etat_bouees->conformes;
         $nombreNonConformes = $fichierXml->etat_bouees->non_conformes;
@@ -45,7 +45,7 @@ class XmlController extends Controller
 
     function lireXmlsideBar(){
 
-        $fichierXml = simplexml_load_file("..\\administratif\\Representation Donnees Service Web Lecture\\nouveau-xml\\sidebar.xml");
+        $fichierXml = simplexml_load_file("..\\administratif\\Representation Data Service Web Lecture\\nouveau-xml\\sidebar.xml");
 
         foreach($fichierXml->liste_calculs_enregistres->calcul as $calcul) {
             $etiquette = $calcul->etiquette;

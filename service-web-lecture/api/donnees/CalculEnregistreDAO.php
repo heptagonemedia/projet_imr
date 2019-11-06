@@ -1,7 +1,7 @@
 <?php
 
 
-class CalculEnregistreDAO
+class CalculEnregistreDAO implements CalculEnregistreSQL
 {
 
 }
