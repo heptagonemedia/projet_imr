@@ -1,6 +1,5 @@
 defmodule Recepteur.DonneeTraitee do
   use Ecto.Schema
-  import Ecto.Changeset
 
   @primary_key {:id_donnee_traitee, :id, autogenerate: true}
 
@@ -10,5 +9,4 @@ defmodule Recepteur.DonneeTraitee do
 
     belongs_to :historique_donnee_bouee, Recepteur.HistoriqueDonneeBouee, foreign_key: :id_historique_donnee_bouee, references: :id_historique_donnee_bouee, define_field: false
   end
-
 end

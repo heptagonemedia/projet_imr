@@ -1,6 +1,5 @@
 defmodule Recepteur.TypeDonneeMesuree do
   use Ecto.Schema
-  import Ecto.Changeset
 
   @primary_key {:id_type_donnee, :id, autogenerate: true}
 

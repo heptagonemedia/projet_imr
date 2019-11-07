@@ -2,12 +2,7 @@ defmodule RecepteurWeb.RoomChannel do
   use RecepteurWeb, :channel
 
   def join("room:lobby", _message, socket) do
-    bouee = Recepteur.Bouee |> Ecto.Query.last |> Recepteur.Repo.one
-    if(bouee != nil) do
-      {:ok, bouee.id_bouee + 1, socket}
-    else
-      {:ok, 1, socket}
-    end
+    {:ok, socket}
   end
 
   def join("room:" <> _private_room_id, _params, _socket) do
