@@ -107,7 +107,7 @@ CREATE TABLE resultat(
     id_resultat serial PRIMARY KEY,
     id_type_donnee integer,
     id_calcul integer,
-    chemin_fichier_xml text,
+    xml_graphique text,
     CONSTRAINT calcul_resultat
         FOREIGN KEY (id_calcul)
         REFERENCES calcul(id_calcul)
