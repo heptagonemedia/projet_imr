@@ -1,10 +1,9 @@
 defmodule Recepteur.TypeDonneeMesuree do
   use Ecto.Schema
-  import Ecto.Changeset
 
-  @primary_key {:id_type_donnee_mesuree, :id, autogenerate: true}
+  @primary_key {:id_type_donnee, :id, autogenerate: true}
 
-  schema "type_donnee_mesuree" do
+  schema "type_donnee" do
     field :etiquette, :string
     field :unite, :string
   end

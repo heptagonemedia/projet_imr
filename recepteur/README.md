@@ -1,4 +1,9 @@
+// TODO: Écrire un minimum de documentation (Ce qui est reçu, l'insert dans la db etc etc.)
+
+
 # Recepteur
+
+## Installation
 
 To start your Phoenix server:
 
