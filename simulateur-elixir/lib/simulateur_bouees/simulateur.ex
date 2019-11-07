@@ -1,5 +1,5 @@
 defmodule SimulateurBouees.Simulateur do
-  IO.puts "Hello world"
+  
 
   def child_spec(_args) do
     %{
@@ -16,18 +16,21 @@ defmodule SimulateurBouees.Simulateur do
   end
 
   def main do
-    {:ok, concentrateur} = SimulateurBouees.Concentrateur.start_link() 
+
+    
+    id_scenario = Enum.take_random(1..40, Enum.random(5..10))
     
 
     
-    id_scenario = Enum.take_random(1..40, Enum.random(5..10)) # choisir 5-10 nombres de 1-40
-#    Task.start()
-#    scenarioList = []
-#    Enum.each(id_scenario, fn x -> [getScenario(x)| scenarioList] end)
-#    IO.puts(scenarioList)
-#    Enum.each(scenarioList, fn x -> printScenario(x) end)
+
   end
 
+  def test do
+    {:ok, concentrateur} = SimulateurBouees.Concentrateur.start_link() 
+    SimulateurBouees.Concentrateur.put("valeur1")
+    SimulateurBouees.Concentrateur.put("valeur2")
+    SimulateurBouees.Concentrateur.getall()
+  end
   
 
   def getScenario(id) do

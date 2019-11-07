@@ -1,15 +1,49 @@
 defmodule SimulateurBouees.Bouee do
-  def start_link do
-    Task.start_link(fn -> loop(%{}) end)
+  use Agent
+  
+  state = %{}
+
+  def start_link(initial) do
+    init(initial)
+    Agent.start_link(process(state))
   end
 
-  defp loop(map) do
+  def init(initial) do
+    state = %{id_bouee: initial.idbouee, scenario: initial.scenario}
+    temperature = Enum.random(5..10)
+    salinite = Enum.random(5..10)
+    debit = Enum.random(5..10)
+    valeurs_initiales = %{temperature: temperature, salinite: salinite, debit: debit}
+    latitude = :rand.uniform(20)
+    longitude = :rand.uniform(20)
+    batterie = 100
+    valeurs_initiales = %{valeurs_initiales | longitude: longitude, latitude: latitude, batterie: batterie}
+    state = %{state | valeurs_initiales: valeurs_initiales}
+  end
+
+  def process(state) do
     receive do
-      {:get, key, caller} ->
-        send caller, Map.get(map, key)
-        loop(map)
-      {:put, key, value} ->
-        loop(Map.put(map, key, value))
+      after
+        1_000 ->
+          generer(state)
+          process(state)
     end
+  end
+
+  def generer(state) do
+    if state.dernieres_valeurs do
+      # Si il existe des dernieres valeurs 
+      temperature = state.dernieres_valeurs.temperature + #GestionnaireScenario.GetRandomValue(id, value)
+      salinite = state.dernieres_valeurs.salinite + #GestionnaireScenario.GetRandomValue(id, value)
+      debit = state.dernieres_valeurs.debit + #GestionnaireScenario.GetRandomValue(id, value)
+      valeurs_initiales = %{temperature: temperature, salinite: salinite, debit: debit}
+      latitude = :rand.uniform(20)
+      longitude = :rand.uniform(20)
+      batterie = 100
+    else
+      # Si il n'existe aucune dernieres valeurs 
+
+    end
+    SimulateurBouees.Concentrateur.put()
   end
 end
