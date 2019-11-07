@@ -10,7 +10,7 @@
                         'Elixir.Recepteur.DonneeTraitee',
                         'Elixir.Recepteur.HistoriqueDonneeBouee',
                         'Elixir.Recepteur.Mesure','Elixir.Recepteur.Region',
-                        'Elixir.Recepteur.Repo',
+                        'Elixir.Recepteur.Repo','Elixir.Recepteur.Separateur',
                         'Elixir.Recepteur.TypeDonneeMesuree',
                         'Elixir.RecepteurWeb',
                         'Elixir.RecepteurWeb.ChannelCase',
