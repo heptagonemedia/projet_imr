@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Data;
+
 class BoueeDAO implements BoueeSQL
 {
     private static $instance;

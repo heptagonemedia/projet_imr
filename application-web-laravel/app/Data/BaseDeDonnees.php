@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Data;
+
 class BaseDeDonnees
 {
     private static $instance;
