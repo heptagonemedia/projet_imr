@@ -15,9 +15,6 @@ defmodule SimulateurBouees.Repo.Migrations.CreateScenario do
       add :valeur_depart_temperature, :float
       add :valeur_depart_debit, :float
       add :valeur_depart_salinite, :float
-      add :valeur_depart_longitude, :float
-      add :valeur_depart_latitude, :float
-      add :valeur_depart_batterie, :integer
       add :prendre_compte, :boolean
     end
   end

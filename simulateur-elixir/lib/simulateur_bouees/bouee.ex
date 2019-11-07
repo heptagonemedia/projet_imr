@@ -1,49 +1,16 @@
 defmodule SimulateurBouees.Bouee do
-  use Agent
+  use Ecto.Schema
   
-  state = %{}
-
-  def start_link(initial) do
-    init(initial)
-    Agent.start_link(process(state))
+  schema "scenario" do
+    field :valeur_depart_longitude, :float
+    field :valeur_depart_latitude, :float
+    field :valeur_depart_batterie, :integer
   end
 
-  def init(initial) do
-    state = %{id_bouee: initial.idbouee, scenario: initial.scenario}
-    temperature = Enum.random(5..10)
-    salinite = Enum.random(5..10)
-    debit = Enum.random(5..10)
-    valeurs_initiales = %{temperature: temperature, salinite: salinite, debit: debit}
-    latitude = :rand.uniform(20)
-    longitude = :rand.uniform(20)
-    batterie = 100
-    valeurs_initiales = %{valeurs_initiales | longitude: longitude, latitude: latitude, batterie: batterie}
-    state = %{state | valeurs_initiales: valeurs_initiales}
-  end
+  def changeset(scenario, params \\ %{}) do
+      scenario
+      |> Ecto.Changeset.cast(params, [:valeur_depart_longitude, :valeur_depart_latitude, :valeur_depart_batterie])
 
-  def process(state) do
-    receive do
-      after
-        1_000 ->
-          generer(state)
-          process(state)
-    end
-  end
-
-  def generer(state) do
-    if state.dernieres_valeurs do
-      # Si il existe des dernieres valeurs 
-      temperature = state.dernieres_valeurs.temperature + #GestionnaireScenario.GetRandomValue(id, value)
-      salinite = state.dernieres_valeurs.salinite + #GestionnaireScenario.GetRandomValue(id, value)
-      debit = state.dernieres_valeurs.debit + #GestionnaireScenario.GetRandomValue(id, value)
-      valeurs_initiales = %{temperature: temperature, salinite: salinite, debit: debit}
-      latitude = :rand.uniform(20)
-      longitude = :rand.uniform(20)
-      batterie = 100
-    else
-      # Si il n'existe aucune dernieres valeurs 
-
-    end
-    SimulateurBouees.Concentrateur.put()
+      |> Ecto.Changeset.validate_required([:valeur_depart_longitude, :valeur_depart_latitude, :valeur_depart_batterie])
   end
 end
