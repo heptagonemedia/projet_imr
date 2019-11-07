@@ -10,7 +10,6 @@ class Calcul
     protected $id;
     protected $typeDonneeMesuree;
     protected $typeCalcul;
-    protected $prevu; //TODO : mettre prevu dans le modele Resultat
     protected $cheminFichierXml;
 
     public function __construct($id, $typeDonneeMesuree, $cheminFichierXml, $typeCalcul)
