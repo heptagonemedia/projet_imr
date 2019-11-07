@@ -116,22 +116,8 @@
             <div class="conteneur-input">
 
                 <div class="gauche">
-                    <label for="longitude"></label>
-                    <input type="text" class="inputFields" id="longitude" name="longitude" placeholder="Longitude valeur par défaut" value="" oninput="testerSiNombre(this.value, this.id)" required />
-                </div>
-
-                <div class="droite">
                     <label for="erreur-longitude"></label>
                     <input type="text" class="inputFields" id="erreur-longitude" name="erreur-longitude" placeholder="Longitude erreur" value="" oninput="erreurValidation(this.value, this.id)" required />
-                </div>
-
-            </div>
-
-            <div class="conteneur-input">
-
-                <div class="gauche">
-                    <label for="latitude"></label>
-                    <input type="text" class="inputFields" id="latitude" name="latitude" placeholder="Latitude valeur par défaut" value="" oninput="testerSiNombre(this.value, this.id)" required />
                 </div>
 
                 <div class="droite">
@@ -144,22 +130,16 @@
             <div class="conteneur-input">
 
                 <div class="gauche">
-                    <label for="batterie"></label>
-                    <input type="text" class="inputFields" id="batterie" name="batterie" placeholder="Batterie valeur par défaut" value="" oninput="erreurValeurBatterie(this.value); testerSiNombre(this.value, this.id);" required />
-                </div>
-
-                <div class="droite">
                     <label for="decr-batterie"></label>
                     <input type="text" class="inputFields" id="decr-batterie" name="decr-batterie" placeholder="Batterie décrémentation" value="" oninput="erreurEntreeDecrementationBatterie(this.value)" required />
                 </div>
 
-            </div>
+                <div class="droite">
+                    <label for="description"></label>
+                    <textarea name="description" id="description" class="inputFields" placeholder="Description du scénario" value="" oninput="estDescriptionRemplie(this.value)" required></textarea>
+                </div>
 
-            <div class="conteneur-input">
-                <label for="description"></label>
-                <textarea name="description" rows="5" id="description" class="inputFields" placeholder="Description du scénario" value="" oninput="estDescriptionRemplie(this.value)" required></textarea>
             </div>
-
 
             <div>
                 <input type="submit" id="ajouter-btn" name="ajouter" alt="ajouter" value="Ajouter">
