@@ -1,0 +1,76 @@
+body {
+	font-family: 'Rubik', sans-serif;
+	background-color: #FFFFFF;
+	margin:0px;
+
+	
+
+
+	/*font-family: 'Squada One', cursive;*/
+
+
+
+	/*font-family: 'Hind Guntur', sans-serif;*/
+
+}
+
+#ligne1 {
+	margin-bottom: -20px;
+	background-color: #1e2229; font-size: 18pt;color: white
+
+	/*font-family: 'Squada One', cursive;*/
+
+
+
+	/*font-family: 'Hind Guntur', sans-serif;*/
+
+}
+
+#map{
+	padding: 0%; height: 300px;
+}
+
+
+#ligne2 {
+	margin-top: -20px;
+	font-size: 18pt;
+	color: #FFFFFF;
+	background-color: #1e2229;
+	text-align: center;
+}
+
+
+
+
+#header{
+	background-color: #1e2229; font-size: 18pt;color: white
+}
+.lien{
+	text-decoration: none;
+	color: whitesmoke;
+}
+.chart{
+	height: 200px;
+	width: 100%;
+}
+#myChart{
+	padding: 0%;
+}
+
+#modal1{
+	width: 250px;
+}
+.foot{
+    position :fixed;
+    width: 100%;
+    padding-top: -40px;
+	padding-bottom: -40px;
+	bottom: 0px;
+}
+.card{
+    margin-bottom: 15px;
+}
+
+#ligneFooter{
+	margin-bottom: -20px;
+}

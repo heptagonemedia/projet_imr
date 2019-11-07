@@ -1,0 +1,15 @@
+<donnees-side-bar>
+<calculs_enregistres>
+	<resultat>
+		<etiquette></etiquette>
+		<id></id>
+	</resultat>
+</calculs_enregistres>
+<calculs_previsualises>
+	<resultat>
+		<etiquette></etiquette>
+		<id></id>
+	</resultat>
+</calculs_previsualises>
+</donnees-side-bar>
+//resultat = groupe de 3 calculs
