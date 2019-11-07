@@ -2,30 +2,32 @@ defmodule SimulateurBouees.Scenario do
   use Ecto.Schema
   
   schema "scenario" do
-      field :id_scenario, :integer
-      field :temperature_init, :float
-      field :salinite_init, :float
-      field :debit_init, :float
-      field :longitude_init, :float
-      field :latitude_init, :float
-      field :batterie_init, :integer
-      field :erreur, :boolean
-      field :temperature_erreur, :float
-      field :salinite_erreur, :float
-      field :debit_erreur, :float
-      field :longitude_erreur, :float
-      field :latitude_erreur, :float
-      field :batterie_erreur, :integer
+    field :id, :integer
+    field :type, :integer
+    field :description, :string
+    field :erreur_temperature, :float
+    field :erreur_debit, :float
+    field :erreur_salinite, :float
+    field :erreur_longitude, :float
+    field :erreur_latitude, :float
+    field :valeur_decrementation_batterie, :integer
+    field :valeur_depart_temperature, :float
+    field :valeur_depart_debit, :float
+    field :valeur_depart_salinite, :float
+    field :valeur_depart_longitude, :float
+    field :valeur_depart_latitude, :float
+    field :valeur_depart_batterie, :integer
+    field :prendre_compte, :boolean
   end
 
   def changeset(scenario, params \\ %{}) do
       scenario
-      |> Ecto.Changeset.cast(params, [:id_scenario, :temperature_init, :salinite_init, :debit_init, 
-      :longitude_init, :latitude_init, :batterie_init, :erreur, : :temperature_erreur, :salinite_erreur, 
-      :debit_erreur, :longitude_erreur, :latitude_erreur, :batterie_erreur])
+      |> Ecto.Changeset.cast(params, [:id, :type, :description, :erreur_temperature, :erreur_debit, :erreur_salinite, 
+      :erreur_longitude, :erreur_latitude, :valeur_decrementation_batterie, :valeur_depart_temperature, :valeur_depart_debit,
+      :valeur_depart_salinite, :valeur_depart_longitude, :valeur_depart_latitude, :valeur_depart_batterie, :prendre_compte])
 
-      |> Ecto.Changeset.validate_required([:id_scenario, :temperature_init, :salinite_init, :debit_init, 
-      :longitude_init, :latitude_init, :batterie_init, :erreur, : :temperature_erreur, :salinite_erreur, 
-      :debit_erreur, :longitude_erreur, :latitude_erreur, :batterie_erreur])
+      |> Ecto.Changeset.validate_required([:id, :type, :description, :erreur_temperature, :erreur_debit, :erreur_salinite, 
+      :erreur_longitude, :erreur_latitude, :valeur_decrementation_batterie, :valeur_depart_temperature, :valeur_depart_debit,
+      :valeur_depart_salinite, :valeur_depart_longitude, :valeur_depart_latitude, :valeur_depart_batterie, :prendre_compte])
   end
 end
