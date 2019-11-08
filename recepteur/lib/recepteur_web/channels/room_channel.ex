@@ -10,10 +10,8 @@ defmodule RecepteurWeb.RoomChannel do
   end
 
   def handle_in("new_msg", %{"body" => body}, socket) do
-    broadcast!(socket, "new_msg", %{body: body})
-    #test = Poison.decode!(body, as: %Recepteur.Region{})
-    #IO.puts test.etiquette
-    IO.puts body
+    #broadcast!(socket, "new_msg", %{body: body})
+
 
     donnee = Poison.decode!(body, as: %Recepteur.Donnee{})
 

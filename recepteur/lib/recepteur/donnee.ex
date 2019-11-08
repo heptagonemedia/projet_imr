@@ -1,8 +1,6 @@
 defmodule Recepteur.Donnee do
     use Ecto.Schema
 
-    @primary_key {:id_donnee, :id, autogenerate: true}
-
     schema "donnee" do
       field :id_bouee, :id
       field :longitude_reelle, :float
