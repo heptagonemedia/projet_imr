@@ -17,11 +17,7 @@ defmodule RecepteurWeb.RoomChannel do
 
     donnee = Poison.decode!(body, as: %Recepteur.Donnee{})
 
-    historique_donnee_bouee = %{}
-
-    testRegion = Poison.decode!(body, as: %Recepteur.Region{}) # {"etiquette": "Ocean Antartique"}
-    int = elem(Recepteur.Repo.insert(testRegion), 1)
-    IO.puts int.id_region
+    Recepteur.Repo.insert(donnee)
 
     {:noreply, socket}
   end
