@@ -38,3 +38,19 @@ ALTER TABLE public.scenario OWNER to postgres;
 GRANT ALL ON TABLE public.scenario TO generateur_scenario;
 
 GRANT ALL ON TABLE public.scenario TO postgres;
+
+-- Table: public.bouee
+ -- DROP TABLE public.bouee;
+
+CREATE TABLE public.bouee ( id integer NOT NULL DEFAULT nextval('bouee_id_seq'::regclass),
+    valeur_depart_longitude real, 
+    valeur_depart_latitude real, 
+    valeur_depart_batterie integer, 
+    id_region integer, 
+    etiquette text COLLATE pg_catalog."default";
+                                                                                                                                                                                             CONSTRAINT bouee_pkey PRIMARY KEY (id)) WITH ( OIDS = FALSE) TABLESPACE pg_default;
+
+
+ALTER TABLE public.bouee OWNER to postgres;
+
+GRANT ALL ON TABLE public.bouee TO generateur_scenario;
