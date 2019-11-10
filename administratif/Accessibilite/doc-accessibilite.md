@@ -6,12 +6,14 @@
 
 ​		Il doit être possible de naviguer sur les interfaces sans utiliser la souris. Par exemple : pouvoir accéder aux principaux éléments de navigation en appuyant sur tab. __*Se renseigner sur Keyboard focus*__
 
+*référence* : https://webaim.org/techniques/hypertext/
+
 			### 		2 : Le contenu doit être accessible
 
 ​		Dans le sens ou le contenu doit être facilement visible et la navigation claire en évitant le contenu dynamique, sauf si il n'y a pas besoins de recharger la page pour l'afficher.
 
 			### 		3 : Mettre des alt pour toutes les images
-
+	
 			### 		4 : Bien choisir les couleurs 
 
 ​		(Daltoniens)  faire en sorte que les couleurs contrastent bien pour que le contenu soit facilement visible. On peut utiliser <a href = "https://contrastchecker.com/ " style = "text-decoration : none">Contrast checker</a> pour voir si  les couleurs utilisées sont adaptées.
@@ -32,6 +34,8 @@
 
 ​		Ne pas faire jouer automatiquement des medias (musique, videos etc) et ne pas faire bouger les carrousels et sliders automatiquement.
 
+### Specifier la langue de chaque page et mot étranger avec l'attribut lang
+
 
 
 ## 	Section 508
@@ -42,11 +46,25 @@
 
 
 
+#### por respecter les regles de la section 508 :
 
 
 
+- eviter les lien vides
 
+- rendre tous les liens accessibles au clavier
 
+- mettre des alts dans les icones
+
+- mettre le contenu principal dans un main, les titres dans des headers, les elements de navigation dans un nav etc
+
+- sites pour tester la conformite a la section 508 : [AChecker](https://achecker.ca/), [CynthiaSays](http://www.cynthiasays.com/), [ChromeLens](http://chromelens.xyz/)
+
+- checklist des éléments a respecter pour la section 508 : https://webaim.org/standards/508/checklist
+
+  
+
+  
 
 
 
