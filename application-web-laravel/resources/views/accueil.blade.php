@@ -47,7 +47,7 @@
             <div class="row  ">
 
                 <div class="col l4 center-align">
-                    <button href="#" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button>
+                    <button  data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button>
                 </div>
                 <div class="col l4 center-align" style="font-size: 20pt">Accueil</div>
 
@@ -56,30 +56,27 @@
     </nav>
 
 
-    <div class="container">
-        <div class=" col l10">
-            <p>Dernière mise à jour : DATE et HEURE</p>
-        </div>
-    </div>
+
 
 @endsection
 
 
 
 @section('main')
-    <div class="row">
+    <main>
+        <div class="row" id="ligne_principale">
 
-        <div class="col l8">
+            <div class="col l8">
 
-            <div class="card">
-                <div >
-                    <div class="" id="map" ></div>
-                </div>
+                <div class="card">
+                    <div >
+                        <div class="" id="map" ></div>
+                    </div>
 
-                <div class="card-content">
+                    <div class="card-content">
 
-                    <div class="row">
-                        <div class="col s6 center-align">Carte des bouées</div>
+                        <div class="row">
+                            <div class="col s6 center-align">Carte des bouées</div>
                             <div class="col s6 center-align">
                                 <button class="btn green" onclick="agrandirCarte(document.getElementById('map'))">Plein ecran</button>
                             </div>
@@ -89,37 +86,26 @@
                 </div>
 
             </div>
-
-            <div class="col l4">
-
+            <div class="col l4 s12 m6" id="camembert" >
                 <div class="card white">
-
                     <div class="card-content white-text">
-                        <span class="card-title black-text center-align">Bouées non conforme</span>
-                        <div class="container">
-                            <div class="circle " id="false">{{$compteurProbleme}}</div>
+                        <span class="card-title black-text center-align">Dernière mise à jour :</span>
+                        <div class="card-content black-text">
+                            <span>Date et heure</span>
                         </div>
                     </div>
-
                 </div>
-
-                <div class="card white center-align">
-                    <div class="card-content white-text">
-
-                        <span class="card-title black-text">Bouées conformes</span>
-                        <div class="container center-align">
-                            <div class="circle " id="true">{{$compteurFonctionelles}}</div>
-                        </div>
-
+                <div class="card white">
+                    <div class="card-content ">
+                        <span class="card-title black-text center-align">État des Bouées</span>
+                        <canvas alt="graohique represantant le nombre de bouee conformes et nons conformes" id="camembertBouees"></canvas>
                     </div>
                 </div>
-
             </div>
-
         </div>
 
 
-    </div>
+    </main>
 
 @endsection
 
@@ -132,6 +118,7 @@
 			crossorigin="anonymous">
 	</script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="{{asset('resources\js\materialize.js')}}"></script>
 	<script src="{{asset('resources\js\script.js')}}"></script>
 	<script src="{{asset('resources\js\map.js')}}"></script>

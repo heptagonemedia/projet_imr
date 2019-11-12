@@ -64,7 +64,22 @@ $(document).ready(function () {
     $('.tooltipped').tooltip();
 });
 
+var ctx = document.getElementById('camembertBouees').getContext('2d');
+data = {
+    datasets: [{
+        data: [60, 15],
+        backgroundColor: ["#07CA38", "#EF0000"]
+    }],
 
+    labels: [
+        'Conformes',
+        'Non conformes'
+    ]
+};
+var myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: data
+});
 
 //remplit les champs du formulaire avec les données de l'url si il y en a
 function initFormulaire() {

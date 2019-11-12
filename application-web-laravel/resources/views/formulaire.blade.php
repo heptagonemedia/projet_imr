@@ -38,7 +38,7 @@
 
 
 @section('main')
-    <div class="container">
+    <main class="container">
         <div id="register-page" class="row">
 
             <div class="col s12 z-depth-6 card-panel">
@@ -221,7 +221,7 @@
                     <div class="row" id="marge">
 
                         <div class="input-field col s12">
-                            <a href="#" class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">Valider</a>
+                            <a class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">Valider</a>
                         </div>
 
                     </div>
@@ -231,7 +231,7 @@
             </div>
 
         </div>
-    </div>
+    </main>
 @endsection
 
 
