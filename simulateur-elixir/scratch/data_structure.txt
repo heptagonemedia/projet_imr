@@ -1,0 +1,1 @@
+%{:id_bouee => 1, :lat => 1, :lon => 1, :timestamp => 1, :batterie => 1, :temperature => 1, :salinite => 1, :debit => 1}

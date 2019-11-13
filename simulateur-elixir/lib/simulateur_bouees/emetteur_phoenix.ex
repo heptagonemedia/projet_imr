@@ -28,6 +28,7 @@ defmodule SimulateurBouees.EmetteurPhoenix do
 
     def sendData(transport, data) do
       Logger.info("Sending data")
+      Logger.debug inspect(data)
       GenSocketClient.push(transport, "general", "data", data)
     end
   
@@ -52,8 +53,7 @@ defmodule SimulateurBouees.EmetteurPhoenix do
       # else
       #   {:ok, %{state | ping_ref: 1}}
       # end
-        data = %{:id_bouee => 1, :lat => 1, :lon => 1, :timestamp => 1, :batterie => 1, :temperature => 1, :salinite => 1, :debit => 1}
-        sendData(transport, data)
+        SimulateurBouees.TransportAgent.start(transport)
       {:ok, state}
     end
   

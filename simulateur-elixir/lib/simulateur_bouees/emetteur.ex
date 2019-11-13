@@ -5,13 +5,8 @@ defmodule SimulateurBouees.Emetteur do
       defstruct socket: nil
     end
 
-    def start_link do
-      GenServer.start_link(__MODULE__, [])
-    end
-  
-    def init(_) do
-      Process.send_after(self(), :connect, 100)
-      {:ok, %State{}}
+    def start_link(transport) do
+      GenServer.start_link(__MODULE__, transport)
     end
 
     def handle_info(:connect, %State{socket: nil} = state) do
