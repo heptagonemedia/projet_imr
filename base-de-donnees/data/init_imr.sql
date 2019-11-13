@@ -3,7 +3,6 @@ DROP TABLE IF EXISTS calcul;
 DROP TABLE IF EXISTS type_calcul;
 DROP TABLE IF EXISTS mesure;
 DROP TABLE IF EXISTS type_donnee;
-DROP TABLE IF EXISTS donnee_traitee;
 DROP TABLE IF EXISTS historique_donnee_bouee;
 DROP TABLE IF EXISTS bouee;
 DROP TABLE IF EXISTS region;
@@ -30,9 +29,6 @@ CREATE TABLE bouee(
 CREATE TABLE historique_donnee_bouee(
     id_historique_donnee_bouee serial PRIMARY KEY,
     id_bouee integer,
-    longitude_reelle float,
-    latitude_reelle float,
-    batterie integer,
     date_saisie timestamp without time zone,
     CONSTRAINT bouee_historique_donnee_bouee_fk
         FOREIGN KEY (id_bouee)
@@ -41,16 +37,6 @@ CREATE TABLE historique_donnee_bouee(
         ON UPDATE CASCADE
 );
 
-CREATE TABLE donnee_traitee(
-    id_donnee_traitee serial PRIMARY KEY,
-    id_historique_donnee_bouee integer,
-    valide boolean,
-    CONSTRAINT historique_donnee_bouee_donnee_traitee_fk
-        FOREIGN KEY (id_historique_donnee_bouee)
-        REFERENCES historique_donnee_bouee(id_historique_donnee_bouee)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-);
 
 CREATE TABLE type_donnee(
     id_type_donnee serial PRIMARY KEY,
@@ -63,6 +49,7 @@ CREATE TABLE mesure(
     valeur float,
     id_historique_donnee_bouee integer,
     id_type_donnee integer,
+    valide boolean,
     CONSTRAINT historique_donnee_bouee_mesure_fk
         FOREIGN KEY (id_historique_donnee_bouee)
         REFERENCES historique_donnee_bouee(id_historique_donnee_bouee)
