@@ -3,4 +3,4 @@
 Ce dossier comprend :
 
 * la génération des scénarios  => application web
-* la génération des bouées => application 
+* la génération des bouées => application nodejs
