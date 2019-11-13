@@ -1,1 +1,0 @@
-Additional documentation formats are available at http://www.ejschart.com/support.php
