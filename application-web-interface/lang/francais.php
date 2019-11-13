@@ -7,7 +7,7 @@ $francais = array(
 	"titleAccueil"=>"AccueilIMR",
 	"texteBoueeFonctionnelle"=>"Fonctionnelle",
 	"texteBoueeProbleme"=>"Problème",
-	"derniereMiseAjour"=>"Dernière mise &agrave; jour : DATE et HEURE",
+	"derniereMiseAjour"=>"Dernière mise &agrave; jour : ",
 	"titreCarte"=>"Carte des bouées",
 	"boutonPleinEcran"=>"Plein &eacute;cran",
 	"boueesNonConformes"=>"Bou&eacute;es non conforme",
@@ -61,7 +61,7 @@ $francais = array(
 	"temperature"=>"Température",
 	"calculEnregistre"=>"Calcul enregistré",
 	"calculBienEnregistre"=>"le calcul a bien été enregitré",
-	"ok"=>"ok"
+	"ok"=>"OK"
 );
 
 
