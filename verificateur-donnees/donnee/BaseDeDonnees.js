@@ -1,6 +1,7 @@
 const { Pool, Client } = require('pg');
 
 credentials = require('../credentials/Credentials');
+verificateur = require('../verificateur');
 
 var variablesConnexion = new credentials.Credentials();
 
@@ -22,14 +23,15 @@ exports.selectionnerDonnees = function(table, bdd) {
     // callback
     bdd.query(SELECT_TOUTE_LA_TABLE, (err, res) => {
         if (err) {
-
             console.log('Erreur Select', err);
-
         } else {
-            console.log(res.rows);
+            // console.log(res.rows);
+            verificateur.lancerVerification(res.rows);
+
             
         }
     })
+
 
 }
 
@@ -45,7 +47,6 @@ exports.ssupprimerDonneesTable = function(table, bdd) {
             console.log('Erreur suppr', err);
 
         } else {
-
             console.log(res);
             
         }
