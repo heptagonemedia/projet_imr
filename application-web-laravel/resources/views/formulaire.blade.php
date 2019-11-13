@@ -24,7 +24,7 @@
     <nav>
         <div class="nav-wrapper black">
             <div class="row">
-                <div class="col l4 center-align"><button href="#" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button></div>
+                <div class="col l4 center-align"><button href="#" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i aria-hidden="true" class="material-icons" id="menu">menu</i></button></div>
                 <div class="col l4 center-align" style="font-size: 20pt">Formulaire de recherche</div>
                 <div class="col l4 center align ">
                     <a href="accueil" class="breadcrumb">accueil</a>
@@ -49,7 +49,7 @@
                     <div class="row">
 
                         <div class="input-field col s2">
-                            <i class="small material-icons prefix">content_paste</i>
+                            <i  aria-hidden="true" class="small material-icons prefix">content_paste</i>
                             <label>Calcul</label>
                         </div>
 
@@ -79,7 +79,7 @@
                     <div class="row" id="marge">
 
                         <div class="input-field col s2">
-                            <i class="small material-icons prefix">history</i>
+                            <i aria-hidden="true" class="small material-icons prefix">history</i>
                             <label>Fréquence</label>
                         </div>
 
@@ -119,7 +119,7 @@
                     <div class="row" id="marge">
 
                         <div class="input-field col s2">
-                            <i class="small material-icons prefix">location_searching</i>
+                            <i aria-hidden="true" class="small material-icons prefix">location_searching</i>
                             <label>Bouée</label>
                         </div>
 
@@ -143,7 +143,7 @@
                     <div class="row" id="marge">
 
                         <div class="input-field col s2">
-                            <i class="small material-icons prefix">date_range</i>
+                            <i aria-hidden="true" class="small material-icons prefix">date_range</i>
                             <label>Intervalle temporel</label>
                         </div>
 
@@ -178,7 +178,7 @@
                     <div class="row" id="marge">
 
                         <div class="input-field col s2">
-                            <i class="small material-icons prefix">save</i>
+                            <i aria-hidden="true" class="small material-icons prefix">save</i>
                             <label>Enregistrer calcul</label>
                         </div>
 
@@ -197,7 +197,7 @@
                     </div>
                     <div class="row" id="marge">
                         <div class="input-field col s2">
-                            <i class="small material-icons prefix">save</i>
+                            <i aria-hidden="true" class="small material-icons prefix">save</i>
                             <label>Repéter</label>
                         </div>
 

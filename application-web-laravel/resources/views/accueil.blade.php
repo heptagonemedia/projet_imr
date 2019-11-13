@@ -47,7 +47,7 @@
             <div class="row  ">
 
                 <div class="col l4 center-align">
-                    <button  data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button>
+                    <button  data-target="slide-out" class="sidenav-trigger btn black white-text" ><i aria-hidden="true" class="material-icons" id="menu">menu</i></button>
                 </div>
                 <div class="col l4 center-align" style="font-size: 20pt">Accueil</div>
 
