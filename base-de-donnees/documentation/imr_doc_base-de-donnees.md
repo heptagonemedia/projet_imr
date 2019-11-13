@@ -97,20 +97,33 @@
 
 #### region
 
-| id_region | etiquette |
-| --------- | --------- |
-|           |           |
+| id_region | etiquette        |
+| --------- | ---------------- |
+| 1         | Atlantique Nord  |
+| 2         | Atlantique Sud   |
+| 3         | Pacifique Nord   |
+| 4         | Pacifique Sud    |
+| 5         | Océan Indien     |
+| 6         | Océan Austral    |
+| 7         | Océan Arctique   |
+| 8         | Mer Méditerranée |
 
 #### type_calcul
 
-| id_type_calcul | etiquette |
-| -------------- | --------- |
-|                |           |
+| id_type_calcul | etiquette  |
+| -------------- | ---------- |
+| 1              | moyenne    |
+| 2              | écart-type |
+| 3              | médiane    |
 
 
 #### type_donnee
 
-| id_type_donnee | etiquette | unite |
-| -------------- | --------- | ----- |
-|                |           |       |
-
+| id_type_donnee | etiquette   | unite |
+| -------------- | ----------- | ----- |
+| 1              | salinité    | ppm   |
+| 2              | débit       | m³/s  |
+| 3              | temperature | °C    |
+| 4              | longitude   | NULL  |
+| 5              | latitude    | NULL  |
+| 6              | batterie    | %     |
