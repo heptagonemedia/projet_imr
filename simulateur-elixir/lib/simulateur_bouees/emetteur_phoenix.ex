@@ -23,12 +23,17 @@ defmodule SimulateurBouees.EmetteurPhoenix do
     end
   
     def init(url) do
-      {:connect, url, [], %{first_join: true, ping_ref: 1}}
+      {:connect, url, [], %{}}
+    end
+
+    def sendData(transport, data) do
+      Logger.info("Sending data")
+      GenSocketClient.push(transport, "general", "data", data)
     end
   
     def handle_connected(transport, state) do
       Logger.info("connected")
-      GenSocketClient.join(transport, "ping")
+      GenSocketClient.join(transport, "general")
       {:ok, state}
     end
   
@@ -38,15 +43,18 @@ defmodule SimulateurBouees.EmetteurPhoenix do
       {:ok, state}
     end
   
-    def handle_joined(topic, _payload, _transport, state) do
+    def handle_joined(topic, _payload, transport, state) do
       Logger.info("joined the topic #{topic}")
   
-      if state.first_join do
-        :timer.send_interval(:timer.seconds(1), self(), :ping_server)
-        {:ok, %{state | first_join: false, ping_ref: 1}}
-      else
-        {:ok, %{state | ping_ref: 1}}
-      end
+      # if state.first_join do
+      #   :timer.send_interval(:timer.seconds(1), self(), :ping_server)
+      #   {:ok, %{state | first_join: false, ping_ref: 1}}
+      # else
+      #   {:ok, %{state | ping_ref: 1}}
+      # end
+        data = %{:id_bouee => 1, :lat => 1, :lon => 1, :timestamp => 1, :batterie => 1, :temperature => 1, :salinite => 1, :debit => 1}
+        sendData(transport, data)
+      {:ok, state}
     end
   
     def handle_join_error(topic, payload, _transport, state) do
@@ -78,6 +86,7 @@ defmodule SimulateurBouees.EmetteurPhoenix do
       Logger.info("connecting")
       {:connect, state}
     end
+ 
     def handle_info({:join, topic}, transport, state) do
       Logger.info("joining the topic #{topic}")
       case GenSocketClient.join(transport, topic) do

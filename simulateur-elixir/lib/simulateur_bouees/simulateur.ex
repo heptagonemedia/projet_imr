@@ -17,11 +17,7 @@ defmodule SimulateurBouees.Simulateur do
 
   def main do
 
-    
     id_scenario = Enum.take_random(1..40, Enum.random(5..10))
-    
-
-    
 
   end
 
