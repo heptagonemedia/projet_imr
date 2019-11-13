@@ -1,0 +1,16 @@
+{
+  "name": "verificateur-donnees",
+  "version": "1.0.0",
+  "description": "",
+  "main": "select.js",
+  "dependencies": {
+    "pg": "^7.12.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node ./select.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Estevan Gay",
+  "license": "ISC"
+}
