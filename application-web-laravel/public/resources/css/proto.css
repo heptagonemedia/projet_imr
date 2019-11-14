@@ -76,3 +76,6 @@ div{
 #ligneFooter{
 	margin-bottom: -20px;
 }
+button:focus{
+    border: solid 1px blue;
+}

@@ -55,3 +55,7 @@ footer{
     padding-bottom: -40px;
     bottom: 0px;
 }
+
+button:focus{
+    border: solid 1px blue;
+}
