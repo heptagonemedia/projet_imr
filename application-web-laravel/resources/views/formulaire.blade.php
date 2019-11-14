@@ -45,7 +45,7 @@
 
                 <form id="formulaire" method="POST" action="/resultat" class="register-form">
                     @csrf
-
+<fieldset><legend>Nouveau Calcul</legend>
                     <div class="row">
 
                         <div class="input-field col s2">
@@ -225,7 +225,7 @@
                         </div>
 
                     </div>
-
+</fieldset>
                 </form>
 
             </div>

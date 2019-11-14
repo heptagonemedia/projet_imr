@@ -145,7 +145,7 @@
             </div>
 
 
-            <form method="post" id='formulaire' action="resultats.php">
+            <form aria-hidden="true" method="post" id='formulaire' action="resultats.php">
                 <input type="hidden" value="enr" name="type">
             </form>
 
