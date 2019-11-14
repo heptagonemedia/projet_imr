@@ -7,6 +7,6 @@ exports.genererEtiquette = function(index) {
         case 3:
             return "médiane";    
         default:
-            return "Type de clacul invalide";
+            return "Type de calcul invalide";
     }
 }

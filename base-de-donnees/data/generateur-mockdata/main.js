@@ -1,20 +1,26 @@
-// var region = require('./model/Region');
 var fonctionRegion = require('./fonction/fonctionRegion');
 var fonctionBouee = require('./fonction/fonctionBouee');
 var fonctionTypeDonneeMesuree = require('./fonction/fonctionTypeDonneeMesuree');
 var fonctionTypeCalcul = require('./fonction/fonctionTypeCalcul');
+var fonctionCalcul = require('./fonction/fonctionCalcul');
 
 var fonctionGenerique = require('./fonction/fonctionGenerique');
 
 var fs = require('fs');
 
-
 var cheminMockdata = "../mockdata/";
+
+var nomFichierRegion = "region.csv";
+var nomFichierBouee = "bouee.csv";
+var nomFichierTypeDonneeMesuree = "type_donnee_mesuree.csv";
+var nomFichierTypeCalcul = "type_calcul.csv";
+var nomFichierCalcul = "calcul.csv";
 
 var nombreDeRegion = 8;
 var nombreDeBouee = 75000
 var nombreDeDonneeMesuree = 6;
-var nombreDeCalcul = 3;
+var nombreDeTypeDeCalcul = 3;
+var nombreDeCalcul = 10;
 
 var contenu = "";
 //######################################### Génération des Régions
@@ -53,13 +59,47 @@ var contenu = "";
 //     console.log('type_donnee_mesuree.csv générer');
 // });
 
+// contenu = "";
+// //######################################### Génération des Types de calcul
+// for (let index = 1; index <= nombreDeTypeDeCalcul; index++) {
+//     contenu += "" + index + "," + fonctionTypeCalcul.genererEtiquette(index) + "\n";
+// }
+
+// fs.appendFile(('' + cheminMockdata + 'type_calcul.csv'), contenu, (err) => {
+//     if (err) throw err;
+//     console.log('type_calcul.csv générer');
+// });
+
+
 contenu = "";
-//######################################### Génération des Types de calcul
+//######################################### Génération des Calculs
+// A voir changement bouée => région
 for (let index = 1; index <= nombreDeCalcul; index++) {
-    contenu += "" + index + "," + fonctionTypeCalcul.genererEtiquette(index) + "\n";
+
+    typeCalcul = fonctionCalcul.genererIdTypeCalcul();
+    idBouee = fonctionCalcul.genererIdBouee();
+    frequenceValeur = fonctionCalcul.genererFrequenceValeur();
+
+    dateGeneration = fonctionGenerique.genererDateAleatoire();
+    dateProchaineGeneration = fonctionCalcul.genererDateProchaineGeneration(dateGeneration);
+
+    dateDebutPlage = fonctionCalcul.genererDateDebutPlage(dateGeneration);
+    dateFinPlage = fonctionCalcul.genererDateFinPlage(dateDebutPlage, frequenceValeur, dateGeneration);
+
+    contenu += "" + index + "," +
+        fonctionCalcul.genererEtiquette(typeCalcul, idBouee, frequenceValeur) + "," +
+        fonctionGenerique.conversionTypeDateVersChaine(dateGeneration) + "," +
+        fonctionGenerique.conversionTypeDateVersChaine(dateProchaineGeneration) + "," +
+        fonctionGenerique.conversionTypeDateVersChaine(dateDebutPlage) + "," +
+        fonctionGenerique.conversionTypeDateVersChaine(dateFinPlage) + "," +
+        frequenceValeur + "," +
+        fonctionCalcul.genererEnregistre() + "," +
+        idBouee + "," +
+        typeCalcul + "\n";   
+
 }
 
-fs.appendFile(('' + cheminMockdata + 'type_calcul_test.csv'), contenu, (err) => {
+fs.appendFile(('' + cheminMockdata + 'calcul_t.csv'), contenu, (err) => {
     if (err) throw err;
-    console.log('type_calcul.csv générer');
+    console.log('calcul.csv générer');
 });
