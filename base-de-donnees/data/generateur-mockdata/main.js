@@ -2,6 +2,7 @@
 var fonctionRegion = require('./fonction/fonctionRegion');
 var fonctionBouee = require('./fonction/fonctionBouee');
 var fonctionTypeDonneeMesuree = require('./fonction/fonctionTypeDonneeMesuree');
+var fonctionTypeCalcul = require('./fonction/fonctionTypeCalcul');
 
 var fonctionGenerique = require('./fonction/fonctionGenerique');
 
@@ -13,6 +14,7 @@ var cheminMockdata = "../mockdata/";
 var nombreDeRegion = 8;
 var nombreDeBouee = 75000
 var nombreDeDonneeMesuree = 6;
+var nombreDeCalcul = 3;
 
 var contenu = "";
 //######################################### Génération des Régions
@@ -39,14 +41,25 @@ var contenu = "";
 //     console.log('bouee.csv générer');
 // });
 
+// contenu = "";
+// //######################################### Génération des Types de données mesurées
+// for (let index = 1; index <= nombreDeDonneeMesuree; index++) {
+//     contenu += "" + index + "," + fonctionTypeDonneeMesuree.genererEtiquette(index) + "," +
+//         fonctionTypeDonneeMesuree.genererUnite(index) + "\n";
+// }
+
+// fs.appendFile(('' + cheminMockdata + 'type_donnee_mesuree.csv'), contenu, (err) => {
+//     if (err) throw err;
+//     console.log('type_donnee_mesuree.csv générer');
+// });
+
 contenu = "";
-//######################################### Génération des Types de données mesurées
-for (let index = 1; index <= nombreDeDonneeMesuree; index++) {
-    contenu += "" + index + "," + fonctionTypeDonneeMesuree.genererEtiquette(index) + "," + 
-                fonctionTypeDonneeMesuree.genererUnite(index) + "\n";
+//######################################### Génération des Types de calcul
+for (let index = 1; index <= nombreDeCalcul; index++) {
+    contenu += "" + index + "," + fonctionTypeCalcul.genererEtiquette(index) + "\n";
 }
 
-fs.appendFile(('' + cheminMockdata +'type_donnee_mesuree.csv'), contenu, (err) => {
+fs.appendFile(('' + cheminMockdata + 'type_calcul_test.csv'), contenu, (err) => {
     if (err) throw err;
-    console.log('type_donnee_mesuree.csv générer');
+    console.log('type_calcul.csv générer');
 });
