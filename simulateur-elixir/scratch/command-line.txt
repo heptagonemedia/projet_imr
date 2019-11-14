@@ -1,0 +1,6 @@
+SimulateurBouees.BoueeGen.start_link(%{idbouee: 1, scenario: 1})
+
+SimulateurBouees.EmetteurPhoenix.sendData(SimulateurBouees.TransportAgent.get_transport(), %{batterie: 100, debit: 9, id_bouee: 1, latitude: 15, longitude: 7, salinite: 10, temperature: 6, timestamp: {{2019, 11, 14}, {21, 7, 53}}})
+%{batterie: 100, debit: 9, id_bouee: 1, latitude: 15, longitude: 7, salinite: 10, temperature: 6, timestamp: {{2019, 11, 14}, {21, 7, 53}}}
+transport = SimulateurBouees.TransportAgent.get_transport()
+Phoenix.Channels.GenSocketClient.push(transport, "general", "new_msg", %{body: "Peperoni"})
