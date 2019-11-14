@@ -1,14 +1,14 @@
 <?php
 
-$francais = array(
+$anglais = array(
     // accueil.php
     "titleAccueil"=>"IMR Home",
     "texteBoueeFonctionnelle"=>"Working",
     "texteBoueeProbleme"=>"Malfunctionning",
     "derniereMiseAjour"=>"Last update : ",
-    "titreCarte"=>"buoys map",
+    "titreCarte"=>"Buoys map",
     "boutonPleinEcran"=>"Full-screen",
-    "boueesNonConformes"=>"incorrects buoys",
+    "boueesNonConformes"=>"Incorrects buoys",
     // footer.php
     "copyright"=>"&copy; 2019 Heptagone Media",
     // formulaireRecherche.php

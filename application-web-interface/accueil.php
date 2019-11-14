@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
 		<link rel="stylesheet" href="css/materialize.css">
 
-	<title>AccueilIMR</title>
+	<title><?=$langue['titleAccueil']?></title>
 
 	</head>
 
@@ -39,12 +39,12 @@
 
 					$compteurFonctionelles++;
 					$classe='success';
-					$texte='Fonctionnelle';
+					$texte=$langue['texteBoueeFonctionnelle'];//'Fonctionnelle';
 
 				}else {
 					$compteurProbleme++;
 					$classe='danger';
-					$texte='Problème';
+					$texte=$langue['texteBoueeProbleme'];//'Problème';
 				}
 			} 
 		?>
@@ -53,7 +53,7 @@
         ?>
 			<div class="container">
 				<div class=" col l10">
-					<p>Dernière mise à jour : DATE et HEURE</p>
+					<p><?=$langue['derniereMiseAjour']?>DATE et HEURE</p>
 				</div>
 			</div>
 
@@ -71,9 +71,9 @@
 						<div class="card-content">
 						
 							<div class="row">
-								<div class="col s6 center-align">Carte des bouées</div>
+								<div class="col s6 center-align"><?=$langue['titreCarte']?></div>
 									<div class="col s6 center-align">
-										<button class="btn green" onclick="agrandirCarte(document.getElementById('map'))">Plein ecran</button>
+										<button class="btn green" onclick="agrandirCarte(document.getElementById('map'))"><?=$langue['boutonPleinEcran']?></button>
 									</div>
 								</div>
 							</div>
@@ -86,7 +86,7 @@
 						<div class="card white">
 
 							<div class="card-content white-text">
-								<span class="card-title black-text center-align">Bouées non conforme</span>
+								<span class="card-title black-text center-align"><?=$langue['boueesNonConformes']?></span>
                                     <canvas id="camembertBouees"></canvas>
 							</div>
 						</div>
