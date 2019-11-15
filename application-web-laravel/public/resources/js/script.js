@@ -13,6 +13,12 @@ $(document).ready(function () {
     $('.sidenav').sidenav();
 });
 
+function sidenav(){
+    $("#slide-out").show();
+}
+function fermerSidenav(){
+    $("#slide-out").hide();
+}
 
 var ctx = document.getElementById('camembertBouees').getContext('2d');
 data = {

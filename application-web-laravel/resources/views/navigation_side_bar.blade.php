@@ -44,4 +44,9 @@
 
     <li><a class="waves-effect waves-teal" href="nouveauCalcul"><i aria-hidden="true" class="material-icons">add_circle_outline</i>Nouveau calcul</a></li>
 
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="sidenav-close" href="#" onclick="fermerSidenav()"><i class="material-icons">close</i>Fermer</a></li>
+
 </ul>
