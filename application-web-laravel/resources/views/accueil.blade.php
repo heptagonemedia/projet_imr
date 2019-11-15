@@ -76,9 +76,9 @@
                     <div class="card-content">
 
                         <div class="row">
-                            <div class="col s6 center-align">Carte des bouées</div>
+                            <div class="col s6 center-align">{{ __('message.titreCarte') }}</div>
                             <div class="col s6 center-align">
-                                <button class="btn green" onclick="agrandirCarte(document.getElementById('map'))">Plein ecran</button>
+                                <button class="btn green" onclick="agrandirCarte(document.getElementById('map'))">{{ __('message.boutonPleinEcran') }}</button>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
             <div class="col l4 s12 m6" id="camembert" >
                 <div class="card white">
                     <div class="card-content white-text">
-                        <span class="card-title black-text center-align">Dernière mise à jour :</span>
+                        <span class="card-title black-text center-align">{{ __('message.derniereMiseAjour') }}</span>
                         <div class="card-content black-text">
                             <span>Date et heure</span>
                         </div>
@@ -97,8 +97,8 @@
                 </div>
                 <div class="card white">
                     <div class="card-content ">
-                        <span class="card-title black-text center-align">État des Bouées</span>
-                        <canvas alt="graohique represantant le nombre de bouee conformes et nons conformes" id="camembertBouees"></canvas>
+                        <span class="card-title black-text center-align">{{ __('message.etatDesBouees') }}</span>
+                        <canvas alt="{{ __('message.altGrapheBouees') }}" id="camembertBouees"></canvas>
                     </div>
                 </div>
             </div>

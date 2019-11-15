@@ -14,6 +14,7 @@
 // Permet la définition de la langue de la locale dans la session
 // un lien <a href="{{ url('locale/en') }}">anglais</a>
 // permet le passage à la langue anglaise. fr pour le français.
+// la locale par défaut est définie dans /config/app.php, j'ai mis 'fr'.
 Route::get('locale/{locale}', function ($locale){
     Session::put('locale', $locale);
     return redirect()->back();

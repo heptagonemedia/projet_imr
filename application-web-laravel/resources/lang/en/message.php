@@ -10,6 +10,8 @@ return [
     "titreCarte"=>"Buoy map",
     "boutonPleinEcran"=>"Full-screen",
     "boueesNonConformes"=>"Incorrects buoys",
+    "etatDesBouees"=>"Buoy Status", //Buoy Status
+    "altGrapheBouees"=>"graph representing the number of correct and incorrect buoys",
     // footer.php
     "copyright"=>"&copy; 2019 Heptagone Media",
     // formulaireRecherche.php

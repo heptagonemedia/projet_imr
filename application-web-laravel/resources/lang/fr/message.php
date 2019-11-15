@@ -2,23 +2,29 @@
 
 return [
 
-    // accueil.php
+    // Il semble que Laravel ne gère pas les caractères au format $eacute; etc…
+    // s'ils proviennent de ce tableau… donc j'ai gardé l'encodage direct.
+    // LA PAGE DOIT ÊTRE CHARGÉE EN UTF-8 !
+
+    // accueil.php //géré
     "titleAccueil"=>"Accueil IMR",
     "texteBoueeFonctionnelle"=>"Fonctionnelle",
     "texteBoueeProbleme"=>"Problème",
-    "derniereMiseAjour"=>"Dernière mise &agrave; jour : ",
+    "derniereMiseAjour"=>"Dernière mise à jour : ",
     "titreCarte"=>"Carte des bouées",
-    "boutonPleinEcran"=>"Plein &eacute;cran",
-    "boueesNonConformes"=>"Bou&eacute;es non conforme",
-    // footer.php
-    "copyright"=>"&copy; 2019 Heptagone Media",
+    "boutonPleinEcran"=>"Plein écran",
+    "boueesNonConformes"=>"Bouées non conforme",
+    "etatDesBouees"=>"État des Bouées",
+    "altGrapheBouees"=>"graphique représantant le nombre de bouées conformes et non conformes",
+    // footer.php //géré
+    "copyright"=>"© 2019 Heptagone Media",
     // formulaireRecherche.php
     "titleFormulaire"=>"Formulaire",
     "titreCalcul"=>"Calcul",
     "moyenne"=>"Moyenne",
-    "mediane"=>"M&eacute;diane",
-    "ecartType"=>"&Eacute;cart type",
-    "frequence"=>"Fr&eacute;quence",
+    "mediane"=>"Médiane",
+    "ecartType"=>"Écart type",
+    "frequence"=>"Fréquence",
     "annee"=>"Année",
     "mois"=>"Mois",
     "jour"=>"Jour",
