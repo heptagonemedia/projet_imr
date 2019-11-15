@@ -36,7 +36,7 @@ var nombreDeResultatParCalcul = 3;
 var nombreDeSecondeParRepetitionDonneesHistorique = 30;
 
 var dateDebutHistorique = new date.DateModele(0,0,0,1,1,2018);
-var dateFinHistorique = new date.DateModele(30,0,0,1,1,2018);
+var dateFinHistorique = new date.DateModele(0,1,0,1,1,2018);
 
 var contenu = "";
 
@@ -143,15 +143,35 @@ contenu = "";
 //     console.log('resultat.csv générer');
 // });
 
-//######################################### Génération de l'historique des données des bouées
-// var nombreDeRepetition = fonctionHistorique.calculerNombreDeRepetition(dateDebutHistorique, dateFinHistorique, nombreDeSecondeParRepetitionDonneesHistorique);
-// var idHistorique = 0;
-// var dateEnCours = dateDebutHistorique;
+var test = async function (nombreDeRepetition, dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, cheminFichier) {
+    var dernierHist = dernierHistorique;
 
-// dernierHistorique = new historique.HistoriqueTransition(idHistorique, dateEnCours);
+    do {
+        console.log(nombreDeRepetition);
+        dernierHist = await fonctionHistorique.genererXSecondes(dernierHist, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, cheminFichier);
+        // dernierHistorique = test2(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
+        // dernierHistorique = test(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
+        // dernierHistorique = fonctionHistorique.genererXSecondes(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
+        nombreDeRepetition--;
+    } while (nombreDeRepetition > 0);
+}
+
+// var test2 = async function (dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, cheminFichier) {
+//     var t = await test(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
+//     return t;
+// }
+
+//######################################### Génération de l'historique des données des bouées
+var nombreDeRepetition = fonctionHistorique.calculerNombreDeRepetition(dateDebutHistorique, dateFinHistorique, nombreDeSecondeParRepetitionDonneesHistorique);
+var idHistorique = 0;
+var dateEnCours = dateDebutHistorique;
+
+dernierHistorique = new historique.HistoriqueTransition(idHistorique, dateEnCours);
+test(nombreDeRepetition, dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
 
 // do {
 //     console.log(nombreDeRepetition);
-//     dernierHistorique = fonctionHistorique.genererXSecondes(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
+//     // dernierHistorique = test2(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
+//     // dernierHistorique = fonctionHistorique.genererXSecondes(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
 //     nombreDeRepetition-- ;
 // } while (nombreDeRepetition > 0);

@@ -3,29 +3,30 @@ var historique = require('../modele/HistoriqueTransition');
 
 var fs = require('fs');
 
-exports.genererXSecondes = function (dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetition, cheminFichier) {
+exports.genererXSecondes = async function (dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetition, cheminFichier) {
 
     var idHistorique = dernierHistorique.idHistorique;
     var dateEnCours = dernierHistorique.date;
 
     var contenu = "";
 
-    for (let numeroSeconde = 1; numeroSeconde <= nombreDeSecondeParRepetition; numeroSeconde++) {
-        
-        dateEnCours = fonctionDateModele.augmenterDateModele1Seconde(dateEnCours);
-        // contenu = "";
+    for (let numeroSeconde = 0; numeroSeconde < nombreDeSecondeParRepetition; numeroSeconde++) {
+        contenu = "";
 
         for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
             idHistorique++;
-            contenu += "" + idHistorique + "," + idBouee + "," + fonctionDateModele.toString(dateEnCours) + "\n";
+            d = await fonctionDateModele.toString(dateEnCours);
+            contenu += "" + idHistorique + "," + idBouee + "," + d + "\n";
         }
-        
+
+        dateEnCours = await fonctionDateModele.augmenterDateModele1Seconde(dateEnCours);
+        await fs.appendFile(cheminFichier, contenu, (err) => {
+            if (err) throw err;
+            console.log('historique_donnee_bouees.csv générer');
+        });
     }
 
-    fs.appendFile(cheminFichier, contenu, (err) => {
-        if (err) throw err;
-        console.log('historique_donnee_bouees.csv générer');
-    });
+    
 
     return new historique.HistoriqueTransition(idHistorique, dateEnCours);
 
