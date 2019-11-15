@@ -71,3 +71,14 @@ exports.toString = function(date) {
         fonctionGenerique.formatterElementDate(date.seconde)
     );
 }
+
+exports.convertirEnSeconde = function(date) {
+    return(
+        date.seconde +
+        (date.minute * 60) +
+        (date.heure * 3600) +
+        (date.jour * 86400) +
+        (date.mois * 1036800) +
+        (date.annee * 378432000)
+    );
+}

@@ -1,5 +1,6 @@
 //######################################### Modeles
 var date = require('./modele/DateModele');
+var historique = require('./modele/HistoriqueTransition');
 
 //######################################### Fonctions
 var fonctionRegion = require('./fonction/fonctionRegion');
@@ -7,7 +8,8 @@ var fonctionBouee = require('./fonction/fonctionBouee');
 var fonctionTypeDonneeMesuree = require('./fonction/fonctionTypeDonneeMesuree');
 var fonctionTypeCalcul = require('./fonction/fonctionTypeCalcul');
 var fonctionCalcul = require('./fonction/fonctionCalcul');
-var fonctionDateModele = require('./fonction/fonctionDateModel');
+var fonctionDateModele = require('./fonction/fonctionDateModele');
+var fonctionHistorique = require('./fonction/fonctionHistorique');
 
 var fonctionGenerique = require('./fonction/fonctionGenerique');
 
@@ -31,6 +33,7 @@ var nombreDeDonneeMesuree = 6;
 var nombreDeTypeDeCalcul = 3;
 var nombreDeCalcul = 10;
 var nombreDeResultatParCalcul = 3;
+var nombreDeSecondeParRepetitionDonneesHistorique = 30;
 
 var dateDebutHistorique = new date.DateModele(0,0,0,1,1,2018);
 var dateFinHistorique = new date.DateModele(30,0,0,1,1,2018);
@@ -140,25 +143,15 @@ contenu = "";
 //     console.log('resultat.csv générer');
 // });
 
-contenu = "";
 //######################################### Génération de l'historique des données des bouées
- var idHistorique = 0;
- var dateEnCours = dateDebutHistorique;
+// var nombreDeRepetition = fonctionHistorique.calculerNombreDeRepetition(dateDebutHistorique, dateFinHistorique, nombreDeSecondeParRepetitionDonneesHistorique);
+// var idHistorique = 0;
+// var dateEnCours = dateDebutHistorique;
 
- while (!fonctionDateModele.dateModeleEgales(dateEnCours, dateFinHistorique)) {
-    
-    contenu = "";
+// dernierHistorique = new historique.HistoriqueTransition(idHistorique, dateEnCours);
 
-    for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
-        idHistorique++;
-        contenu += "" + idHistorique + "," + idBouee + "," + fonctionDateModele.toString(dateEnCours) + "\n";
-    }
-
-    fs.appendFile(('' + cheminMockdata + 'historique_donnee_bouees_test.csv'), contenu, (err) => {
-        if (err) throw err;
-        console.log('historique_donnee_bouees.csv générer');
-    });
-
-    dateEnCours = fonctionDateModele.augmenterDateModele1Seconde(dateEnCours);
-
- }
+// do {
+//     console.log(nombreDeRepetition);
+//     dernierHistorique = fonctionHistorique.genererXSecondes(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
+//     nombreDeRepetition-- ;
+// } while (nombreDeRepetition > 0);
