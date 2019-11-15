@@ -21,8 +21,11 @@ var nombreDeBouee = 75000
 var nombreDeDonneeMesuree = 6;
 var nombreDeTypeDeCalcul = 3;
 var nombreDeCalcul = 10;
+var nombreDeResultatParCalcul = 3;
 
 var contenu = "";
+
+contenu = "";
 //######################################### Génération des Régions
 
 // for (let index = 1; index <= nombreDeRegion; index++) {
@@ -71,35 +74,55 @@ var contenu = "";
 // });
 
 
+// contenu = "";
+// //######################################### Génération des Calculs
+// // A voir changement bouée => région
+// for (let index = 1; index <= nombreDeCalcul; index++) {
+
+//     typeCalcul = fonctionCalcul.genererIdTypeCalcul();
+//     idBouee = fonctionCalcul.genererIdBouee();
+//     frequenceValeur = fonctionCalcul.genererFrequenceValeur();
+
+//     dateGeneration = fonctionGenerique.genererDateAleatoire();
+//     dateProchaineGeneration = fonctionCalcul.genererDateProchaineGeneration(dateGeneration);
+
+//     dateDebutPlage = fonctionCalcul.genererDateDebutPlage(dateGeneration);
+//     dateFinPlage = fonctionCalcul.genererDateFinPlage(dateDebutPlage, frequenceValeur, dateGeneration);
+
+//     contenu += "" + index + "," +
+//         fonctionCalcul.genererEtiquette(typeCalcul, idBouee, frequenceValeur) + "," +
+//         fonctionGenerique.conversionTypeDateVersChaine(dateGeneration) + "," +
+//         fonctionGenerique.conversionTypeDateVersChaine(dateProchaineGeneration) + "," +
+//         fonctionGenerique.conversionTypeDateVersChaine(dateDebutPlage) + "," +
+//         fonctionGenerique.conversionTypeDateVersChaine(dateFinPlage) + "," +
+//         frequenceValeur + "," +
+//         fonctionCalcul.genererEnregistre() + "," +
+//         idBouee + "," +
+//         typeCalcul + "\n";   
+
+// }
+
+// fs.appendFile(('' + cheminMockdata + 'calcul_t.csv'), contenu, (err) => {
+//     if (err) throw err;
+//     console.log('calcul.csv générer');
+// });
+
 contenu = "";
-//######################################### Génération des Calculs
-// A voir changement bouée => région
+//######################################### Génération de Résultats en rapport avec les calculs précédemment générés
+var idResultat = 0;
+var cheminXMLResultat = "chemin/a/definir/";
 for (let index = 1; index <= nombreDeCalcul; index++) {
-
-    typeCalcul = fonctionCalcul.genererIdTypeCalcul();
-    idBouee = fonctionCalcul.genererIdBouee();
-    frequenceValeur = fonctionCalcul.genererFrequenceValeur();
-
-    dateGeneration = fonctionGenerique.genererDateAleatoire();
-    dateProchaineGeneration = fonctionCalcul.genererDateProchaineGeneration(dateGeneration);
-
-    dateDebutPlage = fonctionCalcul.genererDateDebutPlage(dateGeneration);
-    dateFinPlage = fonctionCalcul.genererDateFinPlage(dateDebutPlage, frequenceValeur, dateGeneration);
-
-    contenu += "" + index + "," +
-        fonctionCalcul.genererEtiquette(typeCalcul, idBouee, frequenceValeur) + "," +
-        fonctionGenerique.conversionTypeDateVersChaine(dateGeneration) + "," +
-        fonctionGenerique.conversionTypeDateVersChaine(dateProchaineGeneration) + "," +
-        fonctionGenerique.conversionTypeDateVersChaine(dateDebutPlage) + "," +
-        fonctionGenerique.conversionTypeDateVersChaine(dateFinPlage) + "," +
-        frequenceValeur + "," +
-        fonctionCalcul.genererEnregistre() + "," +
-        idBouee + "," +
-        typeCalcul + "\n";   
+    
+    for (let idTypeDonnee = 1; idTypeDonnee <= nombreDeResultatParCalcul; idTypeDonnee++) {
+        idResultat++;
+        nomFichierXML = "calcul" + index + "Donnee" + idTypeDonnee + ".xml";
+        xml_graphique = "" + cheminXMLResultat + nomFichierXML;
+        contenu += "" + idResultat + "," + xml_graphique + "\n";
+    }
 
 }
 
-fs.appendFile(('' + cheminMockdata + 'calcul_t.csv'), contenu, (err) => {
+fs.appendFile(('' + cheminMockdata + 'resultat.csv'), contenu, (err) => {
     if (err) throw err;
-    console.log('calcul.csv générer');
+    console.log('resultat.csv générer');
 });
