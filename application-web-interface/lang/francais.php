@@ -4,7 +4,7 @@
 
 $francais = array(
 	// accueil.php
-	"titleAccueil"=>"AccueilIMR",
+	"titleAccueil"=>"Accueil IMR",
 	"texteBoueeFonctionnelle"=>"Fonctionnelle",
 	"texteBoueeProbleme"=>"Problème",
 	"derniereMiseAjour"=>"Dernière mise &agrave; jour : ",
