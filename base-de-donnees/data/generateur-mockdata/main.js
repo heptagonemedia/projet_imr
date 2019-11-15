@@ -1,13 +1,20 @@
+//######################################### Modeles
+var date = require('./modele/DateModele');
+
+//######################################### Fonctions
 var fonctionRegion = require('./fonction/fonctionRegion');
 var fonctionBouee = require('./fonction/fonctionBouee');
 var fonctionTypeDonneeMesuree = require('./fonction/fonctionTypeDonneeMesuree');
 var fonctionTypeCalcul = require('./fonction/fonctionTypeCalcul');
 var fonctionCalcul = require('./fonction/fonctionCalcul');
+var fonctionDateModele = require('./fonction/fonctionDateModel');
 
 var fonctionGenerique = require('./fonction/fonctionGenerique');
 
+//######################################### Modules
 var fs = require('fs');
 
+//######################################### Variables
 var cheminMockdata = "../mockdata/";
 
 var nomFichierRegion = "region.csv";
@@ -15,6 +22,8 @@ var nomFichierBouee = "bouee.csv";
 var nomFichierTypeDonneeMesuree = "type_donnee_mesuree.csv";
 var nomFichierTypeCalcul = "type_calcul.csv";
 var nomFichierCalcul = "calcul.csv";
+var nomFichierResultat = "resultat.csv";
+var nomFichierHistorique = "historique_donnee_bouees.csv";
 
 var nombreDeRegion = 8;
 var nombreDeBouee = 75000
@@ -22,6 +31,9 @@ var nombreDeDonneeMesuree = 6;
 var nombreDeTypeDeCalcul = 3;
 var nombreDeCalcul = 10;
 var nombreDeResultatParCalcul = 3;
+
+var dateDebutHistorique = new date.DateModele(0,0,0,1,1,2018);
+var dateFinHistorique = new date.DateModele(30,0,0,1,1,2018);
 
 var contenu = "";
 
@@ -107,22 +119,46 @@ contenu = "";
 //     console.log('calcul.csv générer');
 // });
 
-contenu = "";
-//######################################### Génération de Résultats en rapport avec les calculs précédemment générés
-var idResultat = 0;
-var cheminXMLResultat = "chemin/a/definir/";
-for (let index = 1; index <= nombreDeCalcul; index++) {
+// contenu = "";
+// //######################################### Génération de Résultats en rapport avec les calculs précédemment générés
+// var idResultat = 0;
+// var cheminXMLResultat = "chemin/a/definir/";
+
+// for (let index = 1; index <= nombreDeCalcul; index++) {
     
-    for (let idTypeDonnee = 1; idTypeDonnee <= nombreDeResultatParCalcul; idTypeDonnee++) {
-        idResultat++;
-        nomFichierXML = "calcul" + index + "Donnee" + idTypeDonnee + ".xml";
-        xml_graphique = "" + cheminXMLResultat + nomFichierXML;
-        contenu += "" + idResultat + "," + xml_graphique + "\n";
+//     for (let idTypeDonnee = 1; idTypeDonnee <= nombreDeResultatParCalcul; idTypeDonnee++) {
+//         idResultat++;
+//         nomFichierXML = "calcul" + index + "Donnee" + idTypeDonnee + ".xml";
+//         xml_graphique = "" + cheminXMLResultat + nomFichierXML;
+//         contenu += "" + idResultat + "," + xml_graphique + "\n";
+//     }
+
+// }
+
+// fs.appendFile(('' + cheminMockdata + 'resultat.csv'), contenu, (err) => {
+//     if (err) throw err;
+//     console.log('resultat.csv générer');
+// });
+
+contenu = "";
+//######################################### Génération de l'historique des données des bouées
+ var idHistorique = 0;
+ var dateEnCours = dateDebutHistorique;
+
+ while (!fonctionDateModele.dateModeleEgales(dateEnCours, dateFinHistorique)) {
+    
+    contenu = "";
+
+    for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
+        idHistorique++;
+        contenu += "" + idHistorique + "," + idBouee + "," + fonctionDateModele.toString(dateEnCours) + "\n";
     }
 
-}
+    fs.appendFile(('' + cheminMockdata + 'historique_donnee_bouees_test.csv'), contenu, (err) => {
+        if (err) throw err;
+        console.log('historique_donnee_bouees.csv générer');
+    });
 
-fs.appendFile(('' + cheminMockdata + 'resultat.csv'), contenu, (err) => {
-    if (err) throw err;
-    console.log('resultat.csv générer');
-});
+    dateEnCours = fonctionDateModele.augmenterDateModele1Seconde(dateEnCours);
+
+ }
