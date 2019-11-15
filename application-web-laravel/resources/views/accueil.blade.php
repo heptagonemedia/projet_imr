@@ -29,13 +29,13 @@
             @php
                 $compteurFonctionelles++;
                 $classe='success';
-                $texte='Fonctionnelle';
+                $texte='Fonctionnelle'; // __('message.texteBoueeFonctionnelle')
             @endphp
         @else
             @php
                 $compteurProbleme++;
                 $classe='danger';
-                $texte='Problème';
+                $texte='Problème'; // __('message.texteBoueeProbleme')
             @endphp
         @endif
 
@@ -49,7 +49,7 @@
                 <div class="col l4 center-align">
                     <button  data-target="slide-out" class="sidenav-trigger btn black white-text" ><i  aria-label="Ouvrir le menu"  aria-hidden="true" class="material-icons" id="menu">menu</i></button>
                 </div>
-                <div class="col l4 center-align" style="font-size: 20pt">Accueil</div>
+                <div class="col l4 center-align" style="font-size: 20pt">{{ __('message.titleAccueil') }}</div>
 
             </div>
         </div>

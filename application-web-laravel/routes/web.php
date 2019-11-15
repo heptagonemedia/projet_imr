@@ -11,6 +11,14 @@
 |
 */
 
+// Permet la définition de la langue de la locale dans la session
+// un lien <a href="{{ url('locale/en') }}">anglais</a>
+// permet le passage à la langue anglaise. fr pour le français.
+Route::get('locale/{locale}', function ($locale){
+    Session::put('locale', $locale);
+    return redirect()->back();
+});
+
 Route::get('/' , 'PagesController@naviguerVersAccueil');
 Route::get('/accueil' , 'PagesController@naviguerVersAccueil');
 
