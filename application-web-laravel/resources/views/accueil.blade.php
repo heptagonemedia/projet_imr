@@ -49,7 +49,7 @@
                 <div class="col l4 center-align">
                     <button  data-target="slide-out" class="sidenav-trigger btn black white-text" ><i  aria-label="Ouvrir le menu"  aria-hidden="true" class="material-icons" id="menu">menu</i></button>
                 </div>
-                <div class="col l4 center-align" style="font-size: 20pt">{{ __('message.titleAccueil') }}</div>
+                <div class="col l4 center-align" style="font-size: 20pt">{!! __('message.titleAccueil') !!}</div>
 
             </div>
         </div>
@@ -76,9 +76,9 @@
                     <div class="card-content">
 
                         <div class="row">
-                            <div class="col s6 center-align">{{ __('message.titreCarte') }}</div>
+                            <div class="col s6 center-align">{!! __('message.titreCarte') !!}</div>
                             <div class="col s6 center-align">
-                                <button class="btn green" onclick="agrandirCarte(document.getElementById('map'))">{{ __('message.boutonPleinEcran') }}</button>
+                                <button class="btn green" onclick="agrandirCarte(document.getElementById('map'))">{!! __('message.boutonPleinEcran') !!}</button>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
             <div class="col l4 s12 m6" id="camembert" >
                 <div class="card white">
                     <div class="card-content white-text">
-                        <span class="card-title black-text center-align">{{ __('message.derniereMiseAjour') }}</span>
+                        <span class="card-title black-text center-align">{!! __('message.derniereMiseAjour') !!}</span>
                         <div class="card-content black-text">
                             <span>Date et heure</span>
                         </div>
@@ -97,8 +97,8 @@
                 </div>
                 <div class="card white">
                     <div class="card-content ">
-                        <span class="card-title black-text center-align">{{ __('message.etatDesBouees') }}</span>
-                        <canvas alt="{{ __('message.altGrapheBouees') }}" id="camembertBouees"></canvas>
+                        <span class="card-title black-text center-align">{!! __('message.etatDesBouees') !!}</span>
+                        <canvas alt="{!! __('message.altGrapheBouees') !!}" id="camembertBouees"></canvas>
                     </div>
                 </div>
             </div>
