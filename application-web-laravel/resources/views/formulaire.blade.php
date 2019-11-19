@@ -1,6 +1,5 @@
 @extends('layout.layout')
 
-
 @section('head')
     <link rel="stylesheet" href="{{asset('resources\css\formulaireCss.css')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -76,7 +75,7 @@
 
                     </div>
 
-                    <div class="row" id="marge">
+                    <div class="row" class="marge">
 
                         <div class="input-field col s2">
                             <i aria-hidden="true" class="small material-icons prefix">history</i>
@@ -111,12 +110,12 @@
                         <div class="col s2"></div>
 
                         <div class="col s10">
-                            <span class="helper-text" id="frequence"><label id="alerte">Il faut saisir au moins une valeur et uniquement des entiers</label></span>
+                            <span class="helper-text" id="frequence"><label class="alerte">Il faut saisir au moins une valeur et uniquement des entiers</label></span>
                         </div>
 
                     </div>
 
-                    <div class="row" id="marge">
+                    <div class="row" class="marge">
 
                         <div class="input-field col s2">
                             <i aria-hidden="true" class="small material-icons prefix">location_searching</i>
@@ -135,12 +134,12 @@
                         <div class="col s2"></div>
 
                         <div class="col s10">
-                            <span class="helper-text" id="HelperBouee"><label id="alerte">Veuillez choisir une région</label></span>
+                            <span class="helper-text" id="HelperBouee"><label class="alerte">Veuillez choisir une région</label></span>
                         </div>
 
                     </div>
 
-                    <div class="row" id="marge">
+                    <div class="row" class="marge">
 
                         <div class="input-field col s2">
                             <i aria-hidden="true" class="small material-icons prefix">date_range</i>
@@ -170,12 +169,12 @@
                         <div class="col s2"></div>
 
                         <div class="col s10">
-                            <span class="helper-text" id="heureTest"><label id="alerte">Il faut que la date de fin soit supérieure à celle de début</label></span>
+                            <span class="helper-text" id="heureTest"><label class="alerte">Il faut que la date de fin soit supérieure à celle de début</label></span>
                         </div>
 
                     </div>
 
-                    <div class="row" id="marge">
+                    <div class="row" class="marge">
 
                         <div class="input-field col s2">
                             <i aria-hidden="true" class="small material-icons prefix">save</i>
@@ -195,7 +194,7 @@
                         </div>
 
                     </div>
-                    <div class="row" id="marge">
+                    <div class="row" class="marge">
                         <div class="input-field col s2">
                             <i aria-hidden="true" class="small material-icons prefix">save</i>
                             <label>Repéter</label>
@@ -218,7 +217,7 @@
                     </div>
 
 
-                    <div class="row" id="marge">
+                    <div class="row" class="marge">
 
                         <div class="input-field col s12">
                             <a class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">Valider</a>

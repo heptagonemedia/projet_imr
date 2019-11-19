@@ -91,7 +91,7 @@
                     <div class="card-content white-text">
                         <span class="card-title black-text center-align">{!! __('message.derniereMiseAjour') !!}</span>
                         <div class="card-content black-text">
-                            <span>Date et heure</span>
+                            <h2>Date et heure</h2>
                         </div>
                     </div>
                 </div>

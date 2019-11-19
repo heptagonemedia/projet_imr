@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{asset('resources\css\headerCss.css')}}">
 <nav>
     <div class="nav-wrapper black">
         <div class="row">
