@@ -12,6 +12,7 @@ return [
     "texteBoueeProbleme"=>"Probl&egrave;me",
     "derniereMiseAjour"=>"Derni&egrave;re mise à jour : ",
     "titreCarte"=>"Carte des bou&eacute;es",
+    "messageCarte"=>"Carte montrant la position des bouées",
     "boutonPleinEcran"=>"Plein &eacute;cran",
     "boueesNonConformes"=>"Bou&eacute;es non conforme",
     "etatDesBouees"=>"&Eacute;tat des Bou&eacute;es",
@@ -59,6 +60,9 @@ return [
     "nouveauCalcul"=>"Nouveau calcul",
     // resultats.php
     "titleResultat"=>"Resultats",
+    "messageSalinite"=>"graphique montrant le calcul pour la salinit&eacute",
+    "messageTemperature"=>"graphique montrant le calcul pour la temp&eacuterature",
+    "messageCourant"=>"graphique montrant le calcul pour le courant",
     "vitesseCourant"=>"Vitesse du courant",
     "agrandirCarte"=>"Agrandir la Carte",
     "consulterDonneesBrutes"=>"Consulter les donn&eacute;es brutes",

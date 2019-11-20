@@ -13,11 +13,13 @@ $(document).ready(function () {
     $('.sidenav').sidenav();
 });
 
-function sidenav(){
+function ouvrirSidenav(){
     $("#slide-out").show();
+    console.log("ouverture")
 }
 function fermerSidenav(){
     $("#slide-out").hide();
+    console.log("fermeture")
 }
 
 var ctx = document.getElementById('camembertBouees').getContext('2d');

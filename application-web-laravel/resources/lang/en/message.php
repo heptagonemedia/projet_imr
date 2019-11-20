@@ -8,6 +8,7 @@ return [
     "texteBoueeProbleme"=>"Malfunctionning",
     "derniereMiseAjour"=>"Last update : ",
     "titreCarte"=>"Buoy map",
+    "messageCarte"=>"Map showing buoys position",
     "boutonPleinEcran"=>"Full-screen",
     "boueesNonConformes"=>"Incorrects buoys",
     "etatDesBouees"=>"Buoy Status", //Buoy Status
@@ -55,6 +56,9 @@ return [
     "nouveauCalcul"=>"New calculation",
     // resultats.php
     "titleResultat"=>"Results",
+    "messageSalinite"=>"Graph Showing salinity's calcul",
+    "messageTemperature"=>"Graph Showing temperature's calcul",
+    "messageCourant"=>"Graph Showing Current speed's calcul",
     "vitesseCourant"=>"Current speed",
     "agrandirCarte"=>"Zoom the map",
     "consulterDonneesBrutes"=>"View raw datas",

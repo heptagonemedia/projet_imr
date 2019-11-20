@@ -14,6 +14,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{asset('resources\css\proto.css')}}">
+        <link rel="stylesheet" href="{{asset('resources\css\headerCss.css')}}">
 
 
         <script src="https://kit.fontawesome.com/e14504e0cd.js"></script>
@@ -36,8 +37,8 @@
             <nav>
                 <div class="nav-wrapper black">
                     <div class="row">
-                        <div class="col l4 center-align"><button  data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button></div>
-                        <div class="col l4 center-align" style="font-size: 20pt">Résultat du calcul</div>
+                        <div class="col l4 center-align"><button role="button" onclick="ouvrirSidenav()" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button></div>
+                        <div class="col l4 center-align" style="font-size: 20pt"><h1>Résultat du calcul</h1></div>
                         <div class="col l4 center align ">
                             <a href="accueil" class="breadcrumb">accueil</a>
                             <a href="nouveauCalcul" class="breadcrumb">formulaire</a>
@@ -56,13 +57,13 @@
             <div  id="col1">
                 <div class="row">
 
-                    <div class="map col s6 " id="map"></div>
+                    <div class="map col s6 " role="geomap" id="map"></div>
 
                     <div class="stat1 col s6 ">
                         <div class="card">
 
                             <div class="card-image">
-                                <div class="chart" id="myChart" ></div>
+                                <div role="linegraph " class="chart" id="myChart" ></div>
                             </div>
 
                             <div class="card-content">
@@ -98,7 +99,7 @@
                         <div class="card">
 
                             <div class="card-image">
-                                <div class="chart" id="myChart2" ></div>
+                                <div class="chart" role="linegraph" id="myChart2" ></div>
                             </div>
 
                             <div class="card-content">
@@ -112,7 +113,7 @@
                         <div class="card">
 
                             <div class="card-image">
-                                <div class="chart" id="myChart3" ></div>
+                                <div class="chart" role="linegraph" id="myChart3" ></div>
                             </div>
 
                             <div class="card-content">
@@ -133,7 +134,7 @@
 
                 <ul>
                     <li><a class="btn-floating purple tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Agrandir la carte" onclick="agrandirCarte(document.getElementById('map'))"><i  aria-label="Bouton agrandir la carte" aria-hidden="true"  class="material-icons">crop_free</i></a></li>
-                    <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i aria-hidden="true"  aria-label="Faire un nouveau calcul  class="material-icons">add_circle_outline</i></a></li>
+                    <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i aria-hidden="true"  aria-label="Faire un nouveau calcul  class="material-icons" >  add_circle_outline</i></a></li>
                     <li><a class="btn-floating pink tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Accueil" href="accueil.php"><i aria-hidden="true"  aria-label="Lien vers l'accueil"  class="material-icons">home</i></a></li>
 
                     @php if(isset($_GET["type"]) && $_GET['type']=='prev' ): @endphp
@@ -157,10 +158,10 @@
 
                     if($type == "prev"):
             @endphp
-                        <div id="modal1" class="modal row">
-                            <div class="modal-content">
+                        <div id="modal1" role="dialog" aria-labelledby="dialog1Title" aria-describedby="dialog1Desc" class="modal row">
+                            <div id="dialog1Title" class="modal-content">
                                 <h4>Calcul enregistré</h4>
-                                <p>le calcul a bien été enregitré</p>
+                                <p id="dialog1Desc">le calcul a bien été enregitré</p>
                             </div>
                             <div class="modal-footer green">
                                 <a onclick="enregistrerForm()" class="modal-close waves-effect waves-green btn-flat">ok</a>

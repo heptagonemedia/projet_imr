@@ -1,4 +1,4 @@
-<ul id="slide-out" class="sidenav draggable">
+<ul id="slide-out" hidden role="alert" class="sidenav draggable">
 
     <li>
         <div class="user-view">
@@ -47,7 +47,7 @@
     <li>
         <div class="divider"></div>
     </li>
-    <li><a class="sidenav-close" href="#" onclick="fermerSidenav()"><i class="material-icons">close</i>Fermer</a></li>
+    <li><a class="sidenav-close" onclick="fermerSidenav()"><i class="material-icons">close</i>Fermer</a></li>
 
 </ul>
 

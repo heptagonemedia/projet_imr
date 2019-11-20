@@ -15,7 +15,7 @@
                 @endphp
 
                 <div class="col black m1 l4 center-align">
-                    <button data-target="slide-out" onclick="sidenav()" class="sidenav-trigger btn black white-text"><i aria-hidden="true" aria-label="Ouvrir le menu" class="material-icons" id="menu">menu</i></button>
+                    <button  role="button" data-target="slide-out" onclick="ouvrirSidenav()" class="sidenav-trigger btn black white-text"><i aria-hidden="true" aria-label="Ouvrir le menu" class="material-icons" id="menu">menu</i></button>
                 </div>
 
                 <div class="col black m11 l4 center-align" style="font-size: 18pt"><h1>{{ $titre }}</h1></div>
@@ -27,7 +27,7 @@
                             @endphp
 
                             <div class="col black s12 m1 l4 center-align">
-                                <button data-target="slide-out" onclick="sidenav()" class="sidenav-trigger btn black white-text"><i  aria-label="Ouvrir le menu" aria-hidden="true" class="material-icons" id="menu">menu</i></button>
+                                <button role="button" data-target="slide-out" onclick="ouvrirSidenav()" class="sidenav-trigger btn black white-text"><i aria-label="Ouvrir le menu" aria-hidden="true" class="material-icons" id="menu">menu</i></button>
                             </div>
                             <div class="col black s12 m6 l4 center-align" style="font-size: 18pt"><h1>{{ $titre }}</h1></div>
 
@@ -42,7 +42,7 @@
                                     $titre = 'Résultats du calcul';
                                 @endphp
 
-                                <div class="col s1 m1 l4 center-align"><button data-target="slide-out" onclick="sidenav()" class="sidenav-trigger btn black white-text"><i aria-label="Ouvrir le menu"  aria-hidden="true" class="material-icons" id="menu">menu</i></button></div>
+                                <div class="col s1 m1 l4 center-align"><button role="button" data-target="slide-out" onclick="ouvrirSidenav()" class="sidenav-trigger btn black white-text"><i aria-label="Ouvrir le menu" aria-hidden="true" class="material-icons" id="menu">menu</i></button></div>
                                 <div class="black col s12 m5 l3 center-align" style="font-size: 18pt"><h1>{{ $titre }}</h1></div>
                                 <div class="black col s12 m6 l5 center align ">
 
@@ -62,7 +62,7 @@
                                 @endphp
 
                                 <div class="col black m1 l4 center-align">
-                                    <button  data-target="slide-out" onclick="sidenav()" class="sidenav-trigger btn black white-text"><i aria-label="Ouvrir le menu"  aria-hidden="true" class="material-icons" id="menu">menu</i></button>
+                                    <button role="button" data-target="slide-out" onclick="ouvrirSidenav()" class="sidenav-trigger btn black white-text"><i aria-label="Ouvrir le menu" aria-hidden="true" class="material-icons" id="menu">menu</i></button>
                                 </div>
                                 <div class="col black m11 l4 center-align" style="font-size: 18pt"><h1>{{ $titre }}</h1></div>
 
