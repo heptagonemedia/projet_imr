@@ -2,8 +2,9 @@
 var date = require('./modele/DateModele');
 var historique = require('./modele/Historique');
 
-//######################################### DAO
+//######################################### Donnee
 var historiqueDAO = require('./donnee/HistoriqueDAO');
+var bdd = require('./donnee/BaseDeDonnees');
 
 //######################################### Fonctions
 var fonctionRegion = require('./fonction/fonctionRegion');
@@ -36,7 +37,6 @@ var nombreDeDonneeMesuree = 6;
 var nombreDeTypeDeCalcul = 3;
 var nombreDeCalcul = 10;
 var nombreDeResultatParCalcul = 3;
-var nombreDeSecondeParRepetitionDonneesHistorique = 30;
 
 var dateDebutHistorique = new date.DateModele(0,0,0,1,1,2018);
 var dateFinHistorique = new date.DateModele(0,1,0,1,1,2018);
@@ -147,31 +147,38 @@ contenu = "";
 // });
 
 
-var test = function (idHistorique, dateEnCours) {
-
-    tableauHistorique = [];
-
-    for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
-        idHistorique++;
-        tableauHistorique.push(new historique.Historique(idHistorique, idBouee, dateEnCours));
-    }
-
-    historiqueDAO.enregistrer1SecondeHistorique(tableauHistorique);
-    tableauHistorique = [];
-
-}
-
-
 //######################################### Génération de l'historique des données des bouées directement dans la base de données
 var idHistorique = 0;
 var dateEnCours = dateDebutHistorique;
 var tableauHistorique;
 
+var idPreparedStatement = 0;
 
-while (!fonctionDateModele.dateModeleEgales(dateEnCours, dateFinHistorique)) {
+(async function t() {
 
-    test(idHistorique, dateEnCours).then();
-        
-    dateEnCours = fonctionDateModele.augmenterDateModele1Seconde(dateEnCours);
+    console.log(new Date());
+    
+    while (!fonctionDateModele.dateModeleEgales(dateEnCours, dateFinHistorique)) {
 
-}
+        tableauHistorique = [];
+
+        for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
+            idHistorique++;
+            tableauHistorique.push(new historique.Historique(idHistorique, idBouee, dateEnCours));
+        }
+
+        // console.log('avant_', idPreparedStatement);
+        await historiqueDAO.preparerEnregistrementHistorique(tableauHistorique, idPreparedStatement);
+        // console.log('apres_', idPreparedStatement);
+
+        idPreparedStatement += 11;
+
+        tableauHistorique = [];
+
+        dateEnCours = fonctionDateModele.augmenterDateModele1Seconde(dateEnCours);
+
+    }
+
+    console.log('done !', new Date());
+    
+})()

@@ -5,16 +5,21 @@ const { Pool, Client } = require('pg');
 //     database: 'imr'
 // };
 
+var historiqueDAO = require('./HistoriqueDAO');
+
 var connexion = {
     user: 'postgres', password: 'Cvgcqy891',
     host: 'localhost', port: 5432,
     database: 'test_select'
 };
 
-exports.connexion = function() {
-    return new Client(connexion);
-}
+const pool = new Pool(connexion);
 
-exports.deconnexion = function(bdd) {
-    bdd.end();
+exports.insererHistorique = async function (query) {
+
+    const client = await pool.connect();
+    await client.query(query);
+    client.release();
+    // console.log('insertion : ', query.name);
+    
 }
