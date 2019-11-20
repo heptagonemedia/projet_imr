@@ -1,4 +1,4 @@
-<ul id="slide-out" hidden role="alert" class="sidenav draggable">
+<ul role="navigation" aria-label="Sidenav" id="slide-out" hidden role="alert" class="sidenav draggable">
 
     <li>
         <div class="user-view">
@@ -6,8 +6,8 @@
             <div class="background">
                 <img alt="" src="{{asset('resources\img\fond_header_navigation_side_bar.jpg')}}" height="300px">
             </div>
-           <img alt="" src="{{asset('resources\img\logo_imr.png')}}" width="60px" height="50px">
-           <span class="white-text name">Institut Maritime de Rimouski</span>
+            <img alt="" src="{{asset('resources\img\logo_imr.png')}}" width="60px" height="50px">
+            <span class="white-text name">Institut Maritime de Rimouski</span>
 
         </div>
     </li>

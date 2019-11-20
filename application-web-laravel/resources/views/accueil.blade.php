@@ -43,7 +43,7 @@
     @endfor
 
 
-    <nav>
+    <nav role="navigation" aria-label="header">
         <div class="nav-wrapper black" >
             <div class="row  ">
 
@@ -64,14 +64,14 @@
 
 
 @section('main')
-    <main>
+    <main role="main">
         <div class="row" id="ligne_principale">
 
             <div class="col l8">
 
                 <div class="card">
                     <div >
-                        <div class="" role="{!! __('message.messageCarte') !!}"  id="map" ></div>
+                        <div class="" role="geomap"  id="map" ></div>
                     </div>
 
                     <div class="card-content">
@@ -99,7 +99,7 @@
                 <div class="card white">
                     <div class="card-content ">
                         <span class="card-title black-text center-align">{!! __('message.etatDesBouees') !!}</span>
-                        <canvas role="{!! __('message.altGrapheBouees') !!}" id="camembertBouees"></canvas>
+                        <canvas role="linegraph" id="camembertBouees"></canvas>
                     </div>
                 </div>
             </div>
@@ -114,15 +114,15 @@
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-			crossorigin="anonymous">
-	</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous">
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="{{asset('resources\js\materialize.js')}}"></script>
-	<script src="{{asset('resources\js\script.js')}}"></script>
-	<script src="{{asset('resources\js\map.js')}}"></script>
+    <script src="{{asset('resources\js\script.js')}}"></script>
+    <script src="{{asset('resources\js\map.js')}}"></script>
 
-	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
 @endsection

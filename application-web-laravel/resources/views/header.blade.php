@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{asset('resources\css\headerCss.css')}}">
-<nav>
+<nav role="navigation" aria-label="header">
     <div class="nav-wrapper black">
         <div class="row">
 
@@ -20,53 +20,53 @@
 
                 <div class="col black m11 l4 center-align" style="font-size: 18pt"><h1>{{ $titre }}</h1></div>
 
-                @else @if (strpos($_SERVER['REQUEST_URI'], "nouveauCalcul") !== false)
+            @else @if (strpos($_SERVER['REQUEST_URI'], "nouveauCalcul") !== false)
 
-                            @php
-                                $titre = 'Faire un nouveau calcul';
-                            @endphp
+                @php
+                    $titre = 'Faire un nouveau calcul';
+                @endphp
 
-                            <div class="col black s12 m1 l4 center-align">
-                                <button role="button" data-target="slide-out" onclick="ouvrirSidenav()" class="sidenav-trigger btn black white-text"><i aria-label="Ouvrir le menu" aria-hidden="true" class="material-icons" id="menu">menu</i></button>
-                            </div>
-                            <div class="col black s12 m6 l4 center-align" style="font-size: 18pt"><h1>{{ $titre }}</h1></div>
+                <div class="col black s12 m1 l4 center-align">
+                    <button role="button" data-target="slide-out" onclick="ouvrirSidenav()" class="sidenav-trigger btn black white-text"><i aria-label="Ouvrir le menu" aria-hidden="true" class="material-icons" id="menu">menu</i></button>
+                </div>
+                <div class="col black s12 m6 l4 center-align" style="font-size: 18pt"><h1>{{ $titre }}</h1></div>
 
-                            <div class="col black s12 m5 l4 black center align ">
-                                <a href="accueil.php" class="breadcrumb">accueil</a>
-                                <a href="#" class="breadcrumb">formulaire</a>
-                            </div>
+                <div class="col black s12 m5 l4 black center align ">
+                    <a href="accueil.php" class="breadcrumb">accueil</a>
+                    <a href="#" class="breadcrumb">formulaire</a>
+                </div>
 
 
-                      @else @if (strpos($_SERVER['REQUEST_URI'], "test") !== false)
-                                @php
-                                    $titre = 'Résultats du calcul';
-                                @endphp
+            @else @if (strpos($_SERVER['REQUEST_URI'], "test") !== false)
+                    @php
+                        $titre = 'Résultats du calcul';
+                    @endphp
 
-                                <div class="col s1 m1 l4 center-align"><button role="button" data-target="slide-out" onclick="ouvrirSidenav()" class="sidenav-trigger btn black white-text"><i aria-label="Ouvrir le menu" aria-hidden="true" class="material-icons" id="menu">menu</i></button></div>
-                                <div class="black col s12 m5 l3 center-align" style="font-size: 18pt"><h1>{{ $titre }}</h1></div>
-                                <div class="black col s12 m6 l5 center align ">
+                    <div class="col s1 m1 l4 center-align"><button role="button" data-target="slide-out" onclick="ouvrirSidenav()" class="sidenav-trigger btn black white-text"><i aria-label="Ouvrir le menu" aria-hidden="true" class="material-icons" id="menu">menu</i></button></div>
+                    <div class="black col s12 m5 l3 center-align" style="font-size: 18pt"><h1>{{ $titre }}</h1></div>
+                    <div class="black col s12 m6 l5 center align ">
 
-                                    <a href="accueil.php" class="breadcrumb">accueil</a>
-                                    <a href="formulaireRecherche.php" class="breadcrumb">formulaire</a>
-                                    <a href="#" class="breadcrumb">Calcul : <?php if (isset($_POST['bouee'])) {
-                                                                                    echo $_POST['bouee'];
-                                                                                } else {
-                                                                                    echo " nom";
-                                                                                } ?></a>
-                                </div>
+                        <a href="accueil.php" class="breadcrumb">accueil</a>
+                        <a href="formulaireRecherche.php" class="breadcrumb">formulaire</a>
+                        <a href="#" class="breadcrumb">Calcul : <?php if (isset($_POST['bouee'])) {
+                                echo $_POST['bouee'];
+                            } else {
+                                echo " nom";
+                            } ?></a>
+                    </div>
 
-                            @else
+                @else
 
-                                @php
-                                    $titre = 'Accueil';
-                                @endphp
+                    @php
+                        $titre = 'Accueil';
+                    @endphp
 
-                                <div class="col black m1 l4 center-align">
-                                    <button role="button" data-target="slide-out" onclick="ouvrirSidenav()" class="sidenav-trigger btn black white-text"><i aria-label="Ouvrir le menu" aria-hidden="true" class="material-icons" id="menu">menu</i></button>
-                                </div>
-                                <div class="col black m11 l4 center-align" style="font-size: 18pt"><h1>{{ $titre }}</h1></div>
+                    <div class="col black m1 l4 center-align">
+                        <button role="button" data-target="slide-out" onclick="ouvrirSidenav()" class="sidenav-trigger btn black white-text"><i aria-label="Ouvrir le menu" aria-hidden="true" class="material-icons" id="menu">menu</i></button>
+                    </div>
+                    <div class="col black m11 l4 center-align" style="font-size: 18pt"><h1>{{ $titre }}</h1></div>
 
-                            @endif
+                @endif
 
             @endif
 

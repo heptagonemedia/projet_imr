@@ -20,7 +20,7 @@
 
 
 @section('header')
-    <nav>
+    <nav role="navigation" aria-label="header">
         <div class="nav-wrapper black">
             <div class="row">
                 <div class="col l4 center-align"><button role="button" onclick="ouvrirSidenav()" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i aria-hidden="true" class="material-icons" id="menu">menu</i></button></div>
@@ -37,194 +37,194 @@
 
 
 @section('main')
-    <main class="container">
+    <main role="main" class="container">
         <div id="register-page" class="row">
 
             <div class="col s12 z-depth-6 card-panel">
 
                 <form id="formulaire" role="form" aria-label="formulaire de calcul" method="POST" action="/resultat" class="register-form">
                     @csrf
-<fieldset><legend>Nouveau Calcul</legend>
-                    <div class="row">
+                    <fieldset><legend>Nouveau Calcul</legend>
+                        <div class="row">
 
-                        <div class="input-field col s2">
-                            <i  aria-hidden="true" class="small material-icons prefix">content_paste</i>
-                            <label>Calcul</label>
+                            <div class="input-field col s2">
+                                <i  aria-hidden="true" class="small material-icons prefix">content_paste</i>
+                                <label>Calcul</label>
+                            </div>
+
+                            <div class="input-field col s10">
+                                <p>
+                                    <label id="radio">
+                                        <input aria-labelledby="radio" name="calcul" type="radio" value="moyenne" id="moyenne" checked />
+                                        <span>Moyenne</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="calcul" type="radio" value="mediane" id="mediane" />
+                                        <span>Mediane</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input name="calcul" type="radio"  value = "ecart" id="ecart" />
+                                        <span>Ecart type</span>
+                                    </label>
+                                </p>
+                            </div>
+
                         </div>
 
-                        <div class="input-field col s10">
-                            <p>
-                                <label id="radio">
-                                    <input aria-labelledby="radio" name="calcul" type="radio" value="moyenne" id="moyenne" checked />
-                                    <span>Moyenne</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input name="calcul" type="radio" value="mediane" id="mediane" />
-                                    <span>Mediane</span>
-                                </label>
-                            </p>
-                            <p>
-                                <label>
-                                    <input name="calcul" type="radio"  value = "ecart" id="ecart" />
-                                    <span>Ecart type</span>
-                                </label>
-                            </p>
+                        <div class="row" class="marge">
+
+                            <div class="input-field col s2">
+                                <i aria-hidden="true" class="small material-icons prefix">history</i>
+                                <label>Fréquence</label>
+                            </div>
+
+                            <div class="input-field col s2">
+                                <input aria-labelledby="labelAnnee" id="annee" type="text">
+                                <label id="labelAnnee" for="annee" class="center-align">Année</label>
+                            </div>
+
+                            <div class="input-field col s2">
+                                <input aria-labelledby="labelMois" id="mois" type="text">
+                                <label id="labelMois" for="mois" class="center-align">Mois</label>
+                            </div>
+
+                            <div class="input-field col s2">
+                                <input aria-labelledby="labelJour" id="jour" type="text">
+                                <label id="labelJour" for="jour" class="center-align">Jour</label>
+                            </div>
+
+                            <div class="input-field col s2">
+                                <input aria-labelledby="LabelHeurebe" id="heure" type="text">
+                                <label id="LabelHeure" for="heure" class="center-align">Heure</label>
+                            </div>
+
+                            <div class="input-field col s2">
+                                <input aria-labelledby="labelMinute" id="minute" type="text">
+                                <label id="labelMinute" for="minute" class="center-align">Minute</label>
+                            </div>
+
+                            <div class="col s2"></div>
+
+                            <div class="col s10">
+                                <span class="helper-text" id="frequence"><label class="alerte">Il faut saisir au moins une valeur et uniquement des entiers</label></span>
+                            </div>
+
                         </div>
 
-                    </div>
+                        <div class="row" class="marge">
 
-                    <div class="row" class="marge">
+                            <div class="input-field col s2">
+                                <i aria-hidden="true" class="small material-icons prefix">location_searching</i>
+                                <label>Bouée</label>
+                            </div>
 
-                        <div class="input-field col s2">
-                            <i aria-hidden="true" class="small material-icons prefix">history</i>
-                            <label>Fréquence</label>
+                            <div class="input-field col s10">
+                                <select role="select" id="bouee">
+                                    <option value="" disabled selected>Région de la bouée</option>
+                                    <option value="1">Saint-Laurent</option>
+                                    <option value="2">Atlantique</option>
+                                    <option value="3">Pacifique</option>
+                                </select>
+                            </div>
+
+                            <div class="col s2"></div>
+
+                            <div class="col s10">
+                                <span class="helper-text" id="HelperBouee"><label class="alerte">Veuillez choisir une région</label></span>
+                            </div>
+
                         </div>
 
-                        <div class="input-field col s2">
-                            <input aria-labelledby="labelAnnee" id="annee" type="text">
-                            <label id="labelAnnee" for="annee" class="center-align">Année</label>
+                        <div class="row" class="marge">
+
+                            <div class="input-field col s2">
+                                <i  aria-hidden="true" class="small material-icons prefix">date_range</i>
+                                <label>Intervalle temporel</label>
+                            </div>
+
+                            <div class="input-field col s3">
+                                <input aria-labelledby="labelDateDeb" id="dateDeb" type="text" class="datepicker">
+                                <label id="labelDateDeb" for="dateDeb">Date début</label>
+                            </div>
+
+                            <div class="input-field col s2">
+                                <input aria-labelledby="labelHeureDeb" id="heureDeb" type="text" class="timepicker">
+                                <label id="labelHeureDeb" for="heureDeb">Heure début</label>
+                            </div>
+
+                            <div class="input-field col s3">
+                                <input id="dateFin" type="text" class="datepicker">
+                                <label for="dateFin">Date fin</label>
+                            </div>
+
+                            <div class="input-field col s2">
+                                <input aria-labelledby="labelHeureFin" id="heureFin" type="text" class="timepicker">
+                                <label id="labelHeureFin" for="heureFin">Heure fin</label>
+                            </div>
+
+                            <div class="col s2"></div>
+
+                            <div class="col s10">
+                                <span class="helper-text" id="heureTest"><label class="alerte">Il faut que la date de fin soit supérieure à celle de début</label></span>
+                            </div>
+
                         </div>
 
-                        <div class="input-field col s2">
-                            <input aria-labelledby="labelMois" id="mois" type="text">
-                            <label id="labelMois" for="mois" class="center-align">Mois</label>
+                        <div class="row" class="marge">
+
+                            <div class="input-field col s2">
+                                <i aria-hidden="true" class="small material-icons prefix">save</i>
+                                <label>Enregistrer calcul</label>
+                            </div>
+
+                            <div class="input-field col s10">
+                                <!-- Switch -->
+                                <div class="switch">
+                                    <label>
+                                        Non
+                                        <input type="checkbox" role="checkbox">
+                                        <span class="lever"></span>
+                                        Oui
+                                    </label>
+                                </div>
+                            </div>
+
                         </div>
+                        <div class="row" class="marge">
+                            <div class="input-field col s2">
+                                <i aria-hidden="true" class="small material-icons prefix">save</i>
+                                <label>Repéter</label>
+                            </div>
 
-                        <div class="input-field col s2">
-                            <input aria-labelledby="labelJour" id="jour" type="text">
-                            <label id="labelJour" for="jour" class="center-align">Jour</label>
-                        </div>
+                            <div class=" input-field col l3 s10">
+                                <!-- Switch -->
+                                <div class="switch">
+                                    <label>
+                                        Non
+                                        <input id="recursif" type="checkbox" role="checkbox" oninput="afficherRecursivite()">
+                                        <span class="lever"></span>
+                                        Oui
+                                    </label>
+                                </div>
+                            </div>
+                            <div id="ligne-select">
 
-                        <div class="input-field col s2">
-                            <input aria-labelledby="LabelHeurebe" id="heure" type="text">
-                            <label id="LabelHeure" for="heure" class="center-align">Heure</label>
-                        </div>
-
-                        <div class="input-field col s2">
-                            <input aria-labelledby="labelMinute" id="minute" type="text">
-                            <label id="labelMinute" for="minute" class="center-align">Minute</label>
-                        </div>
-
-                        <div class="col s2"></div>
-
-                        <div class="col s10">
-                            <span class="helper-text" id="frequence"><label class="alerte">Il faut saisir au moins une valeur et uniquement des entiers</label></span>
-                        </div>
-
-                    </div>
-
-                    <div class="row" class="marge">
-
-                        <div class="input-field col s2">
-                            <i aria-hidden="true" class="small material-icons prefix">location_searching</i>
-                            <label>Bouée</label>
-                        </div>
-
-                        <div class="input-field col s10">
-                            <select role="select" id="bouee">
-                                <option value="" disabled selected>Région de la bouée</option>
-                                <option value="1">Saint-Laurent</option>
-                                <option value="2">Atlantique</option>
-                                <option value="3">Pacifique</option>
-                            </select>
-                        </div>
-
-                        <div class="col s2"></div>
-
-                        <div class="col s10">
-                            <span class="helper-text" id="HelperBouee"><label class="alerte">Veuillez choisir une région</label></span>
-                        </div>
-
-                    </div>
-
-                    <div class="row" class="marge">
-
-                        <div class="input-field col s2">
-                            <i  aria-hidden="true" class="small material-icons prefix">date_range</i>
-                            <label>Intervalle temporel</label>
-                        </div>
-
-                        <div class="input-field col s3">
-                            <input aria-labelledby="labelDateDeb" id="dateDeb" type="text" class="datepicker">
-                            <label id="labelDateDeb" for="dateDeb">Date début</label>
-                        </div>
-
-                        <div class="input-field col s2">
-                            <input aria-labelledby="labelHeureDeb" id="heureDeb" type="text" class="timepicker">
-                            <label id="labelHeureDeb" for="heureDeb">Heure début</label>
-                        </div>
-
-                        <div class="input-field col s3">
-                            <input id="dateFin" type="text" class="datepicker">
-                            <label for="dateFin">Date fin</label>
-                        </div>
-
-                        <div class="input-field col s2">
-                            <input aria-labelledby="labelHeureFin" id="heureFin" type="text" class="timepicker">
-                            <label id="labelHeureFin" for="heureFin">Heure fin</label>
-                        </div>
-
-                        <div class="col s2"></div>
-
-                        <div class="col s10">
-                            <span class="helper-text" id="heureTest"><label class="alerte">Il faut que la date de fin soit supérieure à celle de début</label></span>
-                        </div>
-
-                    </div>
-
-                    <div class="row" class="marge">
-
-                        <div class="input-field col s2">
-                            <i aria-hidden="true" class="small material-icons prefix">save</i>
-                            <label>Enregistrer calcul</label>
-                        </div>
-
-                        <div class="input-field col s10">
-                            <!-- Switch -->
-                            <div class="switch">
-                                <label>
-                                    Non
-                                    <input type="checkbox" role="checkbox">
-                                    <span class="lever"></span>
-                                    Oui
-                                </label>
                             </div>
                         </div>
 
-                    </div>
-                    <div class="row" class="marge">
-                        <div class="input-field col s2">
-                            <i aria-hidden="true" class="small material-icons prefix">save</i>
-                            <label>Repéter</label>
-                        </div>
 
-                        <div class=" input-field col l3 s10">
-                            <!-- Switch -->
-                            <div class="switch">
-                                <label>
-                                    Non
-                                    <input id="recursif" type="checkbox" role="checkbox" oninput="afficherRecursivite()">
-                                    <span class="lever"></span>
-                                    Oui
-                                </label>
+                        <div class="row" class="marge">
+
+                            <div class="input-field col s12">
+                                <a class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">Valider</a>
                             </div>
-                        </div>
-                        <div id="ligne-select">
 
                         </div>
-                    </div>
-
-
-                    <div class="row" class="marge">
-
-                        <div class="input-field col s12">
-                            <a class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">Valider</a>
-                        </div>
-
-                    </div>
-</fieldset>
+                    </fieldset>
                 </form>
 
             </div>
