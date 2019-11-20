@@ -1,6 +1,9 @@
 //######################################### Modeles
 var date = require('./modele/DateModele');
-var historique = require('./modele/HistoriqueTransition');
+var historique = require('./modele/Historique');
+
+//######################################### DAO
+var historiqueDAO = require('./donnee/HistoriqueDAO');
 
 //######################################### Fonctions
 var fonctionRegion = require('./fonction/fonctionRegion');
@@ -17,15 +20,15 @@ var fonctionGenerique = require('./fonction/fonctionGenerique');
 var fs = require('fs');
 
 //######################################### Variables
-var cheminMockdata = "../mockdata/";
+const cheminMockdata = "../mockdata/";
 
-var nomFichierRegion = "region.csv";
-var nomFichierBouee = "bouee.csv";
-var nomFichierTypeDonneeMesuree = "type_donnee_mesuree.csv";
-var nomFichierTypeCalcul = "type_calcul.csv";
-var nomFichierCalcul = "calcul.csv";
-var nomFichierResultat = "resultat.csv";
-var nomFichierHistorique = "historique_donnee_bouees.csv";
+const NOM_FICHIER_REGION = "region.csv";
+const NOM_FICHIER_BOUEE = "bouee.csv";
+const NOM_FICHIER_TYPE_DONNEE_MESUREE = "type_donnee_mesuree.csv";
+const NOM_FICHIER_TYPE_CALCUL = "type_calcul.csv";
+const NOM_FICHIER_CALCUL = "calcul.csv";
+const NOM_FICHIER_RESULTAT = "resultat.csv";
+// const NOM_FICHIER_HISTORIQUE = "historique_donnee_bouees.csv";
 
 var nombreDeRegion = 8;
 var nombreDeBouee = 75000
@@ -47,7 +50,7 @@ contenu = "";
 //     contenu += "" + index + "," + fonctionRegion.genererEtiquette(index) + "\n";
 // }
 
-// fs.appendFile((''+cheminMockdata+'region.csv'), contenu, (err) => {
+// fs.appendFile(('' + cheminMockdata + NOM_FICHIER_REGION), contenu, (err) => {
 //     if (err) throw err;
 //     console.log('region.csv générer');
 // });
@@ -60,7 +63,7 @@ contenu = "";
 //                 fonctionBouee.genererLatitude(region) + "," + region + "\n";
 // }
 
-// fs.appendFile((''+cheminMockdata+'bouee.csv'), contenu, (err) => {
+// fs.appendFile(('' + cheminMockdata + NOM_FICHIER_BOUEE), contenu, (err) => {
 //     if (err) throw err;
 //     console.log('bouee.csv générer');
 // });
@@ -72,7 +75,7 @@ contenu = "";
 //         fonctionTypeDonneeMesuree.genererUnite(index) + "\n";
 // }
 
-// fs.appendFile(('' + cheminMockdata + 'type_donnee_mesuree.csv'), contenu, (err) => {
+// fs.appendFile(('' + cheminMockdata + NOM_FICHIER_TYPE_DONNEE_MESUREE), contenu, (err) => {
 //     if (err) throw err;
 //     console.log('type_donnee_mesuree.csv générer');
 // });
@@ -83,7 +86,7 @@ contenu = "";
 //     contenu += "" + index + "," + fonctionTypeCalcul.genererEtiquette(index) + "\n";
 // }
 
-// fs.appendFile(('' + cheminMockdata + 'type_calcul.csv'), contenu, (err) => {
+// fs.appendFile(('' + cheminMockdata + NOM_FICHIER_TYPE_CALCUL), contenu, (err) => {
 //     if (err) throw err;
 //     console.log('type_calcul.csv générer');
 // });
@@ -117,7 +120,7 @@ contenu = "";
 
 // }
 
-// fs.appendFile(('' + cheminMockdata + 'calcul_t.csv'), contenu, (err) => {
+// fs.appendFile(('' + cheminMockdata + NOM_FICHIER_CALCUL), contenu, (err) => {
 //     if (err) throw err;
 //     console.log('calcul.csv générer');
 // });
@@ -138,40 +141,37 @@ contenu = "";
 
 // }
 
-// fs.appendFile(('' + cheminMockdata + 'resultat.csv'), contenu, (err) => {
+// fs.appendFile(('' + cheminMockdata + NOM_FICHIER_RESULTAT), contenu, (err) => {
 //     if (err) throw err;
 //     console.log('resultat.csv générer');
 // });
 
-var test = async function (nombreDeRepetition, dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, cheminFichier) {
-    var dernierHist = dernierHistorique;
 
-    do {
-        console.log(nombreDeRepetition);
-        dernierHist = await fonctionHistorique.genererXSecondes(dernierHist, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, cheminFichier);
-        // dernierHistorique = test2(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
-        // dernierHistorique = test(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
-        // dernierHistorique = fonctionHistorique.genererXSecondes(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
-        nombreDeRepetition--;
-    } while (nombreDeRepetition > 0);
+var test = function (idHistorique, dateEnCours) {
+
+    tableauHistorique = [];
+
+    for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
+        idHistorique++;
+        tableauHistorique.push(new historique.Historique(idHistorique, idBouee, dateEnCours));
+    }
+
+    historiqueDAO.enregistrer1SecondeHistorique(tableauHistorique);
+    tableauHistorique = [];
+
 }
 
-// var test2 = async function (dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, cheminFichier) {
-//     var t = await test(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
-//     return t;
-// }
 
-//######################################### Génération de l'historique des données des bouées
-var nombreDeRepetition = fonctionHistorique.calculerNombreDeRepetition(dateDebutHistorique, dateFinHistorique, nombreDeSecondeParRepetitionDonneesHistorique);
+//######################################### Génération de l'historique des données des bouées directement dans la base de données
 var idHistorique = 0;
 var dateEnCours = dateDebutHistorique;
+var tableauHistorique;
 
-dernierHistorique = new historique.HistoriqueTransition(idHistorique, dateEnCours);
-test(nombreDeRepetition, dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
 
-// do {
-//     console.log(nombreDeRepetition);
-//     // dernierHistorique = test2(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
-//     // dernierHistorique = fonctionHistorique.genererXSecondes(dernierHistorique, nombreDeBouee, nombreDeSecondeParRepetitionDonneesHistorique, ('' + cheminMockdata + 'historique_donnee_bouees_test.csv'));
-//     nombreDeRepetition-- ;
-// } while (nombreDeRepetition > 0);
+while (!fonctionDateModele.dateModeleEgales(dateEnCours, dateFinHistorique)) {
+
+    test(idHistorique, dateEnCours).then();
+        
+    dateEnCours = fonctionDateModele.augmenterDateModele1Seconde(dateEnCours);
+
+}
