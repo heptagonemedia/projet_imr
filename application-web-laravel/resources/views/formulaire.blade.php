@@ -27,10 +27,10 @@
         <div class="nav-wrapper black">
             <div class="row">
                 <div class="col l4 center-align"><button role="button" onclick="ouvrirSidenav()" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i aria-hidden="true" class="material-icons" id="menu">menu</i></button></div>
-                <div class="col l4 center-align" style="font-size: 20pt"><h1>Formulaire de recherche</h1></div>
+                <div class="col l4 center-align" style="font-size: 20pt"><h1>{!! __('message.titleFormulaireRecherche') !!}</h1></div>
                 <div class="col l4 center align ">
-                    <a href="accueil" class="breadcrumb">accueil</a>
-                    <a href="#" class="breadcrumb">formulaire</a>
+                    <a href="accueil" class="breadcrumb">{!! __('message.accueilMenu') !!}</a>
+                    <a href="#" class="breadcrumb">{!! __('message.formulaire') !!}</a>
                 </div>
             </div>
         </div>
@@ -52,26 +52,26 @@
 
                             <legend class="input-field col s2">
                                 <i  aria-hidden="true" class="small material-icons prefix">content_paste</i>
-                                <label>Calcul</label>
+                                <label>{!! __('message.titreCalcul') !!}</label>
                             </legend>
 
                             <div class="input-field col s10">
                                 <p>
                                     <label id="radio">
                                         <input aria-labelledby="radio" title="type de calcul"  name="calcul" type="radio" value="moyenne" id="moyenne" checked />
-                                        <span>Moyenne</span>
+                                        <span>{!! __('message.moyenne') !!}</span>
                                     </label>
                                 </p>
                                 <p>
                                     <label>
                                         <input title=" type de calcul" name="calcul" type="radio" value="mediane" id="mediane" />
-                                        <span>Mediane</span>
+                                        <span>{!! __('message.mediane') !!}</span>
                                     </label>
                                 </p>
                                 <p>
                                     <label>
                                         <input name="calcul" title="type de calcul " type="radio"  value = "ecart" id="ecart" />
-                                        <span>Ecart type</span>
+                                        <span>{!! __('message.ecartType') !!}</span>
                                     </label>
                                 </p>
                             </div>
@@ -82,38 +82,38 @@
 
                             <legend class="input-field col s2">
                                 <i aria-hidden="true" class="small material-icons prefix">history</i>
-                                <label>Fréquence</label>
+                                <label>{!! __('message.frequence') !!}</label>
                             </legend>
 
                             <div class="input-field col s2">
-                                <input title="champs année" aria-labelledby="labelAnnee" id="annee" type="text">
-                                <label id="labelAnnee" for="annee" class="center-align">Année</label>
+                                <input title="{!! __('message.champAnnee') !!}" aria-labelledby="labelAnnee" id="annee" type="text">
+                                <label id="labelAnnee" for="annee" class="center-align">{!! __('message.annee') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input aria-labelledby="labelMois" title="champs mois" id="mois" type="text">
-                                <label id="labelMois" for="mois" class="center-align">Mois</label>
+                                <input aria-labelledby="labelMois" title="{!! __('message.champMois') !!}" id="mois" type="text">
+                                <label id="labelMois" for="mois" class="center-align">{!! __('message.mois') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input aria-labelledby="labelJour" title="champs jour"  id="jour" type="text">
-                                <label id="labelJour" for="jour" class="center-align">Jour</label>
+                                <input aria-labelledby="labelJour" title="{!! __('message.champJour') !!}"  id="jour" type="text">
+                                <label id="labelJour" for="jour" class="center-align">{!! __('message.jour') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input aria-labelledby="LabelHeurebe" title="champs heure" id="heure" type="text">
-                                <label id="LabelHeure" for="heure" class="center-align">Heure</label>
+                                <input aria-labelledby="LabelHeurebe" title="{!! __('message.champHeure') !!}" id="heure" type="text">
+                                <label id="LabelHeure" for="heure" class="center-align">{!! __('message.heure') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input aria-labelledby="labelMinute" title="champs minute" id="minute" type="text">
-                                <label id="labelMinute" for="minute" class="center-align">Minute</label>
+                                <input aria-labelledby="labelMinute" title="{!! __('message.champMinute') !!}" id="minute" type="text">
+                                <label id="labelMinute" for="minute" class="center-align">{!! __('message.minute') !!}</label>
                             </div>
 
                             <div class="col s2"></div>
 
                             <div class="col s10">
-                                <span class="helper-text" id="frequence"><label role="alert" class="alerte">Il faut saisir au moins une valeur et uniquement des entiers</label></span>
+                                <span class="helper-text" id="frequence"><label role="alert" class="alerte">{!! __('message.helperValeur') !!}</label></span>
                             </div>
 
                         </fieldset>
@@ -122,12 +122,12 @@
 
                             <legend class="input-field col s2">
                                 <i aria-hidden="true" class="small material-icons prefix">location_searching</i>
-                                <label>Région</label>
+                                <label>{!! __('message.region') !!}</label>
                             </legend>
 
                             <div class="input-field col s10">
-                                <select title="selection de la région" role="select" id="bouee">
-                                    <option value="" disabled selected>Région</option>
+                                <select title="{!! __('message.champRegion') !!}" role="select" id="bouee">
+                                    <option value="" disabled selected>{!! __('message.region') !!}</option>
                                     <option title="region Saint-Laurent" aria-label="region Saint-Laurent"  value="1">Saint-Laurent</option>
                                     <option title="region Atlantique" aria-label="region Atlantique" value="2">Atlantique</option>
                                     <option title="region Pacifique" aria-label="region Pacifique" value="3">Pacifique</option>
@@ -137,7 +137,7 @@
                             <div class="col s2"></div>
 
                             <div class="col s10">
-                                <span class="helper-text" id="HelperBouee"><label role="alert" class="alerte">Veuillez choisir une région</label></span>
+                                <span class="helper-text" id="HelperBouee"><label role="alert" class="alerte">{!! __('message.helperRegion') !!}</label></span>
                             </div>
 
                         </fieldset>
@@ -146,33 +146,33 @@
 
                             <legend class="input-field col s2">
                                 <i  aria-hidden="true" class="small material-icons prefix">date_range</i>
-                                <label>Intervalle temporel</label>
+                                <label>{!! __('message.intervalle') !!}</label>
                             </legend>
 
                             <div class="input-field col s3">
-                                <input title="champs date de début" aria-labelledby="labelDateDeb" id="dateDeb" type="text" class="datepicker">
-                                <label id="labelDateDeb" for="dateDeb">Date début</label>
+                                <input title="{!! __('message.champDateDebut') !!}" aria-labelledby="labelDateDeb" id="dateDeb" type="text" class="datepicker">
+                                <label id="labelDateDeb" for="dateDeb">{!! __('message.dateDebut') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input title="champs heure de début" aria-labelledby="labelHeureDeb" id="heureDeb" type="text" class="timepicker">
-                                <label id="labelHeureDeb" for="heureDeb">Heure début</label>
+                                <input title="{!! __('message.champHeureDebut') !!}" aria-labelledby="labelHeureDeb" id="heureDeb" type="text" class="timepicker">
+                                <label id="labelHeureDeb" for="heureDeb">{!! __('message.heureDebut') !!}</label>
                             </div>
 
                             <div class="input-field col s3">
-                                <input title="champs date de fin" id="dateFin" type="text" class="datepicker">
-                                <label for="dateFin">Date fin</label>
+                                <input title="{!! __('message.champDateFin') !!}" id="dateFin" type="text" class="datepicker">
+                                <label for="dateFin">{!! __('message.dateFin') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input title="champs heure de fin" aria-labelledby="labelHeureFin" id="heureFin" type="text" class="timepicker">
-                                <label id="labelHeureFin" for="heureFin">Heure fin</label>
+                                <input title="{!! __('message.champHeureFin') !!}" aria-labelledby="labelHeureFin" id="heureFin" type="text" class="timepicker">
+                                <label id="labelHeureFin" for="heureFin">{!! __('message.heureFin') !!}</label>
                             </div>
 
                             <div class="col s2"></div>
 
                             <div class="col s10">
-                                <span class="helper-text" id="heureTest"><label role="alert" class="alerte">Il faut que la date de fin soit supérieure à celle de début</label></span>
+                                <span class="helper-text" id="heureTest"><label role="alert" class="alerte">{!! __('message.helperDate') !!}</label></span>
                             </div>
 
                         </fieldset>
@@ -181,17 +181,17 @@
 
                             <legend class="input-field col s2">
                                 <i aria-hidden="true" class="small material-icons prefix">save</i>
-                                <label>Enregistrer calcul</label>
+                                <label>{!! __('message.enregistrerCalcul') !!}</label>
                             </legend>
 
                             <div class="input-field col s10">
                                 <!-- Switch -->
                                 <div class="switch">
                                     <label>
-                                        Non
+                                        {!! __('message.non') !!}
                                         <input title="levier enregistrer" type="checkbox" role="checkbox">
                                         <span class="lever"></span>
-                                        Oui
+                                        {!! __('message.oui') !!}
                                     </label>
                                 </div>
                             </div>
@@ -200,17 +200,17 @@
                         <fieldset class="row" class="marge">
                             <legend class="input-field col s2">
                                 <i aria-hidden="true" class="small material-icons prefix">save</i>
-                                <label>Repéter</label>
+                                <label>{!! __('message.repeter') !!}</label>
                             </legend>
 
                             <div class=" input-field col l3 s10">
                                 <!-- Switch -->
                                 <div class="switch">
                                     <label>
-                                        Non
+                                        {!! __('message.non') !!}
                                         <input title="levier répeter" id="recursif" type="checkbox" role="checkbox" oninput="afficherRecursivite()">
                                         <span class="lever"></span>
-                                        Oui
+                                        {!! __('message.oui') !!}
                                     </label>
                                 </div>
                             </div>
@@ -226,7 +226,7 @@
                 <div class="row" class="marge">
 
                     <div class="input-field col s12">
-                        <button title="valider" role="button" aria-label="bouton valider"  class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">Valider</button>
+                        <button title="valider" role="button" aria-label="bouton valider"  class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">{!! __('message.valider') !!}</button>
                     </div>
 
                 </div>

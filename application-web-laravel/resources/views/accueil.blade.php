@@ -30,13 +30,13 @@
             @php
                 $compteurFonctionelles++;
                 $classe='success';
-                $texte='Fonctionnelle'; // __('message.texteBoueeFonctionnelle')
+                $texte=__('message.texteBoueeFonctionnelle'); //'Fonctionnelle'; // __('message.texteBoueeFonctionnelle')
             @endphp
         @else
             @php
                 $compteurProbleme++;
                 $classe='danger';
-                $texte='Problème'; // __('message.texteBoueeProbleme')
+                $texte=__('message.texteBoueeProbleme'); //'Problème'; // __('message.texteBoueeProbleme')
             @endphp
         @endif
 
