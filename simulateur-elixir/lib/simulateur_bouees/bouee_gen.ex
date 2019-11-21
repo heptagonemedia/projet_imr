@@ -11,15 +11,11 @@ defmodule SimulateurBouees.BoueeGen do
     temperature = Enum.random(5..10)
     salinite = Enum.random(5..10)
     debit = Enum.random(5..10)
-    latitude = :rand.uniform(20)
-    longitude = :rand.uniform(20)
+    latitude = :rand.uniform(20) # TODO corriger 
+    longitude = :rand.uniform(20)# TODO corriger 
     batterie = 100
     dernieres_valeurs = %{temperature: temperature, salinite: salinite, debit: debit, longitude: longitude, latitude: latitude, batterie: batterie}
     state = %{id_bouee: initial.idbouee, scenario: initial.scenario, dernieres_valeurs: dernieres_valeurs }
-    IO.puts('state')
-    Logger.debug inspect(state)
-    IO.puts('dv')
-    Logger.debug inspect(dernieres_valeurs)
     {:ok, state}
   end
 
@@ -53,9 +49,9 @@ defmodule SimulateurBouees.BoueeGen do
     data = %{id_bouee: state.id_bouee, latitude: latitude, longitude: longitude, 
     timestamp: :calendar.universal_time(), batterie: batterie, temperature: temperature,
     salinite: salinite, debit: debit}
-  
-    # Si il n'existe aucune dernieres valeurs 
-    SimulateurBouees.EmetteurPhoenix.sendData(SimulateurBouees.TransportAgent.get_transport(), data)
+
+    # SimulateurBouees.EmetteurPhoenix.sendData(SimulateurBouees.TransportAgent.get_transport(), data)
+    # Ne fonctionne pas
     process(state)
     
   end

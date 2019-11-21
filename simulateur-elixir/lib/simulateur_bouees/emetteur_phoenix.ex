@@ -18,11 +18,14 @@ defmodule SimulateurBouees.EmetteurPhoenix do
       GenSocketClient.start_link(
             __MODULE__,
             Phoenix.Channels.GenSocketClient.Transport.WebSocketClient,
-            "ws://10.1.106.16:4000/socket/websocket"
+            "ws://localhost:4000/socket/websocket"
           )
     end
   
     def init(url) do
+      IO.puts "init emetteur" 
+      IO.puts inspect url
+
       {:connect, url, [], %{}}
     end
 
@@ -31,7 +34,7 @@ defmodule SimulateurBouees.EmetteurPhoenix do
       Logger.debug inspect(data)
       GenSocketClient.join(transport, "general")
       GenSocketClient.push(transport, "general", "new_msg", data)
-      {:ok, data}
+      #{:send, data}
     end
   
     def handle_connected(transport, state) do
