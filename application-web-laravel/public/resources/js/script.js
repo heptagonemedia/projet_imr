@@ -13,6 +13,14 @@ $(document).ready(function () {
     $('.sidenav').sidenav();
 });
 
+function ouvrirSidenav(){
+    $("#slide-out").show();
+    console.log("ouverture")
+}
+function fermerSidenav(){
+    $("#slide-out").hide();
+    console.log("fermeture")
+}
 
 var ctx = document.getElementById('camembertBouees').getContext('2d');
 data = {
@@ -36,10 +44,10 @@ function detecterErreurs() {
 
     //A ne pas mettre directement dans la condition du if
     let verificationFrequence = verifierErreurFrequence();
-    let verificationBouee = verifierErreurBouee();
+    // let verificationBouee = verifierErreurBouee();
     let verificationIntervalle = verifierErreurIntervalle();
 
-    if (verificationFrequence && verificationBouee && verificationIntervalle) {
+    if (verificationFrequence  && verificationIntervalle) {
         $("#texteAlerte").text("");
         $("#divAlerte").hide();
         $('#formulaire').submit();
@@ -64,7 +72,22 @@ $(document).ready(function () {
     $('.tooltipped').tooltip();
 });
 
+var ctx = document.getElementById('camembertBouees').getContext('2d');
+data = {
+    datasets: [{
+        data: [60, 15],
+        backgroundColor: ["#07CA38", "#EF0000"]
+    }],
 
+    labels: [
+        'Conformes',
+        'Non conformes'
+    ]
+};
+var myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: data
+});
 
 //remplit les champs du formulaire avec les données de l'url si il y en a
 function initFormulaire() {
@@ -272,8 +295,8 @@ function initMap() {
             listeCoords.push(listeCoords[i - 1] + 0.33);
         }
         for (var i = 0; i < 29; i += 2) {
-            L.marker([listeCoords[i], listeCoords[i + 1]]).addTo(macarte);
-            console.log(listeCoords[i] + ',' + listeCoords[i + 1])
+           /* L.marker([listeCoords[i], listeCoords[i + 1]]).addTo(macarte);
+            console.log(listeCoords[i] + ',' + listeCoords[i + 1])*/
 
         }
     } else {
@@ -345,4 +368,11 @@ function afficherRecursivite(){
     }else{
         document.getElementById("ligne-select").innerHTML = " ";
     }
+}
+
+function afficherLiens(){
+    var elem = document.querySelectorAll('.fixed-action-btn');
+    var instance = M.FloatingActionButton.getInstance(elem);
+    instance.open();
+    console.log("liens")
 }

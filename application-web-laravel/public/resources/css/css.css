@@ -1,53 +1,44 @@
 #map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
-  height:400px;
-  width: 100%;
+    height:400px;
+    width: 100%;
 }
 
 main {
-  flex: 1 0 auto;
+    flex: 1 0 auto;
 }
 
 body{
-  margin: 0%;
-  font-family: Rubik;
-  min-height: 100vh;
-  flex-direction: column;
+    margin: 0%;
+    font-family: Rubik;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 footer{
-  display: flex;
-  width: 100%;
+    display: flex;
+    width: 100%;
 }
 
 
-.circle {
-  margin-left: 2%;
-  width: 155px;
-  height: 155px;
-  border-radius: 50%;
-  font-size: 50px;
-  line-height: 155px;
-  text-align: center;
-  color: black;
+#ligne_principale{
+    margin-top: 48px;
 }
 
 #menu{
-  margin-top: 10px;
-
-  font-size: 30pt;
+    font-size: 30pt;
 }
 
 #false {
-  background: darkred;
-  color: white;
+    background: darkred;
+    color: white;
 }
 #ligne1 {
-  background-color: #1e2229; font-size: 18pt;color: white
+    background-color: #1e2229; font-size: 18pt;color: white
 }
 
 #true {
-  background: darkgreen;
-  color: white;
+    background: darkgreen;
+    color: white;
 }
 
 #page{
@@ -55,5 +46,23 @@ footer{
 
 }
 .sidenav-trigger{
-  margin-top: 10px;
+    margin-top: 10px;
+}
+.foot{
+    position :fixed;
+    width: 100%;
+    padding-top: -40px;
+    padding-bottom: -40px;
+    bottom: 0px;
+}
+
+button:focus{
+    border: solid 2px blue;
+}
+
+a:focus{
+    border: solid 1px blue;
+}
+canvas:focus{
+    border: solid 1px blue;
 }

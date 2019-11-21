@@ -76,3 +76,10 @@ div{
 #ligneFooter{
 	margin-bottom: -20px;
 }
+div:focus{
+    border: solid 1px blue;
+}
+
+div:focus{
+    border: solid 2px blue;
+}

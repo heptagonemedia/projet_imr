@@ -19,12 +19,13 @@
 
     <body>
 
-        @include('navigation_side_bar')
+
 
         <header>
             @yield('header')
         </header>
 
+        @include('navigation_side_bar')
         <main>
             @yield('main')
         </main>

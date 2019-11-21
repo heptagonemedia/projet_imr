@@ -32,7 +32,7 @@ input[type=number] {
     padding-bottom: 3px;
 }
 
-#marge {
+.marge {
     margin-top: -30px;
 }
 
@@ -41,9 +41,6 @@ input[type=number] {
     background-color: #1e2229; font-size: 18pt;color: white
 }
 
-img{
-    margin-top: 5px;
-}
 
 .container {
     padding-top: 20px;
@@ -61,11 +58,24 @@ img{
     display: none;
 }
 
-#alerte {
-    color: red;
+.alerte {
+    color: red !important;
 }
 
 #menu {
     color: #FFFFFF;
     width: 20px;
+}
+button:focus{
+    border: solid 1px blue;
+}
+fieldset{
+    border: none;
+    margin-bottom: -20px;
+}
+span{
+    color: black;
+}
+label{
+    color: black !important;
 }
