@@ -3,7 +3,7 @@ defmodule RecepteurWeb.Endpoint do
 
   socket "/socket", RecepteurWeb.UserSocket,
     websocket: true,
-    longpoll: false
+    longpoll: true
 
   # Serve at "/" the static files from "priv/static" directory.
   #
