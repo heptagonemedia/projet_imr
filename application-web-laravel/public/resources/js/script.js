@@ -369,3 +369,10 @@ function afficherRecursivite(){
         document.getElementById("ligne-select").innerHTML = " ";
     }
 }
+
+function afficherLiens(){
+    var elem = document.querySelectorAll('.fixed-action-btn');
+    var instance = M.FloatingActionButton.getInstance(elem);
+    instance.open();
+    console.log("liens")
+}

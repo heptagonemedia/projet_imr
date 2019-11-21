@@ -57,6 +57,12 @@ footer{
 }
 
 button:focus{
-    border: solid 1px blue;
+    border: solid 2px blue;
 }
 
+a:focus{
+    border: solid 1px blue;
+}
+canvas:focus{
+    border: solid 1px blue;
+}
