@@ -51,13 +51,14 @@ return [
     "calculDeuxPoints"=>"Calcul : ",
     // navigation_side_bar
     "nomIMR"=>"Institut Maritime de Rimouski",
-    "AccueilNavigation"=>"Accueil",
+    "accueilNavigation"=>"Accueil",
     "accesCalcul"=>"Acc&eacute;der aux calculs",
     "calculEnregistres"=>"Calculs Enregistr&eacute;s",
     "unTelCalcul"=>"Calcul",
     "calculEnCours"=>"Calcul en cours",
     "faireDesCalculs"=>"Faire des calculs",
     "nouveauCalcul"=>"Nouveau calcul",
+    "fermer"=>"Fermer",
     // resultats.php
     "titleResultat"=>"Resultats",
     "messageSalinite"=>"graphique montrant le calcul pour la salinit&eacute",

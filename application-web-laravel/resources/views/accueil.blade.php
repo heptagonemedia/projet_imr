@@ -48,7 +48,7 @@
             <div class="row  ">
 
                 <div class="col l4 center-align">
-                    <button title="bar de navigation" role="button" onclick="ouvrirSidenav()" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i  aria-label="Ouvrir le menu"  aria-hidden="true" class="material-icons" id="menu">menu</i></button>
+                    <button title="bar de navigation" role="button" onclick="ouvrirSidenav()" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i  aria-label="Ouvrir le menu"  aria-hidden="true" class="material-icons" id="menu">{!! __('message.menu') !!}</i></button>
                 </div>
                 <div class="col l4 center-align" style="font-size: 20pt"><h1>{!! __('message.titleAccueil') !!}</h1></div>
 
