@@ -4,19 +4,14 @@
 # remember to add this file to your .gitignore.
 use Mix.Config
 
-database_url = ecto://postgres:mission@Localhost/recepteur
+database_url = "ecto://postgres:mission@localhost/recepteur"
 
 config :recepteur, Recepteur.Repo,
   # ssl: true,
   url: database_url,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
-secret_key_base =
-  System.get_env("SECRET_KEY_BASE") ||
-    raise """
-    environment variable SECRET_KEY_BASE is missing.
-    You can generate one by calling: mix phx.gen.secret
-    """
+secret_key_base = "jBDyrWwH+7tLdo+7AijJWAyztG0dcP9ovtWKqFOjuUtj4I69ciXjT1xFDFbHutcD"
 
 config :recepteur, RecepteurWeb.Endpoint,
   http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
