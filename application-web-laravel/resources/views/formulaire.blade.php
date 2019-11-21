@@ -1,6 +1,12 @@
+<!DOCTYPE html>
+
 @extends('layout.layout')
 
 @section('head')
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <title>NouveauCalcul</title>
     <link rel="stylesheet" href="{{asset('resources\css\formulaireCss.css')}}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Hind+Guntur|Rubik|Squada+One&display=swap" rel="stylesheet">
@@ -9,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{asset('resources\css\headerCss.css')}}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
 @endsection
 
 @section('title', 'Accueil IMR')
@@ -220,7 +227,7 @@
                         <div class="row" class="marge">
 
                             <div class="input-field col s12">
-                                <a class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">Valider</a>
+                                <button class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">Valider</button>
                             </div>
 
                         </div>

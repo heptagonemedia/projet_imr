@@ -30,7 +30,7 @@
 
 <body>
 
-@include('navigation_side_bar')
+
 
 <header>
 
@@ -50,7 +50,7 @@
 
 </header>
 
-
+@include('navigation_side_bar')
 <main role="main">
 
     <!-- Ligne de la carte et du premier Graphique -->
@@ -134,7 +134,7 @@
 
         <ul>
             <li><a class="btn-floating purple tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Agrandir la carte" onclick="agrandirCarte(document.getElementById('map'))"><i  aria-label="Bouton agrandir la carte" aria-hidden="true"  class="material-icons">crop_free</i></a></li>
-            <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i aria-hidden="true"  aria-label="Faire un nouveau calcul  class="material-icons" >  add_circle_outline</i></a></li>
+            <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i aria-hidden="true"  aria-label="Faire un nouveau calcul"  class="material-icons" >  add_circle_outline</i></a></li>
             <li><a class="btn-floating pink tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Accueil" href="accueil.php"><i aria-hidden="true"  aria-label="Lien vers l'accueil"  class="material-icons">home</i></a></li>
 
             @php if(isset($_GET["type"]) && $_GET['type']=='prev' ): @endphp

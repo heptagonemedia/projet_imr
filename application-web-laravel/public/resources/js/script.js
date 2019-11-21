@@ -44,10 +44,10 @@ function detecterErreurs() {
 
     //A ne pas mettre directement dans la condition du if
     let verificationFrequence = verifierErreurFrequence();
-    let verificationBouee = verifierErreurBouee();
+    // let verificationBouee = verifierErreurBouee();
     let verificationIntervalle = verifierErreurIntervalle();
 
-    if (verificationFrequence && verificationBouee && verificationIntervalle) {
+    if (verificationFrequence  && verificationIntervalle) {
         $("#texteAlerte").text("");
         $("#divAlerte").hide();
         $('#formulaire').submit();
@@ -295,8 +295,8 @@ function initMap() {
             listeCoords.push(listeCoords[i - 1] + 0.33);
         }
         for (var i = 0; i < 29; i += 2) {
-            L.marker([listeCoords[i], listeCoords[i + 1]]).addTo(macarte);
-            console.log(listeCoords[i] + ',' + listeCoords[i + 1])
+           /* L.marker([listeCoords[i], listeCoords[i + 1]]).addTo(macarte);
+            console.log(listeCoords[i] + ',' + listeCoords[i + 1])*/
 
         }
     } else {

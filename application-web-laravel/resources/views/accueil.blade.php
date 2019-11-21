@@ -67,7 +67,7 @@
     <main role="main">
         <div class="row" id="ligne_principale">
 
-            <div class="col l8">
+            <section class="col l8">
 
                 <div class="card">
                     <div >
@@ -86,8 +86,8 @@
 
                 </div>
 
-            </div>
-            <div class="col l4 s12 m6" id="camembert" >
+            </section>
+            <section class="col l4 s12 m6" id="camembert" >
                 <div class="card white">
                     <div class="card-content white-text">
                         <span class="card-title black-text center-align">{!! __('message.derniereMiseAjour') !!}</span>
@@ -102,7 +102,7 @@
                         <canvas role="linegraph" id="camembertBouees"></canvas>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
 
 
