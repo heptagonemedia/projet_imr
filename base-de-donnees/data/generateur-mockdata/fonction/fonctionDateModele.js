@@ -1,4 +1,5 @@
 var fonctionGenerique = require('./fonctionGenerique');
+var date = require('../modele/DateModele');
 
 exports.dateModeleEgales = function(date1, date2) {
 
@@ -8,6 +9,21 @@ exports.dateModeleEgales = function(date1, date2) {
         (date1.jour == date2.jour) &&
         (date1.mois == date2.mois) &&
         (date1.annee == date2.annee));
+
+}
+
+exports.dateModeleParametre1EstPlusRecenteQueParametre2 = function(date1, date2) {
+
+    return (
+        (date1.annee > date2.annee) ||
+        ((date1.annee == date2.annee) && (date1.mois == date2.mois) && (date1.jour == date2.jour) && (date1.heure == date2.heure) && 
+            (date1.minute == date2.minute) && (date1.seconde > date2.seconde)) ||
+        ((date1.annee == date2.annee) && (date1.mois == date2.mois) && (date1.jour == date2.jour) && (date1.heure == date2.heure) &&
+            (date1.minute > date2.minute)) ||
+        ((date1.annee == date2.annee) && (date1.mois == date2.mois) && (date1.jour == date2.jour) && (date1.heure > date2.heure)) ||
+        ((date1.annee == date2.annee) && (date1.mois == date2.mois) && (date1.jour > date2.jour)) ||
+        ((date1.annee == date2.annee) && (date1.mois > date2.mois))
+    );
 
 }
 
@@ -81,4 +97,29 @@ exports.convertirEnSeconde = function(date) {
         (date.mois * 1036800) +
         (date.annee * 378432000)
     );
+}
+
+exports.genererDateAleatoire = function () {
+
+    var heure = fonctionGenerique.nombreEntierAleatoire(0, 23);
+    var minute = fonctionGenerique.nombreEntierAleatoire(0, 59);
+    var seconde = fonctionGenerique.nombreEntierAleatoire(0, 59);
+    var annee = fonctionGenerique.nombreEntierAleatoire(2018, 2019);
+    var mois = fonctionGenerique.nombreEntierAleatoire(1, 12);
+    var jour;
+
+    if ((mois == 2) && fonctionGenerique.estBisextile(annee)) {
+        jour = fonctionGenerique.nombreEntierAleatoire(1, 29);
+    } else if ((mois == 2) && !fonctionGenerique.estBisextile(annee)) {
+        jour = fonctionGenerique.nombreEntierAleatoire(1, 28);
+    } else if (((mois < 8) && (mois != 2) && (mois % 2 == 0)) || ((mois > 7) && (mois % 2 == 1))) {
+        jour = fonctionGenerique.nombreEntierAleatoire(1, 30);
+    } else if (((mois < 8) && (mois % 2 == 1)) || ((mois > 7) && (mois % 2 == 0))) {
+        jour = fonctionGenerique.nombreEntierAleatoire(1, 31);
+    }
+
+    chaineDate = "" + annee + "-" + mois + "-" + jour + " " + heure + ":" + minute + ":" + seconde;
+
+    return new date.DateModele(seconde, minute, heure, jour, mois, annee);
+
 }

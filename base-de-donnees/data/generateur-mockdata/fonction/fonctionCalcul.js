@@ -1,5 +1,8 @@
 var fonctionGenerique = require('./fonctionGenerique');
 var fonctionCalcul = require('./fonctionTypeCalcul');
+var fonctionDateModele = require('./fonctionDateModele');
+
+var date = require('../modele/DateModele');
 
 const MILLISECONDS_DANS_1_SECONDE = 1000;
 const MILLISECONDS_DANS_1_MINUTE = MILLISECONDS_DANS_1_SECONDE * 60;
@@ -18,84 +21,110 @@ exports.genererDateDebutPlage = function(dateGenerationCalcul) {
     var dateDebutPlage;
 
     do {
-        dateDebutPlage = fonctionGenerique.genererDateAleatoire();
-    } while ((dateGenerationCalcul - dateDebutPlage) < 0);
+        dateDebutPlage = fonctionDateModele.genererDateAleatoire();
+    } while (fonctionDateModele.dateModeleParametre1EstPlusRecenteQueParametre2(dateGenerationCalcul, dateDebutPlage));    
 
     return dateDebutPlage;
 }
 
-exports.genererDateFinPlage = function (dateDebutPlage, frequenceValeur, dateGenerationCalcul) {
+exports.genererDateFinPlage = function (dateDebutPlage, frequenceValeur) {
 
+    // console.log(dateDebutPlage);
+    
     var aleatoire;
     var resultatMillisecondes;
+    var seconde;
+    var minute;
+    var heure;
+    var jour;
+    var mois;
+    var annee;
+    var dateFinPlage;
 
     do {
 
         aleatoire = fonctionGenerique.nombreEntierAleatoire(0, 6);
+        seconde = dateDebutPlage.seconde;
+        minute = dateDebutPlage.minute;
+        heure = dateDebutPlage.heure;
+        jour = dateDebutPlage.jour;
+        mois = dateDebutPlage.mois;
+        annee = dateDebutPlage.annee;
 
         switch (aleatoire) {
             case 0: // seconde
                 resultatMillisecondes = MILLISECONDS_DANS_1_SECONDE;
+                seconde++;
                 break;
             case 1: // minute
                 resultatMillisecondes = MILLISECONDS_DANS_1_MINUTE;
+                minute++;
                 break;
             case 2: // heure
                 resultatMillisecondes = MILLISECONDS_DANS_1_HEURE;
+                heure++;
                 break;
             case 3: // jour
                 resultatMillisecondes = MILLISECONDS_DANS_1_JOUR;
+                jour++
                 break;
             case 4: // semaine
                 resultatMillisecondes = MILLISECONDS_DANS_1_SEMAINE;
+                jour += 7;
                 break;
             case 5: // mois
                 resultatMillisecondes = MILLISECONDS_DANS_1_MOIS;
+                mois++;
                 break;
             case 6: // annee
                 resultatMillisecondes = MILLISECONDS_DANS_1_ANNEE;
+                annee++;
                 break;
             default:
                 resultatMillisecondes = MILLISECONDS_DANS_1_HEURE;
+                heure++;
                 break;
         }
 
-    } while ((resultatMillisecondes < frequenceValeur) && ((dateGenerationCalcul - new Date(+(dateDebutPlage) + resultatMillisecondes)) < 0));
-    // A voir si la condition est correcte 
-    // Une solution est peut-être de regardé si resultat/frequence est un entier > 0 =>
-    // Number.isInteger(Math.floor(resultatMillisecondes / frequenceValeur)) && Math.floor(resultatMillisecondes / frequenceValeur)>0
+        dateFinPlage = new date.DateModele(seconde, minute, heure, jour, mois, annee);
 
-    return new Date(+(dateDebutPlage) + resultatMillisecondes);
+    } while ((resultatMillisecondes < frequenceValeur) && fonctionDateModele.dateModeleParametre1EstPlusRecenteQueParametre2(dateFinPlage, dateDebutPlage));
+
+    
+    return dateFinPlage;
 
 }
 
 exports.genererDateProchaineGeneration = function(dateGeneration) {
 
     var aleatoire = fonctionGenerique.nombreEntierAleatoire(1, 5);
-    var resultatMillisecondes;
+    var heure = dateGeneration.heure;
+    var jour = dateGeneration.jour;
+    var mois = dateGeneration.mois;
+    var annee = dateGeneration.annee;
 
     switch (aleatoire) {
         case 1: // heure
-            resultatMillisecondes = MILLISECONDS_DANS_1_HEURE;
+            heure++;
             break;
         case 2: // jour
-            resultatMillisecondes = MILLISECONDS_DANS_1_JOUR;
+            jour++;
             break;
         case 3: // semaine
-            resultatMillisecondes = MILLISECONDS_DANS_1_SEMAINE;
+            jour += 7;
             break;
         case 4: // mois
-            resultatMillisecondes = MILLISECONDS_DANS_1_MOIS;
+            mois++;
             break;
         case 5: // annee
-            resultatMillisecondes = MILLISECONDS_DANS_1_ANNEE;
+            annee++;
             break;
-        default:
-            resultatMillisecondes = MILLISECONDS_DANS_1_HEURE;
+        default: //heure
+            heure++;
             break;
     }
 
-    return new Date(+(dateGeneration) + resultatMillisecondes);
+    return new date.DateModele(dateGeneration.seconde, dateGeneration.minute, heure, jour, mois, annee);
 
 }
 
@@ -133,7 +162,7 @@ exports.genererFrequenceValeur = function() {
 
     switch (aleatoire) {
         case 1: // heure
-            return MILLISECONDS_DANS_1_HEURE ;
+            return MILLISECONDS_DANS_1_HEURE;
         case 2: // jour
             return MILLISECONDS_DANS_1_JOUR;
         case 3: // semaine
