@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{!! __('message.lang') !!}"> <!-- Ne pas mettre d'attribut langue en hard ! -->
 
     <head>
 
@@ -23,7 +23,7 @@
         <script src="{{asset('resources\js\materialize.js')}}"></script>
 
 
-        <title>Resultat du calcul</title>
+        <title>{!! __('message.titleResultat') !!}</title>
 
     </head>
 
@@ -37,11 +37,11 @@
                 <div class="nav-wrapper black">
                     <div class="row">
                         <div class="col l4 center-align"><button href="#" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button></div>
-                        <div class="col l4 center-align" style="font-size: 20pt">Résultat du calcul</div>
+                        <div class="col l4 center-align" style="font-size: 20pt">{!! __('message.titleResultat') !!}</div>
                         <div class="col l4 center align ">
-                            <a href="accueil" class="breadcrumb">accueil</a>
-                            <a href="nouveauCalcul" class="breadcrumb">formulaire</a>
-                            <a href="#" class="breadcrumb">Calcul : nom</a>
+                            <a href="accueil" class="breadcrumb">{!! __('message.accueilMenu') !!}</a>
+                            <a href="nouveauCalcul" class="breadcrumb">{!! __('message.formulaire') !!}</a>
+                            <a href="#" class="breadcrumb">{!! __('message.calculDeuxPoints') !!} nom</a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="card-content">
-                                <p>Vitesse du courant</p>
+                                <p>{!! __('message.vitesseCourant') !!}</p>
                             </div>
 
                         </div>
@@ -80,11 +80,11 @@
                 <div class="row ">
 
                     <div class="col s6 colLigne2">
-                        <a href="#" id="btnCarte" class="lien" onclick="agrandirCarte(document.getElementById('map'))" >Agrandir la Carte</a>
+                        <a href="#" id="btnCarte" class="lien" onclick="agrandirCarte(document.getElementById('map'))" >{!! __('message.agrandirCarte') !!}</a>
                     </div>
 
                     <div class='col s6 colLigne2' >
-                        <a class="lien" href="" >Consulter les données brutes</a>  <!-- TODO Changer le style -->
+                        <a class="lien" href="" >{!! __('message.consulterDonneesBrutes') !!}</a>  <!-- TODO Changer le style -->
                     </div>
 
                 </div>
@@ -102,7 +102,7 @@
                             </div>
 
                             <div class="card-content">
-                                <p>Salinité</p>
+                                <p>{!! __('message.salinite') !!}</p>
                             </div>
 
                         </div>
@@ -116,7 +116,7 @@
                             </div>
 
                             <div class="card-content">
-                                <p>Température</p>
+                                <p>{!! __('message.temperature') !!}</p>
                             </div>
 
                         </div>
@@ -132,13 +132,13 @@
                 </a>
 
                 <ul>
-                    <li><a class="btn-floating purple tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Agrandir la carte" onclick="agrandirCarte(document.getElementById('map'))"><i class="material-icons">crop_free</i></a></li>
-                    <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i></a></li>
-                    <li><a class="btn-floating pink tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Accueil" href="accueil.php"><i class="material-icons">home</i></a></li>
+                    <li><a class="btn-floating purple tooltipped waves-effect waves-orange" data-position="left" data-tooltip="{!! __('message.agrandirCarte') !!}" onclick="agrandirCarte(document.getElementById('map'))"><i class="material-icons">crop_free</i></a></li>
+                    <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="{!! __('message.nouveauCalcul') !!}" href="formulaireRecherche.php"><i class="material-icons">add_circle_outline</i></a></li>
+                    <li><a class="btn-floating pink tooltipped waves-effect waves-orange" data-position="left" data-tooltip="{!! __('message.accueilNavigation') !!}" href="accueil.php"><i class="material-icons">home</i></a></li>
 
                     @php if(isset($_GET["type"]) && $_GET['type']=='prev' ): @endphp
-                        <li><a class="btn-floating yellow darken-1 tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Retourner au formulaire" onclick="retourFormulaire()"><i class="material-icons">arrow_back</i></a></li>
-                        <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Enregistrer le calcul" href="#modal1" onclick = "enregistrer()"><i class="material-icons">save</i></a></li>
+                        <li><a class="btn-floating yellow darken-1 tooltipped waves-effect waves-orange" data-position="left" data-tooltip="{!! __('message.retourFormulaire') !!}" onclick="retourFormulaire()"><i class="material-icons">arrow_back</i></a></li>
+                        <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped waves-effect waves-orange" data-position="left" data-tooltip="{!! __('message.enregistrerCalcul') !!}" href="#modal1" onclick = "enregistrer()"><i class="material-icons">save</i></a></li>
                     @php endif;@endphp
                 </ul>
 
@@ -159,11 +159,11 @@
             @endphp
                         <div id="modal1" class="modal row">
                             <div class="modal-content">
-                                <h4>Calcul enregistré</h4>
-                                <p>le calcul a bien été enregitré</p>
+                                <h4>{!! __('message.calculEnregistre') !!}</h4>
+                                <p>{!! __('message.calculBienEnregistre') !!}</p>
                             </div>
                             <div class="modal-footer green">
-                                <a onclick="enregistrerForm()" class="modal-close waves-effect waves-green btn-flat">ok</a>
+                                <a onclick="enregistrerForm()" class="modal-close waves-effect waves-green btn-flat">{!! __('message.ok') !!}</a>
                             </div>
                         </div>
 

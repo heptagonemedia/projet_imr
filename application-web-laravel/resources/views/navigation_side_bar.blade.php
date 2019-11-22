@@ -44,6 +44,13 @@
 
     <li><a class="waves-effect waves-teal" href="nouveauCalcul"><i aria-hidden="true" class="material-icons">add_circle_outline</i>{!! __('message.nouveauCalcul') !!}</a></li>
 
+    <li><div class="divider"></div></li>
+
+    <li><a class="subheader">{!! __('message.choixLangue') !!}</a></li>
+
+    <li><a class="waves-effect waves-teal" href="{{ url('locale/en') }}"><i aria-hidden="true" class="material-icons">language</i>{!! __('message.anglais') !!}</a></li>
+    <li><a class="waves-effect waves-teal" href="{{ url('locale/fr') }}"><i aria-hidden="true" class="material-icons">language</i>{!! __('message.francais') !!}</a></li>
+
     <li>
         <div class="divider"></div>
     </li>

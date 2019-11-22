@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{!! __('message.lang') !!}"> <!-- Ne pas mettre d'attribut langue en hard ! -->
 
     <head>
 

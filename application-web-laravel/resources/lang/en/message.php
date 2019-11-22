@@ -19,7 +19,7 @@ return [
     "titleFormulaire"=>"Form",
     "titleFormulaireRecherche"=>"Searching form",
     "titreCalcul"=>"Calculation",
-    "moyenne"=>"Mean", //Average
+    "moyenne"=>"Average", //Average ou Mean ?
     "mediane"=>"Median",
     "ecartType"=>"Standard deviation",
     "frequence"=>"Frequency",
@@ -56,6 +56,7 @@ return [
     "repeter"=>"Repeat",
     "valider"=>"Submit",
     // header
+    "lang"=>"en",
     "menu"=>"menu",
     "accueilMenu"=>"home",
     "formulaire"=>"form",
@@ -70,9 +71,13 @@ return [
     "calculEnCours"=>"Actual calculation",
     "faireDesCalculs"=>"Do calculations",
     "nouveauCalcul"=>"New calculation",
+    "choixLangue"=>"Language settings",
+    "anglais"=>"english",
+    "francais"=>"french",
+    "ouvrirMenu"=>"Open menu",
     "fermer"=>"Close",
     // resultats.php
-    "titleResultat"=>"Results",
+    "titleResultat"=>"Calculation results",
     "messageSalinite"=>"Graph Showing salinity's calcul",
     "messageTemperature"=>"Graph Showing temperature's calcul",
     "messageCourant"=>"Graph Showing Current speed's calcul",
