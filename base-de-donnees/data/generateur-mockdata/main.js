@@ -3,6 +3,7 @@ var date = require('./modele/DateModele');
 var historique = require('./modele/Historique');
 var bouee = require('./modele/Bouee');
 var region = require('./modele/Region');
+var typeCalcul = require('./modele/TypeCalcul');
 
 //######################################### Donnee
 var historiqueDAO = require('./donnee/HistoriqueDAO');
@@ -35,6 +36,7 @@ const NOM_FICHIER_RESULTAT = "resultat.csv";
 
 const REGION = 'region';
 const BOUEE = 'bouee';
+const TYPE_CALCUL = 'type_calcul';
 const HISTORIQUE_DONNEE_BOUEE = 'historique_donnee_bouee';
 
 var nombreDeRegion = 8;
@@ -49,14 +51,13 @@ var dateFinHistorique = new date.DateModele(0,0,0,30,11,2019);
 
 var contenu = [];
 
-contenu = [];
+// contenu = [];
 //######################################### Génération des Régions
+// for (let index = 1; index <= nombreDeRegion; index++) {
+//     contenu.push(new region.Region(index, fonctionRegion.genererEtiquette(index)));
+// }
 
-for (let index = 1; index <= nombreDeRegion; index++) {
-    contenu.push(new region.Region(index, fonctionRegion.genererEtiquette(index)));
-}
-
-bdd.insererTableau(contenu, REGION);
+// bdd.insererTableau(contenu, REGION);
 
 
 // contenu = [];
@@ -87,16 +88,13 @@ bdd.insererTableau(contenu, REGION);
 //     console.log('type_donnee_mesuree.csv générer');
 // });
 
-// contenu = "";
-// //######################################### Génération des Types de calcul
-// for (let index = 1; index <= nombreDeTypeDeCalcul; index++) {
-//     contenu += "" + index + "," + fonctionTypeCalcul.genererEtiquette(index) + "\n";
-// }
+contenu = [];
+//######################################### Génération des Types de calcul
+for (let index = 1; index <= nombreDeTypeDeCalcul; index++) {
+    contenu.push(new typeCalcul.TypeCalcul(index, fonctionTypeCalcul.genererEtiquette(index)))
+}
 
-// fs.appendFile(('' + cheminMockdata + NOM_FICHIER_TYPE_CALCUL), contenu, (err) => {
-//     if (err) throw err;
-//     console.log('type_calcul.csv générer');
-// });
+bdd.insererTableau(contenu, TYPE_CALCUL);
 
 
 // contenu = "";
