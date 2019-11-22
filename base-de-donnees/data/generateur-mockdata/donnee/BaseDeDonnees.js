@@ -40,46 +40,25 @@ const dbName = 'imr';
 // Create a new MongoClient
 const client = new MongoClient(url);
 
-// Use connect method to connect to the Server
 
-
-// exports.inserer = async function(tableauValeur) {
-
-//     await client.connect(async function (err, client) {
-
-//         assert.equal(null, err);
-//         console.log("Connected correctly to server");
-
-//         await test(tableauValeur);
-
-//     });
-
-// }
-
-// test = async function (tableauValeur) {
-
-//     const db = client.db(dbName);
-
-//     // Insert multiple documents
-//     await db.collection('historique_donnee_bouee').insertMany(tableauValeur, async function (err, r) {
-//         assert.equal(null, err);
-//         assert.equal(75000, r.insertedCount);
-//         await client.close();
-//         // console.log();
-//     });
-
-// }
-
-exports.inserer2 = async function(tableauValeur) {
+exports.insererTableau = async function(tableauValeur, collection) {
 
     const c = await client.connect();
 
     const db = c.db(dbName);
-    await db.collection('historique_donnee_bouee').insertMany(tableauValeur);
+    await db.collection(collection).insertMany(tableauValeur);
 
-    // c.close();
-
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> OK');
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Inserer dans la base de données');
     
+}
+
+exports.selectionerBouee = async function(valeur, collection) {
+
+    const c = await client.connect();
+
+    const db = c.db(dbName);
+    var resultat = await db.collection(collection).findOne({id_bouee: valeur});
+
+    return resultat;
 
 }

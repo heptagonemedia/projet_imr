@@ -1,6 +1,7 @@
 //######################################### Modeles
 var date = require('./modele/DateModele');
 var historique = require('./modele/Historique');
+var bouee = require('./modele/Bouee');
 
 //######################################### Donnee
 var historiqueDAO = require('./donnee/HistoriqueDAO');
@@ -20,7 +21,8 @@ var fonctionGenerique = require('./fonction/fonctionGenerique');
 //######################################### Modules
 var fs = require('fs');
 
-//######################################### Variables
+
+//######################################### Variables / Constantes
 const cheminMockdata = "../mockdata/";
 
 const NOM_FICHIER_REGION = "region.csv";
@@ -29,7 +31,9 @@ const NOM_FICHIER_TYPE_DONNEE_MESUREE = "type_donnee_mesuree.csv";
 const NOM_FICHIER_TYPE_CALCUL = "type_calcul.csv";
 const NOM_FICHIER_CALCUL = "calcul.csv";
 const NOM_FICHIER_RESULTAT = "resultat.csv";
-// const NOM_FICHIER_HISTORIQUE = "historique_donnee_bouees.csv";
+
+const BOUEE = 'bouee';
+const HISTORIQUE_DONNEE_BOUEE = 'historique_donnee_bouee';
 
 var nombreDeRegion = 8;
 var nombreDeBouee = 7500;
@@ -55,18 +59,21 @@ contenu = "";
 //     console.log('region.csv générer');
 // });
 
-// contenu = "";
+contenu = [];
 //######################################### Génération des Bouées
-// for (let index = 1; index <= nombreDeBouee; index++) {
-//     region = fonctionGenerique.nombreEntierAleatoire(1,8);
-//     contenu += "" + index + "," + fonctionBouee.genererEtiquette(index) + "," + fonctionBouee.genererLongitude(region) + "," +
-//                 fonctionBouee.genererLatitude(region) + "," + region + "\n";
-// }
+var region = 0;
+for (let index = 1; index <= nombreDeBouee; index++) {
+    region = fonctionGenerique.nombreEntierAleatoire(1,8);
 
-// fs.appendFile(('' + cheminMockdata + NOM_FICHIER_BOUEE), contenu, (err) => {
-//     if (err) throw err;
-//     console.log('bouee.csv générer');
-// });
+    contenu.push(new bouee.Bouee(index, 
+                                fonctionBouee.genererEtiquette(index), 
+                                fonctionBouee.genererLongitude(region),
+                                fonctionBouee.genererLatitude(region),
+                                region));
+
+}
+
+bdd.insererTableau(contenu, BOUEE);
 
 // contenu = "";
 // //######################################### Génération des Types de données mesurées
@@ -149,45 +156,45 @@ contenu = "";
 
 
 //######################################### Génération de l'historique des données des bouées directement dans la base de données
-var idHistorique = 0;
-var dateEnCours = dateDebutHistorique;
-var tableauHistorique;
+// var idHistorique = 0;
+// var dateEnCours = dateDebutHistorique;
+// var tableauHistorique;
 
-var idPreparedStatement = 0;
+// var idPreparedStatement = 0;
 
 
-( async function t() {
+// ( async function t() {
 
-    dateDebutProcess = new Date();
-    console.log(new Date());
+//     dateDebutProcess = new Date();
+//     console.log(new Date());
 
-    tableauHistorique = [];
+//     tableauHistorique = [];
     
-    while (!fonctionDateModele.dateModeleEgales(dateEnCours, dateFinHistorique)) {
+//     while (!fonctionDateModele.dateModeleEgales(dateEnCours, dateFinHistorique)) {
 
-        tableauHistorique = [];
+//         tableauHistorique = [];
 
-        for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
-            idHistorique++;
-            idRegion
-            tableauHistorique.push(new historique.Historique(idHistorique, idBouee, fonctionDateModele.toString(dateEnCours),));
-        }
+//         for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
+//             idHistorique++;
+//             idRegion
+//             tableauHistorique.push(new historique.Historique(idHistorique, idBouee, fonctionDateModele.toString(dateEnCours),));
+//         }
 
-        // console.log('avant_', idPreparedStatement);
-        // await historiqueDAO.preparerEnregistrementHistorique(tableauHistorique, idPreparedStatement);
-        // console.log('apres_', idPreparedStatement);
+//         // console.log('avant_', idPreparedStatement);
+//         // await historiqueDAO.preparerEnregistrementHistorique(tableauHistorique, idPreparedStatement);
+//         // console.log('apres_', idPreparedStatement);
 
-        //TODO: idPreparedStatement => mettre dans le retour de preparerEnregistrementHistorique
-        // idPreparedStatement += 11;
+//         //TODO: idPreparedStatement => mettre dans le retour de preparerEnregistrementHistorique
+//         // idPreparedStatement += 11;
 
-        // tableauHistorique = null;
+//         // tableauHistorique = null;
 
-        await bdd.inserer2(tableauHistorique);
+//         await bdd.insererTableau(tableauHistorique, HISTORIQUE_DONNEE_BOUEE);
 
-        dateEnCours = fonctionDateModele.augmenterDateModeleXSeconde(dateEnCours, 60);
+//         dateEnCours = fonctionDateModele.augmenterDateModeleXSeconde(dateEnCours, 60);
 
-    }
+//     }
 
-    console.log('done !', new Date());
+//     console.log('done !', new Date());
     
-})()
+// })()
