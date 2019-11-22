@@ -7,7 +7,6 @@ var typeCalcul = require('./modele/TypeCalcul');
 var calcul = require('./modele/Calcul');
 
 //######################################### Donnee
-var historiqueDAO = require('./donnee/HistoriqueDAO');
 var bdd = require('./donnee/BaseDeDonnees');
 
 //######################################### Fonctions
@@ -25,22 +24,14 @@ var fonctionGenerique = require('./fonction/fonctionGenerique');
 var fs = require('fs');
 
 
-//######################################### Variables / Constantes
-const cheminMockdata = "../mockdata/";
-
-const NOM_FICHIER_REGION = "region.csv";
-const NOM_FICHIER_BOUEE = "bouee.csv";
-const NOM_FICHIER_TYPE_DONNEE_MESUREE = "type_donnee_mesuree.csv";
-const NOM_FICHIER_TYPE_CALCUL = "type_calcul.csv";
-const NOM_FICHIER_CALCUL = "calcul.csv";
-const NOM_FICHIER_RESULTAT = "resultat.csv";
-
+//######################################### Constantes
 const REGION = 'region';
 const BOUEE = 'bouee';
 const TYPE_CALCUL = 'type_calcul';
 const CALCUL = 'calcul';
 const HISTORIQUE_DONNEE_BOUEE = 'historique_donnee_bouee';
 
+//######################################### Variables
 var nombreDeRegion = 8;
 var nombreDeBouee = 7500;
 var nombreDeDonneeMesuree = 6;
@@ -58,6 +49,7 @@ var contenu = [];
 // for (let index = 1; index <= nombreDeRegion; index++) {
 //     contenu.push(new region.Region(index, fonctionRegion.genererEtiquette(index)));
 // }
+
 
 // bdd.insererTableau(contenu, REGION);
 
@@ -99,33 +91,33 @@ var contenu = [];
 // bdd.insererTableau(contenu, TYPE_CALCUL);
 
 
-contenu = [];
-//######################################### Génération des Calculs
-for (let index = 1; index <= nombreDeCalcul; index++) {
+// contenu = [];
+// //######################################### Génération des Calculs
+// for (let index = 1; index <= nombreDeCalcul; index++) {
 
-    typeCalcul = fonctionCalcul.genererIdTypeCalcul();
-    idRegion = fonctionCalcul.genererIdRegion();
-    frequenceValeur = fonctionCalcul.genererFrequenceValeur();
+//     typeCalcul = fonctionCalcul.genererIdTypeCalcul();
+//     idRegion = fonctionCalcul.genererIdRegion();
+//     frequenceValeur = fonctionCalcul.genererFrequenceValeur();
 
-    dateGeneration = fonctionDateModele.genererDateAleatoire();
-    dateProchaineGeneration = fonctionDateModele.toString(fonctionCalcul.genererDateProchaineGeneration(dateGeneration));
-    dateGeneration = fonctionDateModele.toString(dateGeneration);
+//     dateGeneration = fonctionDateModele.genererDateAleatoire();
+//     dateProchaineGeneration = fonctionDateModele.toString(fonctionCalcul.genererDateProchaineGeneration(dateGeneration));
+//     dateGeneration = fonctionDateModele.toString(dateGeneration);
 
-    dateDebutPlage = fonctionCalcul.genererDateDebutPlage(dateGeneration);
-    dateFinPlage = fonctionDateModele.toString(fonctionCalcul.genererDateFinPlage(dateDebutPlage, frequenceValeur));
+//     dateDebutPlage = fonctionCalcul.genererDateDebutPlage(dateGeneration);
+//     dateFinPlage = fonctionDateModele.toString(fonctionCalcul.genererDateFinPlage(dateDebutPlage, frequenceValeur));
     
-    dateDebutPlage = fonctionDateModele.toString(dateDebutPlage);
+//     dateDebutPlage = fonctionDateModele.toString(dateDebutPlage);
 
-    etiquette = fonctionCalcul.genererEtiquette(typeCalcul, idRegion, frequenceValeur);
-    enregistrer = fonctionCalcul.genererEnregistre();
+//     etiquette = fonctionCalcul.genererEtiquette(typeCalcul, idRegion, frequenceValeur);
+//     enregistrer = fonctionCalcul.genererEnregistre();
 
-    contenu.push(new calcul.Calcul(index, etiquette, dateGeneration, dateProchaineGeneration, enregistrer, idRegion, 
-                                    typeCalcul, dateDebutPlage, dateFinPlage, frequenceValeur, null, null, null)
-                );
+//     contenu.push(new calcul.Calcul(index, etiquette, dateGeneration, dateProchaineGeneration, enregistrer, idRegion, 
+//                                     typeCalcul, dateDebutPlage, dateFinPlage, frequenceValeur, null, null, null)
+//                 );
 
-}
+// }
 
-bdd.insererTableau(contenu, CALCUL);
+// bdd.insererTableau(contenu, CALCUL);
 
 
 // contenu = "";
