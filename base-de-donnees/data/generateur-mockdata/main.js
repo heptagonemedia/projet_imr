@@ -8,6 +8,7 @@ var calcul = require('./modele/Calcul');
 
 //######################################### Donnee
 var bdd = require('./donnee/BaseDeDonnees');
+var historiqueDAO = require('./donnee/HistoriqueDAO');
 
 //######################################### Fonctions
 var fonctionRegion = require('./fonction/fonctionRegion');
@@ -40,7 +41,7 @@ var nombreDeCalcul = 5;
 var nombreDeResultatParCalcul = 3;
 
 var dateDebutHistorique = new date.DateModele(0,0,0,1,11,2019);
-var dateFinHistorique = new date.DateModele(0,0,0,30,11,2019);
+var dateFinHistorique = new date.DateModele(0,2,0,1,11,2019);
 
 var contenu = [];
 
@@ -142,7 +143,7 @@ var contenu = [];
 // });
 
 
-//######################################### Génération de l'historique des données des bouées directement dans la base de données
+// //######################################### Génération de l'historique des données des bouées directement dans la base de données
 // var idHistorique = 0;
 // var dateEnCours = dateDebutHistorique;
 // var tableauHistorique;
@@ -150,10 +151,9 @@ var contenu = [];
 // var idPreparedStatement = 0;
 
 
-// ( async function t() {
+// (async function t() {
 
 //     dateDebutProcess = new Date();
-//     console.log(new Date());
 
 //     tableauHistorique = [];
     
@@ -163,25 +163,38 @@ var contenu = [];
 
 //         for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
 //             idHistorique++;
-//             idRegion
-//             tableauHistorique.push(new historique.Historique(idHistorique, idBouee, fonctionDateModele.toString(dateEnCours),));
+//             idRegion = await bdd.selectionnerDocument('id_bouee', idBouee, BOUEE).id_region;
+//             console.log(idBouee, 'region :',idRegion);
+//             tableauHistorique.push(new historique.Historique(idHistorique, idBouee, fonctionDateModele.toString(dateEnCours),0,0,0,0,0,0,0));
 //         }
 
-//         // console.log('avant_', idPreparedStatement);
-//         // await historiqueDAO.preparerEnregistrementHistorique(tableauHistorique, idPreparedStatement);
-//         // console.log('apres_', idPreparedStatement);
-
-//         //TODO: idPreparedStatement => mettre dans le retour de preparerEnregistrementHistorique
-//         // idPreparedStatement += 11;
-
-//         // tableauHistorique = null;
-
 //         await bdd.insererTableau(tableauHistorique, HISTORIQUE_DONNEE_BOUEE);
+//         tableauHistorique = null;
+
 
 //         dateEnCours = fonctionDateModele.augmenterDateModeleXSeconde(dateEnCours, 60);
 
 //     }
 
-//     console.log('done !', new Date());
+//     console.log(new Date(), 'done !', dateDebutProcess);
     
 // })()
+
+
+(async function() {
+
+    dateDebutProcess = new Date();
+    
+    var dateEnCours = dateDebutHistorique;
+
+    idHistorique = 0;
+    tableauHistorique = [];
+    idBoueeDepart = 1;
+    clef = 'id_bouee';
+    
+    await historiqueDAO.genererEtInsererHistoriques(idHistorique, dateEnCours, nombreDeBouee, idBoueeDepart, tableauHistorique, clef, BOUEE, HISTORIQUE_DONNEE_BOUEE, historiqueDAO.genererEtInsererHistoriques, dateFinHistorique);
+
+    console.log(new Date(), 'end', dateDebutProcess);
+
+})()
+

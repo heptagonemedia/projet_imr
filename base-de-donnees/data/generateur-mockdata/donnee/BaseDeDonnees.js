@@ -32,25 +32,33 @@ const assert = require('assert');
 
 // Connection URL
 // const url = 'mongodb://localhost:27017';
-const url = 'mongodb://admin:password@localhost:27017?authMechanism=DEFAULT&authSource=admin&ssl=false"';
+// const url = 'mongodb://admin:password@localhost:27017?authMechanism=DEFAULT&authSource=admin&ssl=false"';
+
+exports.url = function () {
+    return 'mongodb://admin:password@localhost:27017?authMechanism=DEFAULT&authSource=admin&ssl=false"';
+}
 
 // Database Name
-const dbName = 'imr';
+// const dbName = 'imr';
+
+exports.dbName = function() {
+    return 'imr';
+}
 
 // Create a new MongoClient
 // const client = new MongoClient(url);
 
 exports.client = function() {
-    return client = new MongoClient(url);
+    return new MongoClient(this.url());
 }
 
 exports.insererTableau = async function(tableauValeur, collection) {
 
-    client = this.client();
+    var client = this.client();
 
     const c = await client.connect();
 
-    const db = c.db(dbName);
+    const db = c.db(this.dbName());
     await db.collection(collection).insertMany(tableauValeur);
 
     console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Inserer dans la base de données');
@@ -59,17 +67,19 @@ exports.insererTableau = async function(tableauValeur, collection) {
     
 }
 
-exports.selectionerDocument = async function(clef, valeur, collection) {
+// exports.selectionnerDocument = async function(clef, valeur, collection) {
 
-    client = this.client();
+//     var client = this.client();
+//     const document = JSON.parse('{"'+clef+'":'+valeur+'}');
 
-    const c = await client.connect();
+//     const c = await client.connect();
 
-    const document = JSON.parse('{"'+clef+'":'+valeur+'}');
+//     const db = c.db(this.dbName());
+//     var resultat = await db.collection(collection).findOne(document);
+//     console.log('bdd :', resultat);
 
-    const db = c.db(dbName);
-    var resultat = await db.collection(collection).findOne(document);
+//     // callback('t');
     
-    return resultat;
+//     // return resultat;
 
-}
+// }
