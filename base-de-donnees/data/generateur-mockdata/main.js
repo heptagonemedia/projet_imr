@@ -32,14 +32,14 @@ const NOM_FICHIER_RESULTAT = "resultat.csv";
 // const NOM_FICHIER_HISTORIQUE = "historique_donnee_bouees.csv";
 
 var nombreDeRegion = 8;
-var nombreDeBouee = 75000
+var nombreDeBouee = 7500;
 var nombreDeDonneeMesuree = 6;
 var nombreDeTypeDeCalcul = 3;
 var nombreDeCalcul = 10;
 var nombreDeResultatParCalcul = 3;
 
-var dateDebutHistorique = new date.DateModele(0,0,0,1,1,2018);
-var dateFinHistorique = new date.DateModele(0,1,0,1,1,2018);
+var dateDebutHistorique = new date.DateModele(0,0,0,1,11,2019);
+var dateFinHistorique = new date.DateModele(0,0,0,30,11,2019);
 
 var contenu = "";
 
@@ -98,7 +98,8 @@ contenu = "";
 // for (let index = 1; index <= nombreDeCalcul; index++) {
 
 //     typeCalcul = fonctionCalcul.genererIdTypeCalcul();
-//     idBouee = fonctionCalcul.genererIdBouee();
+//     // idBouee = fonctionCalcul.genererIdBouee();
+//     idRegion = fonctionCalcul.genererIdRegion();
 //     frequenceValeur = fonctionCalcul.genererFrequenceValeur();
 
 //     dateGeneration = fonctionGenerique.genererDateAleatoire();
@@ -108,14 +109,14 @@ contenu = "";
 //     dateFinPlage = fonctionCalcul.genererDateFinPlage(dateDebutPlage, frequenceValeur, dateGeneration);
 
 //     contenu += "" + index + "," +
-//         fonctionCalcul.genererEtiquette(typeCalcul, idBouee, frequenceValeur) + "," +
+//         fonctionCalcul.genererEtiquette(typeCalcul, idRegion, frequenceValeur) + "," +
 //         fonctionGenerique.conversionTypeDateVersChaine(dateGeneration) + "," +
 //         fonctionGenerique.conversionTypeDateVersChaine(dateProchaineGeneration) + "," +
 //         fonctionGenerique.conversionTypeDateVersChaine(dateDebutPlage) + "," +
 //         fonctionGenerique.conversionTypeDateVersChaine(dateFinPlage) + "," +
 //         frequenceValeur + "," +
 //         fonctionCalcul.genererEnregistre() + "," +
-//         idBouee + "," +
+//         idRegion + "," +
 //         typeCalcul + "\n";   
 
 // }
@@ -154,9 +155,13 @@ var tableauHistorique;
 
 var idPreparedStatement = 0;
 
-(async function t() {
 
+( async function t() {
+
+    dateDebutProcess = new Date();
     console.log(new Date());
+
+    tableauHistorique = [];
     
     while (!fonctionDateModele.dateModeleEgales(dateEnCours, dateFinHistorique)) {
 
@@ -164,18 +169,22 @@ var idPreparedStatement = 0;
 
         for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
             idHistorique++;
-            tableauHistorique.push(new historique.Historique(idHistorique, idBouee, dateEnCours));
+            idRegion
+            tableauHistorique.push(new historique.Historique(idHistorique, idBouee, fonctionDateModele.toString(dateEnCours),));
         }
 
         // console.log('avant_', idPreparedStatement);
-        await historiqueDAO.preparerEnregistrementHistorique(tableauHistorique, idPreparedStatement);
+        // await historiqueDAO.preparerEnregistrementHistorique(tableauHistorique, idPreparedStatement);
         // console.log('apres_', idPreparedStatement);
 
-        idPreparedStatement += 11;
+        //TODO: idPreparedStatement => mettre dans le retour de preparerEnregistrementHistorique
+        // idPreparedStatement += 11;
 
-        tableauHistorique = [];
+        // tableauHistorique = null;
 
-        dateEnCours = fonctionDateModele.augmenterDateModele1Seconde(dateEnCours);
+        await bdd.inserer2(tableauHistorique);
+
+        dateEnCours = fonctionDateModele.augmenterDateModeleXSeconde(dateEnCours, 60);
 
     }
 

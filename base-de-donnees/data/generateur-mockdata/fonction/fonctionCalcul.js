@@ -9,8 +9,8 @@ const MILLISECONDS_DANS_1_SEMAINE = MILLISECONDS_DANS_1_JOUR * 7;
 const MILLISECONDS_DANS_1_MOIS = MILLISECONDS_DANS_1_SEMAINE * 4;
 const MILLISECONDS_DANS_1_ANNEE = MILLISECONDS_DANS_1_MOIS * 12;
 
-exports.genererEtiquette = function (typeCalcul, idBouee, frequenceValeur) {
-    return ("" + fonctionCalcul.genererEtiquette(typeCalcul) + "" + trouverIntervaleCorrespondantMilliseconds(frequenceValeur) + "Bouee" + idBouee);
+exports.genererEtiquette = function (typeCalcul, idRegion, frequenceValeur) {
+    return ("" + fonctionCalcul.genererEtiquette(typeCalcul) + "" + trouverIntervaleCorrespondantMilliseconds(frequenceValeur) + "Region" + idRegion);
 }
 
 exports.genererDateDebutPlage = function(dateGenerationCalcul) {
@@ -61,7 +61,7 @@ exports.genererDateFinPlage = function (dateDebutPlage, frequenceValeur, dateGen
         }
 
     } while ((resultatMillisecondes < frequenceValeur) && ((dateGenerationCalcul - new Date(+(dateDebutPlage) + resultatMillisecondes)) < 0));
-    //TODO: A voir si la condition est correcte 
+    // A voir si la condition est correcte 
     // Une solution est peut-être de regardé si resultat/frequence est un entier > 0 =>
     // Number.isInteger(Math.floor(resultatMillisecondes / frequenceValeur)) && Math.floor(resultatMillisecondes / frequenceValeur)>0
 
@@ -114,11 +114,11 @@ exports.genererEnregistre = function() {
 
 }
 
-// TODO: Voir modification de la bdd
 exports.genererIdRegion = function() {
     return fonctionGenerique.nombreEntierAleatoire(1,8);
 }
 
+// Ne sert plus
 exports.genererIdBouee = function() {
     return fonctionGenerique.nombreEntierAleatoire(1,75000);
 }

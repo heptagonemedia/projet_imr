@@ -1,4 +1,4 @@
-var chainePreparedStatement = require('./chaineHistoriquePreparedStatement');
+var chainePreparedStatement = require('./chainePreparedStatement');
 var fonctionDateModele = require('../fonction/fonctionDateModele');
 var bdd = require('./BaseDeDonnees');
 
@@ -8,7 +8,7 @@ exports.preparerEnregistrementHistorique = async function(tableauHistorique, idP
 
     // console.log('enregistrer()');
     
-    var idStatement = idPreparedStatement;
+    // var idStatement = idPreparedStatement;
     var valeurs = [];
     // var colonne = 0;
     var val = [];
@@ -39,7 +39,7 @@ exports.preparerEnregistrementHistorique = async function(tableauHistorique, idP
 
     
     for (let colonne = 1; colonne <= 10; colonne++) {
-        idStatement++;
+        idPreparedStatement++;
         if (colonne == 10) {
             chaine = chainePreparedStatement.chaine9000Parametres();
         } else {
@@ -47,7 +47,7 @@ exports.preparerEnregistrementHistorique = async function(tableauHistorique, idP
         }
 
         insertion = {
-            name: 'enregistrerHistorique_' + idStatement,
+            name: 'enregistrerHistorique_' + idPreparedStatement,
             text: 'INSERT INTO ' + NOM_TABLE + ' (id_historique_donnee_bouee, id_bouee, date_saisie) VALUES ' + chaine,
             values: val[colonne]
         };

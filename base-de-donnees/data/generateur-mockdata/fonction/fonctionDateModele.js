@@ -11,15 +11,15 @@ exports.dateModeleEgales = function(date1, date2) {
 
 }
 
-exports.augmenterDateModele1Seconde = function(date) {
+exports.augmenterDateModeleXSeconde = function(date, ajout) {
 
     var dateSuivante = date;
 
-    dateSuivante.seconde++;
+    dateSuivante.seconde += ajout;
 
     if (dateSuivante.seconde > 59) {
         
-        dateSuivante.seconde = 0;
+        dateSuivante.seconde = dateSuivante.seconde - 60;
         dateSuivante.minute++;
 
         if (dateSuivante.minute > 59) {
