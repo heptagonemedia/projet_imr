@@ -2,6 +2,7 @@
 var date = require('./modele/DateModele');
 var historique = require('./modele/Historique');
 var bouee = require('./modele/Bouee');
+var region = require('./modele/Region');
 
 //######################################### Donnee
 var historiqueDAO = require('./donnee/HistoriqueDAO');
@@ -32,6 +33,7 @@ const NOM_FICHIER_TYPE_CALCUL = "type_calcul.csv";
 const NOM_FICHIER_CALCUL = "calcul.csv";
 const NOM_FICHIER_RESULTAT = "resultat.csv";
 
+const REGION = 'region';
 const BOUEE = 'bouee';
 const HISTORIQUE_DONNEE_BOUEE = 'historique_donnee_bouee';
 
@@ -45,35 +47,33 @@ var nombreDeResultatParCalcul = 3;
 var dateDebutHistorique = new date.DateModele(0,0,0,1,11,2019);
 var dateFinHistorique = new date.DateModele(0,0,0,30,11,2019);
 
-var contenu = "";
-
-contenu = "";
-//######################################### Génération des Régions
-
-// for (let index = 1; index <= nombreDeRegion; index++) {
-//     contenu += "" + index + "," + fonctionRegion.genererEtiquette(index) + "\n";
-// }
-
-// fs.appendFile(('' + cheminMockdata + NOM_FICHIER_REGION), contenu, (err) => {
-//     if (err) throw err;
-//     console.log('region.csv générer');
-// });
+var contenu = [];
 
 contenu = [];
-//######################################### Génération des Bouées
-var region = 0;
-for (let index = 1; index <= nombreDeBouee; index++) {
-    region = fonctionGenerique.nombreEntierAleatoire(1,8);
+//######################################### Génération des Régions
 
-    contenu.push(new bouee.Bouee(index, 
-                                fonctionBouee.genererEtiquette(index), 
-                                fonctionBouee.genererLongitude(region),
-                                fonctionBouee.genererLatitude(region),
-                                region));
-
+for (let index = 1; index <= nombreDeRegion; index++) {
+    contenu.push(new region.Region(index, fonctionRegion.genererEtiquette(index)));
 }
 
-bdd.insererTableau(contenu, BOUEE);
+bdd.insererTableau(contenu, REGION);
+
+
+// contenu = [];
+//######################################### Génération des Bouées
+// var region = 0;
+// for (let index = 1; index <= nombreDeBouee; index++) {
+//     region = fonctionGenerique.nombreEntierAleatoire(1,8);
+
+//     contenu.push(new bouee.Bouee(index, 
+//                                 fonctionBouee.genererEtiquette(index), 
+//                                 fonctionBouee.genererLongitude(region),
+//                                 fonctionBouee.genererLatitude(region),
+//                                 region));
+
+// }
+
+// bdd.insererTableau(contenu, BOUEE);
 
 // contenu = "";
 // //######################################### Génération des Types de données mesurées
