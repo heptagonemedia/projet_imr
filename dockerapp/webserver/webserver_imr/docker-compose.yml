@@ -1,13 +1,23 @@
 version: '3'
-services:
-  
-  webserver_imr:
-    container_name: webserver_imr
+services: 
+  nginx:
     build:
-      context: ../build/httpd
-      dockerfile: dev.dockerfile
+      context: ../build/nginx/web
+      dockerfile: Dockerfile
+    restart: always
+    container_name: webserver-imr-nginx
     ports:
       - 4301:80
     volumes:
       - /webroot/imr:/var/www/html:ro
+    links:
+      - php-fpm
+
+  php-fpm:
+    build:
+      context: ../build/nginx/php-fpm
+      dockerfile: Dockerfile
     restart: always
+    container_name: webserver-imr-php-fpm
+    volumes:
+      - /webroot/imr:/var/www/html:ro
