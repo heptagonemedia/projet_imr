@@ -3,5 +3,5 @@ Le vérificateur de données prend les valeurs dans une base de données buffer,
 Modules node utilisés :
 * postgres
 ```shell
-npm install pg
+npm install
 ```
