@@ -41,7 +41,7 @@ var nombreDeCalcul = 5;
 var nombreDeResultatParCalcul = 3;
 
 var dateDebutHistorique = new date.DateModele(0,0,0,1,11,2019);
-var dateFinHistorique = new date.DateModele(0,2,0,1,11,2019);
+var dateFinHistorique = new date.DateModele(0,30,0,1,11,2019);
 
 var contenu = [];
 
@@ -144,57 +144,79 @@ var contenu = [];
 
 
 // //######################################### Génération de l'historique des données des bouées directement dans la base de données
-// var idHistorique = 0;
-// var dateEnCours = dateDebutHistorique;
-// var tableauHistorique;
+var idHistorique = 0;
+var dateEnCours = dateDebutHistorique;
+var tableauHistorique;
 
-// var idPreparedStatement = 0;
-
-
-// (async function t() {
-
-//     dateDebutProcess = new Date();
-
-//     tableauHistorique = [];
-    
-//     while (!fonctionDateModele.dateModeleEgales(dateEnCours, dateFinHistorique)) {
-
-//         tableauHistorique = [];
-
-//         for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
-//             idHistorique++;
-//             idRegion = await bdd.selectionnerDocument('id_bouee', idBouee, BOUEE).id_region;
-//             console.log(idBouee, 'region :',idRegion);
-//             tableauHistorique.push(new historique.Historique(idHistorique, idBouee, fonctionDateModele.toString(dateEnCours),0,0,0,0,0,0,0));
-//         }
-
-//         await bdd.insererTableau(tableauHistorique, HISTORIQUE_DONNEE_BOUEE);
-//         tableauHistorique = null;
-
-
-//         dateEnCours = fonctionDateModele.augmenterDateModeleXSeconde(dateEnCours, 60);
-
-//     }
-
-//     console.log(new Date(), 'done !', dateDebutProcess);
-    
-// })()
-
-
-(async function() {
+(async function t() {
 
     dateDebutProcess = new Date();
-    
-    var dateEnCours = dateDebutHistorique;
 
-    idHistorique = 0;
     tableauHistorique = [];
-    idBoueeDepart = 1;
-    clef = 'id_bouee';
+
+    console.log('Avant');
+    var tableauRegionParBouee = await bdd.selectionnerDocumentsCollection(BOUEE);
+    for (let index = 0; index < tableauRegionParBouee.length; index++) {
+
+        tableauRegionParBouee.splice(index, 1, tableauRegionParBouee[index].id_region);
+
+    }
+    console.log('Apres');
     
-    await historiqueDAO.genererEtInsererHistoriques(idHistorique, dateEnCours, nombreDeBouee, idBoueeDepart, tableauHistorique, clef, BOUEE, HISTORIQUE_DONNEE_BOUEE, historiqueDAO.genererEtInsererHistoriques, dateFinHistorique);
+    
+    while (!fonctionDateModele.dateModeleEgales(dateEnCours, dateFinHistorique)) {
 
-    console.log(new Date(), 'end', dateDebutProcess);
+        tableauHistorique = [];
 
+        for (let idBouee = 1; idBouee <= nombreDeBouee; idBouee++) {
+
+            idRegion = tableauRegionParBouee[idBouee-1];
+
+            idHistorique++;
+            tableauHistorique.push(new historique.Historique(
+                idHistorique,
+                idBouee,
+                fonctionDateModele.toString(dateEnCours),
+                fonctionHistorique.genererTemperature(),
+                fonctionHistorique.genererDebit(),
+                fonctionHistorique.genererSalinite(idRegion),
+                fonctionHistorique.genererLongitude(idRegion),
+                fonctionHistorique.genererLatitude(idRegion),
+                fonctionHistorique.genererBatterie(),
+                fonctionHistorique.genererValide()
+            ));
+
+        }
+
+        console.log('test');
+        
+        await bdd.insererTableau(tableauHistorique, HISTORIQUE_DONNEE_BOUEE);
+        tableauHistorique = null;
+
+
+        dateEnCours = fonctionDateModele.augmenterDateModeleXSeconde(dateEnCours, 60);
+
+    }
+
+    console.log(new Date(), 'done !', dateDebutProcess);
+    
 })()
+
+
+// (async function() {
+
+//     dateDebutProcess = new Date();
+    
+//     var dateEnCours = dateDebutHistorique;
+
+//     idHistorique = 0;
+//     tableauHistorique = [];
+//     idBoueeDepart = 1;
+//     clef = 'id_bouee';
+    
+//     await historiqueDAO.genererEtInsererHistoriques(idHistorique, dateEnCours, nombreDeBouee, idBoueeDepart, tableauHistorique, clef, BOUEE, HISTORIQUE_DONNEE_BOUEE, historiqueDAO.genererEtInsererHistoriques, dateFinHistorique);
+
+//     console.log(new Date(), 'end', dateDebutProcess);
+
+// })()
 

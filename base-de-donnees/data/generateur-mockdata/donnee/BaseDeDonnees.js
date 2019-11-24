@@ -35,7 +35,7 @@ const assert = require('assert');
 // const url = 'mongodb://admin:password@localhost:27017?authMechanism=DEFAULT&authSource=admin&ssl=false"';
 
 exports.url = function () {
-    return 'mongodb://admin:password@localhost:27017?authMechanism=DEFAULT&authSource=admin&ssl=false"';
+    return 'mongodb://admin:password@homebert.fr:27017?authMechanism=DEFAULT&authSource=admin&ssl=false"';
 }
 
 // Database Name
@@ -67,19 +67,30 @@ exports.insererTableau = async function(tableauValeur, collection) {
     
 }
 
-// exports.selectionnerDocument = async function(clef, valeur, collection) {
+exports.selectionnerDocument = async function(clef, valeur, collection) {
 
-//     var client = this.client();
-//     const document = JSON.parse('{"'+clef+'":'+valeur+'}');
+    var client = this.client();
+    const document = JSON.parse('{"'+clef+'":'+valeur+'}');
 
-//     const c = await client.connect();
+    const c = await client.connect();
 
-//     const db = c.db(this.dbName());
-//     var resultat = await db.collection(collection).findOne(document);
-//     console.log('bdd :', resultat);
-
-//     // callback('t');
+    const db = c.db(this.dbName());
+    var resultat = await db.collection(collection).findOne(document).toArray();
+    // console.log('bdd :', resultat);
     
-//     // return resultat;
+    return resultat;
 
-// }
+}
+
+exports.selectionnerDocumentsCollection = async function(collection) {
+
+    var client = this.client();
+
+    const c = await client.connect();
+
+    const db = c.db(this.dbName());
+    var resultat = await db.collection(collection).find({}).toArray();
+
+    return resultat;
+
+}
