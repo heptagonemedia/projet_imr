@@ -32,136 +32,112 @@ const TYPE_CALCUL = 'type_calcul';
 const CALCUL = 'calcul';
 const HISTORIQUE_DONNEE_BOUEE = 'historique_donnee_bouee';
 
-//######################################### Variables
-var nombreDeRegion = 8;
-var nombreDeBouee = 7500;
-var nombreDeDonneeMesuree = 6;
-var nombreDeTypeDeCalcul = 3;
-var nombreDeCalcul = 5;
-var nombreDeResultatParCalcul = 3;
+const NOMBRE_DE_REGION = 8;
+const NOMBRE_DE_BOUEE = 7500;
+const NOMBRE_DE_TYPE_DE_CALCUL = 3;
+const NOMBRE_DE_CALCUL = 5;
 
-var dateDebutHistorique = new date.DateModele(0,0,0,1,11,2019);
-var dateFinHistorique = new date.DateModele(0,30,0,1,11,2019);
+const DATE_DEBUT_HISTORIQUE = new date.DateModele(0,0,0,1,11,2019);
+const DATE_FIN_HISTORIQUE = new date.DateModele(59,59,23,30,11,2019);
 
-var contenu = [];
+//######################################### Génération des Régions
+var insererRegions = function(nombreDeRegion){
 
-// contenu = [];
-// //######################################### Génération des Régions
-// for (let index = 1; index <= nombreDeRegion; index++) {
-//     contenu.push(new region.Region(index, fonctionRegion.genererEtiquette(index)));
-// }
+    var contenu = [];
+
+    for (let index = 1; index <= nombreDeRegion; index++) {
+        contenu.push(new region.Region(index, fonctionRegion.genererEtiquette(index)));
+    }
 
 
-// bdd.insererTableau(contenu, REGION);
+    bdd.insererTableau(contenu, REGION);
 
+}
 
-// contenu = [];
-// // ######################################### Génération des Bouées
-// var region = 0;
-// for (let index = 1; index <= nombreDeBouee; index++) {
-//     region = fonctionGenerique.nombreEntierAleatoire(1,8);
+//######################################### Génération des Bouées
+var insertionBouee = function(nombreDeBouee){
+    var contenu = [];
+    var region = 0;
+    for (let index = 1; index <= nombreDeBouee; index++) {
+        region = fonctionGenerique.nombreEntierAleatoire(1, 8);
 
-//     contenu.push(new bouee.Bouee(index, 
-//                                 fonctionBouee.genererEtiquette(index), 
-//                                 fonctionBouee.genererLongitude(region),
-//                                 fonctionBouee.genererLatitude(region),
-//                                 region));
-
-// }
-
-// bdd.insererTableau(contenu, BOUEE);
-
-// contenu = "";
-// //######################################### Génération des Types de données mesurées
-// for (let index = 1; index <= nombreDeDonneeMesuree; index++) {
-//     contenu += "" + index + "," + fonctionTypeDonneeMesuree.genererEtiquette(index) + "," +
-//         fonctionTypeDonneeMesuree.genererUnite(index) + "\n";
-// }
-
-// fs.appendFile(('' + cheminMockdata + NOM_FICHIER_TYPE_DONNEE_MESUREE), contenu, (err) => {
-//     if (err) throw err;
-//     console.log('type_donnee_mesuree.csv générer');
-// });
-
-// contenu = [];
-// //######################################### Génération des Types de calcul
-// for (let index = 1; index <= nombreDeTypeDeCalcul; index++) {
-//     contenu.push(new typeCalcul.TypeCalcul(index, fonctionTypeCalcul.genererEtiquette(index)))
-// }
-
-// bdd.insererTableau(contenu, TYPE_CALCUL);
-
-
-// contenu = [];
-// //######################################### Génération des Calculs
-// for (let index = 1; index <= nombreDeCalcul; index++) {
-
-//     typeCalcul = fonctionCalcul.genererIdTypeCalcul();
-//     idRegion = fonctionCalcul.genererIdRegion();
-//     frequenceValeur = fonctionCalcul.genererFrequenceValeur();
-
-//     dateGeneration = fonctionDateModele.genererDateAleatoire();
-//     dateProchaineGeneration = fonctionDateModele.toString(fonctionCalcul.genererDateProchaineGeneration(dateGeneration));
-//     dateGeneration = fonctionDateModele.toString(dateGeneration);
-
-//     dateDebutPlage = fonctionCalcul.genererDateDebutPlage(dateGeneration);
-//     dateFinPlage = fonctionDateModele.toString(fonctionCalcul.genererDateFinPlage(dateDebutPlage, frequenceValeur));
-    
-//     dateDebutPlage = fonctionDateModele.toString(dateDebutPlage);
-
-//     etiquette = fonctionCalcul.genererEtiquette(typeCalcul, idRegion, frequenceValeur);
-//     enregistrer = fonctionCalcul.genererEnregistre();
-
-//     contenu.push(new calcul.Calcul(index, etiquette, dateGeneration, dateProchaineGeneration, enregistrer, idRegion, 
-//                                     typeCalcul, dateDebutPlage, dateFinPlage, frequenceValeur, null, null, null)
-//                 );
-
-// }
-
-// bdd.insererTableau(contenu, CALCUL);
-
-
-// contenu = "";
-// //######################################### Génération de Résultats en rapport avec les calculs précédemment générés
-// var idResultat = 0;
-// var cheminXMLResultat = "chemin/a/definir/";
-
-// for (let index = 1; index <= nombreDeCalcul; index++) {
-    
-//     for (let idTypeDonnee = 1; idTypeDonnee <= nombreDeResultatParCalcul; idTypeDonnee++) {
-//         idResultat++;
-//         nomFichierXML = "calcul" + index + "Donnee" + idTypeDonnee + ".xml";
-//         xml_graphique = "" + cheminXMLResultat + nomFichierXML;
-//         contenu += "" + idResultat + "," + xml_graphique + "\n";
-//     }
-
-// }
-
-// fs.appendFile(('' + cheminMockdata + NOM_FICHIER_RESULTAT), contenu, (err) => {
-//     if (err) throw err;
-//     console.log('resultat.csv générer');
-// });
-
-
-// //######################################### Génération de l'historique des données des bouées directement dans la base de données
-var idHistorique = 0;
-var dateEnCours = dateDebutHistorique;
-var tableauHistorique;
-
-(async function t() {
-
-    dateDebutProcess = new Date();
-
-    tableauHistorique = [];
-
-    console.log('Avant');
-    var tableauRegionParBouee = await bdd.selectionnerDocumentsCollection(BOUEE);
-    for (let index = 0; index < tableauRegionParBouee.length; index++) {
-
-        tableauRegionParBouee.splice(index, 1, tableauRegionParBouee[index].id_region);
+        contenu.push(new bouee.Bouee(index,
+            fonctionBouee.genererEtiquette(index),
+            fonctionBouee.genererLongitude(region),
+            fonctionBouee.genererLatitude(region),
+            region));
 
     }
-    console.log('Apres');
+
+    bdd.insererTableau(contenu, BOUEE);
+}
+
+//######################################### Génération des Types de calcul
+var insererTypesCalculs = function(nombreDeTypeDeCalcul) {
+
+    var contenu = [];
+    for (let index = 1; index <= nombreDeTypeDeCalcul; index++) {
+        contenu.push(new typeCalcul.TypeCalcul(index, fonctionTypeCalcul.genererEtiquette(index)))
+    }
+
+    bdd.insererTableau(contenu, TYPE_CALCUL);
+
+}
+
+
+//######################################### Génération des Calculs
+var insererCalculs = function(nombreDeCalcul) {
+
+    var contenu = [];
+
+    for (let index = 1; index <= nombreDeCalcul; index++) {
+
+        typeCalcul = fonctionCalcul.genererIdTypeCalcul();
+        idRegion = fonctionCalcul.genererIdRegion();
+        frequenceValeur = fonctionCalcul.genererFrequenceValeur();
+
+        dateGeneration = fonctionDateModele.genererDateAleatoire();
+        dateProchaineGeneration = fonctionDateModele.toString(fonctionCalcul.genererDateProchaineGeneration(dateGeneration));
+        dateGeneration = fonctionDateModele.toString(dateGeneration);
+
+        dateDebutPlage = fonctionCalcul.genererDateDebutPlage(dateGeneration);
+        dateFinPlage = fonctionDateModele.toString(fonctionCalcul.genererDateFinPlage(dateDebutPlage, frequenceValeur));
+
+        dateDebutPlage = fonctionDateModele.toString(dateDebutPlage);
+
+        etiquette = fonctionCalcul.genererEtiquette(typeCalcul, idRegion, frequenceValeur);
+        enregistrer = fonctionCalcul.genererEnregistre();
+
+        contenu.push(new calcul.Calcul(index, etiquette, dateGeneration, dateProchaineGeneration, enregistrer, idRegion, 
+                                        typeCalcul, dateDebutPlage, dateFinPlage, frequenceValeur, null, null, null)
+                    );
+
+    }
+
+    bdd.insererTableau(contenu, CALCUL);
+
+}
+
+
+//######################################### Génération de l'historique des données des bouées directement dans la base de données
+
+
+var insertionHistoriques = async function (nombreDeBouee, dateDebutHistorique, dateFinHistorique) {
+
+    var idHistorique = 0;
+    var dateEnCours = dateDebutHistorique;
+    var tableauHistorique;
+
+    var dateDebutProcess = new Date();
+
+    var tableauHistorique = [];
+
+    // console.log('Avant');
+    var tableauRegionParBouee = await bdd.selectionnerDocumentsCollection(BOUEE);
+    for (let index = 0; index < tableauRegionParBouee.length; index++) {
+        tableauRegionParBouee.splice(index, 1, tableauRegionParBouee[index].id_region);
+    }
+    // console.log('Apres');
     
     
     while (!fonctionDateModele.dateModeleEgales(dateEnCours, dateFinHistorique)) {
@@ -188,7 +164,7 @@ var tableauHistorique;
 
         }
 
-        console.log('test');
+        // console.log('test');
         
         await bdd.insererTableau(tableauHistorique, HISTORIQUE_DONNEE_BOUEE);
         tableauHistorique = null;
@@ -200,23 +176,22 @@ var tableauHistorique;
 
     console.log(new Date(), 'done !', dateDebutProcess);
     
-})()
+}
 
 
-// (async function() {
+//######################################### Génération des MockData
+var genererMockData = async function() {
 
-//     dateDebutProcess = new Date();
-    
-//     var dateEnCours = dateDebutHistorique;
+    await insererRegions(NOMBRE_DE_REGION);
 
-//     idHistorique = 0;
-//     tableauHistorique = [];
-//     idBoueeDepart = 1;
-//     clef = 'id_bouee';
-    
-//     await historiqueDAO.genererEtInsererHistoriques(idHistorique, dateEnCours, nombreDeBouee, idBoueeDepart, tableauHistorique, clef, BOUEE, HISTORIQUE_DONNEE_BOUEE, historiqueDAO.genererEtInsererHistoriques, dateFinHistorique);
+    await insertionBouee(NOMBRE_DE_BOUEE);
 
-//     console.log(new Date(), 'end', dateDebutProcess);
+    await insererTypesCalculs(NOMBRE_DE_TYPE_DE_CALCUL);
 
-// })()
+    await insererCalculs(NOMBRE_DE_CALCUL);
 
+    await insertionHistoriques(NOMBRE_DE_BOUEE, DATE_DEBUT_HISTORIQUE, DATE_FIN_HISTORIQUE);
+
+}
+
+genererMockData();
