@@ -1,6 +1,6 @@
 const { Pool, Client } = require('pg');
 
-credentials = require('../credentials/Credentials');
+credentials = require('../credentials/CredentialsPg');
 verificateur = require('../verificateur');
 
 var variablesConnexion = new credentials.Credentials();
@@ -27,15 +27,13 @@ exports.selectionnerDonnees = function(table, bdd) {
         } else {
             // console.log(res.rows);
             verificateur.lancerVerification(res.rows);
-
-            
         }
     })
 
 
 }
 
-exports.ssupprimerDonneesTable = function(table, bdd) {
+exports.supprimerDonneesTable = function(table, bdd) {
     
     const DELETE_TABLE = {
         name: 'supprimerDonneesTable',

@@ -1,10 +1,10 @@
-bdd = require('./donnee/BaseDeDonnees');
+const bddPostgres = require('./donnee/BaseDeDonneesPostgres');
 
-var baseDeDonnees = bdd.connexion();
+var baseDeDonnees = bddPostgres.connexion();
 console.log('Connexion ouverte');
 
 
-bdd.selectionnerDonnees('test_select_table', baseDeDonnees);
+bddPostgres.selectionnerDonnees('test_select_table', baseDeDonnees);
 
-bdd.deconnexion(baseDeDonnees);
+bddPostgres.deconnexion(baseDeDonnees);
 console.log('Connexion fermée');
