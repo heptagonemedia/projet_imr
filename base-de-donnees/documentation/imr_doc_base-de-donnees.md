@@ -39,12 +39,15 @@
 | etiquette                 | text                        |               | nom du calcul                                                |
 | date_generation           | timestamp without time zone |               | date à laquelle le calcul a été généré                       |
 | date_prochaine_generation | timestamp without time zone |               | date à laquelle le calcul va être réitéré (si nul, le calcul ne sera pas réitéré) |
-| enregistre                | boolean                     |               | true si le calcul doit être conservé lors du prochain nettoyage / false si le calcul doit être supprimée lors du prochain nettoyage |
+| enregistre                | boolean                     |               | si vrai alors le calcul persistera dans le temps / si faux, le calcul sera supprimé au bout d'un certain temps |
+| id_region                 | integer                     | clé étrangère | id de la région concernée par le calcul                      |
+| id_type_calcul            | integer                     | clé étrangère | id d'un type de calcul                                       |
 | date_debut_plage          | timestamp without time zone |               | date du début de la plage temporelle sur laquelle porte le calcul |
 | date_fin_plage            | timestamp without time zone |               | date de la fin de la plage temporelle sur laquelle porte le calcul |
 | frequence_valeur          | double precision            |               | fréquence du calcul                                          |
-| enregistre                | boolean                     |               | si vrai alors le calcul persistera dans le temps / si faux, le calcul sera supprimé au bout d'un certain temps |
-| id_type_calcul            | integer                     | clé étrangère | id d'un type de calcul                                       |
+| xml_graphique_temperature | text                        |               | données de température au format xml                         |
+| xml_graphique_salinite    | text                        |               | données de salinité au format xml                            |
+| xml_graphique_debit       | text                        |               | données de température au format xml                         |
 
 #### historique_donnee_bouee
 
@@ -53,15 +56,13 @@
 | id_historique_donnee_bouee | integer                    | clé primaire  |                                             |
 | id_bouee                   | integer                    | clé étrangère | id d'une bouée                              |
 | date_saisie                | timestamp withou time zone |               | date à laquelle la donnée a été enregistrée |
-
-#### mesure
-
-| champ                      | type             | relation      | explication                                                  |
-| -------------------------- | ---------------- | ------------- | ------------------------------------------------------------ |
-| id_mesure                  | integer          | clé primaire  |                                                              |
-| valeur                     | double precision |               | valeur de la mesure                                          |
-| id_historique_donnee_bouee | integer          | clé étrangère | id d'un historique_donnee_bouee (la table mesure peut comporter plusieurs mesures de données de type différents correspondant au même enregistrement de la table historique_donnee_bouee) |
-| valide                     | boolean          |               | vrai si la mesure est jugée valide par le vérificateur / faux si la mesure est jugée invalide par le vérificateur / nul si la mesure n'a pas encore été vérifiée. |
+| temperature                | double                     |               | température                                 |
+| debit                      | double                     |               | débit                                       |
+| salinite                   | double                     |               | salinité                                    |
+| longitude                  | double                     |               | longitude                                   |
+| latitude                   | double                     |               | latitude                                    |
+| batterie                   | integer                    |               | état de charge de la batterie               |
+| valide                     | boolean                    |               | validité du calcul                          |
 
 #### region
 
@@ -70,29 +71,12 @@
 | id_region | integer | clé primaire |                  |
 | etiquette | text    |              | nom de la région |
 
-#### resultat
-
-| champ           | type    | relation      | explication                                                  |
-| --------------- | ------- | ------------- | ------------------------------------------------------------ |
-| id_resultat     | integer | clé primaire  |                                                              |
-| id_type_donnees | integer | clé étrangère | id d'un type de données                                      |
-| id_calcul       | integer | clé étrangère | id d'un calcul (la table calcul peut comporter plusieurs résultats) |
-| xml_graphique   | text    |               | xml du graphique au format texte prêt à être affiché par l'application laravel |
-
 #### type_calcul
 
 | champ          | type    | relation     | explication           |
 | -------------- | ------- | ------------ | --------------------- |
 | id_type_calcul | integer | clé primaire |                       |
 | etiquette      | text    |              | nom du type de calcul |
-
-#### type_donnee
-
-| champ          | type    | relation     | explication                      |
-| -------------- | ------- | ------------ | -------------------------------- |
-| id_type_donnee | integer | clé primaire |                                  |
-| etiquette      | text    |              | nom du type de donnée            |
-| unite          | text    |              | nom de l'unité du type de donnée |
 
 ### Valeurs prédéfinies
 
@@ -116,15 +100,3 @@
 | 1              | moyenne    |
 | 2              | écart-type |
 | 3              | médiane    |
-
-
-#### type_donnee
-
-| id_type_donnee | etiquette   | unite |
-| -------------- | ----------- | ----- |
-| 1              | salinité    | ppm   |
-| 2              | débit       | m³/s  |
-| 3              | temperature | °C    |
-| 4              | longitude   | NULL  |
-| 5              | latitude    | NULL  |
-| 6              | batterie    | %     |
