@@ -3,6 +3,7 @@ defmodule SimulateurBouees.BoueeGen do
   require Logger
 
   def start_link(initial) do
+    IO.puts :startgen
     {:ok, state} = init(initial)
     Agent.start_link(process(state))
   end
@@ -36,6 +37,8 @@ defmodule SimulateurBouees.BoueeGen do
     # debit = state.dernieres_valeurs.debit + #GestionnaireScenario.GetRandomValue(id, value)
     # dernieres_valeurs= %{temperature: temperature, salinite: salinite, debit: debit}
 
+    IO.puts :generate
+
     temperature = state.dernieres_valeurs.temperature + 1
     salinite = state.dernieres_valeurs.salinite + 1
     debit = state.dernieres_valeurs.debit + 1
@@ -50,8 +53,7 @@ defmodule SimulateurBouees.BoueeGen do
     timestamp: :calendar.universal_time(), batterie: batterie, temperature: temperature,
     salinite: salinite, debit: debit}
 
-    # SimulateurBouees.EmetteurPhoenix.sendData(SimulateurBouees.TransportAgent.get_transport(), data)
-    # Ne fonctionne pas
+    IO.inspect state
     process(state)
     
   end

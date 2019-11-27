@@ -4,15 +4,15 @@ defmodule SimulateurBouees.Scenario do
   schema "scenario" do
     field :type, :integer
     field :description, :string
-    field :erreur_temperature, :float
-    field :erreur_debit, :float
-    field :erreur_salinite, :float
-    field :erreur_longitude, :float
-    field :erreur_latitude, :float
+    field :erreur_temperature, :decimal
+    field :erreur_debit, :decimal
+    field :erreur_salinite, :decimal
+    field :erreur_longitude, :decimal
+    field :erreur_latitude, :decimal
     field :valeur_decrementation_batterie, :integer
-    field :valeur_depart_temperature, :float
-    field :valeur_depart_debit, :float
-    field :valeur_depart_salinite, :float
+    field :valeur_depart_temperature, :decimal
+    field :valeur_depart_debit, :decimal
+    field :valeur_depart_salinite, :decimal
     field :prendre_compte, :boolean
   end
 

@@ -1,5 +1,5 @@
 defmodule SimulateurBouees do
-    
+    # SimulateurBouees.Simulateur.main()
 end
 
 # Pseudo-code

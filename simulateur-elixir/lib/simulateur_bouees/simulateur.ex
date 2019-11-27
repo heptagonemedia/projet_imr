@@ -5,7 +5,7 @@ defmodule SimulateurBouees.Simulateur do
     %{
       id: SimulateurBouees.Simulateur,
       start: { SimulateurBouees.Simulateur, :start_link, []},
-      restart: :permanent,
+      restart: :temporary,
       shutdown: 5000,
       type: :worker
       }
@@ -18,20 +18,38 @@ defmodule SimulateurBouees.Simulateur do
   def main do
 
     id_scenario = Enum.take_random(1..40, Enum.random(5..10))
+    liste_scenario = getScenarios(id_scenario)
 
-  end
+    demarrerToutesBouees(1, liste_scenario)
 
-  def test do
-    {:ok, concentrateur} = SimulateurBouees.Concentrateur.start_link() 
-    SimulateurBouees.Concentrateur.put("valeur1")
-    SimulateurBouees.Concentrateur.put("valeur2")
-    SimulateurBouees.Concentrateur.getall()
   end
   
+  def demarrerToutesBouees(nombre, liste_scenario) do
+    range = 1..nombre
+    
+    # Enum.each(range, fn id -> demarrerBouee(id, getRandomScenario(liste_scenario)) end)
+    Enum.flat_map range, fn id->
+      [[demarrerBouee(id, getRandomScenario(liste_scenario))]]
+    end
+  end
+
+  def demarrerBouee(id, scenario) do
+    SimulateurBouees.BoueeGen.start_link(%{idbouee: id, scenario: scenario})
+  end
+
+  def getRandomScenario(liste) do
+    Enum.take_random(liste, 1)
+  end
 
   def getScenario(id) do
     require Ecto.Query
-    SimulateurBouees.Scenario |> Ecto.Query.where(id_scenario: ^id) |> SimulateurBouees.Repo.all
+    scenario = SimulateurBouees.Scenario |> Ecto.Query.where(id: ^id) |> SimulateurBouees.Repo.all
+  end
+
+  def getScenarios(id_scenarios) do
+    Enum.flat_map id_scenarios, fn id ->
+      [[getScenario(id), id]]
+    end
   end
 
   def printScenario(scenario) do

@@ -10,7 +10,7 @@ defmodule SimulateurBouees.Application do
       # Starts a worker by calling: SimulateurBouees.Worker.start_link(arg)
       # {SimulateurBouees.Worker, arg}
       SimulateurBouees.Repo,
-      SimulateurBouees.EmetteurPhoenix
+      SimulateurBouees.Simulateur
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
