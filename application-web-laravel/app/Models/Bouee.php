@@ -6,15 +6,15 @@ class Bouee
 {
     protected $id;
     protected $etiquette;
-    protected $longitude;
-    protected $latitude;
+    protected $longitudeReference;
+    protected $latitudereference;
     protected $region;
 
     public function __construct($id, $etiquette, $longitude, $latitude, $region) {
         $this->id = $id;
         $this->etiquette = $etiquette;
-        $this->longitude = $longitude;
-        $this->latitude = $latitude;
+        $this->longitudeReference = $longitude;
+        $this->latitudereference = $latitude;
         $this->region = $region;
     }
 
@@ -37,16 +37,16 @@ class Bouee
         return $this->etiquette;
     }
 
-    public function getLongitude(){
-        return $this->longitude;
+    public function getLongitudeReference(){
+        return $this->longitudeReference;
     }
 
     public function getRegion(){
         return $this->region;
     }
 
-    public function getLatitude(){
-        return $this->latitude;
+    public function getLatitudereference(){
+        return $this->latitudereference;
     }
 
     public static function mockBouee(){
