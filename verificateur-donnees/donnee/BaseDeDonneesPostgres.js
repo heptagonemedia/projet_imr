@@ -1,6 +1,6 @@
 const { Pool, Client } = require('pg');
 
-credentials = require('../credentials/CredentialsPg');
+credentials = require('../../../credentials/CredentialsPg');
 verificateur = require('../verificateur');
 
 var variablesConnexion = new credentials.Credentials();

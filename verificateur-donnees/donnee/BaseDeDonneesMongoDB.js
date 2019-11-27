@@ -1,8 +1,8 @@
 const MongoClient = require('mongodb').MongoClient;
 
-const credentials = require('../credentials/CredentialsMongo');
+const credentials = require('../../../credentials/CredentialsMongo');
 
-const credentialsMongo = credentials.CredentialsMongo();
+const credentialsMongo = credentials.Credentials();
 
 // Connection URL
 // const url = 'mongodb://localhost:27017';
