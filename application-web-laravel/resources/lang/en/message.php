@@ -13,6 +13,8 @@ return [
     "boueesNonConformes"=>"Incorrects buoys",
     "etatDesBouees"=>"Buoy Status", //Buoy Status
     "altGrapheBouees"=>"graph representing the number of correct and incorrect buoys",
+    "titreGraphiqueEtatBouees"=>"boys state piechart",
+    //"agrandirCarte"=>"enlarge map",
     // footer.php
     "copyright"=>"&copy; 2019 Heptagone Media",
     // formulaireRecherche.php

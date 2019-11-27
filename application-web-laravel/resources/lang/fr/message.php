@@ -17,6 +17,8 @@ return [
     "boueesNonConformes"=>"Bou&eacute;es non conforme",
     "etatDesBouees"=>"&Eacute;tat des Bou&eacute;es",
     "altGrapheBouees"=>"graphique repr&eacute;santant le nombre de bou&eacute;es conformes et non conformes",
+    "titreGraphiqueEtatBouees"=>"graphique de l'&eacute;tat des bou&eacute;es",
+    //"agrandirCarte"=>"agrandir la carte",
     // footer.php //géré
     "copyright"=>"&copy; 2019 Heptagone Media",
     // formulaireRecherche.php

@@ -79,7 +79,7 @@
                         <div class="row">
                             <div class="col s6 center-align">{!! __('message.titreCarte') !!}</div>
                             <div class="col s6 center-align">
-                                <button title="agrandir la carte" role="button" class="btn green" onclick="agrandirCarte(document.getElementById('map'))">{!! __('message.boutonPleinEcran') !!}</button>
+                                <button title="{!! __('message.agrandirCarte') !!}" role="button" class="btn green" onclick="agrandirCarte(document.getElementById('map'))">{!! __('message.boutonPleinEcran') !!}</button>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                 <div class="card white">
                     <div class="card-content ">
                         <span class="card-title black-text center-align">{!! __('message.etatDesBouees') !!}</span>
-                        <canvas title="graphique de l etat des bouees" role="linegraph" id="camembertBouees"></canvas>
+                        <canvas title="{!! __('message.titreGraphiqueEtatBouees') !!}" role="linegraph" id="camembertBouees"></canvas>
                     </div>
                 </div>
             </section>
