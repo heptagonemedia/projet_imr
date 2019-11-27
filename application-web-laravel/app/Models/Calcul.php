@@ -46,7 +46,7 @@ class Calcul
     public function setId($id){
         $this->id = $id;
     }
-    
+
     public function setEtiquette($etiquette){
         $this->etiquette = $etiquette;
     }
