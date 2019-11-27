@@ -52,11 +52,7 @@ defmodule SimulateurBouees.BoueeGen do
     # debit = state.dernieres_valeurs.debit + #GestionnaireScenario.GetRandomValue(id, value)
     # dernieres_valeurs= %{temperature: temperature, salinite: salinite, debit: debit}
 
-    IO.puts :generate
     valeurs = List.first(state.scenario)
-    #IO.inspect state.scenario.erreur_temperature
-
-    # lastVal x (0.95 + erreurVal + random.range(0, 0.10))
 
     temperature = calcul(state.dernieres_valeurs.temperature, valeurs.erreur_temperature)
     salinite = calcul(state.dernieres_valeurs.salinite, valeurs.erreur_salinite)
@@ -73,6 +69,7 @@ defmodule SimulateurBouees.BoueeGen do
     salinite: salinite, debit: debit}
 
     IO.inspect data
+
     process(state)
     
   end
