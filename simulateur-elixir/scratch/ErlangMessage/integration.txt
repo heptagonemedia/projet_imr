@@ -1,0 +1,21 @@
+If you are trying to connect Nodes via code: You need to turn your running code into a distributed node. To do this run Node.start(:fullNameOfServer).
+
+Eg: if your IP is 192.168.0.1, you can have a full Node name like :"foo@192.168.0.1"
+
+Once you turn your node into a distributed node, you set the cookie: Node.set_cookie :cookie_name
+
+Finally, you need to establish a connection with the remote Node. (You also need to Node.start and Node.set_cookie on the remote node) To do this, you need the remote node's name. Let us assume the remote node's name is bar@192.168.0.2 (assuming this Node is another computer on the same local network). The code to do this, looks like Node.connect :"bar@192.168.0.2"
+
+You can now run Node.list to see the bar@192.168.0.2 available on foo@192.168.0.1 and vice versa.
+
+Summarising the above points, your code should look something like
+
+On the Foo machine
+
+Node.start :"foo@192.168.0.1" #this is the IP of the machine on which you run the code
+Node.set_cookie :cookie_name
+Node.connect "bar@192.168.0.2"
+On the Bar machine
+
+Node.start :"bar@192.168.0.2" 
+Node.set_cookie :cookie_name
