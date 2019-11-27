@@ -26,24 +26,41 @@ class CalculDAO implements CalculSQL
 
     public function recupererListeCalcul()
     {
-        $calculs = DB::select(self::RECUPERER_BOUEES_SQL);
-        $this->listeBouees = array();
+        $calculs = DB::select(self::RECUPERER_CALCULS_SQL);
+        $this->listeCalculs = array();
 
         foreach ($calculs as $item) {
-            $id = $item[Bouee::CLE_ID];
-            $etiquette = $item[Bouee::CLE_ETIQUETTE];
-            $longitudeReference = $item[Bouee::CLE_LONGITUDE_REFERENCE];
-            $latitudereference = $item[Bouee::CLE_LATITUDE_REFERENCE];
-            $id_region = $item[Bouee::CLE_ID_REGION];
+            $id = $item[Calcul::CLE_ID];
+            $etiquette = $item[Calcul::CLE_ETIQUETTE];
+            $date_generation = $item[Calcul::CLE_DATE_GENERATION];
+            $date_prochaine_generation = $item[Calcul::CLE_PROCHAINE_GENERATION];
+            $enregistre = $item[Calcul::CLE_ENREGISTRE];
+            $id_region = $item[Calcul::CLE_ID_REGION];
+            $id_type_calcul = $item[Calcul::CLE_ID_TYPE_CALCUL];
+            $date_debut_plage = $item[Calcul::CLE_DATE_DEBUT_PLAGE];
+            $date_fin_plage = $item[Calcul::CLE_DATE_FIN_PLAGE];
+            $frequence_valeur = $item[Calcul::CLE_FREQUENCE_VALEUR];
+            $xml_graphique_temperature = $item[Calcul::CLE_XML_TEMPERATURE];
+            $xml_graphique_salinite = $item[Calcul::CLE_XML_SALINITE];
+            $xml_graphique_debit = $item[Calcul::CLE_XML_DEBIT];
 
-            $region = Region::getInstance()->trouverRegionParId($id_region);
 
+            $region = RegionDAO::getInstance()->trouverRegionParId($id_region);
+            $typeCalcul =  TypeCalculDAO::getInstance()->trouverTypeDeCalculParId($id_type_calcul);
             $calcul = new Calcul(
                 $id,
                 $etiquette,
-                $longitudeReference,
-                $latitudereference,
-                $region
+                $xml_graphique_temperature,
+                $xml_graphique_salinite,
+                $xml_graphique_debit,
+                $date_debut_plage,
+                $date_fin_plage,
+                $date_generation,
+                $date_prochaine_generation,
+                $enregistre,
+                $region,
+                $frequence_valeur,
+                $typeCalcul
             );
             array_push($this->listeCalculs, $calcul);
         }
