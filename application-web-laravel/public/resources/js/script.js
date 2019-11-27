@@ -73,17 +73,35 @@ $(document).ready(function () {
 });
 
 var ctx = document.getElementById('camembertBouees').getContext('2d');
-data = {
-    datasets: [{
-        data: [60, 15],
-        backgroundColor: ["#07CA38", "#EF0000"]
-    }],
 
-    labels: [
-        'Conformes',
-        'Non conformes'
-    ]
-};
+//Pour gérer la traduction des éléments du Javascript depuis le PHP
+//il faut changer le contenu du tableau labels.
+if (document.documentElement.lang === 'fr') {
+    data = {
+        datasets: [{
+            data: [60, 15],
+            backgroundColor: ["#07CA38", "#EF0000"]
+        }],
+
+        labels: [
+            'Conformes',
+            'Non conformes'
+        ]
+    };
+} else {
+    data = {
+        datasets: [{
+            data: [60, 15],
+            backgroundColor: ["#07CA38", "#EF0000"]
+        }],
+
+        labels: [
+            'Functionning',
+            'Malfunctionning'
+        ]
+    };
+}
+
 var myPieChart = new Chart(ctx, {
     type: 'pie',
     data: data
