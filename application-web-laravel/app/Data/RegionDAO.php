@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 class RegionDAO implements RegionSQL
 {
     private $instance;
-    private $connection;
 
     private $listeRegions;
 
@@ -21,19 +20,19 @@ class RegionDAO implements RegionSQL
 
     public function __construct()
     {
-        $listeRegions = array();
+        $this->listeRegions = array();
     }
 
     public function recuperListeRegions(){
         $listeRegions = array();
 
-        $regions = DB::select('select * from region');
+        $regions = DB::select(self::RECUPERER_REGIONS_SQL);
 
         foreach ($regions as $region){
-            array_push($listeRegions, new Region($region["id"], $regions["etiquette"]));
+            array_push($listeRegions, new Region($region[Region::CLE_ID], $regions[Region::CLE_ETIQUETTE]));
         }
 
         return $listeRegions;
     }
-    
+
 }

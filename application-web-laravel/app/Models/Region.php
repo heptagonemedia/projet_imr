@@ -5,6 +5,9 @@ namespace App\Models;
 
 class Region
 {
+    const CLE_ID = "id";
+    const CLE_ETIQUETTE = "region";
+
     protected $id;
     protected $etiquette;
 

@@ -4,11 +4,17 @@ namespace App\Models;
 
 class Bouee
 {
-    protected $id;
-    protected $etiquette;
-    protected $longitudeReference;
-    protected $latitudereference;
-    protected $region;
+    const  CLE_ID = "id";
+    const  CLE_ETIQUETTE = "etiquette";
+    const  CLE_LONGITUDE_REFERENCE = "longitude_reference";
+    const  CLE_LATITUDE_REFERENCE = "latitude_reference";
+    const  CLE_ID_REGION = "id_region";
+
+    private $id;
+    private $etiquette;
+    private $longitudeReference;
+    private $latitudereference;
+    private $region;
 
     public function __construct($id, $etiquette, $longitude, $latitude, $region) {
         $this->id = $id;
