@@ -1,5 +1,5 @@
 defmodule SimulateurBouees.Simulateur do
-  
+  require IEx
 
   def child_spec(_args) do
     %{
@@ -28,8 +28,9 @@ defmodule SimulateurBouees.Simulateur do
     range = 1..nombre
     
     # Enum.each(range, fn id -> demarrerBouee(id, getRandomScenario(liste_scenario)) end)
-    Enum.flat_map range, fn id->
-      [[demarrerBouee(id, getRandomScenario(liste_scenario))]]
+    Enum.each range, fn id->
+      scenario = getRandomScenario(liste_scenario)
+      demarrerBouee(id, scenario)
     end
   end
 
@@ -48,7 +49,7 @@ defmodule SimulateurBouees.Simulateur do
 
   def getScenarios(id_scenarios) do
     Enum.flat_map id_scenarios, fn id ->
-      [[getScenario(id), id]]
+      getScenario(id)
     end
   end
 

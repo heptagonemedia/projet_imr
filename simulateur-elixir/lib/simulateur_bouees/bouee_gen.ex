@@ -1,6 +1,7 @@
 defmodule SimulateurBouees.BoueeGen do
   use Agent
   require Logger
+  require IEx
 
   def start_link(initial) do
     IO.puts :startgen
@@ -29,8 +30,22 @@ defmodule SimulateurBouees.BoueeGen do
     end
   end
 
-  def generer(state) do
+  def calcul(lastval, errval) do
+    valeur = Decimal.add(Decimal.from_float(0.95), errval)
+    random = Decimal.mult(Decimal.from_float(:rand.uniform_real()), Decimal.from_float(0.1))
+    valeur2 = Decimal.add(valeur, random)
+    Decimal.mult(lastval, valeur2)
+  end
 
+  def decrementBatterie(valeur, decrement) do
+    if (:rand.uniform_real > 0.5 ) do
+      valeur
+    else 
+      valeur - decrement
+    end
+  end
+
+  def generer(state) do
     # Si il existe des dernieres valeurs 
     # temperature = state.dernieres_valeurs.temperature + #GestionnaireScenario.GetRandomValue(id, value)
     # salinite = state.dernieres_valeurs.salinite + #GestionnaireScenario.GetRandomValue(id, value)
@@ -38,22 +53,26 @@ defmodule SimulateurBouees.BoueeGen do
     # dernieres_valeurs= %{temperature: temperature, salinite: salinite, debit: debit}
 
     IO.puts :generate
+    valeurs = List.first(state.scenario)
+    #IO.inspect state.scenario.erreur_temperature
 
-    temperature = state.dernieres_valeurs.temperature + 1
-    salinite = state.dernieres_valeurs.salinite + 1
-    debit = state.dernieres_valeurs.debit + 1
+    # lastVal x (0.95 + erreurVal + random.range(0, 0.10))
+
+    temperature = calcul(state.dernieres_valeurs.temperature, valeurs.erreur_temperature)
+    salinite = calcul(state.dernieres_valeurs.salinite, valeurs.erreur_salinite)
+    debit = calcul(state.dernieres_valeurs.debit, valeurs.erreur_debit)
     Map.replace!(state, :dernieres_valeurs, %{temperature: temperature, salinite: salinite, debit: debit});
 
-    latitude = :rand.uniform(20)
-    longitude = :rand.uniform(20)
-    batterie = 100 
+    latitude = calcul(state.dernieres_valeurs.latitude, valeurs.erreur_latitude)
+    longitude = calcul(state.dernieres_valeurs.longitude, valeurs.erreur_longitude)
+    batterie = decrementBatterie(state.dernieres_valeurs.batterie, valeurs.valeur_decrementation_batterie)
 
     Map.replace!(state, :dernieres_valeurs, %{state.dernieres_valeurs | latitude: latitude, longitude: longitude, batterie: batterie})
     data = %{id_bouee: state.id_bouee, latitude: latitude, longitude: longitude, 
     timestamp: :calendar.universal_time(), batterie: batterie, temperature: temperature,
     salinite: salinite, debit: debit}
 
-    IO.inspect state
+    IO.inspect data
     process(state)
     
   end
