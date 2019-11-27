@@ -37,7 +37,7 @@ const NOMBRE_DE_BOUEE = 7500;
 const NOMBRE_DE_TYPE_DE_CALCUL = 3;
 const NOMBRE_DE_CALCUL = 5;
 
-const DATE_DEBUT_HISTORIQUE = new date.DateModele(0,0,0,1,11,2019);
+const DATE_DEBUT_HISTORIQUE = new date.DateModele(2,48,17,2,11,2019);
 const DATE_FIN_HISTORIQUE = new date.DateModele(59,59,23,30,11,2019);
 
 //######################################### Génération des Régions
@@ -182,13 +182,13 @@ var insertionHistoriques = async function (nombreDeBouee, dateDebutHistorique, d
 //######################################### Génération des MockData
 var genererMockData = async function() {
 
-    await insererRegions(NOMBRE_DE_REGION);
+    // await insererRegions(NOMBRE_DE_REGION);
 
-    await insertionBouee(NOMBRE_DE_BOUEE);
+    // await insertionBouee(NOMBRE_DE_BOUEE);
 
-    await insererTypesCalculs(NOMBRE_DE_TYPE_DE_CALCUL);
+    // await insererTypesCalculs(NOMBRE_DE_TYPE_DE_CALCUL);
 
-    await insererCalculs(NOMBRE_DE_CALCUL);
+    // await insererCalculs(NOMBRE_DE_CALCUL);
 
     await insertionHistoriques(NOMBRE_DE_BOUEE, DATE_DEBUT_HISTORIQUE, DATE_FIN_HISTORIQUE);
 
