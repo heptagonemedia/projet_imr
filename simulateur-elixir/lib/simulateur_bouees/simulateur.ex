@@ -16,26 +16,15 @@ defmodule SimulateurBouees.Simulateur do
   end
 
   def main do
-
     id_scenario = Enum.take_random(1..40, Enum.random(5..10))
     liste_scenario = getScenarios(id_scenario)
-
-    demarrerToutesBouees(100, liste_scenario)
-
+    demarrerToutesBouees(1, liste_scenario)
   end
   
   def demarrerToutesBouees(nombre, liste_scenario) do
-    range = 1..nombre
-    
-    # Enum.each(range, fn id -> demarrerBouee(id, getRandomScenario(liste_scenario)) end)
-    # Enum.each range, fn id ->
-    #   scenario = getRandomScenario(liste_scenario)
-    #   demarrerBouee(id, scenario)
-
-    range
-    |> Enum.to_list
-    |> Enum.map(fn x -> Task.async(fn -> demarrerBouee(x, getRandomScenario(liste_scenario)) end) end)
-    
+    1..nombre
+      |> Enum.to_list
+      |> Enum.map(fn x -> Task.async(fn -> demarrerBouee(x, getRandomScenario(liste_scenario)) end) end)
   end
 
   def demarrerBouee(id, scenario) do

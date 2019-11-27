@@ -46,31 +46,30 @@ defmodule SimulateurBouees.BoueeGen do
   end
 
   def generer(state) do
-    # Si il existe des dernieres valeurs 
-    # temperature = state.dernieres_valeurs.temperature + #GestionnaireScenario.GetRandomValue(id, value)
-    # salinite = state.dernieres_valeurs.salinite + #GestionnaireScenario.GetRandomValue(id, value)
-    # debit = state.dernieres_valeurs.debit + #GestionnaireScenario.GetRandomValue(id, value)
-    # dernieres_valeurs= %{temperature: temperature, salinite: salinite, debit: debit}
 
-    valeurs = List.first(state.scenario)
+    last = state.dernieres_valeurs
+    scenario = List.first(state.scenario) 
 
-    temperature = calcul(state.dernieres_valeurs.temperature, valeurs.erreur_temperature)
-    salinite = calcul(state.dernieres_valeurs.salinite, valeurs.erreur_salinite)
-    debit = calcul(state.dernieres_valeurs.debit, valeurs.erreur_debit)
+    temperature = calcul(last.temperature, scenario.erreur_temperature)
+    salinite = calcul(last.salinite, scenario.erreur_salinite)
+    debit = calcul(last.debit, scenario.erreur_debit)
     Map.replace!(state, :dernieres_valeurs, %{temperature: temperature, salinite: salinite, debit: debit});
 
-    latitude = calcul(state.dernieres_valeurs.latitude, valeurs.erreur_latitude)
-    longitude = calcul(state.dernieres_valeurs.longitude, valeurs.erreur_longitude)
-    batterie = decrementBatterie(state.dernieres_valeurs.batterie, valeurs.valeur_decrementation_batterie)
+    latitude = calcul(last.latitude, scenario.erreur_latitude)
+    longitude = calcul(last.longitude, scenario.erreur_longitude)
+    batterie = decrementBatterie(last.batterie, scenario.valeur_decrementation_batterie)
 
-    Map.replace!(state, :dernieres_valeurs, %{state.dernieres_valeurs | latitude: latitude, longitude: longitude, batterie: batterie})
+    Map.replace!(state, :dernieres_valeurs, %{last | latitude: latitude, longitude: longitude, batterie: batterie})
     data = %{id_bouee: state.id_bouee, latitude: latitude, longitude: longitude, 
     timestamp: :calendar.universal_time(), batterie: batterie, temperature: temperature,
     salinite: salinite, debit: debit}
 
+    # TODO send data to RECEIVER => :rpc.call  etc.
     IO.inspect data
 
-    process(state)
+    :rpc.call(:"recv@127.0.0.1", Receiver, :process_data, [self(), data])
+
+    # process(state)
     
   end
 end

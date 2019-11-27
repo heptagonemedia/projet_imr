@@ -12,10 +12,11 @@ Summarising the above points, your code should look something like
 
 On the Foo machine
 
-Node.start :"foo@192.168.0.1" #this is the IP of the machine on which you run the code
-Node.set_cookie :cookie_name
+Node.start :"emit@127.0.0.1" #this is the IP of the machine on which you run the code
+Node.set_cookie :avoine_et_raisin
 Node.connect "bar@192.168.0.2"
+
 On the Bar machine
 
-Node.start :"bar@192.168.0.2" 
-Node.set_cookie :cookie_name
+Node.start :"recv@127.0.0.1" 
+Node.set_cookie :avoine_et_raisin

@@ -3,8 +3,8 @@ Fonctionnement:
 1- Ouvrir un shell dans chaque dossier: recv, emit
 2- Démarrer IEx dans chaque shell avec un nom :
 
-iex --name emit@10.1.106.10 -S mix
-iex --name recv@10.1.38.24 -S mix
+iex --name emit@TI-LACHANCEC -S mix
+iex --name recv@TI-LACHANCEC -S mix
 
 3- Dans le shell emit, envoyer des requêtes avec la syntaxe suivante:
 Specific example::
