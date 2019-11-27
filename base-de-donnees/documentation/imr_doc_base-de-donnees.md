@@ -2,20 +2,20 @@
 
 ## Accès
 
-### pgAdmin
+### mongo-express
 
-| Adresse     | https://pgadmin.vpsloic.loicbertrand.net/ |
-| ----------- | ----------------------------------------- |
-| Identifiant | pgadmin@heptagonemedia.com                |
-| serveur     | postgres                                  |
+| Adresse         | https://mongo-express.homebert.fr |
+| --------------- | --------------------------------- |
+| Utilisateur     | user                              |
+| Base de données | imr                               |
 
 ### Connexion à la base de données
 
-| Hôte                | vpsloic.loicbertrand.net |
-| ------------------- | ------------------------ |
-| Port                | 2232                     |
-| Utilisateur         | heptagonemedia           |
-| Nom base de données | imr                      |
+| Hôte            | home  |
+| --------------- | ----- |
+| Port            | 27017 |
+| Utilisateur     | admin |
+| Base de données | imr   |
 
 ## Schéma de la base de données
 
@@ -39,6 +39,7 @@
 | etiquette                 | text                        |               | nom du calcul                                                |
 | date_generation           | timestamp without time zone |               | date à laquelle le calcul a été généré                       |
 | date_prochaine_generation | timestamp without time zone |               | date à laquelle le calcul va être réitéré (si nul, le calcul ne sera pas réitéré) |
+| enregistre                | boolean                     |               | true si le calcul doit être conservé lors du prochain nettoyage / false si le calcul doit être supprimée lors du prochain nettoyage |
 | date_debut_plage          | timestamp without time zone |               | date du début de la plage temporelle sur laquelle porte le calcul |
 | date_fin_plage            | timestamp without time zone |               | date de la fin de la plage temporelle sur laquelle porte le calcul |
 | frequence_valeur          | double precision            |               | fréquence du calcul                                          |
