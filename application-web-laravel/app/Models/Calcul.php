@@ -7,6 +7,25 @@ use DemeterChain\C;
 
 class Calcul
 {
+
+    const CLE_ID = "id";
+    const CLE_ETIQUETTE = "etiquette";
+    const CLE_DATE_GENERATION = "date_generation";
+    const CLE_PROCHAINE_GENERATION = "date_prochaine_generation";
+    const CLE_ENREGISTRE = "enregistre";
+    const CLE_ID_REGION = "id_region";
+    const CLE_ID_TYPE_CALCUL = "id_type_calcul";
+    const CLE_DATE_DEBUT_PLAGE = "date_debut_plage";
+    const CLE_DATE_FIN_PLAGE = "date_fin_plage";
+    const CLE_FREQUENCE_VALEUR = "frequence_valeur";
+    const CLE_XML_TEMPERATURE = "xml_graphique_temperature";
+    const CLE_XML_SALINITE = "xml_graphique_salinite";
+    const CLE_XML_DEBIT = "xml_graphique_debit";
+
+
+
+
+
     private $id;
     private $etiquette;
     private $dateGeneration;

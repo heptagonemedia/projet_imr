@@ -2,7 +2,7 @@
 
 namespace App\Data;
 
-interface CalculEnregistreSQL
+interface CalculSQL
 {
     const SQL_LISTER_CALCUL_ENREGISTRE = "";
 }
