@@ -5,6 +5,9 @@ namespace App\Models;
 
 class TypeCalcul
 {
+    const CLE_ID = "id";
+    const CLE_ETIQUETTE = "etiquette";
+
     protected $id;
     protected $etiquette;
 

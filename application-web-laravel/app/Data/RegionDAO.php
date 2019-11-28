@@ -23,8 +23,12 @@ class RegionDAO implements RegionSQL
         $this->listeRegions = array();
     }
 
+    public function recupererRegionParId($id){
+        DB::select(RegionSQL::RECUPERER_REGION_PAR_ID_SQL, [$id]);
+    }
+
     public function recuperListeRegions(){
-        $listeRegions = array();
+        $this->listeRegions = array();
 
         $regions = DB::select(self::RECUPERER_REGIONS_SQL);
 
@@ -32,7 +36,7 @@ class RegionDAO implements RegionSQL
             array_push($listeRegions, new Region($region[Region::CLE_ID], $regions[Region::CLE_ETIQUETTE]));
         }
 
-        return $listeRegions;
+        return $this->listeRegions;
     }
 
 }
