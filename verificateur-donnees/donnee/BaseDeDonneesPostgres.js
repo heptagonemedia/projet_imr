@@ -1,7 +1,7 @@
 const { Pool, Client } = require('pg');
 
 credentials = require('../../../credentials/CredentialsPg');
-verificateur = require('../verificateur');
+verificateur = require('../controleur/verificateur');
 
 var variablesConnexion = new credentials.Credentials();
 
@@ -36,17 +36,17 @@ exports.selectionnerDonnees = function(table, bdd) {
 exports.selectionnerDonneesSelonParametre = function (table, bdd, nomColonne, valeurColonne) {
     console.log('selectionnerDonnees');
 
-    const SELECT_TOUTE_LA_TABLE = {
+    const SELECT_TABLE_PARAMETRE = {
         name: 'selectionnerDonnees',
         text: 'SELECT * FROM ' + table + ' WHERE ' + nomColonne + '= \''+ valeurColonne +'\''
     }
     // callback
-    bdd.query(SELECT_TOUTE_LA_TABLE, (err, res) => {
+    bdd.query(SELECT_TABLE_PARAMETRE, (err, res) => {
         if (err) {
             console.log('Erreur Select', err);
         } else {
             // console.log(res.rows);
-            verificateur.lancerVerification(res.rows);
+            // verificateur.lancerVerification(res.rows);
         }
     })
 

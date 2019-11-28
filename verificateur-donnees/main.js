@@ -1,10 +1,32 @@
 const bddPostgres = require('./donnee/BaseDeDonneesPostgres');
+const fichier = require('./fonction/fonctionFichier');
+const fs = require('fs');
 
-var baseDeDonnees = bddPostgres.connexion();
-console.log('Connexion ouverte');
+
+(function() {
+
+    fs.readFile('./donnee/donnees.json', 'utf8', async function (err, data) {
+        if (err) throw err;
+            
+        var donnees = JSON.parse(data);
 
 
-bddPostgres.selectionnerDonneesSelonParametre('historique_donnee_bouee', baseDeDonnees, 'date_saisie', '2018-01-01 00:10:10');
+        fs.readFile('./donnee/derniersId.json', 'utf8', async function(err, data){
+            if (err) throw err;
 
-bddPostgres.deconnexion(baseDeDonnees);
-console.log('Connexion fermée');
+            var dernierId = JSON.parse(data);
+
+            // console.log(donnees[('bouee_'+1)]);
+            // console.log(dernierId['id_table_paire']);
+
+            var baseDeDonnees = bddPostgres.connexion();
+
+            bddPostgres.selectionnerDonneesSelonParametre('heure_paire', baseDeDonnees, 'date_saisie', (dernierId['id_table_paire'] + 1));
+
+            bddPostgres.deconnexion(baseDeDonnees);
+
+        });
+
+    });
+
+})()
