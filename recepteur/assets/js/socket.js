@@ -70,6 +70,7 @@ channel.on("new_msg", payload => {
     let messageItem = document.createElement("li")
     messageItem.innerText = `[${Date()}] ${payload.body}`
     messagesContainer.appendChild(messageItem)
+    console.log(payload, {})
 })
 
 channel.join()

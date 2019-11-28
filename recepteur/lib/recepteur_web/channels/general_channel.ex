@@ -12,6 +12,8 @@ defmodule RecepteurWeb.GeneralChannel do
   def handle_in("new_msg", %{"body" => body}, socket) do
     broadcast!(socket, "new_msg", %{body: body})
 
+    # {"id_bouee": 1, "longitude_reelle": 50.0, "latitude_reelle": 340.0}
+
     IO.puts body
     donnee = Poison.decode!(body, as: %Recepteur.Donnee{})
 
