@@ -26,7 +26,7 @@ class CalculDAO implements CalculSQL
 
     public function recupererListeCalcul()
     {
-        $calculs = DB::select(self::RECUPERER_CALCULS_SQL);
+        $calculs = DB::select(CalculSQL::RECUPERER_CALCULS_SQL);
         $this->listeCalculs = array();
 
         foreach ($calculs as $item) {
@@ -66,4 +66,45 @@ class CalculDAO implements CalculSQL
         }
         return $this->listeCalculs;
     }
+
+    public function recupererCalculParId($id){
+        return DB::select(CalculSQL::RECUPERER_CALCUL_PAR_ID, [$id]);
+    }
+
+    public function modifierCalcul($calcul){
+        DB::update(CalculSQL::MODIFIER_CALCUL, [
+            $calcul->etiquette,
+            $calcul->dateGeneration,
+            $calcul->dateProchaineGeneration,
+            $calcul->enregistre,
+            $calcul->region->id,
+            $calcul->typeCalcul->id,
+            $calcul->dateDebutPlage,
+            $calcul->dateFinPlage,
+            $calcul->frequenceValeur,
+            $calcul->cheminFichierXmlTemperature,
+            $calcul->cheminFichierXmlSalinite,
+            $calcul->cheminFichierXmlDebit,
+            $calcul->id
+        ]);
+    }
+
+    public function ajouterCalcul($calcul){
+        DB::update(CalculSQL::AJOUTER_CALCUL, [
+            $calcul->id,
+            $calcul->etiquette,
+            $calcul->dateGeneration,
+            $calcul->dateProchaineGeneration,
+            $calcul->enregistre,
+            $calcul->region->id,
+            $calcul->typeCalcul->id,
+            $calcul->dateDebutPlage,
+            $calcul->dateFinPlage,
+            $calcul->frequenceValeur,
+            $calcul->cheminFichierXmlTemperature,
+            $calcul->cheminFichierXmlSalinite,
+            $calcul->cheminFichierXmlDebit
+        ]);
+    }
+
 }
