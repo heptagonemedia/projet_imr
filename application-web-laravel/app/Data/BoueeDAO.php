@@ -26,7 +26,7 @@ class BoueeDAO implements BoueeSQL
 
     public function recupererListeCalcul()
     {
-        $bouees = DB::select(self::RECUPERER_BOUEES_SQL);
+        $bouees = DB::select(self::SQL_LISTER_BOUEE);
         $this->listeBouees = array();
 
         foreach ($bouees as $item) {
@@ -48,5 +48,9 @@ class BoueeDAO implements BoueeSQL
             array_push($this->listeBouees, $bouee);
         }
         return $this->listeBouees;
+    }
+
+    public function recupererBoueeParId($id){
+        return DB::select(BoueeSQL::SQL_RECUPERER_BOUEE_PAR_ID, [$id]);
     }
 }
