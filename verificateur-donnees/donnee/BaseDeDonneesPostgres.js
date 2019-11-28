@@ -18,7 +18,27 @@ exports.selectionnerDonnees = function(table, bdd) {
     
     const SELECT_TOUTE_LA_TABLE = {
         name: 'selectionnerDonnees',
-        text: 'SELECT * FROM '+ table
+        text: 'SELECT * FROM ' + table
+    }
+    // callback
+    bdd.query(SELECT_TOUTE_LA_TABLE, (err, res) => {
+        if (err) {
+            console.log('Erreur Select', err);
+        } else {
+            // console.log(res.rows);
+            verificateur.lancerVerification(res.rows);
+        }
+    })
+
+
+}
+
+exports.selectionnerDonneesSelonParametre = function (table, bdd, nomColonne, valeurColonne) {
+    console.log('selectionnerDonnees');
+
+    const SELECT_TOUTE_LA_TABLE = {
+        name: 'selectionnerDonnees',
+        text: 'SELECT * FROM ' + table + ' WHERE ' + nomColonne + '= \''+ valeurColonne +'\''
     }
     // callback
     bdd.query(SELECT_TOUTE_LA_TABLE, (err, res) => {
