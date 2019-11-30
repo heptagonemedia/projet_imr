@@ -3,11 +3,12 @@
 namespace App\Data;
 use App\Models\Region;
 use Illuminate\Support\Facades\DB;
+use Jenssegers\Mongodb\Eloquent\Model;
 
-class RegionDAO implements RegionSQL
+class RegionDAO extends Model implements RegionSQL
 {
     private $instance;
-
+    private $connection;
     private $listeRegions;
 
     public static function getInstance()
@@ -21,16 +22,19 @@ class RegionDAO implements RegionSQL
     public function __construct()
     {
         $this->listeRegions = array();
+        $this->connection = DB::connection('mongodb');
+
     }
 
     public function recupererRegionParId($id){
-        DB::select(RegionSQL::RECUPERER_REGION_PAR_ID_SQL, [$id]);
+        $region = DB::connection('mongodb')->collection('region')->where("id_region", 1)->first();
+        return new Region($region[Region::CLE_ID], $region[Region::CLE_ETIQUETTE]);
     }
 
     public function recuperListeRegions(){
         $this->listeRegions = array();
 
-        $regions = DB::select(self::RECUPERER_REGIONS_SQL);
+        $regions = $this->connection->collection('region')->get();
 
         foreach ($regions as $region){
             array_push($listeRegions, new Region($region[Region::CLE_ID], $regions[Region::CLE_ETIQUETTE]));

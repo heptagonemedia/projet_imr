@@ -16,18 +16,6 @@ class HistoriqueDonneeBouee extends Model
     private $batterie;
     private $valide;
 
-    /**
-     * HistoriqueDonneeBouee constructor.
-     * @param $id
-     * @param $dateSaisie
-     * @param $temperature
-     * @param $debit
-     * @param $salinite
-     * @param $longitude
-     * @param $latitude
-     * @param $batterie
-     * @param $valide
-     */
     public function __construct($id, $dateSaisie, $temperature, $debit, $salinite, $longitude, $latitude, $batterie, $valide)
     {
         $this->id = $id;

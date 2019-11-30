@@ -1,5 +1,5 @@
 @extends('layout.layout')
-
+<?php  use Illuminate\Support\Facades\DB; ?>
 
 @section('head')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -42,7 +42,19 @@
 
     @endfor
 
-
+<pre>
+ <?php
+    $connection = DB::connection('mongodb');
+//    $regions =  $connection->collection('region')->where('id_region', '3');
+    $id =1;
+    print_r( DB::connection('mongodb')->collection('region')->where("id_region", 1)->first());
+//    echo $regions;
+    /*foreach ($regions as $region){
+        echo $region["etiquette"];
+    }*/
+//    echo $connection->collection('region')->where('id_region', '2');
+    ?>
+</pre>
     <nav role="navigation" aria-label="header">
         <div class="nav-wrapper black" >
             <div class="row  ">

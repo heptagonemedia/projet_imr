@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class Bouee
+use Illuminate\Database\Eloquent\Model;
+
+class Bouee extends Model
 {
     const  CLE_ID = "id";
     const  CLE_ETIQUETTE = "etiquette";

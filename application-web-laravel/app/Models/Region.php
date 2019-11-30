@@ -3,10 +3,12 @@
 namespace App\Models;
 
 
-class Region
+use Jenssegers\Mongodb\Eloquent\Model;
+
+class Region extends Model
 {
-    const CLE_ID = "id";
-    const CLE_ETIQUETTE = "region";
+    const CLE_ID = "id_region";
+    const CLE_ETIQUETTE = "etiquette";
 
     protected $id;
     protected $etiquette;

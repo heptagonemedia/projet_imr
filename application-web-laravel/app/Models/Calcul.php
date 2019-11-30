@@ -4,8 +4,9 @@ namespace App\Models;
 
 
 use DemeterChain\C;
+use Illuminate\Database\Eloquent\Model;
 
-class Calcul
+class Calcul extends Model
 {
 
     const CLE_ID = "id";
