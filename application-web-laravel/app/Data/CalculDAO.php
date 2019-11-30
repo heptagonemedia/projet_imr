@@ -23,6 +23,7 @@ class CalculDAO implements CalculSQL
 
     public function __construct()
     {
+        $this->connection = DB::connection('mongodb');
         $this->listeCalculs = array();
     }
 

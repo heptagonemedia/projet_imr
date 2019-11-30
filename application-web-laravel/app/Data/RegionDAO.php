@@ -26,7 +26,7 @@ class RegionDAO extends Model implements RegionSQL
     }
 
     public function recupererRegionParId($id){
-        $region = $this->connection->collection('region')->where("id_region", 1)->first();
+        $region = $this->connection->collection('region')->where("id_region", $id)->first();
         return new Region($region[Region::CLE_ID], $region[Region::CLE_ETIQUETTE]);
     }
 

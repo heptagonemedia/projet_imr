@@ -3,12 +3,13 @@
 namespace App\Data;
 
 use App\Models\Bouee;
+use App\Models\Region;
 use Illuminate\Support\Facades\DB;
 
 class BoueeDAO implements BoueeSQL
 {
     private static $instance;
-
+    private $connection;
     private $listeBouees;
 
     public static function getInstance()
@@ -21,12 +22,13 @@ class BoueeDAO implements BoueeSQL
 
     public function __construct()
     {
+        $this->connection = DB::connection('mongodb');
         $this->listeBouees = array();
     }
 
     public function recupererListeCalcul()
     {
-        $bouees = DB::select(self::SQL_LISTER_BOUEE);
+        $bouees = $this->connection->collection('bouee')->get();
         $this->listeBouees = array();
 
         foreach ($bouees as $item) {
@@ -51,6 +53,9 @@ class BoueeDAO implements BoueeSQL
     }
 
     public function recupererBoueeParId($id){
-        return DB::select(BoueeSQL::SQL_RECUPERER_BOUEE_PAR_ID, [$id]);
+        $bouee = $this->connection->collection('bouee')->where("id_bouee", $id)->first();
+        $regionDAO = new RegionDAO();
+        $region = $regionDAO->recupererRegionParId($bouee[Bouee::CLE_ID_REGION]);
+        return new Bouee($bouee[Bouee::CLE_ID], $bouee[Bouee::CLE_ETIQUETTE], $bouee[Bouee::CLE_LONGITUDE_REFERENCE], $bouee[Bouee::CLE_LATITUDE_REFERENCE], $region  );
     }
 }

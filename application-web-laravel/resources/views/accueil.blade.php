@@ -47,12 +47,12 @@
     $connection = DB::connection('mongodb');
 //    $regions =  $connection->collection('region')->where('id_region', '3');
     $id =1;
-    DB::connection('mongodb')->collection('region')->insert(
+    /*DB::connection('mongodb')->collection('region')->insert(
         ['etiquette' => "test ajout"]
-    );
+    );*/
 //    $connection->collection('region')->where('etiquette', "test ajout")->delete();
-    $connection->collection('region')->where('etiquette', "test ajout")->update(['etiquette' => "MODIFICATION"]);
-    print_r( DB::connection('mongodb')->collection('region')->get());
+//    $connection->collection('region')->where('etiquette', "test ajout")->update(['etiquette' => "MODIFICATION"]);
+    print_r( DB::connection('mongodb')->collection('calcul')->get());
 
 //    echo $regions;
     /*foreach ($regions as $region){
