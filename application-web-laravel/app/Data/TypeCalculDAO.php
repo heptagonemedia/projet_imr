@@ -4,11 +4,12 @@ namespace App\Data;
 
 use App\Models\TypeCalcul;
 use Illuminate\Support\Facades\DB;
+use MongoDB\BSON\Type;
 
 class TypeCalculDAO implements TypeCalculSQL
 {
     private $instance;
-
+    private $connection;
     private $listeTypesCalcul;
 
     public static function getInstance()
@@ -21,11 +22,13 @@ class TypeCalculDAO implements TypeCalculSQL
 
     public function __construct()
     {
+        $this->connection = DB::connection("mongodb");
         $this->listeTypesCalcul = array();
     }
 
     public function recupererTypeDeCalculParId($id){
-        DB::select(TypeCalculSQL::RECUPERER_TYPES_CALCUL_PAR_ID_SQL, [$id]);
+        $typeCalcul = $this->connection->collection('type_calcul')->where(TypeCalcul::CLE_ID, $id)->first();
+        return new TypeCalcul($typeCalcul[TypeCalcul::CLE_ID], $typeCalcul[TypeCalcul::CLE_ETIQUETTE]);
     }
 
     public function recuperListeTypesDeCalcul(){
