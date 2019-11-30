@@ -23,11 +23,10 @@ class RegionDAO extends Model implements RegionSQL
     {
         $this->listeRegions = array();
         $this->connection = DB::connection('mongodb');
-
     }
 
     public function recupererRegionParId($id){
-        $region = DB::connection('mongodb')->collection('region')->where("id_region", 1)->first();
+        $region = $this->connection->collection('region')->where("id_region", 1)->first();
         return new Region($region[Region::CLE_ID], $region[Region::CLE_ETIQUETTE]);
     }
 

@@ -3,12 +3,14 @@
 namespace App\Data;
 
 use App\Models\Calcul;
+use App\Models\Region;
+use App\Models\TypeCalcul;
 use Illuminate\Support\Facades\DB;
 
 class CalculDAO implements CalculSQL
 {
     private static $instance;
-
+    private $connection;
     private $listeCalculs;
 
     public static function getInstance()
@@ -26,7 +28,7 @@ class CalculDAO implements CalculSQL
 
     public function recupererListeCalcul()
     {
-        $calculs = DB::select(CalculSQL::RECUPERER_CALCULS_SQL);
+        $calculs = $this->connection->collection('calcul')->get();
         $this->listeCalculs = array();
 
         foreach ($calculs as $item) {
@@ -68,43 +70,67 @@ class CalculDAO implements CalculSQL
     }
 
     public function recupererCalculParId($id){
-        return DB::select(CalculSQL::RECUPERER_CALCUL_PAR_ID, [$id]);
+        $calcul = $this->connection->collection('calcul')->where(Calcul::CLE_ID, 1)->first();
+        $regionDAO = new RegionDAO();
+        $region = $regionDAO->recupererRegionParId($calcul[Region::CLE_ID]);
+        $typeCalculDAO = new TypeCalculDAO();
+        $typeCalcul = $typeCalculDAO->recupererTypeDeCalculParId($calcul[TypeCalcul::CLE_ID]);
+        return new Calcul($calcul[Calcul::CLE_ID],
+            $calcul[Calcul::CLE_ETIQUETTE],
+            $calcul[Calcul::CLE_XML_TEMPERATURE],
+            $calcul[Calcul::CLE_XML_SALINITE],
+            $calcul[Calcul::CLE_XML_DEBIT],
+            $calcul[Calcul::CLE_DATE_DEBUT_PLAGE],
+            $calcul[Calcul::CLE_DATE_FIN_PLAGE],
+            $calcul[Calcul::CLE_DATE_GENERATION],
+            $calcul[Calcul::CLE_DATE_PROCHAINE_GENERATION],
+            $calcul[Calcul::CLE_ENREGISTRE],
+            $region,
+            $calcul[Calcul::CLE_FREQUENCE_VALEUR],
+            $typeCalcul
+        );
     }
 
     public function modifierCalcul($calcul){
-        DB::update(CalculSQL::MODIFIER_CALCUL, [
-            $calcul->etiquette,
-            $calcul->dateGeneration,
-            $calcul->dateProchaineGeneration,
-            $calcul->enregistre,
-            $calcul->region->id,
-            $calcul->typeCalcul->id,
-            $calcul->dateDebutPlage,
-            $calcul->dateFinPlage,
-            $calcul->frequenceValeur,
-            $calcul->cheminFichierXmlTemperature,
-            $calcul->cheminFichierXmlSalinite,
-            $calcul->cheminFichierXmlDebit,
-            $calcul->id
-        ]);
+        $this->connection->collection('calcul')->where(Calcul::CLE_ID, $calcul->id)->update(
+            [
+                Calcul::CLE_ID => $calcul->id,
+                Calcul::CLE_ETIQUETTE => $calcul->etiquette,
+                Calcul::CLE_DATE_GENERATION => $calcul->dateGeneration,
+                Calcul::CLE_DATE_PROCHAINE_GENERATION => $calcul->dateProchaineGeneration,
+                Calcul::CLE_ENREGISTRE => $calcul->enregistre,
+                Calcul::CLE_ID_REGION => $calcul->region->id,
+                Calcul::CLE_ID_TYPE_CALCUL => $calcul->typeCalcul->id,
+                Calcul::CLE_DATE_DEBUT_PLAGE => $calcul->dateDebutPlage,
+                Calcul::CLE_DATE_FIN_PLAGE => $calcul->dateFinPlage,
+                Calcul::CLE_FREQUENCE_VALEUR => $calcul->frequenceValeur,
+                Calcul::CLE_XML_TEMPERATURE => $calcul->cheminFichierXmlTemperature,
+                Calcul::CLE_XML_SALINITE => $calcul->cheminFichierXmlSalilnite,
+                Calcul::CLE_XML_DEBIT => $calcul->cheminFichierXmlDebit,
+            ]
+
+        );
     }
 
     public function ajouterCalcul($calcul){
-        DB::update(CalculSQL::AJOUTER_CALCUL, [
-            $calcul->id,
-            $calcul->etiquette,
-            $calcul->dateGeneration,
-            $calcul->dateProchaineGeneration,
-            $calcul->enregistre,
-            $calcul->region->id,
-            $calcul->typeCalcul->id,
-            $calcul->dateDebutPlage,
-            $calcul->dateFinPlage,
-            $calcul->frequenceValeur,
-            $calcul->cheminFichierXmlTemperature,
-            $calcul->cheminFichierXmlSalinite,
-            $calcul->cheminFichierXmlDebit
-        ]);
+        $this->connection->collection('region')->insert(
+            [
+                Calcul::CLE_ID => $calcul->id,
+                Calcul::CLE_ETIQUETTE => $calcul->etiquette,
+                Calcul::CLE_DATE_GENERATION => $calcul->dateGeneration,
+                Calcul::CLE_DATE_PROCHAINE_GENERATION => $calcul->dateProchaineGeneration,
+                Calcul::CLE_ENREGISTRE => $calcul->enregistre,
+                Calcul::CLE_ID_REGION => $calcul->region->id,
+                Calcul::CLE_ID_TYPE_CALCUL => $calcul->typeCalcul->id,
+                Calcul::CLE_DATE_DEBUT_PLAGE => $calcul->dateDebutPlage,
+                Calcul::CLE_DATE_FIN_PLAGE => $calcul->dateFinPlage,
+                Calcul::CLE_FREQUENCE_VALEUR => $calcul->frequenceValeur,
+                Calcul::CLE_XML_TEMPERATURE => $calcul->cheminFichierXmlTemperature,
+                Calcul::CLE_XML_SALINITE => $calcul->cheminFichierXmlSalilnite,
+                Calcul::CLE_XML_DEBIT => $calcul->cheminFichierXmlDebit,
+                ]
+
+        );
     }
 
 }

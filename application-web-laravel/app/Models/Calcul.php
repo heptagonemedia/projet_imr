@@ -22,9 +22,7 @@ class Calcul extends Model
     const CLE_XML_TEMPERATURE = "xml_graphique_temperature";
     const CLE_XML_SALINITE = "xml_graphique_salinite";
     const CLE_XML_DEBIT = "xml_graphique_debit";
-
-
-
+    const CLE_DATE_PROCHAINE_GENERATION = "date_prochaine_generation" ;
 
 
     private $id;
