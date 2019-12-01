@@ -23,6 +23,7 @@
                         'Elixir.RecepteurWeb.LayoutView',
                         'Elixir.RecepteurWeb.PageController',
                         'Elixir.RecepteurWeb.PageView',
+                        'Elixir.RecepteurWeb.RoomChannel',
                         'Elixir.RecepteurWeb.Router',
                         'Elixir.RecepteurWeb.Router.Helpers',
                         'Elixir.RecepteurWeb.UserSocket']},

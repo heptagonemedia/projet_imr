@@ -21,4 +21,17 @@ defmodule RecepteurWeb.GeneralChannel do
 
     {:noreply, socket}
   end
+
+
+  def handle_in("donnee", payload, socket) do
+    broadcast!(socket, "new_msg",  %{body: payload})
+    IO.puts payload
+
+    donnee = Poison.decode!(payload, as: %Recepteur.Donnee{})
+    IO.inspect donnee
+    Recepteur.Repo.insert(donnee)
+    broadcast!(socket, "new_msg",  %{body: "Insertion réussie !"})
+
+    {:noreply, socket}
+  end
 end
