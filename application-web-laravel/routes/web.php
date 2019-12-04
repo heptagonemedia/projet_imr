@@ -30,3 +30,5 @@ Route::get('/test', 'PagesController@test');
 
 Route::post('/resultat', 'ResultatController@store');
 // Route::post('/resultat/{resultat}', 'ResultatController@showOne');
+
+Route::get('/FAQ' , 'PagesController@naviguerVersFAQ');

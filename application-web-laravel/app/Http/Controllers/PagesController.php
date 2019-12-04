@@ -21,4 +21,9 @@ class PagesController extends Controller
         return view('layoutResultat');
     }
 
+    public function naviguerVersFAQ()
+    {
+        return view('FAQ');
+    }
+
 }

@@ -66,3 +66,165 @@ a:focus{
 canvas:focus{
     border: solid 1px blue;
 }
+
+/** Liseuse vidéo **/
+
+/* Video Modal */
+.video-modal,
+.video-modal .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3000;
+}
+.video-modal {
+    overflow: hidden;
+    position: fixed;
+    opacity: 0.0;
+
+    -webkit-transform: translate(500%,0%);
+    transform: translate(500%,0%);
+
+    -webkit-transition: -webkit-transform 0s linear 0s;
+    transition: transform 0s linear 0s;
+
+
+    /* utilisation de flexbox pour centrer verticalement */
+
+    /* display Flexbox */
+    display: -webkit-box; /* pour Safari*/
+    display: -webkit-flex;
+    display: flex;
+
+    /* alignement vertical */
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+.video-modal .overlay {
+    z-index: 0;
+    background: rgba(32, 32, 32, 0.8); /* couleur de l'overlay */
+
+    opacity: 0.0;
+
+    -webkit-transition: opacity 0.2s ease-out 0.05s;
+    transition: opacity 0.2s ease-out 0.05s;
+}
+
+.video-modal-content {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    z-index: 1;
+
+    margin: 0 auto;
+
+    overflow-y: visible;
+
+    background: #000;
+
+    width: calc(100% - 12em);
+    height: 0;
+    padding-top: calc((100% - 12em) * 0.5625); /* 16:9 calc */
+}
+
+/* Mise à l'échelle pour s'adapter à la taille de la fenêtre
+   Lorsque le rapport de l'écran est supérieur à 16:9
+   utilise la hauteur au lieu de la largeur pour le calcul. */
+@media (min-aspect-ratio: 16/9) {
+    .video-modal-content {
+        width: 0;
+        height: calc(100vh - 10em);
+        padding-top: 0;
+        padding-left: calc((100vh - 10em) * 1.7778); /* 16:9 calc */
+    }
+}
+
+/* Réduction des marges sur mobile */
+@media (max-width: 640px) {
+    .video-modal-content {
+        width: calc(100% - 1em);
+        padding-top: calc((100% - 1em) * 0.5625); /* 16:9 calc */
+    }
+}
+
+/* bouton de fermeture de la video modal */
+.close-video-modal {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -40px;
+
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/*  étire l'élément iframe pour qu'il s'adapte à son élément parent */
+iframe#youtube {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+
+    background: #000;
+    box-shadow: 0px 2px 16px rgba(0,0,0,0.5);
+}
+
+/* afficher le modal :
+   ajouter de la classe au corps pour le rendre visible */
+.show-video-modal .video-modal {
+    opacity: 1.0;
+
+    transform: translate(0%,0%);
+    -webkit-transform: translate(0%,0%);
+}
+.show-video-modal .video-modal .overlay {
+    opacity: 1.0;
+}
+.show-video-modal .video-modal-content {
+    transform: translate(0%,0%);
+    -webkit-transform: translate(0%,0%);
+}
+
+/* boutons */
+.bouton-faq-groupe {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+.bouton-faq {
+    display: block;
+    /*margin: 0.5em;*/
+    margin: 1em;
+    padding: 1em 2em;
+    min-width: 8em;
+    text-align: center;
+    font-weight: 900;
+    text-decoration: none;
+    border-radius: 1.5em;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+
+    background: #f0f0f0;
+    color: #2B2B2B;
+
+    -webkit-transition:
+        all 0.2s ease-out 0.05s;
+    transition:
+        all 0.2s ease-out 0.05s;
+}
+.bouton-faq:hover {
+    background: #e5e5e5;
+}
