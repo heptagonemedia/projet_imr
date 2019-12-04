@@ -51,22 +51,22 @@
     <column id="COL12" populated="true" UUID="50b46bb7-79a0-459a-9caa-776b1191355d" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_date_saisie_seq" defaultValue="" name="date_saisie" nullable="1" physicalName="date_saisie" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="92" userDefinedTypeUUID="10d6960f-169d-47c2-860a-37341342b1d5" >
      <remarks></remarks>
     </column>
-    <column id="COL13" populated="true" UUID="f7bf074f-b84b-4c04-af15-c9d7139e0415" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_temperature_seq" defaultValue="" name="temperature" nullable="0" physicalName="temperature" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
+    <column id="COL13" populated="true" UUID="f7bf074f-b84b-4c04-af15-c9d7139e0415" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_temperature_seq" defaultValue="" name="temperature" nullable="1" physicalName="temperature" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
-    <column id="COL14" populated="true" UUID="06df1a36-60d1-4a13-a603-5cc692afa05b" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_debit_seq" defaultValue="" name="debit" nullable="0" physicalName="debit" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL14" populated="true" UUID="06df1a36-60d1-4a13-a603-5cc692afa05b" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_debit_seq" defaultValue="" name="debit" nullable="1" physicalName="debit" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL15" populated="true" UUID="677d1805-e4cb-4a5a-8631-65314f80605b" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_salinite_seq" defaultValue="" name="salinite" nullable="0" physicalName="salinite" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL15" populated="true" UUID="677d1805-e4cb-4a5a-8631-65314f80605b" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_salinite_seq" defaultValue="" name="salinite" nullable="1" physicalName="salinite" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL16" populated="true" UUID="086559ac-d36d-44f2-a879-5a5d8bbeb4bf" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_longitude_seq" defaultValue="" name="longitude" nullable="0" physicalName="longitude" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL16" populated="true" UUID="086559ac-d36d-44f2-a879-5a5d8bbeb4bf" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_longitude_seq" defaultValue="" name="longitude" nullable="1" physicalName="longitude" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
-    <column id="COL17" populated="true" UUID="e2a76075-905f-4aff-8633-62e497f4dd70" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_latitude_seq" defaultValue="" name="latitude" nullable="0" physicalName="latitude" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL17" populated="true" UUID="e2a76075-905f-4aff-8633-62e497f4dd70" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_latitude_seq" defaultValue="" name="latitude" nullable="1" physicalName="latitude" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
-    <column id="COL18" populated="true" UUID="ba6da2bb-7294-4360-854e-2ecba5399415" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_batterie_seq" defaultValue="" name="batterie" nullable="0" physicalName="batterie" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL18" populated="true" UUID="ba6da2bb-7294-4360-854e-2ecba5399415" autoIncrement="false" autoIncrementSequenceName="historique_donnee_bouee_batterie_seq" defaultValue="" name="batterie" nullable="1" physicalName="batterie" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL19" populated="true" UUID="e8d76040-636b-49b2-becc-3ff09f965e1f" autoIncrement="false" autoIncrementSequenceName="donnee_traitee_valide_seq" defaultValue="" name="valide" nullable="1" physicalName="valide" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
@@ -121,7 +121,7 @@
     <column id="COL32" populated="true" UUID="f0552d29-bbb0-4901-8395-05bdeb9e8cce" autoIncrement="false" autoIncrementSequenceName="calcul_enregistre_seq" defaultValue="" name="enregistre" nullable="1" physicalName="enregistre" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
      <remarks></remarks>
     </column>
-    <column id="COL33" populated="true" UUID="c91f2dbe-62e9-4d92-90fe-6dd4c8e53d1d" autoIncrement="false" autoIncrementSequenceName="calcul_id_region_seq" defaultValue="" name="id_region" nullable="0" physicalName="id_region" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL33" populated="true" UUID="c91f2dbe-62e9-4d92-90fe-6dd4c8e53d1d" autoIncrement="false" autoIncrementSequenceName="calcul_id_region_seq" defaultValue="" name="id_region" nullable="0" physicalName="id_region" precision="0" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL34" populated="true" UUID="11b0759a-1a22-4060-a372-fe53bf01c6db" autoIncrement="false" autoIncrementSequenceName="calcul_id_type_calcul_seq" defaultValue="" name="id_type_calcul" nullable="0" physicalName="id_type_calcul" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -136,13 +136,13 @@
     <column id="COL37" populated="true" UUID="68f9d118-ec27-470b-966c-3f40fefd5a0a" autoIncrement="false" autoIncrementSequenceName="calcul_frequence_valeur_seq" defaultValue="" name="frequence_valeur" nullable="1" physicalName="frequence_valeur" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
-    <column id="COL38" populated="true" UUID="68e3760f-4f56-4fa0-a20c-bcc7938885b8" autoIncrement="false" autoIncrementSequenceName="calcul_xml_graphique_temperature_seq" defaultValue="" name="xml_graphique_temperature" nullable="0" physicalName="xml_graphique_temperature" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL38" populated="true" UUID="68e3760f-4f56-4fa0-a20c-bcc7938885b8" autoIncrement="false" autoIncrementSequenceName="calcul_xml_graphique_temperature_seq" defaultValue="" name="xml_graphique_temperature" nullable="1" physicalName="xml_graphique_temperature" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL39" populated="true" UUID="8d9114b9-45cf-4a92-a371-4327c14f5aef" autoIncrement="false" autoIncrementSequenceName="calcul_xml_graphique_salinite_seq" defaultValue="" name="xml_graphique_salinite" nullable="0" physicalName="xml_graphique_salinite" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL39" populated="true" UUID="8d9114b9-45cf-4a92-a371-4327c14f5aef" autoIncrement="false" autoIncrementSequenceName="calcul_xml_graphique_salinite_seq" defaultValue="" name="xml_graphique_salinite" nullable="1" physicalName="xml_graphique_salinite" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL40" populated="true" UUID="574758a9-c7cd-43ca-af89-91cc803dc8cf" autoIncrement="false" autoIncrementSequenceName="calcul_xml_graphique_debit_seq" defaultValue="" name="xml_graphique_debit" nullable="0" physicalName="xml_graphique_debit" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL40" populated="true" UUID="574758a9-c7cd-43ca-af89-91cc803dc8cf" autoIncrement="false" autoIncrementSequenceName="calcul_xml_graphique_debit_seq" defaultValue="" name="xml_graphique_debit" nullable="1" physicalName="xml_graphique_debit" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     </folder>
@@ -186,8 +186,11 @@
    <relationship id="REL52" populated="true" UUID="a8a7c114-b490-4532-b614-ac117c2c8e5f" deferrability="7" deleteRule="3" fk-table-ref="TAB1" fkCardinality="7" identifying="false" name="region_bouee_fk" physicalName="region_bouee_fk" pk-table-ref="TAB22" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP53" populated="true" UUID="6ba17703-6ed1-4a20-b88d-91da84e694dd" fk-column-ref="COL6" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL23" />
    </relationship>
-   <relationship id="REL54" populated="true" UUID="dbccb38a-8d80-435f-a4fd-3309ab2bf70d" deferrability="7" deleteRule="3" fk-table-ref="TAB27" fkCardinality="7" identifying="false" name="type_calcul_calcul_enregistre_fk" physicalName="type_calcul_calcul_enregistre_fk" pk-table-ref="TAB43" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP55" populated="true" UUID="61005399-7ae8-43b7-ada9-ef864d96775e" fk-column-ref="COL34" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL44" />
+   <relationship id="REL54" populated="true" UUID="48091d9b-3082-4942-b536-ae631fa128ee" deferrability="7" deleteRule="3" fk-table-ref="TAB27" fkCardinality="7" identifying="false" name="region_calcul_fk" physicalName="region_calcul_fk" pk-table-ref="TAB22" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP55" populated="true" UUID="d2e539e1-8e83-4de4-9b3d-717cf8437cea" fk-column-ref="COL33" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL23" />
+   </relationship>
+   <relationship id="REL56" populated="true" UUID="dbccb38a-8d80-435f-a4fd-3309ab2bf70d" deferrability="7" deleteRule="3" fk-table-ref="TAB27" fkCardinality="7" identifying="false" name="type_calcul_calcul_enregistre_fk" physicalName="type_calcul_calcul_enregistre_fk" pk-table-ref="TAB43" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP57" populated="true" UUID="61005399-7ae8-43b7-ada9-ef864d96775e" fk-column-ref="COL34" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL44" />
    </relationship>
   </relationships>
  </target-database>
@@ -195,15 +198,16 @@
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
-  <table-pane table-ref="TAB1" x="83" y="172" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB1" x="195" y="119" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB9" x="552" y="60" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB22" x="115" y="44" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB27" x="157" y="340" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB22" x="54" y="346" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB27" x="448" y="328" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB43" x="90" y="642" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-link relationship-ref="REL52" pkConnection="0.4592274678111588" fkConnection="0.055793991416309016" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL52" pkConnection="0.6609442060085837" fkConnection="0.21030042918454936" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
   <table-link relationship-ref="REL48" pkConnection="0.0990990990990991" fkConnection="0.8429319371727748" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
-  <table-link relationship-ref="REL54" pkConnection="0.6030534351145038" fkConnection="0.1417624521072797" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
-  <table-link relationship-ref="REL50" pkConnection="0.5708154506437768" fkConnection="0.20689655172413793" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL56" pkConnection="0.6030534351145038" fkConnection="0.1417624521072797" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL50" pkConnection="0.7939914163090128" fkConnection="0.4857142857142857" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL54" pkConnection="0.8333333333333334" fkConnection="0.3466666666666667" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
  </play-pen>
  <critic-manager>
   <critic-grouping platformType="Generic" enabled="true">
