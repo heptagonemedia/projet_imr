@@ -1,5 +1,4 @@
 const bddPostgres = require('./donnee/BaseDeDonneesPostgres');
-const fichier = require('./fonction/fonctionFichier');
 const fs = require('fs');
 
 
@@ -10,18 +9,17 @@ const fs = require('fs');
             
         var donnees = JSON.parse(data);
 
-
         fs.readFile('./donnee/derniersId.json', 'utf8', async function(err, data){
             if (err) throw err;
 
-            var dernierId = JSON.parse(data);
+            var derniersId = JSON.parse(data);
 
             // console.log(donnees[('bouee_'+1)]);
             // console.log(dernierId['id_table_paire']);
 
             var baseDeDonnees = bddPostgres.connexion();
 
-            bddPostgres.selectionnerDonneesSelonParametre('heure_paire', baseDeDonnees, 'date_saisie', (dernierId['id_table_paire'] + 1));
+            bddPostgres.selectionnerDonneesId('heure_paire', baseDeDonnees, donnees, derniersId, bddPostgres.selectionner);
 
             bddPostgres.deconnexion(baseDeDonnees);
 

@@ -1,5 +1,5 @@
-var fonctionGenerique = require('./fonctionGenerique');
-var date = require('../modele/DateModele');
+const fonctionGenerique = require('./fonctionGenerique');
+const date = require('../modele/DateModele');
 
 exports.dateModeleEgales = function (date1, date2) {
 
@@ -9,6 +9,48 @@ exports.dateModeleEgales = function (date1, date2) {
         (date1.jour == date2.jour) &&
         (date1.mois == date2.mois) &&
         (date1.annee == date2.annee));
+
+}
+
+exports.convertirChaine = function (chaine) {
+
+    //'Fri Nov 01 2019 00:00:00 GMT-0400 (GMT-04: 00)'
+
+    var tableau = chaine.split(' ');
+    var horaire = tableau[4].split(':');
+    
+    return new date.DateModele(parseInt(horaire[2], 10), parseInt(horaire[1], 10), parseInt(horaire[0], 10), parseInt(tableau[2], 10), this.trouverMois(tableau[1]), parseInt(tableau[3], 10));
+
+}
+
+exports.trouverMois = function(moisATrouver) {
+
+    switch (moisATrouver) {
+        case 'Jan':
+            return 1;
+        case 'Feb':
+            return 2;
+        case 'Mar':
+            return 3;
+        case 'Apr':
+            return 4;
+        case 'May':
+            return 5;
+        case 'Jun':
+            return 6;
+        case 'Jul':
+            return 7;
+        case 'Aug':
+            return 8;
+        case 'Sep':
+            return 9;
+        case 'Oct':
+            return 10;
+        case 'Nov':
+            return 11;
+        case 'Dec':
+            return 12;
+    }
 
 }
 
