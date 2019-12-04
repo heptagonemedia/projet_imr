@@ -66,3 +66,7 @@ a:focus{
 canvas:focus{
     border: solid 1px blue;
 }
+#select_region{
+    margin: 0px;
+    margin-top: -10px;
+}

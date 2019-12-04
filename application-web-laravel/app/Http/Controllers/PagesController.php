@@ -12,7 +12,9 @@ class PagesController extends Controller
 {
     public function naviguerVersAccueil()
     {
-        return view('accueil');
+        $regionDAO = new RegionDAO();
+        $regions = $regionDAO->recuperListeRegions();
+        return view('accueil', compact("regions"));
     }
 
     public function naviguerVersFormulaire()

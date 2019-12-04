@@ -46,12 +46,10 @@
     <nav role="navigation" aria-label="header">
         <div class="nav-wrapper black" >
             <div class="row  ">
-
                 <div class="col l4 center-align">
                     <button title="bar de navigation" role="button" onclick="ouvrirSidenav()" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i  aria-label="Ouvrir le menu"  aria-hidden="true" class="material-icons" id="menu">{!! __('message.menu') !!}</i></button>
                 </div>
                 <div class="col l4 center-align" style="font-size: 20pt"><h1>{!! __('message.titleAccueil') !!}</h1></div>
-
             </div>
         </div>
     </nav>
@@ -74,8 +72,21 @@
                     <div class="card-content">
 
                         <div class="row">
-                            <div class="col s6 center-align">{!! __('message.titreCarte') !!}</div>
-                            <div class="col s6 center-align">
+                            <div class="col s4 center-align">{!! __('message.titreCarte') !!}</div>
+                            <div class="input-field col s4" id="select_region">
+                                <form id="choix_region">
+                                    <select oninput="document.getElementById('choix_id').submit();" title="{!! __('message.champRegion') !!}" role="select" id="bouee">
+                                        <option value="" disabled selected>{!! __('message.region') !!}</option>
+                                        <?php
+                                        foreach ($regions as $region){ ?>
+                                        <option title="region <?php echo $region->etiquette ?>" aria-label="region <?php echo $region->etiquette ?>"  value="<?php echo $region->id ?>"><?php echo $region->etiquette ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="col s4 center-align">
                                 <button title="agrandir la carte" role="button" class="btn green" onclick="agrandirCarte(document.getElementById('map'))">{!! __('message.boutonPleinEcran') !!}</button>
                             </div>
                         </div>
