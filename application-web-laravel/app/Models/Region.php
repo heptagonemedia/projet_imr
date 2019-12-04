@@ -5,18 +5,18 @@ namespace App\Models;
 
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class Region extends Model
+class Region
 {
     const CLE_ID = "id_region";
     const CLE_ETIQUETTE = "etiquette";
 
-    protected $id;
-    protected $etiquette;
+    public $id;
+    public $etiquette;
 
     public function __construct($id, $etiquette)
     {
-        $this->$id = $id;
-        $this->$etiquette = $etiquette;
+        $this->id = $id;
+        $this->etiquette = $etiquette;
     }
 
     public function __destruct()

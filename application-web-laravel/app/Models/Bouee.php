@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bouee extends Model
 {
-    const  CLE_ID = "id";
+    const  CLE_ID = "id_bouee";
     const  CLE_ETIQUETTE = "etiquette";
     const  CLE_LONGITUDE_REFERENCE = "longitude_reference";
     const  CLE_LATITUDE_REFERENCE = "latitude_reference";

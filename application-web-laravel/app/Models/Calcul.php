@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Calcul extends Model
 {
 
-    const CLE_ID = "id";
+    const CLE_ID = "id_calcul";
     const CLE_ETIQUETTE = "etiquette";
     const CLE_DATE_GENERATION = "date_generation";
     const CLE_PROCHAINE_GENERATION = "date_prochaine_generation";
