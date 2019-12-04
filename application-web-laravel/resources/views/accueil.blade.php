@@ -1,5 +1,5 @@
 @extends('layout.layout')
-<?php  use App\Data\BoueeDAO;use App\Data\RegionDAO;use Illuminate\Support\Facades\DB; ?>
+<?php  use App\Data\BoueeDAO;use App\Data\RegionDAO;use App\Data\TypeCalculDAO;use Illuminate\Support\Facades\DB; ?>
 
 @section('head')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -42,26 +42,6 @@
 
     @endfor
 
-<pre>
- <?php
-    $connection = DB::connection('mongodb');
-//    $regions =  $connection->collection('region')->where('id_region', '3');
-    $id =1;
-    /*DB::connection('mongodb')->collection('region')->insert(
-        ['etiquette' => "test ajout"]
-    );*/
-//    $connection->collection('region')->where('etiquette', "test ajout")->delete();
-//    $connection->collection('region')->where('etiquette', "test ajout")->update(['etiquette' => "MODIFICATION"]);
-//    print_r( DB::connection('mongodb')->collection('calcul')->get());
-$regionDao  = new RegionDAO();
-$regions = $regionDao->recuperListeRegions();
-print_r($regions);
-foreach ($regions as $region){
-    var_dump(array_key_exists('id_region',$region));
-}
-
-    ?>
-</pre>
     <nav role="navigation" aria-label="header">
         <div class="nav-wrapper black" >
             <div class="row  ">
@@ -74,8 +54,14 @@ foreach ($regions as $region){
             </div>
         </div>
     </nav>
-
-
+    <pre>
+<?php $typecalculdao = new TypeCalculDAO();
+    print_r($typecalculdao->recuperListeTypesDeCalcul());
+    foreach ($typecalculdao->recuperListeTypesDeCalcul() as $truc){
+        echo var_dump(array_key_exists('etiquette',$truc));
+    }
+?>
+</pre>
 
 
 @endsection

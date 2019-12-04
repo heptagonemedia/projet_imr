@@ -34,10 +34,10 @@ class TypeCalculDAO implements TypeCalculSQL
     public function recuperListeTypesDeCalcul(){
         $this->listeTypesCalcul = array();
 
-        $typesCalcul = DB::select(TypeCalculSQL::RECUPERER_TYPES_CALCUL_SQL);
+        $typesCalcul = $this->connection->collection('type_calcul')->get();
 
         foreach ($typesCalcul as $typeCalcul){
-            array_push($listeRegions, new TypeCalcul($typeCalcul[TypeCalcul::CLE_ID], $typesCalcul[TypeCalcul::CLE_ETIQUETTE]));
+            array_push($this->listeTypesCalcul, new TypeCalcul($typeCalcul[TypeCalcul::CLE_ID], $typeCalcul[TypeCalcul::CLE_ETIQUETTE]));
         }
 
         return $this->listeTypesCalcul;

@@ -39,7 +39,7 @@ class RegionDAO extends Model implements RegionSQL
             array_push($this->listeRegions, new Region($region[Region::CLE_ID], $region[Region::CLE_ETIQUETTE]));
         }
 
-        return $regions;
+        return $this->listeRegions;
     }
 
 }

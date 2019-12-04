@@ -38,7 +38,6 @@
 @endsection
 
 
-
 @section('main')
     <main role="main" class="container">
         <div id="register-page" class="row">
@@ -56,24 +55,14 @@
                             </legend>
 
                             <div class="input-field col s10">
+                                <?php foreach ($typesCalcul as $typeCalcul){ ?>
                                 <p>
                                     <label id="radio">
-                                        <input aria-labelledby="radio" title="type de calcul"  name="calcul" type="radio" value="moyenne" id="moyenne" checked />
-                                        <span>{!! __('message.moyenne') !!}</span>
+                                        <input aria-labelledby="radio" title="type de calcul"  name="calcul" type="radio" value="<?php echo $typeCalcul->getId(); ?>" id="<?php echo $typeCalcul->etiquette ;?>" checked />
+                                        <span><?php echo $typeCalcul->getEtiquette(); ?></span>
                                     </label>
                                 </p>
-                                <p>
-                                    <label>
-                                        <input title=" type de calcul" name="calcul" type="radio" value="mediane" id="mediane" />
-                                        <span>{!! __('message.mediane') !!}</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input name="calcul" title="type de calcul " type="radio"  value = "ecart" id="ecart" />
-                                        <span>{!! __('message.ecartType') !!}</span>
-                                    </label>
-                                </p>
+                                    <?php } ?>
                             </div>
 
                         </fieldest>
@@ -128,9 +117,11 @@
                             <div class="input-field col s10">
                                 <select title="{!! __('message.champRegion') !!}" role="select" id="bouee">
                                     <option value="" disabled selected>{!! __('message.region') !!}</option>
-                                    <option title="region Saint-Laurent" aria-label="region Saint-Laurent"  value="1">Saint-Laurent</option>
-                                    <option title="region Atlantique" aria-label="region Atlantique" value="2">Atlantique</option>
-                                    <option title="region Pacifique" aria-label="region Pacifique" value="3">Pacifique</option>
+                                    <?php foreach ($regions as $region){ ?>
+                                    <option title="region Saint-Laurent" aria-label="region Saint-Laurent"  value="<?php echo $region->id ?>"><?php echo $region->etiquette ?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
 

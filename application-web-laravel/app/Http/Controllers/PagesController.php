@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\RegionDAO;
+use App\Data\TypeCalculDAO;
+use App\Models\TypeCalcul;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -13,7 +16,11 @@ class PagesController extends Controller
 
     public function naviguerVersFormulaire()
     {
-        return view('formulaire');
+        $regionDAO = new RegionDAO();
+        $regions = $regionDAO->recuperListeRegions();
+        $typeCalculDao = new TypeCalculDAO();
+        $typesCalcul = $typeCalculDao->recuperListeTypesDeCalcul();
+        return view('formulaire', compact("regions"), compact("typesCalcul"));
     }
 
     public function test()
