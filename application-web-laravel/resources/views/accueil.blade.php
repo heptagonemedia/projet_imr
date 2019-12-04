@@ -55,19 +55,10 @@
             </div>
         </div>
     </nav>
-    <pre>
-<?php $typecalculdao = new TypeCalculDAO();
-    print_r($typecalculdao->recuperListeTypesDeCalcul());
-    foreach ($typecalculdao->recuperListeTypesDeCalcul() as $truc){
-        echo var_dump(array_key_exists('etiquette',$truc));
-    }
-?>
-</pre>
+
 
 
 @endsection
-
-
 
 @section('main')
     <main role="main">

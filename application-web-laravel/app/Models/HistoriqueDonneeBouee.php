@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class HistoriqueDonneeBouee extends Model
+class HistoriqueDonneeBouee
 {
     private $id;
     private $dateSaisie;

@@ -27,6 +27,6 @@ Route::get('/nouveauCalcul', 'PagesController@naviguerVersFormulaire');
 
 //TODO: A supprimer, pour utiliser le ResultatController
 Route::get('/test', 'PagesController@test');
-
 Route::post('/resultat', 'ResultatController@store');
-// Route::post('/resultat/{resultat}', 'ResultatController@showOne');
+//Route::post('/resultat/{id}', 'PagesController@naviguerVersResultat');
+Route::get('/resultat/{id}', 'ResultatController@naviguerVersResultat');

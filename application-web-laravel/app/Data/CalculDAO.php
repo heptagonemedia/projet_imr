@@ -48,8 +48,10 @@ class CalculDAO implements CalculSQL
             $xml_graphique_debit = $item[Calcul::CLE_XML_DEBIT];
 
 
-            $region = RegionDAO::getInstance()->trouverRegionParId($id_region);
-            $typeCalcul =  TypeCalculDAO::getInstance()->trouverTypeDeCalculParId($id_type_calcul);
+            $regionDao = new RegionDAO();
+            $region = $regionDao->recupererRegionParId($id_region);
+            $typeCalculDao =  new TypeCalculDAO();
+            $typeCalcul = $typeCalculDao->recupererTypeDeCalculParId($id_type_calcul);
             $calcul = new Calcul(
                 $id,
                 $etiquette,

@@ -2,9 +2,6 @@
 
 namespace App\Models;
 
-
-use Jenssegers\Mongodb\Eloquent\Model;
-
 class Region
 {
     const CLE_ID = "id_region";

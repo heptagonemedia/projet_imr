@@ -1,3 +1,4 @@
+<?php use App\Data\CalculDAO; ?>
 <ul role="navigation" aria-label="Sidenav" id="slide-out" hidden role="alert" class="sidenav draggable">
 
     <li>
@@ -19,24 +20,46 @@
 
     <li><a class="subheader">{!! __('message.accesCalcul') !!}</a></li>
 
+        <?php
+    $calculDao = new CalculDAO();
+    $calculs = $calculDao->recupererListeCalcul();
+    ?>
     <li class="no-padding">
         <ul class="collapsible collapsible-accordion  waves-teal">
             <li>
                 <a class="collapsible-header">{!! __('message.calculEnregistres') !!}<i aria-hidden="true" class="material-icons">arrow_drop_down</i></a>
                 <div class="collapsible-body">
                     <ul>
-
-                        @for ($i = 0; $i < 6; $i++)
-                            <li><a class="waves-effect waves-teal" href="resultats.php?bouee={{$i}}&type=enr"><i aria-hidden="true" class="material-icons">insert_chart_outlined</i>{!! __('message.unTelCalcul') !!} {{$i}}</a></li>
-                        @endfor
-
+                        <?php if(isset($calculs)){
+                            foreach ($calculs as $calcul){
+                            if($calcul->getEnregistre()) { ?>
+                            <li><a class="waves-effect waves-teal" href="resultat/<?php echo $calcul->getId(); ?>"><i aria-hidden="true" class="material-icons">insert_chart_outlined</i>{{--{!! __('message.unTelCalcul') !!} {{$i}}--}} <?php echo $calcul->getEtiquette(); ?></a></li>
+                            <?php }
+                            }
+                        }?>
                     </ul>
                 </div>
             </li>
         </ul>
     </li>
-
-    <li><a class="waves-effect waves-teal" href="resultats.php?bouee=2&type=prev"><i aria-hidden="true" class="material-icons">new_releases</i>{!! __('message.calculEnCours') !!}</a></li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion  waves-teal">
+            <li>
+                <a class="collapsible-header">{!! __('message.calculEnCours') !!}<i aria-hidden="true" class="material-icons">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                    <ul>
+                        <?php if(isset($calculs)){
+                        foreach ($calculs as $calcul){
+                        if(!$calcul->getEnregistre()) { ?>
+                        <li><a class="waves-effect waves-teal" href="resultat/<?php echo $calcul->getId(); ?>"><i aria-hidden="true" class="material-icons">new_releases</i>{{--{!! __('message.unTelCalcul') !!} {{$i}}--}} <?php echo $calcul->getEtiquette(); ?></a></li>
+                        <?php }
+                        }
+                        }?>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
 
     <li><div class="divider"></div></li>
 

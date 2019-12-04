@@ -52,7 +52,6 @@
 
 @include('navigation_side_bar')
 <main role="main">
-
     <!-- Ligne de la carte et du premier Graphique -->
     <div  id="col1">
         <div class="row">

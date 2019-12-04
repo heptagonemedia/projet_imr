@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\CalculDAO;
+use App\Data\RegionDAO;
 use Illuminate\Http\Request;
 
 class ResultatController extends Controller
@@ -26,6 +28,13 @@ class ResultatController extends Controller
         return view('resultat.show'/*, compact('resultat')*/);
 
     }
+    public function naviguerVersResultat($id){
+        $calculDao = new CalculDAO();
+        $calculs = $calculDao->recupererListeCalcul();
+        $calcul = $calculDao->recupererCalculParId((int)$id);
+        return view('resultat.show', compact("calcul"), compact("id"));
+    }
+
 
     // CF routes > web.php
     // public function showOne($nomResultat){

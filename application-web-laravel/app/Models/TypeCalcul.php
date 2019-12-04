@@ -2,10 +2,7 @@
 
 namespace App\Models;
 
-
-use Illuminate\Database\Eloquent\Model;
-
-class TypeCalcul extends Model
+class TypeCalcul
 {
     const CLE_ID = "id_type_calcul";
     const CLE_ETIQUETTE = "etiquette";
