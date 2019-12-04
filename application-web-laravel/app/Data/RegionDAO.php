@@ -8,7 +8,7 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class RegionDAO extends Model implements RegionSQL
 {
     private $instance;
-    private $connection;
+    protected $connection;
     private $listeRegions;
 
     public static function getInstance()
@@ -36,10 +36,10 @@ class RegionDAO extends Model implements RegionSQL
         $regions = $this->connection->collection('region')->get();
 
         foreach ($regions as $region){
-            array_push($listeRegions, new Region($region[Region::CLE_ID], $regions[Region::CLE_ETIQUETTE]));
+            array_push($this->listeRegions, new Region($region[Region::CLE_ID], $region[Region::CLE_ETIQUETTE]));
         }
 
-        return $this->listeRegions;
+        return $regions;
     }
 
 }

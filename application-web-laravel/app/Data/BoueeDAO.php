@@ -26,7 +26,7 @@ class BoueeDAO implements BoueeSQL
         $this->listeBouees = array();
     }
 
-    public function recupererListeCalcul()
+    public function recupererListeBuoe()
     {
         $bouees = $this->connection->collection('bouee')->get();
         $this->listeBouees = array();
