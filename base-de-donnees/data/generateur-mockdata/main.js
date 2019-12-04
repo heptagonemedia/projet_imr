@@ -188,9 +188,9 @@ var genererMockData = async function() {
 
     // await insererTypesCalculs(NOMBRE_DE_TYPE_DE_CALCUL);
 
-    // await insererCalculs(NOMBRE_DE_CALCUL);
+    await insererCalculs(NOMBRE_DE_CALCUL);
 
-    await insertionHistoriques(NOMBRE_DE_BOUEE, DATE_DEBUT_HISTORIQUE, DATE_FIN_HISTORIQUE);
+    // await insertionHistoriques(NOMBRE_DE_BOUEE, DATE_DEBUT_HISTORIQUE, DATE_FIN_HISTORIQUE);
 
 }
 
