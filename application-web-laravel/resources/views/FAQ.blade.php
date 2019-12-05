@@ -87,15 +87,10 @@
         </div>
     </main>
 
-
-
-    <!-- video modal -->
+    <!-- liseuse vidéo -->
     <section class="liseuse-video">
 
-        <!-- Modal Content Wrapper -->
-        <div
-            id="liseuse-video-content" class="liseuse-video-content"
-        >
+        <div id="liseuse-video-content" class="liseuse-video-content" >
 
             <!-- iframe -->
             <iframe
@@ -109,19 +104,11 @@
             ></iframe>
 
             <a href="#" class="fermeture-liseuse-video" ><i aria-hidden="true" class="material-icons">clear</i></a>
+        </div>
 
-        </div><!-- end modal content wrapper -->
-
-
-        <!-- clickable overlay element -->
+        <!-- overlay clicable -->
         <div class="overlay"></div>
-
-
     </section>
-    <!-- end video modal -->
-
-
-    </main>
 
 @endsection
 
