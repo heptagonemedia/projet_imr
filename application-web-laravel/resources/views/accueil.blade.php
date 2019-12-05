@@ -1,5 +1,5 @@
 @extends('layout.layout')
-<?php  use App\Data\BoueeDAO;use App\Data\RegionDAO;use App\Data\TypeCalculDAO;use Illuminate\Support\Facades\DB; ?>
+<?php  use App\Data\BoueeDAO;use App\Data\RegionDAO;use App\Data\TypeCalculDAO;use App\Models\Bouee;use Illuminate\Support\Facades\DB; ?>
 
 @section('head')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -53,9 +53,18 @@
             </div>
         </div>
     </nav>
+<pre>
+<?php
 
+    if (isset($_GET["region"])){
+        $regionDao = new RegionDAO();
+        $regionChoisie = $regionDao->recupererRegionParId((int)$_GET["region"]);
+        print_r(DB::connection("mongodb")->collection("bouee")->where('id_region', (int)$_GET["region"])->value(Bouee::CLE_LATITUDE_REFERENCE, Bouee::CLE_LONGITUDE_REFERENCE)->last());
 
+    }
 
+?>
+</pre>
 @endsection
 
 @section('main')
@@ -74,8 +83,8 @@
                         <div class="row">
                             <div class="col s4 center-align">{!! __('message.titreCarte') !!}</div>
                             <div class="input-field col s4" id="select_region">
-                                <form id="choix_region">
-                                    <select oninput="document.getElementById('choix_id').submit();" title="{!! __('message.champRegion') !!}" role="select" id="bouee">
+                                <form method="get" id="choix_region">
+                                    <select onchange="regionCarte();" name="region" title="{!! __('message.champRegion') !!}" role="select" id="bouee">
                                         <option value="" disabled selected>{!! __('message.region') !!}</option>
                                         <?php
                                         foreach ($regions as $region){ ?>

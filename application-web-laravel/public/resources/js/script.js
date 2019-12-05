@@ -376,3 +376,8 @@ function afficherLiens(){
     instance.open();
     console.log("liens")
 }
+
+function regionCarte(){
+    document.getElementById('choix_region').submit();
+    console.log('ideijdiejd');
+}
