@@ -5,7 +5,7 @@ use App\Models\Region;
 use Illuminate\Support\Facades\DB;
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class RegionDAO extends Model implements RegionSQL
+class RegionDAO
 {
     private static $instance;
     protected $connection;

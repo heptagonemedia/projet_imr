@@ -59,8 +59,10 @@
     if (isset($_GET["region"])){
         $regionDao = new RegionDAO();
         $regionChoisie = $regionDao->recupererRegionParId((int)$_GET["region"]);
-        $boueedao = new BoueeDAO();
-
+        $boueedao = BoueeDAO::getInstance();
+        //$bouee = $boueedao->recupererBoueeParId(5);
+        $bouee = $boueedao->recupererCoordonneesBoueesParRegion((int)$_GET["region"]);
+        print_r($bouee);
     }
 
 ?>
@@ -88,7 +90,7 @@
                                         <option value="" disabled selected>{!! __('message.region') !!}</option>
                                         <?php
                                         foreach ($regions as $region){ ?>
-                                        <option title="region <?php echo $region->etiquette ?>" aria-label="region <?php echo $region->etiquette ?>"  value="<?php echo $region->id ?>"><?php echo $region->etiquette ?></option>
+                                        <option title="region <?php echo $region->getEtiquette() ?>" aria-label="region <?php echo $region->getEtiquette() ?>"  value="<?php echo $region->getId() ?>"><?php echo $region->getEtiquette() ?></option>
                                         <?php
                                         }
                                         ?>

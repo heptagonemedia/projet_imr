@@ -2,7 +2,10 @@
 
 namespace App\Data;
 
-class HistoriqueDonneeMesureeDAO implements HistoriqueDonneeMesureeSQL
+use App\HistoriqueDonneeBouee;
+use App\Models\Bouee;
+
+class HistoriqueDonneeMesureeDAO
 {
     private static $instance;
 
@@ -24,11 +27,11 @@ class HistoriqueDonneeMesureeDAO implements HistoriqueDonneeMesureeSQL
     }
 
     public function nombreBoueesConformes(){
-        $this->conformes = DB::select(HistoriqueDonneeMesureeSQL::RECUPERER_NOMBRE_CONFORMES);
+        $this->conformes = $this->collection("historique_donnee_bouee")->where("valide", true);
     }
 
     public function nombreBoueesNonConformes(){
-        $this->nonConformes = DB::select(HistoriqueDonneeMesureeSQL::RECUPERER_NOMBRE_NON_CONFORMES);
+        $this->nonConformes = $this->collection("historique_donnee_bouee")->where("valide", false);
     }
 
     public function getConformes()
@@ -50,6 +53,5 @@ class HistoriqueDonneeMesureeDAO implements HistoriqueDonneeMesureeSQL
     {
         $this->nonConformes = $nonConformes;
     }
-
 
 }

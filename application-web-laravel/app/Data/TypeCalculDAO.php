@@ -6,9 +6,9 @@ use App\Models\TypeCalcul;
 use Illuminate\Support\Facades\DB;
 use MongoDB\BSON\Type;
 
-class TypeCalculDAO implements TypeCalculSQL
+class TypeCalculDAO
 {
-    private $instance;
+    private static $instance;
     private $connection;
     private $listeTypesCalcul;
 

@@ -118,7 +118,7 @@
                                 <select title="{!! __('message.champRegion') !!}" role="select" id="bouee">
                                     <option value="" disabled selected>{!! __('message.region') !!}</option>
                                     <?php foreach ($regions as $region){ ?>
-                                    <option title="region Saint-Laurent" aria-label="region Saint-Laurent"  value="<?php echo $region->id ?>"><?php echo $region->etiquette ?></option>
+                                    <option title="region Saint-Laurent" aria-label="region Saint-Laurent"  value="<?php echo $region->getId() ?>"><?php echo $region->getEtiquette() ?></option>
                                     <?php
                                     }
                                     ?>

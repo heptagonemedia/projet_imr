@@ -6,7 +6,7 @@ use App\Models\Bouee;
 use App\Models\Region;
 use Illuminate\Support\Facades\DB;
 
-class BoueeDAO implements BoueeSQL
+class BoueeDAO
 {
     private static $instance;
     private $connection;
@@ -26,7 +26,7 @@ class BoueeDAO implements BoueeSQL
         $this->listeBouees = array();
     }
 
-    public function recupererListeBuoe()
+    public function recupererListeBouees()
     {
         $bouees = $this->connection->collection('bouee')->get();
         $this->listeBouees = array();
@@ -58,5 +58,14 @@ class BoueeDAO implements BoueeSQL
         $regionDAO = RegionDAO::getInstance();
         $region = $regionDAO->recupererRegionParId($bouee[Bouee::CLE_ID_REGION]);
         return new Bouee($bouee[Bouee::CLE_ID], $bouee[Bouee::CLE_ETIQUETTE], $bouee[Bouee::CLE_LONGITUDE_REFERENCE], $bouee[Bouee::CLE_LATITUDE_REFERENCE], $region  );
+    }
+
+    public function recupererCoordonneesBoueesParRegion($id_region){
+        $bouees = $this->connection->collection("bouee")->where("id_region", (int)$id_region)->get();
+        $listeCoordonnees = array();
+        foreach ($bouees as $bouee){
+            array_push($listeCoordonnees, $bouee[Bouee::CLE_LONGITUDE_REFERENCE], $bouee[Bouee::CLE_LATITUDE_REFERENCE]);
+        }
+        return $listeCoordonnees;
     }
 }

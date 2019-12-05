@@ -7,8 +7,8 @@ class Region
     const CLE_ID = "id_region";
     const CLE_ETIQUETTE = "etiquette";
 
-    public $id;
-    public $etiquette;
+    private $id;
+    private $etiquette;
 
     public function __construct($id, $etiquette)
     {

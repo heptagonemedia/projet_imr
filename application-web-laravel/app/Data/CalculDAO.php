@@ -7,7 +7,7 @@ use App\Models\Region;
 use App\Models\TypeCalcul;
 use Illuminate\Support\Facades\DB;
 
-class CalculDAO implements CalculSQL
+class CalculDAO
 {
     private static $instance;
     private $connection;
