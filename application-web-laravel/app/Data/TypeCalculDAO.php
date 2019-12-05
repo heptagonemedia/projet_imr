@@ -15,7 +15,7 @@ class TypeCalculDAO implements TypeCalculSQL
     public static function getInstance()
     {
         if(is_null(self::$instance)) {
-            self::$instance = new ResultatDAO();
+            self::$instance = new TypeCalculDAO();
         }
         return self::$instance;
     }

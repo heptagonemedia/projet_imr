@@ -7,14 +7,14 @@ use Jenssegers\Mongodb\Eloquent\Model;
 
 class RegionDAO extends Model implements RegionSQL
 {
-    private $instance;
+    private static $instance;
     protected $connection;
     private $listeRegions;
 
     public static function getInstance()
     {
         if(is_null(self::$instance)) {
-            self::$instance = new ResultatDAO();
+            self::$instance = new RegionDAO();
         }
         return self::$instance;
     }

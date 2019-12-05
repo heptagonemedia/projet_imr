@@ -1,5 +1,5 @@
 @extends('layout.layout')
-<?php  use App\Data\BoueeDAO;use App\Data\RegionDAO;use App\Data\TypeCalculDAO;use App\Models\Bouee;use Illuminate\Support\Facades\DB; ?>
+<?php  use App\Data\BoueeDAO;use App\Data\RegionDAO;use App\Data\TypeCalculDAO;use App\Models\Bouee;use App\Models\Region;use Illuminate\Support\Facades\DB; ?>
 
 @section('head')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -59,7 +59,7 @@
     if (isset($_GET["region"])){
         $regionDao = new RegionDAO();
         $regionChoisie = $regionDao->recupererRegionParId((int)$_GET["region"]);
-        print_r(DB::connection("mongodb")->collection("bouee")->where('id_region', (int)$_GET["region"])->value(Bouee::CLE_LATITUDE_REFERENCE, Bouee::CLE_LONGITUDE_REFERENCE)->last());
+        $boueedao = new BoueeDAO();
 
     }
 
