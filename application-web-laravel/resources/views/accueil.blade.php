@@ -53,23 +53,21 @@
             </div>
         </div>
     </nav>
-<pre>
-<?php
 
-    if (isset($_GET["region"])){
-        $regionDao = new RegionDAO();
-        $regionChoisie = $regionDao->recupererRegionParId((int)$_GET["region"]);
-        $boueedao = BoueeDAO::getInstance();
-        //$bouee = $boueedao->recupererBoueeParId(5);
-        $bouee = $boueedao->recupererCoordonneesBoueesParRegion((int)$_GET["region"]);
-        print_r($bouee);
-    }
 
-?>
-</pre>
 @endsection
 
 @section('main')
+    <div id="coordonnees" hidden >
+        <?php
+
+        if (isset($coordonnees)){
+            foreach ($coordonnees as $coordonnee){
+                echo($coordonnee."&");
+            }
+
+        } ?>
+    </div>
     <main role="main">
         <div class="row" id="ligne_principale">
 
@@ -85,8 +83,8 @@
                         <div class="row">
                             <div class="col s4 center-align">{!! __('message.titreCarte') !!}</div>
                             <div class="input-field col s4" id="select_region">
-                                <form method="get" id="choix_region">
-                                    <select onchange="regionCarte();" name="region" title="{!! __('message.champRegion') !!}" role="select" id="bouee">
+                                <form method="post">
+                                    <select onchange="regionCarte();" name="region" title="{!! __('message.champRegion') !!}" role="select" id="choix_region">
                                         <option value="" disabled selected>{!! __('message.region') !!}</option>
                                         <?php
                                         foreach ($regions as $region){ ?>

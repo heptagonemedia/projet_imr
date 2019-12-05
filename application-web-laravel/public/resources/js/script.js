@@ -286,22 +286,12 @@ function initMap() {
         minZoom: 1,
         maxZoom: 20
     }).addTo(macarte);
-    var url = document.location.href;
-    if (url.indexOf('bouee') == -1) {
-        var listeCoords = new Array();
-        listeCoords.push(49.0523948); listeCoords.push(-68.283337);
-        for (var i = 2; i < 15; i += 2) {
-            listeCoords.push(listeCoords[i - 2] + 0.1);
-            listeCoords.push(listeCoords[i - 1] + 0.33);
-        }
-        for (var i = 0; i < 29; i += 2) {
-           /* L.marker([listeCoords[i], listeCoords[i + 1]]).addTo(macarte);
-            console.log(listeCoords[i] + ',' + listeCoords[i + 1])*/
 
-        }
-    } else {
-        macarte.setView([49.0523948, -68.283337], 10);
-        L.marker([49.0523948, -68.283337]).addTo(macarte);
+    var coordonnees = document.getElementById("coordonnees").innerHTML;
+    listeCoordonnees = coordonnees.split("&amp;");
+    macarte.setView([listeCoordonnees[1], listeCoordonnees[0]], 2);
+    for (let i = 0; i < coordonnees.length; i+=12) {
+        L.marker([listeCoordonnees[i+1], listeCoordonnees[i]]).addTo(macarte);
     }
 
 }
@@ -378,6 +368,6 @@ function afficherLiens(){
 }
 
 function regionCarte(){
-    document.getElementById('choix_region').submit();
-    console.log('ideijdiejd');
+    console.log($("#choix_region").val());
+     document.location.href = document.location.href.substring(0, document.location.href.indexOf("accueil")) + "accueil/" + $("#choix_region").val();
 }

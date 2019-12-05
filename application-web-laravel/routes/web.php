@@ -15,6 +15,8 @@
 // un lien <a href="{{ url('locale/en') }}">anglais</a>
 // permet le passage à la langue anglaise. fr pour le français.
 // la locale par défaut est définie dans /config/app.php, j'ai mis 'fr'.
+use Illuminate\Support\Facades\Route;
+
 Route::get('locale/{locale}', function ($locale){
     Session::put('locale', $locale);
     return redirect()->back();
@@ -22,7 +24,7 @@ Route::get('locale/{locale}', function ($locale){
 
 Route::get('/' , 'PagesController@naviguerVersAccueil');
 Route::get('/accueil' , 'PagesController@naviguerVersAccueil');
-
+Route::get('/accueil/{id}' , 'PagesController@naviguerVersAccueilRegion');
 Route::get('/nouveauCalcul', 'PagesController@naviguerVersFormulaire');
 
 //TODO: A supprimer, pour utiliser le ResultatController
