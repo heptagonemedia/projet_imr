@@ -70,8 +70,8 @@ canvas:focus{
 /** Liseuse vidéo **/
 
 /* Video Modal */
-.video-modal,
-.video-modal .overlay {
+.liseuse-video,
+.liseuse-video .overlay {
     position: absolute;
     top: 0;
     right: 0;
@@ -79,7 +79,7 @@ canvas:focus{
     left: 0;
     z-index: 3000;
 }
-.video-modal {
+.liseuse-video {
     overflow: hidden;
     position: fixed;
     opacity: 0.0;
@@ -109,7 +109,7 @@ canvas:focus{
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
-.video-modal .overlay {
+.liseuse-video .overlay {
     z-index: 0;
     background: rgba(32, 32, 32, 0.8); /* couleur de l'overlay */
 
@@ -119,7 +119,7 @@ canvas:focus{
     transition: opacity 0.2s ease-out 0.05s;
 }
 
-.video-modal-content {
+.liseuse-video-content {
     position: relative;
     top: auto;
     right: auto;
@@ -142,7 +142,7 @@ canvas:focus{
    Lorsque le rapport de l'écran est supérieur à 16:9
    utilise la hauteur au lieu de la largeur pour le calcul. */
 @media (min-aspect-ratio: 16/9) {
-    .video-modal-content {
+    .liseuse-video-content {
         width: 0;
         height: calc(100vh - 10em);
         padding-top: 0;
@@ -152,17 +152,17 @@ canvas:focus{
 
 /* Réduction des marges sur mobile */
 @media (max-width: 640px) {
-    .video-modal-content {
+    .liseuse-video-content {
         width: calc(100% - 1em);
         padding-top: calc((100% - 1em) * 0.5625); /* 16:9 calc */
     }
 }
 
 /* bouton de fermeture de la video modal */
-.close-video-modal {
+.fermeture-liseuse-video {
     display: block;
     position: absolute;
-    left: 0;
+    right: 20px;
     top: -40px;
 
     text-decoration: none;
@@ -186,16 +186,16 @@ iframe#youtube {
 
 /* afficher le modal :
    ajouter de la classe au corps pour le rendre visible */
-.show-video-modal .video-modal {
+.show-liseuse-video .liseuse-video {
     opacity: 1.0;
 
     transform: translate(0%,0%);
     -webkit-transform: translate(0%,0%);
 }
-.show-video-modal .video-modal .overlay {
+.show-liseuse-video .liseuse-video .overlay {
     opacity: 1.0;
 }
-.show-video-modal .video-modal-content {
+.show-liseuse-video .liseuse-video-content {
     transform: translate(0%,0%);
     -webkit-transform: translate(0%,0%);
 }

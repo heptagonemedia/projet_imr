@@ -1,69 +1,67 @@
 $(document).ready(function(){
 
 
-    /* Toggle Video Modal -----------------------------------------*/
-    function toggle_video_modal() {
+    /* Ouverture de la liseuse vidéo -----------------------------------------*/
+    function ouvertureLiseuseVideo() {
 
-        // Click on video thumbnail or link
-        $(".js-trigger-video-modal").on("click", function(e){
+        // Clic sur le lien de la vidéo
+        $(".js-lanceur-liseuse-video").on("click", function(e){
 
-            // prevent default behavior for a-tags, button tags, etc.
+            // on empêche l'execution de la balise <a>
             e.preventDefault();
 
-            // Grab the video ID from the element clicked
+            // on prend l'id de la vidéo cliquée
             var id = $(this).attr('data-youtube-id');
 
-            // Autoplay when the modal appears
-            // Note: this is intetnionally disabled on most mobile devices
-            // If critical on mobile, then some alternate method is needed
+            // La lecture de la vidéo commence dès qu'elle apparait à l'écran
             var autoplay = '?autoplay=1';
 
-            // Don't show the 'Related Videos' view when the video ends
+            // Ne pas afficher de recommandations à la fin de la lecture de la vidéo
             var related_no = '&rel=0';
 
-            // String the ID and param variables together
+            // Ajout de l'id de la vidéo et des paramètres à l'url Youtube
             var src = 'https://www.youtube.com/embed/'+id+autoplay+related_no;
 
-            // Pass the YouTube video ID into the iframe template...
-            // Set the source on the iframe to match the video ID
+            // Envoi de l'url de la vidéo dans l'iframe
+            // On fait en sorte que la source vidéo de l'iframe corresonde à l'id
             $("#youtube").attr('src', src);
 
-            // Add class to the body to visually reveal the modal
-            $("body").addClass("show-video-modal noscroll");
+            // On fait addClass pour l'ajouter au body et la rendre visible.
+            $("body").addClass("show-liseuse-video noscroll");
 
         });
 
-        // Close and Reset the Video Modal
-        function close_video_modal() {
+        // Fermeture et reset de la liseuse
+        function fermetureLiseuseVideo() {
 
             event.preventDefault();
 
-            // re-hide the video modal
-            $("body").removeClass("show-video-modal noscroll");
+            // on cache la visionneuse vidéo
+            $("body").removeClass("show-liseuse-video noscroll");
 
-            // reset the source attribute for the iframe template, kills the video
+            // on reset le lien de la vidéo, ça arrête la vidéo
             $("#youtube").attr('src', '');
 
         }
-        // if the 'close' button/element, or the overlay are clicked
-        $('body').on('click', '.close-video-modal, .video-modal .overlay', function(event) {
+        // si le bouton de fermeture de l'overlay est cliqué
+        $('body').on('click', '.fermeture-liseuse-video, .liseuse-video .overlay', function(event) {
 
-            // call the close and reset function
-            close_video_modal();
+            // on appelle la fonction de fermeture
+            fermetureLiseuseVideo();
 
         });
-        // if the ESC key is tapped
+        // si la touche ÉCHAP est tappée
         $('body').keyup(function(e) {
-            // ESC key maps to keycode `27`
+            // le code touche 27 correspond à ÉCHAP.
             if (e.keyCode == 27) {
 
-                // call the close and reset function
-                close_video_modal();
+                // on appelle la fonction de fermeture
+                fermetureLiseuseVideo();
 
             }
         });
     }
-    toggle_video_modal();
+    ouvertureLiseuseVideo();
 
 
 
