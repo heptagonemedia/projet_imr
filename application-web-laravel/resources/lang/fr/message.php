@@ -95,6 +95,12 @@ return [
     "temperature"=>"Temp&eacute;rature",
     "calculEnregistre"=>"Calcul enregistr&eacute;",
     "calculBienEnregistre"=>"le calcul a bien &eacute;t&eacute; enregitr&eacute;",
-    "ok"=>"OK"
-
+    "ok"=>"OK",
+    // FAQ (pas besoin de traduire ce terme, foire aux questions en fr, frequently asked questions en anglais.
+    "infoPageFAQ"=>"Cette page vous permet de consulter des vid&eacute;os d'aide.",
+    "question1"=>"Comment ajouter un calcul enregistr&eacute;&nbsp;?",
+    "question2"=>"Comment obtenir l'aperçu d'un calcul sans l'enregistrer&nbsp;?",
+    "question3"=>"Comment revenir &agrave; la page d'&eacute;dition d'un calcul non enregistr&eacute;&nbsp;?",
+    "question4"=>"Comment voir un calcul enregistr&eacute;&nbsp;?",
+    "question5"=>"Comment changer la langue de ce site&nbsp;?"
 ];

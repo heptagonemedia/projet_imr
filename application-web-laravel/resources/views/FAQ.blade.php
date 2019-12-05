@@ -37,7 +37,8 @@
         <div class="row">
             <div class="col s12 z-depth-6 card-panel">
                 <p class="center-align">
-                    Cette page vous permet de consulter des vid&eacute;os d'aide.
+                    <!-- Cette page vous permet de consulter des vid&eacute;os d'aide. -->
+                    {!! __('message.infoPageFAQ') !!}
                 </p>
 
                 <div class="bouton-faq-groupe">
@@ -47,7 +48,8 @@
                         data-youtube-id="2XXZED8RUzw"
                         class=" bouton-faq js-lanceur-liseuse-video"
                     >
-                        Comment ajouter un calcul enregistr&eacute;&nbsp;?
+                        <!-- Comment ajouter un calcul enregistr&eacute;&nbsp;? -->
+                        {!! __('message.question1') !!}
                     </a>
 
                     <a
@@ -55,7 +57,8 @@
                         data-youtube-id="vpmtTmFwENg"
                         class=" bouton-faq js-lanceur-liseuse-video"
                     >
-                        Comment obtenir l'aperçu d'un calcul sans l'enregistrer&nbsp;?
+                        <!-- Comment obtenir l'aperçu d'un calcul sans l'enregistrer&nbsp;? -->
+                        {!! __('message.question2') !!}
                     </a>
 
                     <a
@@ -63,7 +66,8 @@
                         data-youtube-id="Qlnabz9MIjc"
                         class=" bouton-faq js-lanceur-liseuse-video"
                     >
-                        Comment revenir &agrave; la page d'&eacute;dition d'un calcul non enregistr&eacute;&nbsp;?
+                        <!-- Comment revenir &agrave; la page d'&eacute;dition d'un calcul non enregistr&eacute;&nbsp;? -->
+                        {!! __('message.question3') !!}
                     </a>
 
                     <a
@@ -71,7 +75,8 @@
                         data-youtube-id="gd1mXdHOGpM"
                         class=" bouton-faq js-lanceur-liseuse-video"
                     >
-                        Comment voir un calcul enregistr&eacute;&nbsp;?
+                        <!-- Comment voir un calcul enregistr&eacute;&nbsp;? -->
+                        {!! __('message.question4') !!}
                     </a>
 
                     <a
@@ -79,7 +84,8 @@
                         data-youtube-id="D4Z5_QVvujs"
                         class=" bouton-faq js-lanceur-liseuse-video"
                     >
-                        Comment changer la langue de ce site&nbsp;?
+                        <!-- Comment changer la langue de ce site&nbsp;? -->
+                        {!! __('message.question5') !!}
                     </a>
 
                 </div>

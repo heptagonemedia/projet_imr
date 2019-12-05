@@ -90,6 +90,12 @@ return [
     "temperature"=>"Temperature",
     "calculEnregistre"=>"Saved calculation",
     "calculBienEnregistre"=>"the calculation has been saved successfully",
-    "ok"=>"OK"
-
+    "ok"=>"OK",
+    // FAQ.
+    "infoPageFAQ"=>"This pages allows you to play FAQ answers videos.",
+    "question1"=>"How to add a saved calculation?",
+    "question2"=>"How to get a preview of a calculation without saving it?",
+    "question3"=>"How to return on the previous usaved calculation view?",
+    "question4"=>"How to see a saved calculation?",
+    "question5"=>"How to change the site language?"
 ];
