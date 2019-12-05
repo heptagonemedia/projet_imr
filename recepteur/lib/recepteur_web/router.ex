@@ -7,5 +7,7 @@ defmodule RecepteurWeb.Router do
 
   scope "/api", RecepteurWeb do
     pipe_through :api
+
+    resources "/donnee", DonneeController, except: [:new, :edit]
   end
 end
