@@ -1,4 +1,5 @@
 const { Pool, Client } = require('pg');
+const fs = require('fs');
 
 const credentials = require('../../../credentials/CredentialsPg');
 const fonctionDateModele = require('../fonction/fonctionDateModele');
@@ -82,7 +83,7 @@ exports.selectionner = async function (donnees, derniersId, bdd, table, idTable,
 
             for (let index = 0; index < resultat.length; index++) {
 
-                valeursAModifiees = await verificateur.verifier(donnees, derniersId, resultat[index]);
+                valeursAModifiees = await verificateur.verifier(donnees, derniersId, resultat[index], table);
 
                 donnees[index] = valeursAModifiees[0];
                 derniersId['id_historique'] = valeursAModifiees[1];
@@ -95,8 +96,57 @@ exports.selectionner = async function (donnees, derniersId, bdd, table, idTable,
         });
 
     } else {
-        // TODO: Suppression des fichiers et reconstruction
-        return;
+        try {
+            if (fs.existsSync('./donnees.json')) {
+                //file exists
+                // delete file named 'sample.txt'
+                fs.unlink('./donnees.json', function (err) {
+                    if (err) throw err;
+                    // if no error, file has been deleted successfully
+                    console.log('File deleted!');
+
+                    fs.appendFile('donnees.json', donnees, (err) => {
+                        if (err) throw err;
+                        console.log('Appended to file!');
+
+                        try {
+                            if (fs.existsSync('./derniersId.json')) {
+                                //file exists
+                                // delete file named 'sample.txt'
+                                fs.unlink('./derniersId.json', function (err) {
+                                    if (err) throw err;
+                                    // if no error, file has been deleted successfully
+                                    console.log('File deleted!');
+
+                                    fs.appendFile('derniersId.json', derniersId, (err) => {
+                                        if (err) throw err;
+                                        console.log('Appended to file!');
+                                    });
+
+                                });
+                            } else {
+                                console.log('Fichier n\'existe pas ');
+
+                            }
+                        } catch (err) {
+                            console.error(err)
+                        }
+
+
+
+                    });
+
+                });
+            } else {
+                console.log('Fichier n\'existe pas ');
+
+            }
+        } catch (err) {
+            console.error(err)
+        }
+
+
+        return; 
     }
 
 }

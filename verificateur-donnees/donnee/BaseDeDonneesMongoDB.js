@@ -41,6 +41,21 @@ exports.insererTableau = async function (tableauValeur, collection) {
 
 }
 
+exports.insererDocument = async function (element, collection) {
+
+    var client = this.client();
+
+    const c = await client.connect();
+
+    const db = c.db(this.dbName());
+    await db.collection(collection).insertOne(element);
+
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Inserer dans la base de données');
+
+    // client.close();
+
+}
+
 exports.selectionnerDocument = async function (clef, valeur, collection) {
 
     var client = this.client();
