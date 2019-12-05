@@ -38,7 +38,8 @@ class BoueeDAO implements BoueeSQL
             $latitudereference = $item[Bouee::CLE_LATITUDE_REFERENCE];
             $id_region = $item[Bouee::CLE_ID_REGION];
 
-            $region = Region::getInstance()->trouverRegionParId($id_region);
+            $regionDAO = RegionDAO::getInstance();
+            $region = $regionDAO->recupererRegionParId((int)$id_region);
 
             $bouee = new Bouee(
                 $id,
@@ -54,7 +55,7 @@ class BoueeDAO implements BoueeSQL
 
     public function recupererBoueeParId($id){
         $bouee = $this->connection->collection('bouee')->where("id_bouee", $id)->first();
-        $regionDAO = new RegionDAO();
+        $regionDAO = RegionDAO::getInstance();
         $region = $regionDAO->recupererRegionParId($bouee[Bouee::CLE_ID_REGION]);
         return new Bouee($bouee[Bouee::CLE_ID], $bouee[Bouee::CLE_ETIQUETTE], $bouee[Bouee::CLE_LONGITUDE_REFERENCE], $bouee[Bouee::CLE_LATITUDE_REFERENCE], $region  );
     }
