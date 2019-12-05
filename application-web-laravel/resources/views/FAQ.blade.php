@@ -36,7 +36,7 @@
     <main class="container" role="main">
         <div class="row">
             <div class="col s12 z-depth-6 card-panel">
-                <p>
+                <p class="center-align">
                     Cette page vous permet de consulter des vid&eacute;os d'aide.
                 </p>
 
