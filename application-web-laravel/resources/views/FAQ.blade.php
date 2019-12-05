@@ -37,25 +37,49 @@
         <div class="row">
             <div class="col s12 z-depth-6 card-panel">
                 <p>
-                    Cette page vous permet de consulter des vidéos d'aide.
+                    Cette page vous permet de consulter des vid&eacute;os d'aide.
                 </p>
 
                 <div class="bouton-faq-groupe">
 
                     <a
-                        href="https://www.youtube.com/watch?v=a8apEJ5Zt2s"
-                        data-youtube-id="a8apEJ5Zt2s"
+                        href="https://www.youtube.com/watch?v=2XXZED8RUzw"
+                        data-youtube-id="2XXZED8RUzw"
                         class=" bouton-faq js-trigger-video-modal"
                     >
-                        Test avec une vidéo de Linus tech tips
+                        Comment ajouter un calcul enregistr&eacute;&nbsp;?
                     </a>
 
                     <a
-                        href="https://www.youtube.com/watch?v=vuaiqcjf0bs"
-                        data-youtube-id="vuaiqcjf0bs"
+                        href="https://www.youtube.com/watch?v=vpmtTmFwENg"
+                        data-youtube-id="vpmtTmFwENg"
                         class=" bouton-faq js-trigger-video-modal"
                     >
-                        Autre vidéo
+                        Comment obtenir l'aperçu d'un calcul sans l'enregistrer&nbsp;?
+                    </a>
+
+                    <a
+                        href="https://www.youtube.com/watch?v=Qlnabz9MIjc"
+                        data-youtube-id="Qlnabz9MIjc"
+                        class=" bouton-faq js-trigger-video-modal"
+                    >
+                        Comment revenir &agrave; la page d'&eacute;dition d'un calcul non enregistr&eacute;&nbsp;?
+                    </a>
+
+                    <a
+                        href="https://www.youtube.com/watch?v=gd1mXdHOGpM"
+                        data-youtube-id="gd1mXdHOGpM"
+                        class=" bouton-faq js-trigger-video-modal"
+                    >
+                        Comment voir un calcul enregistr&eacute;&nbsp;?
+                    </a>
+
+                    <a
+                        href="https://www.youtube.com/watch?v=D4Z5_QVvujs"
+                        data-youtube-id="D4Z5_QVvujs"
+                        class=" bouton-faq js-trigger-video-modal"
+                    >
+                        Comment changer la langue de ce site&nbsp;?
                     </a>
 
                 </div>
