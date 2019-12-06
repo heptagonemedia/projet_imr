@@ -18,6 +18,7 @@ defmodule SimulateurBouees.Simulateur do
   def main do
     id_scenario = Enum.take_random(1..40, Enum.random(5..10))
     liste_scenario = getScenarios(id_scenario)
+
     demarrerToutesBouees(1, liste_scenario)
   end
   
@@ -32,7 +33,8 @@ defmodule SimulateurBouees.Simulateur do
   end
 
   def getRandomScenario(liste) do
-    Enum.take_random(liste, 1)
+    scenario_dec = Enum.take_random(liste, 1)
+    scenario = {erreur_temperature: }
   end
 
   def getScenario(id) do

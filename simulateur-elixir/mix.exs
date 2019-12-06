@@ -24,9 +24,8 @@ defmodule SimulateurBouees.MixProject do
     [
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_gen_socket_client, "~> 2.1.1"},
-      {:websocket_client, "~> 1.2"},
-      {:poison, "~> 2.0"}
+      {:mojito, "~> 0.5.0"},
+      {:poison, "~> 3.1"}
     ]
   end
 end

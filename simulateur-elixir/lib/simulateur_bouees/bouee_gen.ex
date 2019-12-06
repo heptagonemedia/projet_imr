@@ -22,19 +22,22 @@ defmodule SimulateurBouees.BoueeGen do
   end
 
   def process(state) do
-    receive do
-      after
-        1_000 ->
+    # receive do
+      # after
+      #   1_000 ->
           generer(state)
-          process(state)
-    end
+          # process(state)
+    # end
   end
 
   def calcul(lastval, errval) do
-    valeur = Decimal.add(Decimal.from_float(0.95), errval)
-    random = Decimal.mult(Decimal.from_float(:rand.uniform_real()), Decimal.from_float(0.1))
-    valeur2 = Decimal.add(valeur, random)
-    Decimal.mult(lastval, valeur2)
+    valeur = errval + 0.95
+    # random = Decimal.mult(Decimal.from_float(:rand.uniform_real()), Decimal.from_float(0.1))
+    random = :rand.uniform_real() * 0.1
+    valeur2 = valeur + random
+    # valeur2 = Decimal.add(valeur, random)
+    # Decimal.mult(lastval, valeur2)
+    lastval + valeur2
   end
 
   def decrementBatterie(valeur, decrement) do
@@ -50,26 +53,33 @@ defmodule SimulateurBouees.BoueeGen do
     last = state.dernieres_valeurs
     scenario = List.first(state.scenario) 
 
-    temperature = calcul(last.temperature, scenario.erreur_temperature)
-    salinite = calcul(last.salinite, scenario.erreur_salinite)
-    debit = calcul(last.debit, scenario.erreur_debit)
-    Map.replace!(state, :dernieres_valeurs, %{temperature: temperature, salinite: salinite, debit: debit});
+    temperature = Decimal.to_string(calcul(last.temperature, scenario.erreur_temperature))
+    salinite = Decimal.to_string(calcul(last.salinite, scenario.erreur_salinite))
+    debit = Decimal.to_string(calcul(last.debit, scenario.erreur_debit))
+    Map.replace!(state, :dernieres_valeurs, %{temperature: temperature, salinite: salinite, debit: debit})
 
-    latitude = calcul(last.latitude, scenario.erreur_latitude)
-    longitude = calcul(last.longitude, scenario.erreur_longitude)
+    latitude = Decimal.to_string(calcul(last.latitude, scenario.erreur_latitude))
+    longitude = Decimal.to_string(calcul(last.longitude, scenario.erreur_longitude))
     batterie = decrementBatterie(last.batterie, scenario.valeur_decrementation_batterie)
+    moment = DateTime.to_string(DateTime.utc_now)
 
     Map.replace!(state, :dernieres_valeurs, %{last | latitude: latitude, longitude: longitude, batterie: batterie})
-    data = %{id_bouee: state.id_bouee, latitude: latitude, longitude: longitude, 
-    timestamp: :calendar.universal_time(), batterie: batterie, temperature: temperature,
-    salinite: salinite, debit: debit}
 
-    # TODO send data to RECEIVER => :rpc.call  etc.
-    IO.inspect data
+    data = %{id_bouee: state.id_bouee, latitude_reelle: latitude, longitude_reelle: longitude, 
+    date_saisie: moment, batterie: batterie, temperature: temperature, salinite: salinite, debit: debit}
 
-    :rpc.call(:"recv@127.0.0.1", Receiver, :process_data, [self(), data])
+    # IO.inspect data
+    {:ok, body} = Poison.encode(data)
 
-    # process(state)
+    Mojito.post(
+      # "http://localhost:3000/",
+      "https://putsreq.com/vjJng1E7cT0TFdiE00DJ",
+      [],
+      body
+    )
+
+    # IO.inspect body
+    # SimulateurBouees.EmetteurMint.request(state.pid, "POST", "/vjJng1E7cT0TFdiE00DJ", [], body)
     
   end
 end
