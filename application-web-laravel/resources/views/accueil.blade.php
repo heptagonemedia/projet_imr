@@ -95,10 +95,12 @@
                             <div class="input-field col s4" id="select_region">
                                 <form method="post">
                                     <select onchange="regionCarte();" name="region" title="{!! __('message.champRegion') !!}" role="select" id="choix_region">
-                                        <option value="" disabled selected>{!! __('message.region') !!}</option>
+                                        <option value="" disabled <?php if (!isset($id_region)){echo "selected";} ?>>{!! __('message.region') !!}</option>
                                         <?php
                                         foreach ($regions as $region){ ?>
-                                        <option title="region <?php echo $region->getEtiquette() ?>" aria-label="region <?php echo $region->getEtiquette() ?>"  value="<?php echo $region->getId() ?>"><?php echo $region->getEtiquette() ?></option>
+                                        <option title="region <?php echo $region->getEtiquette() ?>" aria-label="region <?php echo $region->getEtiquette() ?>"  value="<?php echo $region->getId() ?>" <?php if (isset($id_region) && $id_region == $region->getId()){
+                                            echo "selected";
+                                        } ?> ><?php echo $region->getEtiquette() ?></option>
                                         <?php
                                         }
                                         ?>

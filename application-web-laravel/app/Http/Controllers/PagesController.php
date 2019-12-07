@@ -53,6 +53,7 @@ class PagesController extends Controller
         $dateSaisie = $historiqueDonneeDAO->recupererDerniereDateSaisie();
         $regions = $regionDAO->recuperListeRegions();
 
+        
         $coordonnees = $boueeDAO->recupererCoordonneesBoueesParRegion((int)$id_region);
 
         return view('accueil', compact('regions', 'coordonnees', 'id_region', 'conformes', 'nonConformes', "dateSaisie"));
