@@ -11,7 +11,7 @@ return [
     "messageCarte"=>"Map showing buoys position",
     "boutonPleinEcran"=>"Full-screen",
     "boueesNonConformes"=>"Incorrects buoys",
-    "etatDesBouees"=>"Buoy Status", //Buoy Status
+    "etatDesBouees"=>"Percentage of data validity", //Buoy Status
     "altGrapheBouees"=>"graph representing the number of correct and incorrect buoys",
     // footer.php
     "copyright"=>"&copy; 2019 Heptagone Media",

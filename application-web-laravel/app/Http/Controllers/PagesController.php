@@ -14,22 +14,25 @@ class PagesController extends Controller
 {
     public function naviguerVersAccueil()
     {
-        $regionDAO = new RegionDAO();
+        $boueeDAO = BoueeDAO::getInstance();
+        $conformes = $boueeDAO->recupererDonneesConformes();
+        $nonConformes = $boueeDAO->recupererDonneesNonConformes();
+        $regionDAO = RegionDAO::getInstance();
         $regions = $regionDAO->recuperListeRegions();
-        return view('accueil', compact("regions"));
+        return view('accueil', compact("regions", "conformes", "nonConformes"));
     }
 
     public function naviguerVersFormulaire()
     {
-        $regionDAO = new RegionDAO();
+        $regionDAO = RegionDAO::getInstance();
         $regions = $regionDAO->recuperListeRegions();
-        $typeCalculDao = new TypeCalculDAO();
+        $typeCalculDao = TypeCalculDAO::getInstance();
         $typesCalcul = $typeCalculDao->recuperListeTypesDeCalcul();
         return view('formulaire', compact("regions"), compact("typesCalcul"));
     }
 
     public function naviguerVersResultat($id){
-        $regionDAO = new RegionDAO();
+        $regionDAO = RegionDAO::getInstance();
         $regions = $regionDAO->recupererRegionParId($id);
         return view('layoutResultat', compact("regions"));
     }
@@ -41,10 +44,12 @@ class PagesController extends Controller
 
     public function naviguerVersAccueilRegion($id_region){
         $boueeDAO = BoueeDAO::getInstance();
+        $conformes = $boueeDAO->recupererDonneesConformes();
+        $nonConformes = $boueeDAO->recupererDonneesNonConformes();
         $coordonnees = $boueeDAO->recupererCoordonneesBoueesParRegion((int)$id_region);
-        $regionDAO = new RegionDAO();
+        $regionDAO = RegionDAO::getInstance();
         $regions = $regionDAO->recuperListeRegions();
-        return view('accueil', compact('regions', 'coordonnees', 'id_region'));
+        return view('accueil', compact('regions', 'coordonnees', 'id_region', 'conformes', 'nonConformes'));
     }
 
 }

@@ -68,4 +68,15 @@ class BoueeDAO
         }
         return $listeCoordonnees;
     }
+
+    public function recupererDonneesConformes(){
+        $conformes = $this->connection->collection("historique_donnee_bouee")->select('id_bouee')->distinct()->where("valide", true)->count();
+        return $conformes;
+    }
+
+    public function recupererDonneesNonConformes(){
+        $nonConformes = $this->connection->collection("historique_donnee_bouee")->select('id_bouee')->distinct()->where("valide", false)->count();
+        return $nonConformes;
+    }
+
 }

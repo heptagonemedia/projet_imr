@@ -15,7 +15,7 @@ return [
     "messageCarte"=>"Carte montrant la position des bouées",
     "boutonPleinEcran"=>"Plein &eacute;cran",
     "boueesNonConformes"=>"Bou&eacute;es non conforme",
-    "etatDesBouees"=>"&Eacute;tat des Bou&eacute;es",
+    "etatDesBouees"=>"Pourcentage de validit&eacute; des donn&eacute;es",
     "altGrapheBouees"=>"graphique repr&eacute;santant le nombre de bou&eacute;es conformes et non conformes",
     // footer.php //géré
     "copyright"=>"&copy; 2019 Heptagone Media",

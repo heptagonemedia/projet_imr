@@ -54,19 +54,29 @@
         </div>
     </nav>
 
-
 @endsection
 
 @section('main')
+    <div id="conformes" hidden>
+        <?php
+        if (isset($conformes) && isset($nonConformes))
+            echo ($conformes/($conformes+$nonConformes))*100;
+        ?>
+    </div>
+    <div id="non-conformes" hidden>
+        <?php
+        if (isset($conformes) && isset($nonConformes))
+            echo ($nonConformes/($conformes+$nonConformes))*100;
+        ?>
+    </div>
     <div id="coordonnees" hidden >
         <?php
-
         if (isset($coordonnees)){
             foreach ($coordonnees as $coordonnee){
                 echo($coordonnee."&");
             }
-
-        } ?>
+        }
+        ?>
     </div>
     <main role="main">
         <div class="row" id="ligne_principale">
