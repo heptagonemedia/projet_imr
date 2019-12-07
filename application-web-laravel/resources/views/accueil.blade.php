@@ -56,6 +56,8 @@
 
 @endsection
 
+<?php print_r( DB::connection("mongodb")->collection("historique_donnee_bouee")->value("date_saisie")) ?>
+
 @section('main')
     <div id="conformes" hidden>
         <?php

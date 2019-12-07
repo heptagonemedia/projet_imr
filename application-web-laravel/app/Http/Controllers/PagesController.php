@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Data\BoueeDAO;
 use App\Data\CalculDAO;
+use App\Data\HistoriqueDonneeMesureeDAO;
 use App\Data\RegionDAO;
 use App\Data\TypeCalculDAO;
 use App\Models\TypeCalcul;
@@ -14,9 +15,9 @@ class PagesController extends Controller
 {
     public function naviguerVersAccueil()
     {
-        $boueeDAO = BoueeDAO::getInstance();
-        $conformes = $boueeDAO->recupererDonneesConformes();
-        $nonConformes = $boueeDAO->recupererDonneesNonConformes();
+        $historiqueDonneeDAO = HistoriqueDonneeMesureeDAO::getInstance();
+        $conformes = $historiqueDonneeDAO->nombreBoueesConformes();
+        $nonConformes = $historiqueDonneeDAO->nombreBoueesNonConformes();
         $regionDAO = RegionDAO::getInstance();
         $regions = $regionDAO->recuperListeRegions();
         return view('accueil', compact("regions", "conformes", "nonConformes"));
@@ -44,8 +45,9 @@ class PagesController extends Controller
 
     public function naviguerVersAccueilRegion($id_region){
         $boueeDAO = BoueeDAO::getInstance();
-        $conformes = $boueeDAO->recupererDonneesConformes();
-        $nonConformes = $boueeDAO->recupererDonneesNonConformes();
+        $historiqueDonneeDAO = HistoriqueDonneeMesureeDAO::getInstance();
+        $conformes = $historiqueDonneeDAO->nombreBoueesConformes();
+        $nonConformes = $historiqueDonneeDAO->nombreBoueesNonConformes();
         $coordonnees = $boueeDAO->recupererCoordonneesBoueesParRegion((int)$id_region);
         $regionDAO = RegionDAO::getInstance();
         $regions = $regionDAO->recuperListeRegions();

@@ -4,34 +4,34 @@ namespace App\Data;
 
 use App\HistoriqueDonneeBouee;
 use App\Models\Bouee;
+use Illuminate\Support\Facades\DB;
 
 class HistoriqueDonneeMesureeDAO
 {
     private static $instance;
-
+    private $connection;
     private $conformes;
     private $nonConformes;
 
     public static function getInstance()
     {
         if(is_null(self::$instance)) {
-            self::$instance = new BoueeDAO();
+            self::$instance = new HistoriqueDonneeMesureeDAO();
         }
         return self::$instance;
     }
 
     public function __construct()
     {
-        $this->nombreBoueesConformes();
-        $this->nombreBoueesNonConformes();
+        $this->connection = DB::connection("mongodb");
     }
 
     public function nombreBoueesConformes(){
-        $this->conformes = $this->collection("historique_donnee_bouee")->where("valide", true);
+       return $this->connection->collection("historique_donnee_bouee")->select('id_bouee')->distinct()->where("valide", true)->count();
     }
 
     public function nombreBoueesNonConformes(){
-        $this->nonConformes = $this->collection("historique_donnee_bouee")->where("valide", false);
+       return $this->connection->collection("historique_donnee_bouee")->select('id_bouee')->distinct()->where("valide", false)->count();
     }
 
     public function getConformes()
@@ -39,19 +39,10 @@ class HistoriqueDonneeMesureeDAO
         return $this->conformes;
     }
 
-    public function setConformes($conformes)
-    {
-        $this->conformes = $conformes;
-    }
 
     public function getNonConformes()
     {
         return $this->nonConformes;
-    }
-
-    public function setNonConformes($nonConformes)
-    {
-        $this->nonConformes = $nonConformes;
     }
 
 }
