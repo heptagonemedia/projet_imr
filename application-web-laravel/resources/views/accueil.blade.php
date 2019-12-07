@@ -56,8 +56,6 @@
 
 @endsection
 
-<?php print_r( DB::connection("mongodb")->collection("historique_donnee_bouee")->value("date_saisie")) ?>
-
 @section('main')
     <div id="conformes" hidden>
         <?php
@@ -121,7 +119,11 @@
                     <div class="card-content white-text">
                         <span class="card-title black-text center-align">{!! __('message.derniereMiseAjour') !!}</span>
                         <div class="card-content black-text">
-                            Date et heure
+                            <?php
+                                if(isset($dateSaisie)){
+                                    echo $dateSaisie;
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>

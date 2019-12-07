@@ -34,6 +34,10 @@ class HistoriqueDonneeMesureeDAO
        return $this->connection->collection("historique_donnee_bouee")->select('id_bouee')->distinct()->where("valide", false)->count();
     }
 
+    public function recupererDerniereDateSaisie(){
+        return $this->connection->collection("historique_donnee_bouee")->value("date_saisie");
+    }
+
     public function getConformes()
     {
         return $this->conformes;

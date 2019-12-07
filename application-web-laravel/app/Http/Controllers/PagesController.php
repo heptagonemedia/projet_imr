@@ -16,11 +16,12 @@ class PagesController extends Controller
     public function naviguerVersAccueil()
     {
         $historiqueDonneeDAO = HistoriqueDonneeMesureeDAO::getInstance();
-        $conformes = $historiqueDonneeDAO->nombreBoueesConformes();
-        $nonConformes = $historiqueDonneeDAO->nombreBoueesNonConformes();
         $regionDAO = RegionDAO::getInstance();
-        $regions = $regionDAO->recuperListeRegions();
-        return view('accueil', compact("regions", "conformes", "nonConformes"));
+            $conformes = $historiqueDonneeDAO->nombreBoueesConformes();
+            $nonConformes = $historiqueDonneeDAO->nombreBoueesNonConformes();
+            $dateSaisie = $historiqueDonneeDAO->recupererDerniereDateSaisie();
+            $regions = $regionDAO->recuperListeRegions();
+        return view('accueil', compact("regions", "conformes", "nonConformes", "dateSaisie"));
     }
 
     public function naviguerVersFormulaire()
@@ -46,12 +47,15 @@ class PagesController extends Controller
     public function naviguerVersAccueilRegion($id_region){
         $boueeDAO = BoueeDAO::getInstance();
         $historiqueDonneeDAO = HistoriqueDonneeMesureeDAO::getInstance();
+        $regionDAO = RegionDAO::getInstance();
         $conformes = $historiqueDonneeDAO->nombreBoueesConformes();
         $nonConformes = $historiqueDonneeDAO->nombreBoueesNonConformes();
-        $coordonnees = $boueeDAO->recupererCoordonneesBoueesParRegion((int)$id_region);
-        $regionDAO = RegionDAO::getInstance();
+        $dateSaisie = $historiqueDonneeDAO->recupererDerniereDateSaisie();
         $regions = $regionDAO->recuperListeRegions();
-        return view('accueil', compact('regions', 'coordonnees', 'id_region', 'conformes', 'nonConformes'));
+
+        $coordonnees = $boueeDAO->recupererCoordonneesBoueesParRegion((int)$id_region);
+
+        return view('accueil', compact('regions', 'coordonnees', 'id_region', 'conformes', 'nonConformes', "dateSaisie"));
     }
 
 }
