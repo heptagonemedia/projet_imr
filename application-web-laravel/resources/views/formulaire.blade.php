@@ -58,7 +58,7 @@
                                 <?php foreach ($typesCalcul as $typeCalcul){ ?>
                                 <p>
                                     <label id="radio">
-                                        <input aria-labelledby="radio" title="type de calcul"  name="calcul" type="radio" value="<?php echo $typeCalcul->getId(); ?>" id="<?php echo $typeCalcul->etiquette ;?>" checked />
+                                        <input aria-labelledby="radio" title="type de calcul"  name="calcul" type="radio" value="<?php echo $typeCalcul->getId(); ?>" id="<?php echo $typeCalcul->getEtiquette() ;?>" checked />
                                         <span><?php echo $typeCalcul->getEtiquette(); ?></span>
                                     </label>
                                 </p>
@@ -115,10 +115,10 @@
                             </legend>
 
                             <div class="input-field col s10">
-                                <select title="{!! __('message.champRegion') !!}" role="select" id="bouee">
+                                <select title="{!! __('message.champRegion') !!}" role="select" id="region">
                                     <option value="" disabled selected>{!! __('message.region') !!}</option>
                                     <?php foreach ($regions as $region){ ?>
-                                    <option title="region Saint-Laurent" aria-label="region Saint-Laurent"  value="<?php echo $region->getId() ?>"><?php echo $region->getEtiquette() ?></option>
+                                    <option title="region <?php echo $region->getEtiquette() ?>" aria-label="region <?php echo $region->getEtiquette() ?>"  value="<?php echo $region->getId() ?>"><?php echo $region->getEtiquette() ?></option>
                                     <?php
                                     }
                                     ?>
@@ -128,7 +128,7 @@
                             <div class="col s2"></div>
 
                             <div class="col s10">
-                                <span class="helper-text" id="HelperBouee"><label role="alert" class="alerte">{!! __('message.helperRegion') !!}</label></span>
+                                <span class="helper-text" id="HelperRegion"><label role="alert" class="alerte">{!! __('message.helperRegion') !!}</label></span>
                             </div>
 
                         </fieldset>
@@ -208,6 +208,9 @@
                             <div id="ligne-select">
 
                             </div>
+                            <div class="col s10">
+                                <span class="helper-text" id="HelperRecursivite"><label role="alert" class="alerte">{!! __('message.helperRecursivite') !!}</label></span>
+                            </div>
                         </fieldset>
 
 
@@ -229,9 +232,9 @@
 
 
 @section('script')
-    <script type="text/plain" id="select-recursivite">
+    <script type="text/html" id="select-recursivite">
         <div class="input-field col l4 ">
-    <select  title="selection de la récursivité" role="select">
+    <select  title="selection de la récursivité" role="select" id="frequence-recursivite">
       <option value="" disabled selected>Quand répéter le calcul</option>
       <option value="1">Tous les jours</option>
       <option value="2">Toutes les semaines</option>

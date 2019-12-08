@@ -40,17 +40,18 @@ var myPieChart = new Chart(ctx, {
     data: data
 });
 
-function detecterErreurs() {
 
+function detecterErreurs() {
     //A ne pas mettre directement dans la condition du if
     let verificationFrequence = verifierErreurFrequence();
-    // let verificationBouee = verifierErreurBouee();
+    let verificationBouee = verifierErreurRegion();
     let verificationIntervalle = verifierErreurIntervalle();
+    let verificationRecursivite = verifierErreurRecursivite();
 
-    if (verificationFrequence  && verificationIntervalle) {
+    if (verificationFrequence  && verificationIntervalle && verificationBouee) {
         $("#texteAlerte").text("");
         $("#divAlerte").hide();
-        $('#formulaire').submit();
+        // $('#formulaire').submit();
     }
 
 }
@@ -93,17 +94,36 @@ function initFormulaire() {
     }
 }
 
-//fonction qui affiche le message d'erreur pour le champ bouée
+//fonction qui affiche le message d'erreur pour le champ region
 function verifierErreurRegion() {
 
-    let valeurBouee = $("#region").value();
+    let valeurBouee = $("#region").val();
 
-    if (valeurBouee == "") {
-        $("#HelperBouee").show();
+    if (valeurBouee == null) {
+        $("#HelperRegion").show();
         return false;
+    }else {
+        $("#HelperRegion").hide();
+        return true;
     }
-    else {
-        $("#HelperBouee").css('display', 'none');
+}
+
+
+function verifierErreurRecursivite() {
+    if ($('#recursif').is(":checked")){
+        if ($("#frequence-recursivite").val() == null){
+
+            $("#HelperRecursivite").show();
+            return false;
+
+        }else{
+
+            $("#HelperRecursivite").hide();
+            return true;
+
+        }
+    }else{
+        $("#HelperRecursivite").hide();
         return true;
     }
 }

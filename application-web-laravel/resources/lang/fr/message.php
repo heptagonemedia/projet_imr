@@ -43,6 +43,7 @@ return [
     "champMinute"=>"champs minute",
     "champRegion"=>"selection de la r&eacute;gion",
     "helperValeur"=>"Il faut saisir au moins une valeur et uniquement des entiers",
+    "helperRecursivite"=>"Veuillez choisir un fr&eacute;quence de r&eacute;cursivit&eacute;",
     "region"=>"R&eacute;gion",
     "helperRegion"=>"Veuillez choisir une r&eacute;gion",
     "bouee"=>"Bou&eacute;e",
