@@ -38,6 +38,10 @@ return [
     "champHeure"=>"hour field",
     "champMinute"=>"minute field",
     "champRegion"=>"region field",
+    "champRecursivite"=>"When do you want to repeat the calculation",
+    "frequence1"=>"Every day",
+    "frequence2"=>"Every week",
+    "frequence3"=>"Every Year",
     "helperRecursivite"=>"It is necessary to select a recursion frequency",
     "helperValeur"=>"It is necessary to enter at least one value and only integers", //Il faut saisir au moins une valeur et uniquement des entiers
     "region"=>"Region",

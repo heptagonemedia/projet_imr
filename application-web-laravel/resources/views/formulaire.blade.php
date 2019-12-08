@@ -235,10 +235,10 @@
     <script type="text/html" id="select-recursivite">
         <div class="input-field col l4 ">
     <select  title="selection de la récursivité" role="select" id="frequence-recursivite">
-      <option value="" disabled selected>Quand répéter le calcul</option>
-      <option value="1">Tous les jours</option>
-      <option value="2">Toutes les semaines</option>
-      <option value="3">Tous les ans</option>
+      <option value="" disabled selected>{!! __('message.champRecursivite') !!}</option>
+      <option value="1">{!! __('message.frequence1') !!}</option>
+      <option value="2">{!! __('message.frequence2') !!}</option>
+      <option value="3">{!! __('message.frequence3') !!}</option>
     </select>
   </div>
     </script>
