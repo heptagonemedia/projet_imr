@@ -29,7 +29,7 @@
                 <div class="col l4 center-align"><button role="button" onclick="ouvrirSidenav()" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i aria-hidden="true" class="material-icons" id="menu">menu</i></button></div>
                 <div class="col l4 center-align" style="font-size: 20pt"><h1>{!! __('message.titleFormulaireRecherche') !!}</h1></div>
                 <div class="col l4 center align ">
-                    <a href="accueil" class="breadcrumb">{!! __('message.accueilMenu') !!}</a>
+                    <a href="{{action('PagesController@naviguerVersAccueil')}}" class="breadcrumb">{!! __('message.accueilMenu') !!}</a>
                     <a href="#" class="breadcrumb">{!! __('message.formulaire') !!}</a>
                 </div>
             </div>
@@ -208,8 +208,8 @@
                             <div id="ligne-select">
 
                             </div>
-                            <div class="col s10">
-                                <span class="helper-text" id="HelperRecursivite"><label role="alert" class="alerte">{!! __('message.helperRecursivite') !!}</label></span>
+                            <div class="col s10 center">
+                                <span class="helper-text " id="HelperRecursivite"><label role="alert" class="alerte">{!! __('message.helperRecursivite') !!}</label></span>
                             </div>
                         </fieldset>
 

@@ -23,12 +23,12 @@ Route::get('locale/{locale}', function ($locale){
 });
 
 Route::get('/' , 'PagesController@naviguerVersAccueil');
-Route::get('/accueil' , 'PagesController@naviguerVersAccueil');
-Route::get('/accueil/{id}' , 'PagesController@naviguerVersAccueilRegion');
-Route::get('/nouveauCalcul', 'PagesController@naviguerVersFormulaire');
+Route::get('accueil' , 'PagesController@naviguerVersAccueil');
+Route::get('accueil/{id}' , 'PagesController@naviguerVersAccueilRegion');
+Route::get('nouveauCalcul', 'PagesController@naviguerVersFormulaire');
 
 //TODO: A supprimer, pour utiliser le ResultatController
-Route::get('/test', 'PagesController@test');
-Route::post('/resultat', 'ResultatController@store');
+Route::get('test', 'PagesController@test');
+Route::post('resultat', 'ResultatController@store');
 //Route::post('/resultat/{id}', 'PagesController@naviguerVersResultat');
-Route::get('/resultat/{id}', 'ResultatController@naviguerVersResultat');
+Route::get('resultat/{id}', 'ResultatController@naviguerVersResultat');

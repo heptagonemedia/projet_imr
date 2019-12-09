@@ -13,7 +13,7 @@
         </div>
     </li>
 
-    <li><a class="waves-effect waves-teal" href="accueil"><i aria-hidden="true" class="material-icons">home</i> {!! __('message.accueilNavigation') !!} </a></li>
+    <li><a class="waves-effect waves-teal" href="{{action('PagesController@naviguerVersAccueil')}}"><i aria-hidden="true" class="material-icons">home</i> {!! __('message.accueilNavigation') !!} </a></li>
     <li>
         <div class="divider"></div>
     </li>
@@ -33,7 +33,7 @@
                         <?php if(isset($calculs)){
                             foreach ($calculs as $calcul){
                             if($calcul->getEnregistre()) { ?>
-                            <li><a class="waves-effect waves-teal" href="resultat/<?php echo $calcul->getId(); ?>"><i aria-hidden="true" class="material-icons">insert_chart_outlined</i>{{--{!! __('message.unTelCalcul') !!} {{$i}}--}} <?php echo $calcul->getEtiquette(); ?></a></li>
+                            <li><a class="waves-effect waves-teal" href="{{action('ResultatController@naviguerVersResultat', $calcul->getId())}}"><i aria-hidden="true" class="material-icons">insert_chart_outlined</i>{{--{!! __('message.unTelCalcul') !!} {{$i}}--}} <?php echo $calcul->getEtiquette(); ?></a></li>
                             <?php }
                             }
                         }?>
@@ -51,7 +51,7 @@
                         <?php if(isset($calculs)){
                         foreach ($calculs as $calcul){
                         if(!$calcul->getEnregistre()) { ?>
-                        <li><a class="waves-effect waves-teal" href="#/resultat/<?php echo $calcul->getId(); ?>"><i aria-hidden="true" class="material-icons">new_releases</i>{{--{!! __('message.unTelCalcul') !!} {{$i}}--}} <?php echo $calcul->getEtiquette(); ?></a></li>
+                        <li><a class="waves-effect waves-teal" href="{{action('PagesController@naviguerVersAccueil', $calcul->getId())}}"><i aria-hidden="true" class="material-icons">new_releases</i>{{--{!! __('message.unTelCalcul') !!} {{$i}}--}} <?php echo $calcul->getEtiquette(); ?></a></li>
                         <?php }
                         }
                         }?>
@@ -65,7 +65,7 @@
 
     <li><a class="subheader">{!! __('message.faireDesCalculs') !!}</a></li>
 
-    <li><a class="waves-effect waves-teal" href="nouveauCalcul"><i aria-hidden="true" class="material-icons">add_circle_outline</i>{!! __('message.nouveauCalcul') !!}</a></li>
+    <li><a class="waves-effect waves-teal" href="{{action('PagesController@naviguerVersFormulaire')}}"><i aria-hidden="true" class="material-icons">add_circle_outline</i>{!! __('message.nouveauCalcul') !!}</a></li>
 
     <li><div class="divider"></div></li>
 
