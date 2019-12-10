@@ -1,0 +1,12 @@
+{
+  "name": "calculateur",
+  "version": "1.0.0",
+  "description": "Module pour effectuer le calcul demandé",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Estevan Gay",
+  "license": "ISC"
+}
