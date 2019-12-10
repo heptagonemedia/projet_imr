@@ -13,29 +13,6 @@ var connexion = {
     database: variablesConnexion.database
 };
 
-// exports.enregistrerDonnee = async function (bouees, bdd) {}
-
-// ###### Fonction pour le test
-// exports.selectionnerDonnees = function(table, bdd) {
-//     console.log('selectionnerDonnees');
-    
-//     const SELECT_TOUTE_LA_TABLE = {
-//         name: 'selectionnerDonnees',
-//         text: 'SELECT * FROM ' + table
-//     }
-//     // callback
-//     bdd.query(SELECT_TOUTE_LA_TABLE, (err, res) => {
-//         if (err) {
-//             console.log('Erreur Select', err);
-//         } else {
-//             // console.log(res.rows[0]['date_saisie']);
-//             // verificateur.lancerVerification(res.rows);
-//         }
-//     })
-
-
-// }
-
 exports.selectionnerDonneesId = async function (table, bdd, donnees, derniersId, callback) {
     
     var id = 'id_' + table;
@@ -55,11 +32,16 @@ exports.selectionnerDonneesId = async function (table, bdd, donnees, derniersId,
         // console.log(fonctionDateModele.convertirChaine('' + res.rows[0]['date_saisie']));
         
         var date = res.rows[0]['date_saisie'];
-        date = fonctionDateModele.convertirChaine(date);
+        date = fonctionDateModele.convertirChaine((''+date));
         
-        var dateFin = fonctionDateModele.augmenterDateModeleXSeconde(date, 3600);
+        var dateFin = fonctionDateModele.augmenterDateModeleXHeure(date, 1);
 
-        await callback(donnees, derniersId, bdd, table, id, date, dateFin, callback);
+        console.log('dateFin', dateFin);
+
+
+        baseDeDonnees = await new Pool(connexion);
+        await callback(donnees, derniersId, baseDeDonnees, table, id, date, dateFin, callback);
+        await baseDeDonnees.end();
 
     });
 
@@ -69,9 +51,12 @@ exports.selectionner = async function (donnees, derniersId, bdd, table, idTable,
 
     if (fonctionDateModele.dateModeleEgales(date, dateFin)) {
         
+        var dateChaine = fonctionDateModele.toString(date);
+        console.log(dateChaine);
+
         const SELECT_TABLE_PARAMETRE = {
             name: 'selectionnerDonnees',
-            text: 'SELECT * FROM ' + table + ' WHERE date_saisie = ' + date
+            text: 'SELECT * FROM ' + table + ' WHERE date_saisie = \'' + dateChaine + '\''
         }
 
         await bdd.query(SELECT_TABLE_PARAMETRE, async function (err, res) {
@@ -90,8 +75,13 @@ exports.selectionner = async function (donnees, derniersId, bdd, table, idTable,
                 derniersId[idTable] = valeursAModifiees[2];
                 
             }
+            
 
-            await callback(donnees, derniersId, bdd, table, idTable, date, dateFin, callback);
+            baseDeDonnees = await new Pool(connexion);
+            await callback(donnees, derniersId, baseDeDonnees, table, idTable, date, dateFin, callback);
+            await baseDeDonnees.end();
+            console.log('sifbhshfbsdujhfbsujh');
+
 
         });
 

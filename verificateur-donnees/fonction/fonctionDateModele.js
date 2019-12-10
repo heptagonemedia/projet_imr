@@ -15,7 +15,7 @@ exports.dateModeleEgales = function (date1, date2) {
 exports.convertirChaine = function (chaine) {
 
     //'Fri Nov 01 2019 00:00:00 GMT-0400 (GMT-04: 00)'
-
+    
     var tableau = chaine.split(' ');
     var horaire = tableau[4].split(':');
     
@@ -114,6 +114,56 @@ exports.augmenterDateModeleXSeconde = function (date, ajout) {
         }
 
     }
+
+    return dateSuivante;
+
+}
+
+exports.augmenterDateModeleXHeure = function (date, ajout) {
+
+    var dateSuivante = date;
+
+    dateSuivante.heure += ajout;
+
+    // if (dateSuivante.seconde > 59) {
+
+        // dateSuivante.seconde = dateSuivante.seconde - 60;
+        // dateSuivante.minute++;
+
+        // if (dateSuivante.minute > 59) {
+
+            // dateSuivante.minute = 0;
+            // dateSuivante.heure++;
+
+            if (dateSuivante.heure > 23) {
+
+                dateSuivante.heure = 0;
+                dateSuivante.jour++;
+
+                if (
+                    ((dateSuivante.mois == 2) && (dateSuivante.jour > 28) && !fonctionGenerique.estBisextile(dateSuivante.annee))
+                    || ((dateSuivante.mois == 2) && (dateSuivante.jour > 29) && fonctionGenerique.estBisextile(dateSuivante.annee))
+                    || (dateSuivante.jour > 30) && (((dateSuivante.mois < 8) && (dateSuivante.mois != 2) && (dateSuivante.mois % 2 == 0)) || ((dateSuivante.mois > 7) && (dateSuivante.mois % 2 == 1)))
+                    || (dateSuivante.jour > 31) && (((dateSuivante.mois < 8) && (dateSuivante.mois % 2 == 1)) || ((dateSuivante.mois > 7) && (dateSuivante.mois % 2 == 0)))
+                ) {
+
+                    dateSuivante.jour = 1;
+                    dateSuivante.mois++;
+
+                    if (dateSuivante.mois > 12) {
+
+                        dateSuivante.mois = 1;
+                        dateSuivante.annee++;
+
+                    }
+
+                }
+
+            }
+
+        // }
+
+    // }
 
     return dateSuivante;
 

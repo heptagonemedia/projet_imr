@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
-    "pg": "^7.12.1"
+    "mongodb": "^3.3.5",
+    "pg": "^7.14.0"
   },
   "devDependencies": {},
   "scripts": {
