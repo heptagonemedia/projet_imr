@@ -88,6 +88,15 @@
                         {!! __('message.question5') !!}
                     </a>
 
+                    <a
+                        href="https://www.youtube.com/watch?v=237SqVKO2VQ"
+                        data-youtube-id="237SqVKO2VQ"
+                        class=" bouton-faq js-lanceur-liseuse-video"
+                    >
+                        <!-- Comment acceder au menu de ce site&nbsp;? -->
+                        {!! __('message.question6') !!}
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -109,7 +118,8 @@
                 src=
             ></iframe>
 
-            <a href="#" class="fermeture-liseuse-video" ><i aria-hidden="true" class="material-icons">clear</i></a>
+            <a href="#" class="fermeture-liseuse-video" ><i aria-hidden="true" class="material-icons">close</i></a>
+            <!-- clear et close sont des icones identiques -->
         </div>
 
         <!-- overlay clicable -->

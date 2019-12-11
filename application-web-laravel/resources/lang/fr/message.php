@@ -107,5 +107,6 @@ return [
     "question2"=>"Comment obtenir l'aperçu d'un calcul sans l'enregistrer&nbsp;?",
     "question3"=>"Comment revenir &agrave; la page d'&eacute;dition d'un calcul non enregistr&eacute;&nbsp;?",
     "question4"=>"Comment voir un calcul enregistr&eacute;&nbsp;?",
-    "question5"=>"Comment changer la langue de ce site&nbsp;?"
+    "question5"=>"Comment changer la langue de ce site&nbsp;?",
+    "question6"=>"Comment acceder au menu de ce site&nbsp;?"
 ];
