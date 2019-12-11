@@ -1,0 +1,11 @@
+version: '3'
+services:
+  nodejs:
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+    restart: always
+    container_name: imr-nodejs
+    ports:
+      - 3000:3000
+    
