@@ -14,7 +14,7 @@ defmodule SimulateurBouees.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :ecto, :postgrex],
+      extra_applications: [:logger, :ecto, :postgrex, :mongodb, :poolboy],
       mod: {SimulateurBouees.Application, []}
     ]
   end
@@ -25,7 +25,9 @@ defmodule SimulateurBouees.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:mojito, "~> 0.5.0"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:mongodb, ">= 0.0.0"},
+      {:poolboy, ">= 0.0.0"}
     ]
   end
 end

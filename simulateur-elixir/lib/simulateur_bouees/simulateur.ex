@@ -18,10 +18,14 @@ defmodule SimulateurBouees.Simulateur do
   def main do
     id_scenario = Enum.take_random(1..40, Enum.random(5..10))
     liste_scenario = getScenarios(id_scenario)
-
+    
     demarrerToutesBouees(1, liste_scenario)
   end
   
+  def getBoueesMongo do
+    {:ok, conn} = Mongo.start_link(url: "mongodb://homebert.fr:27017/imr")
+  end
+
   def demarrerToutesBouees(nombre, liste_scenario) do
     1..nombre
       |> Enum.to_list
@@ -33,8 +37,7 @@ defmodule SimulateurBouees.Simulateur do
   end
 
   def getRandomScenario(liste) do
-    scenario_dec = Enum.take_random(liste, 1)
-    scenario = {erreur_temperature: }
+    Enum.take_random(liste, 1)
   end
 
   def getScenario(id) do

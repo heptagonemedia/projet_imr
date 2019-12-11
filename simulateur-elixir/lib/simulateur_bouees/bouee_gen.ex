@@ -22,21 +22,18 @@ defmodule SimulateurBouees.BoueeGen do
   end
 
   def process(state) do
-    # receive do
-      # after
-      #   1_000 ->
+    receive do
+      after
+        1_000 ->
           generer(state)
-          # process(state)
-    # end
+          process(state)
+    end
   end
 
   def calcul(lastval, errval) do
     valeur = errval + 0.95
-    # random = Decimal.mult(Decimal.from_float(:rand.uniform_real()), Decimal.from_float(0.1))
     random = :rand.uniform_real() * 0.1
     valeur2 = valeur + random
-    # valeur2 = Decimal.add(valeur, random)
-    # Decimal.mult(lastval, valeur2)
     lastval + valeur2
   end
 
