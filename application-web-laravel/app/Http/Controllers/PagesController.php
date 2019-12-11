@@ -30,7 +30,7 @@ class PagesController extends Controller
         $regions = $regionDAO->recuperListeRegions();
         $typeCalculDao = TypeCalculDAO::getInstance();
         $typesCalcul = $typeCalculDao->recuperListeTypesDeCalcul();
-        return view('formulaire', compact("regions"), compact("typesCalcul"));
+        return view('formulaire', compact("regions", "typesCalcul"));
     }
 
     public function test()
@@ -43,6 +43,15 @@ class PagesController extends Controller
         return view('FAQ');
     }
 
+    public function retourFormulaire($id){
+        $calculDAO = CalculDAO::getInstance();
+        $calcul = $calculDAO->recupererCalculParId((int)$id);
+        $regionDAO = RegionDAO::getInstance();
+        $regions = $regionDAO->recuperListeRegions();
+        $typeCalculDao = TypeCalculDAO::getInstance();
+        $typesCalcul = $typeCalculDao->recuperListeTypesDeCalcul();
+        return view('formulaire', compact("regions", "typesCalcul", "calcul"));
+    }
 
     public function naviguerVersAccueilRegion($id_region){
         $boueeDAO = BoueeDAO::getInstance();

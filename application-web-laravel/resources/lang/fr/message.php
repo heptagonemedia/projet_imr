@@ -44,7 +44,7 @@ return [
     "champHeure"=>"champs heure",
     "champMinute"=>"champs minute",
     "champRegion"=>"selection de la r&eacute;gion",
-    "champRecursivite"=>"Quand r&eacutep&eacuteter le calcul",
+    "champRecursivite"=>"Quand r&eacutep&eacuteter le calcul ?",
     "frequence1"=>"Tous les jours",
     "frequence2"=>"Toutes les semaines",
     "frequence3"=>"Tous les ans",

@@ -58,7 +58,7 @@
                                 <?php foreach ($typesCalcul as $typeCalcul){ ?>
                                 <p>
                                     <label id="radio">
-                                        <input aria-labelledby="radio" title="type de calcul"  name="calcul" type="radio" value="<?php echo $typeCalcul->getId(); ?>" id="<?php echo $typeCalcul->getEtiquette() ;?>" checked />
+                                        <input aria-labelledby="radio" title="type de calcul"  name="calcul" type="radio" value="<?php echo $typeCalcul->getId(); ?>" id="<?php echo $typeCalcul->getEtiquette() ;?>" <?php if (isset($calcul) && $calcul->getTypeCalcul()->getId() == $typeCalcul->getId() ){echo "checked";}elseif (!isset($calcul)){echo "checked";} ?> />
                                         <span><?php echo $typeCalcul->getEtiquette(); ?></span>
                                     </label>
                                 </p>
@@ -116,9 +116,9 @@
 
                             <div class="input-field col s10">
                                 <select title="{!! __('message.champRegion') !!}" role="select" name="region" id="region">
-                                    <option value="" disabled selected>{!! __('message.region') !!}</option>
+                                    <option value="" disabled <?php if (!isset($calcul)){ echo "selected";}?> >{!! __('message.region') !!}</option>
                                     <?php foreach ($regions as $region){ ?>
-                                    <option title="region <?php echo $region->getEtiquette() ?>" aria-label="region <?php echo $region->getEtiquette() ?>"  value="<?php echo $region->getId() ?>"><?php echo $region->getEtiquette() ?></option>
+                                    <option title="region <?php echo $region->getEtiquette() ?>" aria-label="region <?php echo $region->getEtiquette() ?>"  value="<?php echo $region->getId() ?>"  <?php if (isset($calcul) && (int)$calcul->getRegion()->getId() == (int)$region->getId() ){echo "selected";} ?>> <?php echo $region->getEtiquette();  ?></option>
                                     <?php
                                     }
                                     ?>
@@ -141,22 +141,22 @@
                             </legend>
 
                             <div class="input-field col s3">
-                                <input title="{!! __('message.champDateDebut') !!}" aria-labelledby="labelDateDeb" name="dateDeb" id="dateDeb" type="text" class="datepicker">
+                                <input title="{!! __('message.champDateDebut') !!}" aria-labelledby="labelDateDeb" name="dateDeb" value="<?php if (isset($calcul)){echo(date("m/d/Y", strtotime( $calcul->getDateDebutPlage())));} ?>" id="dateDeb" type="text" class="datepicker">
                                 <label id="labelDateDeb" for="dateDeb">{!! __('message.dateDebut') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input title="{!! __('message.champHeureDebut') !!}" aria-labelledby="labelHeureDeb" name="heureDeb" id="heureDeb" type="text" class="timepicker">
+                                <input title="{!! __('message.champHeureDebut') !!}" aria-labelledby="labelHeureDeb" value="<?php if (isset($calcul)){echo(date("h:i A", strtotime( $calcul->getDateDebutPlage())));} ?>" name="heureDeb" id="heureDeb" type="text" class="timepicker">
                                 <label id="labelHeureDeb" for="heureDeb">{!! __('message.heureDebut') !!}</label>
                             </div>
 
                             <div class="input-field col s3">
-                                <input title="{!! __('message.champDateFin') !!}" name="dateFin" id="dateFin" type="text" class="datepicker">
+                                <input title="{!! __('message.champDateFin') !!}" value="<?php if (isset($calcul)){echo(date("m/d/Y", strtotime( $calcul->getDateFinPlage())));} ?>" name="dateFin" id="dateFin" type="text" class="datepicker">
                                 <label for="dateFin">{!! __('message.dateFin') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input title="{!! __('message.champHeureFin') !!}" aria-labelledby="labelHeureFin" name="heureFin" id="heureFin" type="text" class="timepicker">
+                                <input title="{!! __('message.champHeureFin') !!}" aria-labelledby="labelHeureFin" value="<?php if (isset($calcul)){echo(date("h:i A", strtotime( $calcul->getDateFinPlage())));} ?>"  name="heureFin" id="heureFin" type="text" class="timepicker">
                                 <label id="labelHeureFin" for="heureFin">{!! __('message.heureFin') !!}</label>
                             </div>
 
@@ -199,7 +199,7 @@
                                 <div class="switch">
                                     <label>
                                         {!! __('message.non') !!}
-                                        <input title="levier répeter" name="recursif" id="recursif" type="checkbox" role="checkbox" oninput="afficherRecursivite()">
+                                        <input title="levier répeter" <?php if (isset($calcul) && !is_null($calcul->getDateProchaineGeneration())){echo "checked";}?> name="recursif" id="recursif" type="checkbox" role="checkbox" onload="afficherRecursivite();" oninput="afficherRecursivite()">
                                         <span class="lever"></span>
                                         {!! __('message.oui') !!}
                                     </label>
@@ -217,7 +217,7 @@
                     <div class="row" class="marge">
 
                         <div class="input-field col s12">
-                            <button type="submit" title="valider" role="button" aria-label="bouton valider"  class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">{!! __('message.valider') !!}</button>
+                            <button title="valider" role="button" aria-label="bouton valider"  class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">{!! __('message.valider') !!}</button>
                         </div>
 
                     </div>

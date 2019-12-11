@@ -1,6 +1,7 @@
 initFormulaire();
 $('.dropdown-trigger').dropdown();
 $('select').formSelect();
+afficherRecursivite();
 $(document).ready(function () {
     $('.fixed-action-btn').floatingActionButton();
 });

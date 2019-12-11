@@ -26,6 +26,7 @@ Route::get('/' , 'PagesController@naviguerVersAccueil');
 Route::get('accueil' , 'PagesController@naviguerVersAccueil');
 Route::get('accueil/{id}' , 'PagesController@naviguerVersAccueilRegion');
 Route::get('nouveauCalcul', 'PagesController@naviguerVersFormulaire');
+Route::get('nouveauCalcul/{id}', 'PagesController@retourFormulaire');
 
 //TODO: A supprimer, pour utiliser le ResultatController
 Route::get('test', 'PagesController@test');

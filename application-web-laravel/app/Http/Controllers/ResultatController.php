@@ -36,7 +36,6 @@ class ResultatController extends Controller
         $calcul->setEnregistre(false);
         $boueesDAO = BoueeDAO::getInstance();
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
-        echo $calcul->getRegion()->getId()." ".$calcul->getEtiquette();
         $calculDAO->modifierCalcul($calcul);
         $enregistre = true;
         return view('resultat.show', compact("calcul", "id", "enregistre", "coordonnees"))->with('Succes', 'Calcul enregistre avec succes');
@@ -48,7 +47,6 @@ class ResultatController extends Controller
         $boueesDAO = BoueeDAO::getInstance();
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
         $enregistre = false;
-        echo $calcul->getRegion()->getId()." ".$calcul->getEtiquette();
         return view('resultat.show', compact("calcul", "id", "enregistre", "coordonnees"));
     }
 
@@ -57,7 +55,6 @@ class ResultatController extends Controller
         $calcul = $calculDao->recupererCalculParId((int)$id);
         $boueesDAO = BoueeDAO::getInstance();
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
-        echo $calcul->getRegion()->getId()." ".$calcul->getEtiquette();
         return view('resultat.show', compact("calcul", "id", "coordonnees"));
     }
 

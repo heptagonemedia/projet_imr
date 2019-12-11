@@ -40,7 +40,7 @@ return [
     "champHeure"=>"hour field",
     "champMinute"=>"minute field",
     "champRegion"=>"region field",
-    "champRecursivite"=>"When do you want to repeat the calculation",
+    "champRecursivite"=>"When do you want to repeat the calculation ?",
     "frequence1"=>"Every day",
     "frequence2"=>"Every week",
     "frequence3"=>"Every Year",
