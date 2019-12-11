@@ -11,8 +11,10 @@ return [
     "messageCarte"=>"Map showing buoys position",
     "boutonPleinEcran"=>"Full-screen",
     "boueesNonConformes"=>"Incorrects buoys",
-    "etatDesBouees"=>"Buoy Status", //Buoy Status
+    "etatDesBouees"=>"Percentage of data validity", //Buoy Status
     "altGrapheBouees"=>"graph representing the number of correct and incorrect buoys",
+    "titreGraphiqueEtatBouees"=>"boys state piechart",
+    //"agrandirCarte"=>"enlarge map",
     // footer.php
     "copyright"=>"&copy; 2019 Heptagone Media",
     // formulaireRecherche.php
@@ -38,6 +40,11 @@ return [
     "champHeure"=>"hour field",
     "champMinute"=>"minute field",
     "champRegion"=>"region field",
+    "champRecursivite"=>"When do you want to repeat the calculation",
+    "frequence1"=>"Every day",
+    "frequence2"=>"Every week",
+    "frequence3"=>"Every Year",
+    "helperRecursivite"=>"It is necessary to select a recursion frequency",
     "helperValeur"=>"It is necessary to enter at least one value and only integers", //Il faut saisir au moins une valeur et uniquement des entiers
     "region"=>"Region",
     "helperRegion"=>"It is necessary to select a region",
@@ -88,6 +95,12 @@ return [
     "temperature"=>"Temperature",
     "calculEnregistre"=>"Saved calculation",
     "calculBienEnregistre"=>"the calculation has been saved successfully",
-    "ok"=>"OK"
-
+    "ok"=>"OK",
+    // FAQ.
+    "infoPageFAQ"=>"This pages allows you to play FAQ answers videos.",
+    "question1"=>"How to add a saved calculation?",
+    "question2"=>"How to get a preview of a calculation without saving it?",
+    "question3"=>"How to return on the previous usaved calculation view?",
+    "question4"=>"How to see a saved calculation?",
+    "question5"=>"How to change the site language?"
 ];

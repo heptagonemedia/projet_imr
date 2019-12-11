@@ -1,5 +1,5 @@
 @extends('layout.layout')
-
+<?php  use App\Data\BoueeDAO;use App\Data\RegionDAO;use App\Data\TypeCalculDAO;use App\Models\Bouee;use App\Models\Region;use Illuminate\Support\Facades\DB; ?>
 
 @section('head')
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -46,24 +46,38 @@
     <nav role="navigation" aria-label="header">
         <div class="nav-wrapper black" >
             <div class="row  ">
-
                 <div class="col l4 center-align">
                     <button title="bar de navigation" role="button" onclick="ouvrirSidenav()" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i  aria-label="Ouvrir le menu"  aria-hidden="true" class="material-icons" id="menu">{!! __('message.menu') !!}</i></button>
                 </div>
                 <div class="col l4 center-align" style="font-size: 20pt"><h1>{!! __('message.titleAccueil') !!}</h1></div>
-
             </div>
         </div>
     </nav>
 
-
-
-
 @endsection
 
-
-
 @section('main')
+    <div id="conformes" hidden>
+        <?php
+        if (isset($conformes) && isset($nonConformes))
+            echo ($conformes/($conformes+$nonConformes))*100;
+        ?>
+    </div>
+    <div id="non-conformes" hidden>
+        <?php
+        if (isset($conformes) && isset($nonConformes))
+            echo ($nonConformes/($conformes+$nonConformes))*100;
+        ?>
+    </div>
+    <div id="coordonnees" hidden >
+        <?php
+        if (isset($coordonnees)){
+            foreach ($coordonnees as $coordonnee){
+                echo($coordonnee."&");
+            }
+        }
+        ?>
+    </div>
     <main role="main">
         <div class="row" id="ligne_principale">
 
@@ -77,8 +91,23 @@
                     <div class="card-content">
 
                         <div class="row">
-                            <div class="col s6 center-align">{!! __('message.titreCarte') !!}</div>
-                            <div class="col s6 center-align">
+                            <div class="col s4 center-align">{!! __('message.titreCarte') !!}</div>
+                            <div class="input-field col s4" id="select_region">
+                                <form method="post">
+                                    <select onchange="regionCarte();" name="region" title="{!! __('message.champRegion') !!}" role="select" id="choix_region">
+                                        <option value="" disabled <?php if (!isset($id_region)){echo "selected";} ?>>{!! __('message.region') !!}</option>
+                                        <?php
+                                        foreach ($regions as $region){ ?>
+                                        <option title="region <?php echo $region->getEtiquette() ?>" aria-label="region <?php echo $region->getEtiquette() ?>"  value="<?php echo $region->getId() ?>" <?php if (isset($id_region) && $id_region == $region->getId()){
+                                            echo "selected";
+                                        } ?> ><?php echo $region->getEtiquette() ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </form>
+                            </div>
+                            <div class="col s4 center-align">
                                 <button title="agrandir la carte" role="button" class="btn green" onclick="agrandirCarte(document.getElementById('map'))">{!! __('message.boutonPleinEcran') !!}</button>
                             </div>
                         </div>
@@ -92,14 +121,18 @@
                     <div class="card-content white-text">
                         <span class="card-title black-text center-align">{!! __('message.derniereMiseAjour') !!}</span>
                         <div class="card-content black-text">
-                            Date et heure
+                            <?php
+                                if(isset($dateSaisie)){
+                                    echo $dateSaisie;
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
                 <div class="card white">
                     <div class="card-content ">
                         <span class="card-title black-text center-align">{!! __('message.etatDesBouees') !!}</span>
-                        <canvas title="graphique de l etat des bouees" role="linegraph" id="camembertBouees"></canvas>
+                        <canvas title="{!! __('message.titreGraphiqueEtatBouees') !!}" role="linegraph" id="camembertBouees"></canvas>
                     </div>
                 </div>
             </section>

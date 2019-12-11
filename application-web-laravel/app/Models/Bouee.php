@@ -4,17 +4,23 @@ namespace App\Models;
 
 class Bouee
 {
-    protected $id;
-    protected $etiquette;
-    protected $longitude;
-    protected $latitude;
-    protected $region;
+    const  CLE_ID = "id_bouee";
+    const  CLE_ETIQUETTE = "etiquette";
+    const  CLE_LONGITUDE_REFERENCE = "longitude_reference";
+    const  CLE_LATITUDE_REFERENCE = "latitude_reference";
+    const  CLE_ID_REGION = "id_region";
+
+    private $id;
+    private $etiquette;
+    private $longitudeReference;
+    private $latitudereference;
+    private $region;
 
     public function __construct($id, $etiquette, $longitude, $latitude, $region) {
         $this->id = $id;
         $this->etiquette = $etiquette;
-        $this->longitude = $longitude;
-        $this->latitude = $latitude;
+        $this->longitudeReference = $longitude;
+        $this->latitudereference = $latitude;
         $this->region = $region;
     }
 
@@ -37,16 +43,16 @@ class Bouee
         return $this->etiquette;
     }
 
-    public function getLongitude(){
-        return $this->longitude;
+    public function getLongitudeReference(){
+        return $this->longitudeReference;
     }
 
     public function getRegion(){
         return $this->region;
     }
 
-    public function getLatitude(){
-        return $this->latitude;
+    public function getLatitudereference(){
+        return $this->latitudereference;
     }
 
     public static function mockBouee(){

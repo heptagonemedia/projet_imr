@@ -10,13 +10,15 @@ return [
     "titleAccueil"=>"Accueil IMR",
     "texteBoueeFonctionnelle"=>"Fonctionnelle",
     "texteBoueeProbleme"=>"Probl&egrave;me",
-    "derniereMiseAjour"=>"Derni&egrave;re mise à jour : ",
+    "derniereMiseAjour"=>"Derni&egrave;re mise &agrave; jour : ",
     "titreCarte"=>"Carte des bou&eacute;es",
-    "messageCarte"=>"Carte montrant la position des bouées",
+    "messageCarte"=>"Carte montrant la position des bou&eacute;es",
     "boutonPleinEcran"=>"Plein &eacute;cran",
     "boueesNonConformes"=>"Bou&eacute;es non conforme",
-    "etatDesBouees"=>"&Eacute;tat des Bou&eacute;es",
+    "etatDesBouees"=>"Pourcentage de validit&eacute; des donn&eacute;es",
     "altGrapheBouees"=>"graphique repr&eacute;santant le nombre de bou&eacute;es conformes et non conformes",
+    "titreGraphiqueEtatBouees"=>"graphique de l'&eacute;tat des bou&eacute;es",
+    //"agrandirCarte"=>"agrandir la carte",
     // footer.php //géré
     "copyright"=>"&copy; 2019 Heptagone Media",
     // formulaireRecherche.php
@@ -42,7 +44,12 @@ return [
     "champHeure"=>"champs heure",
     "champMinute"=>"champs minute",
     "champRegion"=>"selection de la r&eacute;gion",
+    "champRecursivite"=>"Quand r&eacutep&eacuteter le calcul",
+    "frequence1"=>"Tous les jours",
+    "frequence2"=>"Toutes les semaines",
+    "frequence3"=>"Tous les ans",
     "helperValeur"=>"Il faut saisir au moins une valeur et uniquement des entiers",
+    "helperRecursivite"=>"Veuillez choisir un fr&eacute;quence de r&eacute;cursivit&eacute;",
     "region"=>"R&eacute;gion",
     "helperRegion"=>"Veuillez choisir une r&eacute;gion",
     "bouee"=>"Bou&eacute;e",
@@ -93,6 +100,12 @@ return [
     "temperature"=>"Temp&eacute;rature",
     "calculEnregistre"=>"Calcul enregistr&eacute;",
     "calculBienEnregistre"=>"le calcul a bien &eacute;t&eacute; enregitr&eacute;",
-    "ok"=>"OK"
-
+    "ok"=>"OK",
+    // FAQ (pas besoin de traduire ce terme, foire aux questions en fr, frequently asked questions en anglais.
+    "infoPageFAQ"=>"Cette page vous permet de consulter des vid&eacute;os d'aide.",
+    "question1"=>"Comment ajouter un calcul enregistr&eacute;&nbsp;?",
+    "question2"=>"Comment obtenir l'aperçu d'un calcul sans l'enregistrer&nbsp;?",
+    "question3"=>"Comment revenir &agrave; la page d'&eacute;dition d'un calcul non enregistr&eacute;&nbsp;?",
+    "question4"=>"Comment voir un calcul enregistr&eacute;&nbsp;?",
+    "question5"=>"Comment changer la langue de ce site&nbsp;?"
 ];

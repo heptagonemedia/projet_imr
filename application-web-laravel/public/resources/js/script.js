@@ -8,7 +8,12 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('.collapsible').collapsible();
 });
-
+$(document).ready(function(){
+    $('.datepicker').datepicker();
+});
+$(document).ready(function(){
+    $('.timepicker').timepicker();
+});
 $(document).ready(function () {
     $('.sidenav').sidenav();
 });
@@ -25,7 +30,7 @@ function fermerSidenav(){
 var ctx = document.getElementById('camembertBouees').getContext('2d');
 data = {
     datasets: [{
-        data: [60, 15],
+        data: [document.getElementById("conformes").innerHTML, document.getElementById("non-conformes").innerHTML],
         backgroundColor: ["#07CA38", "#EF0000"]
     }],
 
@@ -40,17 +45,18 @@ var myPieChart = new Chart(ctx, {
     data: data
 });
 
-function detecterErreurs() {
 
+function detecterErreurs() {
     //A ne pas mettre directement dans la condition du if
     let verificationFrequence = verifierErreurFrequence();
-    // let verificationBouee = verifierErreurBouee();
+    let verificationBouee = verifierErreurRegion();
     let verificationIntervalle = verifierErreurIntervalle();
+    let verificationRecursivite = verifierErreurRecursivite();
 
-    if (verificationFrequence  && verificationIntervalle) {
+    if (verificationFrequence  && verificationIntervalle && verificationBouee) {
         $("#texteAlerte").text("");
         $("#divAlerte").hide();
-        $('#formulaire').submit();
+        // $('#formulaire').submit();
     }
 
 }
@@ -72,22 +78,7 @@ $(document).ready(function () {
     $('.tooltipped').tooltip();
 });
 
-var ctx = document.getElementById('camembertBouees').getContext('2d');
-data = {
-    datasets: [{
-        data: [60, 15],
-        backgroundColor: ["#07CA38", "#EF0000"]
-    }],
 
-    labels: [
-        'Conformes',
-        'Non conformes'
-    ]
-};
-var myPieChart = new Chart(ctx, {
-    type: 'pie',
-    data: data
-});
 
 //remplit les champs du formulaire avec les données de l'url si il y en a
 function initFormulaire() {
@@ -108,17 +99,36 @@ function initFormulaire() {
     }
 }
 
-//fonction qui affiche le message d'erreur pour le champ bouée
+//fonction qui affiche le message d'erreur pour le champ region
 function verifierErreurRegion() {
 
-    let valeurBouee = $("#region").value();
+    let valeurBouee = $("#region").val();
 
-    if (valeurBouee == "") {
-        $("#HelperBouee").show();
+    if (valeurBouee == null) {
+        $("#HelperRegion").show();
         return false;
+    }else {
+        $("#HelperRegion").hide();
+        return true;
     }
-    else {
-        $("#HelperBouee").css('display', 'none');
+}
+
+
+function verifierErreurRecursivite() {
+    if ($('#recursif').is(":checked")){
+        if ($("#frequence-recursivite").val() == null){
+
+            $("#HelperRecursivite").show();
+            return false;
+
+        }else{
+
+            $("#HelperRecursivite").hide();
+            return true;
+
+        }
+    }else{
+        $("#HelperRecursivite").hide();
         return true;
     }
 }
@@ -286,22 +296,12 @@ function initMap() {
         minZoom: 1,
         maxZoom: 20
     }).addTo(macarte);
-    var url = document.location.href;
-    if (url.indexOf('bouee') == -1) {
-        var listeCoords = new Array();
-        listeCoords.push(49.0523948); listeCoords.push(-68.283337);
-        for (var i = 2; i < 15; i += 2) {
-            listeCoords.push(listeCoords[i - 2] + 0.1);
-            listeCoords.push(listeCoords[i - 1] + 0.33);
-        }
-        for (var i = 0; i < 29; i += 2) {
-           /* L.marker([listeCoords[i], listeCoords[i + 1]]).addTo(macarte);
-            console.log(listeCoords[i] + ',' + listeCoords[i + 1])*/
 
-        }
-    } else {
-        macarte.setView([49.0523948, -68.283337], 10);
-        L.marker([49.0523948, -68.283337]).addTo(macarte);
+    var coordonnees = document.getElementById("coordonnees").innerHTML;
+    listeCoordonnees = coordonnees.split("&amp;");
+    macarte.setView([listeCoordonnees[1], listeCoordonnees[0]], 2);
+    for (let i = 0; i < coordonnees.length; i+=12) {
+        L.marker([listeCoordonnees[i+1], listeCoordonnees[i]]).addTo(macarte);
     }
 
 }
@@ -375,4 +375,9 @@ function afficherLiens(){
     var instance = M.FloatingActionButton.getInstance(elem);
     instance.open();
     console.log("liens")
+}
+
+function regionCarte(){
+    console.log($("#choix_region").val());
+     document.location.href = document.location.href.substring(0, document.location.href.indexOf("accueil")) + "accueil/" + $("#choix_region").val();
 }

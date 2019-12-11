@@ -1,3 +1,4 @@
+<?php use App\Data\CalculDAO; ?>
 <ul role="navigation" aria-label="Sidenav" id="slide-out" hidden role="alert" class="sidenav draggable">
 
     <li>
@@ -12,37 +13,59 @@
         </div>
     </li>
 
-    <li><a class="waves-effect waves-teal" href="accueil"><i aria-hidden="true" class="material-icons">home</i> {!! __('message.accueilNavigation') !!} </a></li>
+    <li><a class="waves-effect waves-teal" href="{{action('PagesController@naviguerVersAccueil')}}"><i aria-hidden="true" class="material-icons">home</i> {!! __('message.accueilNavigation') !!} </a></li>
     <li>
         <div class="divider"></div>
     </li>
 
     <li><a class="subheader">{!! __('message.accesCalcul') !!}</a></li>
 
+        <?php
+    $calculDao = new CalculDAO();
+    $calculs = $calculDao->recupererListeCalcul();
+    ?>
     <li class="no-padding">
         <ul class="collapsible collapsible-accordion  waves-teal">
             <li>
                 <a class="collapsible-header">{!! __('message.calculEnregistres') !!}<i aria-hidden="true" class="material-icons">arrow_drop_down</i></a>
                 <div class="collapsible-body">
                     <ul>
-
-                        @for ($i = 0; $i < 6; $i++)
-                            <li><a class="waves-effect waves-teal" href="resultats.php?bouee={{$i}}&type=enr"><i aria-hidden="true" class="material-icons">insert_chart_outlined</i>{!! __('message.unTelCalcul') !!} {{$i}}</a></li>
-                        @endfor
-
+                        <?php if(isset($calculs)){
+                            foreach ($calculs as $calcul){
+                            if($calcul->getEnregistre()) { ?>
+                            <li><a class="waves-effect waves-teal" href="{{action('ResultatController@naviguerVersResultat', $calcul->getId())}}"><i aria-hidden="true" class="material-icons">insert_chart_outlined</i>{{--{!! __('message.unTelCalcul') !!} {{$i}}--}} <?php echo $calcul->getEtiquette(); ?></a></li>
+                            <?php }
+                            }
+                        }?>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion  waves-teal">
+            <li>
+                <a class="collapsible-header">{!! __('message.calculEnCours') !!}<i aria-hidden="true" class="material-icons">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                    <ul>
+                        <?php if(isset($calculs)){
+                        foreach ($calculs as $calcul){
+                        if(!$calcul->getEnregistre()) { ?>
+                        <li><a class="waves-effect waves-teal" href="{{action('PagesController@naviguerVersAccueil', $calcul->getId())}}"><i aria-hidden="true" class="material-icons">new_releases</i>{{--{!! __('message.unTelCalcul') !!} {{$i}}--}} <?php echo $calcul->getEtiquette(); ?></a></li>
+                        <?php }
+                        }
+                        }?>
                     </ul>
                 </div>
             </li>
         </ul>
     </li>
 
-    <li><a class="waves-effect waves-teal" href="resultats.php?bouee=2&type=prev"><i aria-hidden="true" class="material-icons">new_releases</i>{!! __('message.calculEnCours') !!}</a></li>
-
     <li><div class="divider"></div></li>
 
     <li><a class="subheader">{!! __('message.faireDesCalculs') !!}</a></li>
 
-    <li><a class="waves-effect waves-teal" href="nouveauCalcul"><i aria-hidden="true" class="material-icons">add_circle_outline</i>{!! __('message.nouveauCalcul') !!}</a></li>
+    <li><a class="waves-effect waves-teal" href="{{action('PagesController@naviguerVersFormulaire')}}"><i aria-hidden="true" class="material-icons">add_circle_outline</i>{!! __('message.nouveauCalcul') !!}</a></li>
 
     <li><div class="divider"></div></li>
 
@@ -50,6 +73,12 @@
 
     <li><a class="waves-effect waves-teal" href="{{ url('locale/en') }}"><i aria-hidden="true" class="material-icons">language</i>{!! __('message.anglais') !!}</a></li>
     <li><a class="waves-effect waves-teal" href="{{ url('locale/fr') }}"><i aria-hidden="true" class="material-icons">language</i>{!! __('message.francais') !!}</a></li>
+
+    <li><div class="divider"></div></li>
+
+    <li><a class="subheader">FAQ</a></li>
+
+    <li><a class="waves-effect waves-teal" href="FAQ"><i aria-hidden="true" class="material-icons">info</i>FAQ</a></li>
 
     <li>
         <div class="divider"></div>

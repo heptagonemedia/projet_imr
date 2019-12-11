@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-
 class TypeCalcul
 {
+    const CLE_ID = "id_type_calcul";
+    const CLE_ETIQUETTE = "etiquette";
+
     protected $id;
     protected $etiquette;
 

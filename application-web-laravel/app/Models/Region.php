@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
-
 class Region
 {
-    protected $id;
-    protected $etiquette;
+    const CLE_ID = "id_region";
+    const CLE_ETIQUETTE = "etiquette";
+
+    private $id;
+    private $etiquette;
 
     public function __construct($id, $etiquette)
     {
-        $this->$id = $id;
-        $this->$etiquette = $etiquette;
+        $this->id = $id;
+        $this->etiquette = $etiquette;
     }
 
     public function __destruct()

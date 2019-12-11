@@ -7,17 +7,52 @@ use DemeterChain\C;
 
 class Calcul
 {
-    protected $id;
-    protected $typeDonneeMesuree;
-    protected $typeCalcul;
-    protected $cheminFichierXml;
 
-    public function __construct($id, $typeDonneeMesuree, $cheminFichierXml, $typeCalcul)
+    const CLE_ID = "id_calcul";
+    const CLE_ETIQUETTE = "etiquette";
+    const CLE_DATE_GENERATION = "date_generation";
+    const CLE_PROCHAINE_GENERATION = "date_prochaine_generation";
+    const CLE_ENREGISTRE = "enregistre"; //TODO: a mettre en participe passe
+    const CLE_ID_REGION = "id_region";
+    const CLE_ID_TYPE_CALCUL = "id_type_calcul";
+    const CLE_DATE_DEBUT_PLAGE = "date_debut_plage"; //TODO: a modifier en debut plage
+    const CLE_DATE_FIN_PLAGE = "date_fin_plage";
+    const CLE_FREQUENCE_VALEUR = "frequence_valeur";
+    const CLE_XML_TEMPERATURE = "xml_graphique_temperature";
+    const CLE_XML_SALINITE = "xml_graphique_salinite";
+    const CLE_XML_DEBIT = "xml_graphique_debit";
+    const CLE_DATE_PROCHAINE_GENERATION = "date_prochaine_generation" ;
+
+
+    private $id;
+    private $etiquette;
+    private $dateGeneration;
+    private $dateProchaineGeneration;
+    private $enregistre;
+    private $region;
+    private $dateDebutPlage;
+    private $dateFinPlage;
+    private $frequenceValeur;
+    private $typeCalcul;
+    private $cheminFichierXmlTemperature;
+    private $cheminFichierXmlSalinite;
+    private $cheminFichierXmlDebit;
+
+    public function __construct($id, $etiquette, $cheminFichierXmlTemperature, $cheminFichierXmlSalinite,$cheminFichierXmlDebit, $dateDebutPlage, $dateFinPlage, $dateGeneration, $dateProchaineGeneration, $enregistre, $region, $frequenceValeur, $typeCalcul)
     {
         $this->id = $id;
-        $this->typeDonneeMesuree = $typeDonneeMesuree;
-        $this->cheminFichierXml = $cheminFichierXml;
+        $this->etiquette = $etiquette;
+        $this->cheminFichierXmlTemperature = $cheminFichierXmlTemperature;
+        $this->cheminFichierXmlSalinite = $cheminFichierXmlSalinite;
+        $this->cheminFichierXmlDebit = $cheminFichierXmlDebit;
         $this->typeCalcul = $typeCalcul;
+        $this->dateGeneration = $dateGeneration;
+        $this->dateProchaineGeneration = $dateProchaineGeneration;
+        $this->enregistre = $enregistre;
+        $this->region = $region;
+        $this->dateDebutPlage = $dateDebutPlage;
+        $this->dateFinPlage = $dateFinPlage;
+        $this->frequenceValeur = $frequenceValeur;
     }
 
 
@@ -29,13 +64,106 @@ class Calcul
         $this->id = $id;
     }
 
-    public function getTypeDonneeMesuree(){
-        return $this->typeDonneeMesuree;
+    public function setEtiquette($etiquette){
+        $this->etiquette = $etiquette;
     }
 
-    public function setTypeDonneeMesuree($typeDonneeMesuree){
-        $this->typeDonneeMesuree = $typeDonneeMesuree;
+    public function getEtiquette(){
+        return $this->etiquette;
     }
+
+    public function getDateGeneration()
+    {
+        return $this->dateGeneration;
+    }
+
+    public function setDateGeneration($dateGeneration): void
+    {
+        $this->dateGeneration = $dateGeneration;
+    }
+
+    public function getDateProchaineGeneration()
+    {
+        return $this->dateProchaineGeneration;
+    }
+
+    public function setDateProchaineGeneration($dateProchaineGeneration): void
+    {
+        $this->dateProchaineGeneration = $dateProchaineGeneration;
+    }
+
+    public function getEnregistre()
+    {
+        return $this->enregistre;
+    }
+
+    public function setEnregistre($enregistre): void
+    {
+        $this->enregistre = $enregistre;
+    }
+
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    public function setRegion($region): void
+    {
+        $this->region = $region;
+    }
+
+    public function getDateDebutPlage()
+    {
+        return $this->dateDebutPlage;
+    }
+
+    public function setDateDebutPlage($dateDebutPlage): void
+    {
+        $this->dateDebutPlage = $dateDebutPlage;
+    }
+
+    public function getDateFinPlage()
+    {
+        return $this->dateFinPlage;
+    }
+
+
+    public function setDateFinPlage($dateFinPlage): void
+    {
+        $this->dateFinPlage = $dateFinPlage;
+    }
+
+    public function getFrequenceValeur()
+    {
+        return $this->frequenceValeur;
+    }
+
+    public function setFrequenceValeur($frequenceValeur): void
+    {
+        $this->frequenceValeur = $frequenceValeur;
+    }
+
+    public function getCheminFichierXmlSalinite()
+    {
+        return $this->cheminFichierXmlSalinite;
+    }
+
+    public function setCheminFichierXmlSalinite($cheminFichierXmlSalinite): void
+    {
+        $this->cheminFichierXmlSalinite = $cheminFichierXmlSalinite;
+    }
+
+    public function getCheminFichierXmlDebit()
+    {
+        return $this->cheminFichierXmlDebit;
+    }
+
+    public function setCheminFichierXmlDebit($cheminFichierXmlDebit): void
+    {
+        $this->cheminFichierXmlDebit = $cheminFichierXmlDebit;
+    }
+
+
 
     public function getTypeCalcul(){
         return $this->typeCalcul;
@@ -45,13 +173,13 @@ class Calcul
         $this->typeCalcul = $typeCalcul;
     }
 
-    public function getCheminFichierXml(){
-        return $this->cheminFichierXml;
+    public function getCheminFichierXmlTemperature(){
+        return $this->cheminFichierXmlTemperature;
     }
 
 
-    public function setCheminFichierXml($cheminFichierXml){
-        $this->cheminFichierXml = $cheminFichierXml;
+    public function setCheminFichierXmlTemperature($cheminFichierXmlTemperature){
+        $this->cheminFichierXmlTemperature = $cheminFichierXmlTemperature;
     }
 
 

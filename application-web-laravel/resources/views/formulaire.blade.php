@@ -29,14 +29,13 @@
                 <div class="col l4 center-align"><button role="button" onclick="ouvrirSidenav()" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i aria-hidden="true" class="material-icons" id="menu">menu</i></button></div>
                 <div class="col l4 center-align" style="font-size: 20pt"><h1>{!! __('message.titleFormulaireRecherche') !!}</h1></div>
                 <div class="col l4 center align ">
-                    <a href="accueil" class="breadcrumb">{!! __('message.accueilMenu') !!}</a>
+                    <a href="{{action('PagesController@naviguerVersAccueil')}}" class="breadcrumb">{!! __('message.accueilMenu') !!}</a>
                     <a href="#" class="breadcrumb">{!! __('message.formulaire') !!}</a>
                 </div>
             </div>
         </div>
     </nav>
 @endsection
-
 
 
 @section('main')
@@ -56,24 +55,14 @@
                             </legend>
 
                             <div class="input-field col s10">
+                                <?php foreach ($typesCalcul as $typeCalcul){ ?>
                                 <p>
                                     <label id="radio">
-                                        <input aria-labelledby="radio" title="type de calcul"  name="calcul" type="radio" value="moyenne" id="moyenne" checked />
-                                        <span>{!! __('message.moyenne') !!}</span>
+                                        <input aria-labelledby="radio" title="type de calcul"  name="calcul" type="radio" value="<?php echo $typeCalcul->getId(); ?>" id="<?php echo $typeCalcul->getEtiquette() ;?>" checked />
+                                        <span><?php echo $typeCalcul->getEtiquette(); ?></span>
                                     </label>
                                 </p>
-                                <p>
-                                    <label>
-                                        <input title=" type de calcul" name="calcul" type="radio" value="mediane" id="mediane" />
-                                        <span>{!! __('message.mediane') !!}</span>
-                                    </label>
-                                </p>
-                                <p>
-                                    <label>
-                                        <input name="calcul" title="type de calcul " type="radio"  value = "ecart" id="ecart" />
-                                        <span>{!! __('message.ecartType') !!}</span>
-                                    </label>
-                                </p>
+                                    <?php } ?>
                             </div>
 
                         </fieldest>
@@ -86,27 +75,27 @@
                             </legend>
 
                             <div class="input-field col s2">
-                                <input title="{!! __('message.champAnnee') !!}" aria-labelledby="labelAnnee" id="annee" type="text">
+                                <input title="{!! __('message.champAnnee') !!}" aria-labelledby="labelAnnee" name="annee" id="annee" type="text">
                                 <label id="labelAnnee" for="annee" class="center-align">{!! __('message.annee') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input aria-labelledby="labelMois" title="{!! __('message.champMois') !!}" id="mois" type="text">
+                                <input aria-labelledby="labelMois" title="{!! __('message.champMois') !!}" name="mois" id="mois" type="text">
                                 <label id="labelMois" for="mois" class="center-align">{!! __('message.mois') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input aria-labelledby="labelJour" title="{!! __('message.champJour') !!}"  id="jour" type="text">
+                                <input aria-labelledby="labelJour" title="{!! __('message.champJour') !!}"  name="jour" id="jour" type="text">
                                 <label id="labelJour" for="jour" class="center-align">{!! __('message.jour') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input aria-labelledby="LabelHeurebe" title="{!! __('message.champHeure') !!}" id="heure" type="text">
+                                <input aria-labelledby="LabelHeurebe" title="{!! __('message.champHeure') !!}" name="heure" id="heure" type="text">
                                 <label id="LabelHeure" for="heure" class="center-align">{!! __('message.heure') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input aria-labelledby="labelMinute" title="{!! __('message.champMinute') !!}" id="minute" type="text">
+                                <input aria-labelledby="labelMinute" title="{!! __('message.champMinute') !!}" name="minute" id="minute" type="text">
                                 <label id="labelMinute" for="minute" class="center-align">{!! __('message.minute') !!}</label>
                             </div>
 
@@ -126,18 +115,20 @@
                             </legend>
 
                             <div class="input-field col s10">
-                                <select title="{!! __('message.champRegion') !!}" role="select" id="bouee">
+                                <select title="{!! __('message.champRegion') !!}" role="select" name="region" id="region">
                                     <option value="" disabled selected>{!! __('message.region') !!}</option>
-                                    <option title="region Saint-Laurent" aria-label="region Saint-Laurent"  value="1">Saint-Laurent</option>
-                                    <option title="region Atlantique" aria-label="region Atlantique" value="2">Atlantique</option>
-                                    <option title="region Pacifique" aria-label="region Pacifique" value="3">Pacifique</option>
+                                    <?php foreach ($regions as $region){ ?>
+                                    <option title="region <?php echo $region->getEtiquette() ?>" aria-label="region <?php echo $region->getEtiquette() ?>"  value="<?php echo $region->getId() ?>"><?php echo $region->getEtiquette() ?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
 
                             <div class="col s2"></div>
 
                             <div class="col s10">
-                                <span class="helper-text" id="HelperBouee"><label role="alert" class="alerte">{!! __('message.helperRegion') !!}</label></span>
+                                <span class="helper-text" id="HelperRegion"><label role="alert" class="alerte">{!! __('message.helperRegion') !!}</label></span>
                             </div>
 
                         </fieldset>
@@ -150,22 +141,22 @@
                             </legend>
 
                             <div class="input-field col s3">
-                                <input title="{!! __('message.champDateDebut') !!}" aria-labelledby="labelDateDeb" id="dateDeb" type="text" class="datepicker">
+                                <input title="{!! __('message.champDateDebut') !!}" aria-labelledby="labelDateDeb" name="dateDeb" id="dateDeb" type="text" class="datepicker">
                                 <label id="labelDateDeb" for="dateDeb">{!! __('message.dateDebut') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input title="{!! __('message.champHeureDebut') !!}" aria-labelledby="labelHeureDeb" id="heureDeb" type="text" class="timepicker">
+                                <input title="{!! __('message.champHeureDebut') !!}" aria-labelledby="labelHeureDeb" name="heureDeb" id="heureDeb" type="text" class="timepicker">
                                 <label id="labelHeureDeb" for="heureDeb">{!! __('message.heureDebut') !!}</label>
                             </div>
 
                             <div class="input-field col s3">
-                                <input title="{!! __('message.champDateFin') !!}" id="dateFin" type="text" class="datepicker">
+                                <input title="{!! __('message.champDateFin') !!}" name="dateFin" id="dateFin" type="text" class="datepicker">
                                 <label for="dateFin">{!! __('message.dateFin') !!}</label>
                             </div>
 
                             <div class="input-field col s2">
-                                <input title="{!! __('message.champHeureFin') !!}" aria-labelledby="labelHeureFin" id="heureFin" type="text" class="timepicker">
+                                <input title="{!! __('message.champHeureFin') !!}" aria-labelledby="labelHeureFin" name="heureFin" id="heureFin" type="text" class="timepicker">
                                 <label id="labelHeureFin" for="heureFin">{!! __('message.heureFin') !!}</label>
                             </div>
 
@@ -189,7 +180,7 @@
                                 <div class="switch">
                                     <label>
                                         {!! __('message.non') !!}
-                                        <input title="levier enregistrer" type="checkbox" role="checkbox">
+                                        <input title="levier enregistrer" name="enregistre" type="checkbox" role="checkbox">
                                         <span class="lever"></span>
                                         {!! __('message.oui') !!}
                                     </label>
@@ -208,7 +199,7 @@
                                 <div class="switch">
                                     <label>
                                         {!! __('message.non') !!}
-                                        <input title="levier répeter" id="recursif" type="checkbox" role="checkbox" oninput="afficherRecursivite()">
+                                        <input title="levier répeter" name="recursif" id="recursif" type="checkbox" role="checkbox" oninput="afficherRecursivite()">
                                         <span class="lever"></span>
                                         {!! __('message.oui') !!}
                                     </label>
@@ -217,19 +208,22 @@
                             <div id="ligne-select">
 
                             </div>
+                            <div class="col s10 center">
+                                <span class="helper-text " id="HelperRecursivite"><label role="alert" class="alerte">{!! __('message.helperRecursivite') !!}</label></span>
+                            </div>
                         </fieldset>
 
 
+                    <div class="row" class="marge">
 
+                        <div class="input-field col s12">
+                            <button type="submit" title="valider" role="button" aria-label="bouton valider"  class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">{!! __('message.valider') !!}</button>
+                        </div>
 
-                </form>
-                <div class="row" class="marge">
-
-                    <div class="input-field col s12">
-                        <button title="valider" role="button" aria-label="bouton valider"  class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">{!! __('message.valider') !!}</button>
                     </div>
 
-                </div>
+                </form>
+
             </div>
 
         </div>
@@ -238,13 +232,13 @@
 
 
 @section('script')
-    <script type="text/plain" id="select-recursivite">
+    <script type="text/html" id="select-recursivite">
         <div class="input-field col l4 ">
-    <select  title="selection de la récursivité" role="select">
-      <option value="" disabled selected>Quand répéter le calcul</option>
-      <option value="1">Tous les jours</option>
-      <option value="2">Toutes les semaines</option>
-      <option value="3">Tous les ans</option>
+    <select  title="selection de la récursivité" name="recursivite" role="select" id="frequence-recursivite">
+      <option value="" disabled selected>{!! __('message.champRecursivite') !!}</option>
+      <option value="1">{!! __('message.frequence1') !!}</option>
+      <option value="2">{!! __('message.frequence2') !!}</option>
+      <option value="3">{!! __('message.frequence3') !!}</option>
     </select>
   </div>
     </script>

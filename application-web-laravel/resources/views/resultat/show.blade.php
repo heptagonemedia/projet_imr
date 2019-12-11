@@ -52,7 +52,6 @@
 
 @include('navigation_side_bar')
 <main role="main">
-
     <!-- Ligne de la carte et du premier Graphique -->
     <div  id="col1">
         <div class="row">
@@ -90,8 +89,10 @@
 
         </div>
     </div>
-
+    <pre>
+<?php print_r($_POST); ?>
     <!-- Ligne du bas avec les 2 derniers Graphiques -->
+    </pre>
     <div>
         <div class="row">
 
