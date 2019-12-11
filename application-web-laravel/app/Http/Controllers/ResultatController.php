@@ -31,12 +31,12 @@ class ResultatController extends Controller
     }
 
     public function enregistrerCalcul($id){
-
         $calculDAO = CalculDAO::getInstance();
         $calcul = $calculDAO->recupererCalculParId((int)$id);
         $calcul->setEnregistre(false);
         $boueesDAO = BoueeDAO::getInstance();
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
+        echo $calcul->getRegion()->getId()." ".$calcul->getEtiquette();
         $calculDAO->modifierCalcul($calcul);
         $enregistre = true;
         return view('resultat.show', compact("calcul", "id", "enregistre", "coordonnees"))->with('Succes', 'Calcul enregistre avec succes');
@@ -45,14 +45,20 @@ class ResultatController extends Controller
     public function navigerVersResultatNonEnregistre($id){
         $calculDao = CalculDAO::getInstance();
         $calcul = $calculDao->recupererCalculParId((int)$id);
+        $boueesDAO = BoueeDAO::getInstance();
+        $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
         $enregistre = false;
-        return view('resultat.show', compact("calcul", "id", "enregistre"));
+        echo $calcul->getRegion()->getId()." ".$calcul->getEtiquette();
+        return view('resultat.show', compact("calcul", "id", "enregistre", "coordonnees"));
     }
 
     public function naviguerVersResultat($id){
         $calculDao = CalculDAO::getInstance();
         $calcul = $calculDao->recupererCalculParId((int)$id);
-        return view('resultat.show', compact("calcul"), compact("id"));
+        $boueesDAO = BoueeDAO::getInstance();
+        $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
+        echo $calcul->getRegion()->getId()." ".$calcul->getEtiquette();
+        return view('resultat.show', compact("calcul", "id", "coordonnees"));
     }
 
 
