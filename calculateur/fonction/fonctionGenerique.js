@@ -33,3 +33,42 @@ exports.formatterElementDate = function (element) {
 
     return ("" + element);
 }
+
+exports.convertirDonneeEnMilliseconde = function(typeDonnee, donneeAConvertir, annee, numeroMois) {
+    
+    switch (typeDonnee) {
+
+        case 'minute':
+            
+            return donneeAConvertir * 1000 * 60;
+
+        case 'heure':
+            
+            return donneeAConvertir * 1000 * 60 * 60;
+
+        case 'jour':
+            
+            return donneeAConvertir * 1000 * 60 * 60 * 24;
+
+        case 'mois':
+
+            if (this.estBisextile(annee) && numeroMois==2) {
+                return donneeAConvertir * 1000 * 60 * 60 * 24 * 29;
+            } else if (!this.estBisextile(annee) && numeroMois == 2) {
+                return donneeAConvertir * 1000 * 60 * 60 * 24 * 28;
+            } else if ((((numeroMois < 8) && (numeroMois != 2) && (numeroMois % 2 == 0)) || ((numeroMois > 7) && (numeroMois % 2 == 1)))) {
+                return donneeAConvertir * 1000 * 60 * 60 * 24 * 30;
+            } else if ((((numeroMois < 8) && (numeroMois % 2 == 1)) || ((numeroMois > 7) && (numeroMois % 2 == 0)))) {
+                return donneeAConvertir * 1000 * 60 * 60 * 24 * 31;
+            }
+
+        case 'annee':
+            var multiple = 365;
+            if (this.estBisextile(annee)) {
+                multiple = 366;
+            }
+            return donneeAConvertir * 1000 * 60 * 60 * 24 * multiple;
+
+    }
+
+}

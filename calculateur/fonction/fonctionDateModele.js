@@ -12,6 +12,26 @@ exports.dateModeleEgales = function (date1, date2) {
 
 }
 
+exports.convertirDateEtHeureEnDate = function(date, heure) {
+    // Dec 27, 2019
+    // 05:19 PM
+
+    var tableauDate = date.split(' ');
+    var splitTableauDate = tableauDate[1].split(',');
+
+    var tableauHeure = heure.split(' ');
+    var splitTableauHeure = tableauHeure[0].split(':');
+    var heureDate = parseInt(splitTableauHeure[0]);
+
+    if (tableauHeure[2] === 'PM') {
+        heureDate += 12;
+    }
+
+
+    return new date.DateModele(0, parseInt(splitTableauHeure[2]), heureDate, splitTableauDate[0], this.trouverMois(tableauDate[0]), tableauDate[2]);
+
+}
+
 exports.convertirChaine = function (chaine) {
 
     //'Fri Nov 01 2019 00:00:00 GMT-0400 (GMT-04: 00)'
@@ -191,6 +211,17 @@ exports.convertirEnSeconde = function (date) {
     );
 }
 
+exports.convertirEnMilliseconde = function(date) {
+    return (
+        (date.seconde * 1000) +
+        (date.minute * 60 * 1000) +
+        (date.heure * 3600 * 1000) +
+        (date.jour * 86400 * 1000) +
+        (date.mois * 1036800 * 1000) +
+        (date.annee * 378432000 * 1000)
+    );
+}
+
 exports.genererDateAleatoire = function () {
 
     var heure = fonctionGenerique.nombreEntierAleatoire(0, 23);
@@ -213,6 +244,101 @@ exports.genererDateAleatoire = function () {
     chaineDate = "" + annee + "-" + mois + "-" + jour + " " + heure + ":" + minute + ":" + seconde;
 
     return new date.DateModele(seconde, minute, heure, jour, mois, annee);
+
+}
+
+
+
+exports.augmenterDate1Jour = function (date) {
+
+    var dateSuivante = date;
+
+    dateSuivante.jour++;
+
+    if (
+        ((dateSuivante.mois == 2) && (dateSuivante.jour > 28) && !fonctionGenerique.estBisextile(dateSuivante.annee))
+        || ((dateSuivante.mois == 2) && (dateSuivante.jour > 29) && fonctionGenerique.estBisextile(dateSuivante.annee))
+        || (dateSuivante.jour > 30) && (((dateSuivante.mois < 8) && (dateSuivante.mois != 2) && (dateSuivante.mois % 2 == 0)) || ((dateSuivante.mois > 7) && (dateSuivante.mois % 2 == 1)))
+        || (dateSuivante.jour > 31) && (((dateSuivante.mois < 8) && (dateSuivante.mois % 2 == 1)) || ((dateSuivante.mois > 7) && (dateSuivante.mois % 2 == 0)))
+    ) {
+
+        dateSuivante.jour = 1;
+        dateSuivante.mois++;
+
+        if (dateSuivante.mois > 12) {
+
+            dateSuivante.mois = 1;
+            dateSuivante.annee++;
+
+        }
+
+    }
+
+    return dateSuivante;
+
+}
+
+
+exports.augmenterDate1An = function (date) {
+
+    var dateSuivante = date;
+    dateSuivante.annee++;
+
+    return dateSuivante;
+
+}
+
+exports.augmenterDate1Semaine = function (date) {
+
+    var dateSuivante = date;
+    var jourTemporaire = dateSuivante.jour + 7;
+    dateSuivante.jour += 7;
+
+    if (((dateSuivante.mois == 2) && (dateSuivante.jour > 28) && !fonctionGenerique.estBisextile(dateSuivante.annee))) {
+
+        dateSuivante.jour = jourTemporaire - 28;
+        dateSuivante.mois++;
+
+        if (dateSuivante.mois > 12) {
+
+            dateSuivante.mois = 1;
+            dateSuivante.annee++;
+
+        }
+
+    } else if (((dateSuivante.mois == 2) && (dateSuivante.jour > 29) && fonctionGenerique.estBisextile(dateSuivante.annee))) {
+        dateSuivante.jour = jourTemporaire - 29;
+        dateSuivante.mois++;
+
+        if (dateSuivante.mois > 12) {
+
+            dateSuivante.mois = 1;
+            dateSuivante.annee++;
+
+        }
+    } else if ((dateSuivante.jour > 30) && (((dateSuivante.mois < 8) && (dateSuivante.mois != 2) && (dateSuivante.mois % 2 == 0)) || ((dateSuivante.mois > 7) && (dateSuivante.mois % 2 == 1)))) {
+        dateSuivante.jour = jourTemporaire - 30;
+        dateSuivante.mois++;
+
+        if (dateSuivante.mois > 12) {
+
+            dateSuivante.mois = 1;
+            dateSuivante.annee++;
+
+        }
+    } else if ((dateSuivante.jour > 31) && (((dateSuivante.mois < 8) && (dateSuivante.mois % 2 == 1)) || ((dateSuivante.mois > 7) && (dateSuivante.mois % 2 == 0)))) {
+        dateSuivante.jour = jourTemporaire - 31;
+        dateSuivante.mois++;
+
+        if (dateSuivante.mois > 12) {
+
+            dateSuivante.mois = 1;
+            dateSuivante.annee++;
+
+        }
+    }
+
+    return dateSuivante;
 
 }
 
