@@ -78,7 +78,7 @@
 
     <li><a class="subheader">FAQ</a></li>
 
-    <li><a class="waves-effect waves-teal" href="FAQ"><i aria-hidden="true" class="material-icons">info</i>FAQ</a></li>
+    <li><a class="waves-effect waves-teal" href="{{action('PagesController@naviguerVersFAQ')}}"><i aria-hidden="true" class="material-icons">info</i>FAQ</a></li>
 
     <li>
         <div class="divider"></div>
