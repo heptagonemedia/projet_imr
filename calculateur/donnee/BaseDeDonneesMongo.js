@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 
-const credentials = require('../../../credentials/CredentialsMongo');
+const credentials = require('../donnee/CredentialsMongo');
 
 const credentialsMongo = credentials.Credentials();
 
