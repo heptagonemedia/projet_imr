@@ -8,7 +8,12 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('.collapsible').collapsible();
 });
-
+$(document).ready(function(){
+    $('.datepicker').datepicker();
+});
+$(document).ready(function(){
+    $('.timepicker').timepicker();
+});
 $(document).ready(function () {
     $('.sidenav').sidenav();
 });

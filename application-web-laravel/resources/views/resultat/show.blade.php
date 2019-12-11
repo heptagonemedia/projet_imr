@@ -89,8 +89,10 @@
 
         </div>
     </div>
-
+    <pre>
+<?php print_r($_POST); ?>
     <!-- Ligne du bas avec les 2 derniers Graphiques -->
+    </pre>
     <div>
         <div class="row">
 

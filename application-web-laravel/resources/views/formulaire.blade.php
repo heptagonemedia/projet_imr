@@ -214,16 +214,16 @@
                         </fieldset>
 
 
+                    <div class="row" class="marge">
 
+                        <div class="input-field col s12">
+                            <button type="submit" title="valider" role="button" aria-label="bouton valider"  class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">{!! __('message.valider') !!}</button>
+                        </div>
 
-                </form>
-                <div class="row" class="marge">
-
-                    <div class="input-field col s12">
-                        <button title="valider" role="button" aria-label="bouton valider"  class="btn waves-effect waves-light pastel col s12" onclick="detecterErreurs()">{!! __('message.valider') !!}</button>
                     </div>
 
-                </div>
+                </form>
+
             </div>
 
         </div>
