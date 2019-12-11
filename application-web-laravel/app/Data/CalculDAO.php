@@ -95,21 +95,21 @@ class CalculDAO
     }
 
     public function modifierCalcul($calcul){
-        $this->connection->collection('calcul')->where(Calcul::CLE_ID, $calcul->id)->update(
+        $this->connection->collection('calcul')->where(Calcul::CLE_ID, $calcul->getId())->update(
             [
-                Calcul::CLE_ID => $calcul->id,
-                Calcul::CLE_ETIQUETTE => $calcul->etiquette,
-                Calcul::CLE_DATE_GENERATION => $calcul->dateGeneration,
-                Calcul::CLE_DATE_PROCHAINE_GENERATION => $calcul->dateProchaineGeneration,
-                Calcul::CLE_ENREGISTRE => $calcul->enregistre,
-                Calcul::CLE_ID_REGION => $calcul->region->id,
-                Calcul::CLE_ID_TYPE_CALCUL => $calcul->typeCalcul->id,
-                Calcul::CLE_DATE_DEBUT_PLAGE => $calcul->dateDebutPlage,
-                Calcul::CLE_DATE_FIN_PLAGE => $calcul->dateFinPlage,
-                Calcul::CLE_FREQUENCE_VALEUR => $calcul->frequenceValeur,
-                Calcul::CLE_XML_TEMPERATURE => $calcul->cheminFichierXmlTemperature,
-                Calcul::CLE_XML_SALINITE => $calcul->cheminFichierXmlSalilnite,
-                Calcul::CLE_XML_DEBIT => $calcul->cheminFichierXmlDebit,
+                Calcul::CLE_ID => $calcul->getId(),
+                Calcul::CLE_ETIQUETTE => $calcul->getEtiquette(),
+                Calcul::CLE_DATE_GENERATION => $calcul->getDateGeneration(),
+                Calcul::CLE_DATE_PROCHAINE_GENERATION => $calcul->getDateProchaineGeneration(),
+                Calcul::CLE_ENREGISTRE => $calcul->getEnregistre(),
+                Calcul::CLE_ID_REGION => $calcul->getRegion()->getId(),
+                Calcul::CLE_ID_TYPE_CALCUL => $calcul->getTypeCalcul()->getId(),
+                Calcul::CLE_DATE_DEBUT_PLAGE => $calcul->getDateDebutPlage(),
+                Calcul::CLE_DATE_FIN_PLAGE => $calcul->getDateFinPlage(),
+                Calcul::CLE_FREQUENCE_VALEUR => $calcul->getFrequenceValeur(),
+                Calcul::CLE_XML_TEMPERATURE => $calcul->getCheminFichierXmlTemperature(),
+                Calcul::CLE_XML_SALINITE => $calcul->getCheminFichierXmlSalinite(),
+                Calcul::CLE_XML_DEBIT => $calcul->getCheminFichierXmlDebit()
             ]
 
         );

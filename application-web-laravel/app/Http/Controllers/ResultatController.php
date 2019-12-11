@@ -32,11 +32,18 @@ class ResultatController extends Controller
     public function enregistrerCalcul($id){
         $calculDAO = CalculDAO::getInstance();
         $calcul = $calculDAO->recupererCalculParId((int)$id);
-        $calcul->setEnregistre(true);
+        $calcul->setEnregistre(false);
         $calculDAO->modifierCalcul($calcul);
-        return view('resultat.show', compact("calcul"), compact("id"));
+        $enregistre = true;
+        return view('resultat.show', compact("calcul", "id", "enregistre"))->with('Succes', 'Calcul enregistre avec succes');
     }
-    
+
+    public function navigerVersResultatNonEnregistre($id){
+        $calculDao = CalculDAO::getInstance();
+        $calcul = $calculDao->recupererCalculParId((int)$id);
+        $enregistre = false;
+        return view('resultat.show', compact("calcul", "id", "enregistre"));
+    }
 
     public function naviguerVersResultat($id){
         $calculDao = CalculDAO::getInstance();

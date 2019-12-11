@@ -49,7 +49,15 @@
     </nav>
 
 </header>
-
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
 @include('navigation_side_bar')
 <main role="main">
     <!-- Ligne de la carte et du premier Graphique -->
@@ -89,10 +97,6 @@
 
         </div>
     </div>
-    <pre>
-<?php print_r($_POST); ?>
-    <!-- Ligne du bas avec les 2 derniers Graphiques -->
-    </pre>
     <div>
         <div class="row">
 
@@ -138,63 +142,22 @@
             <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="formulaireRecherche.php"><i aria-hidden="true"  aria-label="Faire un nouveau calcul"  class="material-icons" >  add_circle_outline</i></a></li>
             <li><a class="btn-floating pink tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Accueil" href="accueil.php"><i aria-hidden="true"  aria-label="Lien vers l'accueil"  class="material-icons">home</i></a></li>
 
-            @php if(isset($_GET["type"]) && $_GET['type']=='prev' ): @endphp
+            @php if(isset($enregistre) && !$enregistre ): @endphp
             <li><a class="btn-floating yellow darken-1 tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Retourner au formulaire" onclick="retourFormulaire()"><i aria-hidden="true"  aria-label="Retour au formulaire"  class="material-icons">arrow_back</i></a></li>
-            <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Enregistrer le calcul" href="#modal1" onclick = "enregistrer()"><i aria-hidden="true"  aria-label="Enregistrer le calcul"  class="material-icons">save</i></a></li>
+            <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Enregistrer le calcul" href="{{action('ResultatController@enregistrerCalcul', $calcul->getId())}}"><i aria-hidden="true"  aria-label="Enregistrer le calcul"  class="material-icons">save</i></a></li>
             @php endif;@endphp
         </ul>
 
     </div>
-
-
-    <form aria-hidden="true" method="post" id='formulaire' action="resultats.php">
-        <input type="hidden" value="enr" name="type">
-    </form>
-
-    @php
-
-        if(isset($_GET["type"])):
-
-            $type = $_GET["type"];
-
-            if($type == "prev"):
-    @endphp
-    <div id="modal1" role="dialog" aria-labelledby="dialog1Title" aria-describedby="dialog1Desc" class="modal row">
-        <div id="dialog1Title" class="modal-content">
-            <h4>Calcul enregistré</h4>
-            <p id="dialog1Desc">le calcul a bien été enregitré</p>
-        </div>
-        <div class="modal-footer green">
-            <a onclick="enregistrerForm()" class="modal-close waves-effect waves-green btn-flat">ok</a>
-        </div>
-    </div>
-
-    @php
-        //    elseif($type == "enr"):
-    @endphp
-<!--        <div id='message' class="container-fluid">-->
-    <!--            <div class = "row">-->
-    <!--                <div class="col-sm-4"></div>-->
-    <!--                <button class="col-sm alert alert-success pulse" role="alert" onclick="fermer()";>-->
-    <!--                    Le calcul a bien été enregistré-->
-    <!--                </button>-->
-    <!--                <div class="col-sm-4"></div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    -->
-    @php
-
-        endif;
-    endif;
-
-    @endphp
 
 </main>
 
 
 @include('footer')
 
-
+<div id="texteSucces" hidden>
+    {!! __('message.calculBienEnregistre') !!}
+</div>
 </body>
 
 

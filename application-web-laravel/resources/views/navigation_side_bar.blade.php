@@ -51,7 +51,7 @@
                         <?php if(isset($calculs)){
                         foreach ($calculs as $calcul){
                         if(!$calcul->getEnregistre()) { ?>
-                        <li><a class="waves-effect waves-teal" href="{{action('PagesController@naviguerVersAccueil', $calcul->getId())}}"><i aria-hidden="true" class="material-icons">new_releases</i>{{--{!! __('message.unTelCalcul') !!} {{$i}}--}} <?php echo $calcul->getEtiquette(); ?></a></li>
+                        <li><a class="waves-effect waves-teal" href="{{action('ResultatController@navigerVersResultatNonEnregistre', $calcul->getId())}}"><i aria-hidden="true" class="material-icons">new_releases</i>{{--{!! __('message.unTelCalcul') !!} {{$i}}--}} <?php echo $calcul->getEtiquette(); ?></a></li>
                         <?php }
                         }
                         }?>

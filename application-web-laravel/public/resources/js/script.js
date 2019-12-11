@@ -16,6 +16,7 @@ $(document).ready(function(){
 });
 $(document).ready(function () {
     $('.sidenav').sidenav();
+    $('.modal').modal();
 });
 
 function ouvrirSidenav(){
@@ -26,6 +27,15 @@ function fermerSidenav(){
     $("#slide-out").hide();
     console.log("fermeture")
 }
+
+$(document).ready(function(){
+    $('.modal').modal();
+});
+
+if (document.location.href.indexOf("enr") != -1){
+    M.toast({html: document.getElementById("texteSucces").innerHTML});
+}
+
 
 var ctx = document.getElementById('camembertBouees').getContext('2d');
 data = {

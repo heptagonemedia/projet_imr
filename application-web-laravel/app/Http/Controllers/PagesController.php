@@ -33,12 +33,6 @@ class PagesController extends Controller
         return view('formulaire', compact("regions"), compact("typesCalcul"));
     }
 
-    public function naviguerVersResultat($id){
-        $regionDAO = RegionDAO::getInstance();
-        $regions = $regionDAO->recupererRegionParId($id);
-        return view('layoutResultat', compact("regions"));
-    }
-
     public function test()
     {
         return view('layoutResultat');
@@ -58,7 +52,6 @@ class PagesController extends Controller
         $nonConformes = $historiqueDonneeDAO->nombreBoueesNonConformes();
         $dateSaisie = $historiqueDonneeDAO->recupererDerniereDateSaisie();
         $regions = $regionDAO->recuperListeRegions();
-
 
         $coordonnees = $boueeDAO->recupererCoordonneesBoueesParRegion((int)$id_region);
 
