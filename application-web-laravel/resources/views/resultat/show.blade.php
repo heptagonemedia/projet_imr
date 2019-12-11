@@ -30,7 +30,15 @@
 
 <body>
 
-
+<div id="coordonnees" hidden >
+    <?php
+    if (isset($coordonnees)){
+        foreach ($coordonnees as $coordonnee){
+            echo($coordonnee."&");
+        }
+    }
+    ?>
+</div>
 
 <header>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\BoueeDAO;
 use App\Data\CalculDAO;
 use App\Data\RegionDAO;
 use Illuminate\Http\Request;
@@ -30,12 +31,15 @@ class ResultatController extends Controller
     }
 
     public function enregistrerCalcul($id){
+
         $calculDAO = CalculDAO::getInstance();
         $calcul = $calculDAO->recupererCalculParId((int)$id);
         $calcul->setEnregistre(false);
+        $boueesDAO = BoueeDAO::getInstance();
+        $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
         $calculDAO->modifierCalcul($calcul);
         $enregistre = true;
-        return view('resultat.show', compact("calcul", "id", "enregistre"))->with('Succes', 'Calcul enregistre avec succes');
+        return view('resultat.show', compact("calcul", "id", "enregistre", "coordonnees"))->with('Succes', 'Calcul enregistre avec succes');
     }
 
     public function navigerVersResultatNonEnregistre($id){
