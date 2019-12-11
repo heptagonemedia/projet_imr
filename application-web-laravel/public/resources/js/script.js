@@ -1,7 +1,6 @@
 initFormulaire();
 $('.dropdown-trigger').dropdown();
 $('select').formSelect();
-afficherRecursivite();
 $(document).ready(function () {
     $('.fixed-action-btn').floatingActionButton();
 });
@@ -392,3 +391,5 @@ function regionCarte(){
     console.log($("#choix_region").val());
      document.location.href = document.location.href.substring(0, document.location.href.indexOf("accueil")) + "accueil/" + $("#choix_region").val();
 }
+
+afficherRecursivite();

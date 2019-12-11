@@ -25,7 +25,13 @@ class ResultatController extends Controller
         /* Ajout à la table */
 
         /* passage à la vue show : ressources/views/resultat/show.blade.php*/
-
+        //generation de l'etiquette
+        $etiquette = request("calcul")+request('dateDeb')+request("region");
+        $calculDao = CalculDAO::getInstance();
+        $calcul = $calculDao->recupererCalculParEtiquette($etiquette);
+        $boueesDAO = BoueeDAO::getInstance();
+        $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
+        return view('resultat.show', compact("calcul", "id", "coordonnees"));
         return view('resultat.show'/*, compact('resultat')*/);
 
     }
@@ -58,6 +64,13 @@ class ResultatController extends Controller
         return view('resultat.show', compact("calcul", "id", "coordonnees"));
     }
 
+    public function modifier(){
+        $calculDao = CalculDAO::getInstance();
+        $calcul = $calculDao->recupererCalculParId((int)request('id'));
+        $boueesDAO = BoueeDAO::getInstance();
+        $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
+        return view('resultat.show', compact("calcul", "id", "coordonnees"));
+    }
 
     // CF routes > web.php
     // public function showOne($nomResultat){

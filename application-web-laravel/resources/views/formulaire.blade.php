@@ -44,9 +44,15 @@
 
             <div class="col s12 z-depth-6 card-panel">
 
-                <form id="formulaire" role="form" aria-label="formulaire de calcul" method="POST" action="/resultat" class="register-form">
+                <form id="formulaire" role="form" aria-label="formulaire de calcul" method="POST" action="<?php if (isset($calcul)){ ?>{{action('ResultatController@modifier')}}<?php }else{ ?>{{action('ResultatController@store')}}<?php } ?>" class="register-form">
                     @csrf
-
+                        <?php
+                            if (isset($calcul)){
+                                ?>
+                                <input type="hidden" value="<?php echo $calcul->getId();?>" name="id_calcul">
+                                <?php
+                            }
+                        ?>
                         <fieldest class="row">
 
                             <legend class="input-field col s2">

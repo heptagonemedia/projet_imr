@@ -136,4 +136,27 @@ class CalculDAO
         );
     }
 
+    public function recupererCalculParEtiquette(string $etiquette)
+    {
+        $calcul = $this->connection->collection('calcul')->where(Calcul::CLE_ETIQUETTE, $etiquette)->first();
+        $regionDAO = RegionDAO::getInstance();
+        $region = $regionDAO->recupererRegionParId($calcul[Region::CLE_ID]);
+        $typeCalculDAO = TypeCalculDAO::getInstance();
+        $typeCalcul = $typeCalculDAO->recupererTypeDeCalculParId($calcul[TypeCalcul::CLE_ID]);
+        return new Calcul($calcul[Calcul::CLE_ID],
+            $calcul[Calcul::CLE_ETIQUETTE],
+            $calcul[Calcul::CLE_XML_TEMPERATURE],
+            $calcul[Calcul::CLE_XML_SALINITE],
+            $calcul[Calcul::CLE_XML_DEBIT],
+            $calcul[Calcul::CLE_DATE_DEBUT_PLAGE],
+            $calcul[Calcul::CLE_DATE_FIN_PLAGE],
+            $calcul[Calcul::CLE_DATE_GENERATION],
+            $calcul[Calcul::CLE_DATE_PROCHAINE_GENERATION],
+            $calcul[Calcul::CLE_ENREGISTRE],
+            $region,
+            $calcul[Calcul::CLE_FREQUENCE_VALEUR],
+            $typeCalcul
+        );
+    }
+
 }
