@@ -37,12 +37,13 @@
     <nav role="navigation" aria-label="header">
         <div class="nav-wrapper black">
             <div class="row">
-                <div class="col l4 center-align"><button role="button" onclick="ouvrirSidenav()" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i class="material-icons" id="menu">menu</i></button></div>
-                <div class="col l4 center-align" style="font-size: 20pt"><h1>Résultat du calcul</h1></div>
-                <div class="col l4 center align ">
-                    <a href="accueil" class="breadcrumb">accueil</a>
-                    <a href="nouveauCalcul" class="breadcrumb">formulaire</a>
-                    <a href="#" class="breadcrumb">Calcul : nom</a>
+                <div class="col s1 m1 l4 center-align"><button role="button" data-target="slide-out" onclick="ouvrirSidenav()" class="sidenav-trigger btn black white-text"><i aria-label="{!! __('message.ouvrirMenu') !!}" aria-hidden="true" class="material-icons" id="menu">menu</i></button></div>
+                <div class="black col s12 m5 l3 center-align" style="font-size: 18pt"><h1>{!! __('message.resultatCalcul') !!}</h1></div>
+                <div class="black col s12 m6 l5 center align ">
+
+                    <a href="accueil.php" class="breadcrumb">{!! __('message.accueilMenu') !!}</a>
+                    <a href="formulaireRecherche.php" class="breadcrumb">{!! __('message.formulaire') !!}</a>
+                    <a href="#" class="breadcrumb">{!! __('message.calculDeuxPoints') !!}</a>
                 </div>
             </div>
         </div>
@@ -74,7 +75,7 @@
                     </div>
 
                     <div class="card-content">
-                        <p>Vitesse du courant</p>
+                        <p>{!! __('message.agrandirCarte') !!}</p>
                     </div>
 
                 </div>
@@ -88,11 +89,11 @@
         <div class="row ">
 
             <div class="col s6 colLigne2">
-                <a href="#" id="btnCarte" class="lien" onclick="agrandirCarte(document.getElementById('map'))" >Agrandir la Carte</a>
+                <a href="#" id="btnCarte" class="lien" onclick="agrandirCarte(document.getElementById('map'))" >{!! __('message.vitesseCourant') !!}</a>
             </div>
 
             <div class='col s6 colLigne2' >
-                <a class="lien" href="" >Consulter les données brutes</a>  <!-- TODO Changer le style -->
+
             </div>
 
         </div>
@@ -108,7 +109,7 @@
                     </div>
 
                     <div class="card-content">
-                        <p>Salinité</p>
+                        <p>{!! __('message.salinite') !!}</p>
                     </div>
 
                 </div>
@@ -122,7 +123,7 @@
                     </div>
 
                     <div class="card-content">
-                        <p>Température</p>
+                        <p>{!! __('message.temperature') !!}</p>
                     </div>
 
                 </div>

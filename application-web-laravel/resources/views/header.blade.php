@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{asset('resources\css\headerCss.css')}}">
+
 <nav role="navigation" aria-label="header">
     <div class="nav-wrapper black">
         <div class="row">
@@ -48,11 +48,7 @@
 
                         <a href="accueil.php" class="breadcrumb">accueil</a>
                         <a href="formulaireRecherche.php" class="breadcrumb">formulaire</a>
-                        <a href="#" class="breadcrumb">Calcul : <?php if (isset($_POST['bouee'])) {
-                                echo $_POST['bouee'];
-                            } else {
-                                echo " nom";
-                            } ?></a>
+                        <a href="#" class="breadcrumb">Calcul : </a>
                     </div>
 
                 @else
