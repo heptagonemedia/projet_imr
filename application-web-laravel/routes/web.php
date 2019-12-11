@@ -32,5 +32,5 @@ Route::get('test', 'PagesController@test');
 Route::post('resultat', 'ResultatController@store');
 //Route::post('/resultat/{id}', 'PagesController@naviguerVersResultat');
 Route::get('resultat/{id}', 'ResultatController@naviguerVersResultat');
-
+Route::get('resultat/{id}/enr', 'ResultatController@enregistrerCalcul');
 Route::get('/FAQ' , 'PagesController@naviguerVersFAQ');

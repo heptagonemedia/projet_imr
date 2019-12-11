@@ -49,6 +49,7 @@ class PagesController extends Controller
         return view('FAQ');
     }
 
+
     public function naviguerVersAccueilRegion($id_region){
         $boueeDAO = BoueeDAO::getInstance();
         $historiqueDonneeDAO = HistoriqueDonneeMesureeDAO::getInstance();
@@ -58,7 +59,7 @@ class PagesController extends Controller
         $dateSaisie = $historiqueDonneeDAO->recupererDerniereDateSaisie();
         $regions = $regionDAO->recuperListeRegions();
 
-        
+
         $coordonnees = $boueeDAO->recupererCoordonneesBoueesParRegion((int)$id_region);
 
         return view('accueil', compact('regions', 'coordonnees', 'id_region', 'conformes', 'nonConformes', "dateSaisie"));

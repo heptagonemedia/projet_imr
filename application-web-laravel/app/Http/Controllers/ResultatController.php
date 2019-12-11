@@ -28,9 +28,18 @@ class ResultatController extends Controller
         return view('resultat.show'/*, compact('resultat')*/);
 
     }
+
+    public function enregistrerCalcul($id){
+        $calculDAO = CalculDAO::getInstance();
+        $calcul = $calculDAO->recupererCalculParId((int)$id);
+        $calcul->setEnregistre(true);
+        $calculDAO->modifierCalcul($calcul);
+        return view('resultat.show', compact("calcul"), compact("id"));
+    }
+    
+
     public function naviguerVersResultat($id){
-        $calculDao = new CalculDAO();
-        $calculs = $calculDao->recupererListeCalcul();
+        $calculDao = CalculDAO::getInstance();
         $calcul = $calculDao->recupererCalculParId((int)$id);
         return view('resultat.show', compact("calcul"), compact("id"));
     }
