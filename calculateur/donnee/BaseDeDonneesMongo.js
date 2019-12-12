@@ -41,6 +41,10 @@ exports.insererTableau = async function (tableauValeur, collection) {
 
 }
 
+exports.fermer = function (client) {
+    client.close();
+}
+
 exports.insererDocument = async function (element, collection) {
 
     var client = this.client();
@@ -50,7 +54,9 @@ exports.insererDocument = async function (element, collection) {
     const db = c.db(this.dbName());
     await db.collection(collection).insertOne(element);
 
-    // console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Inserer dans la base de données');
+    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Inserer dans la base de données');
+
+    this.fermer(client);
 
     // client.close();
 
@@ -66,6 +72,8 @@ exports.selectionnerDocument = async function (clef, valeur, collection) {
     const db = c.db(this.dbName());
     var resultat = await db.collection(collection).findOne(document).toArray();
     // console.log('bdd :', resultat);
+    this.fermer(client);
+
 
     return resultat;
 
@@ -79,6 +87,8 @@ exports.selectionnerDocumentsCollection = async function (collection) {
 
     const db = c.db(this.dbName());
     var resultat = await db.collection(collection).find({}).toArray();
+    this.fermer(client);
+
 
     return resultat;
 

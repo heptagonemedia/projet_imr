@@ -76,7 +76,7 @@ module.exports = {
 
     async calculer(dateDebutPlage, dateFinPlage, typeCalcul, annee, mois, jour, heure, minute, idRegion) {
 
-        // console.log('Caluculer()');
+        console.log('Caluculer()');
 
         var dateDebutIntervalle = new date.DateModele(dateDebutPlage.seconde, dateDebutPlage.minute, dateDebutPlage.heure,
             dateDebutPlage.jour, dateDebutPlage.mois, dateDebutPlage.annee);
@@ -109,7 +109,7 @@ module.exports = {
             compteur++;
 
             tableauDates = await fonctionDate.trouverToutesLesDatesEntre2Dates(dateDebutIntervalle, dateTemporaire);
-            // console.log(tableauDates);
+            console.log(tableauDates);
 
             switch (typeCalcul) {
                 case 1:
