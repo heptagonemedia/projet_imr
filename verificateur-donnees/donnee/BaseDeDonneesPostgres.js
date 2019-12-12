@@ -5,6 +5,8 @@ const credentials = require('../../../credentials/CredentialsPg');
 const fonctionDateModele = require('../fonction/fonctionDateModele');
 const verificateur = require('../controleur/verificateur');
 
+const datemodele = require('../modele/DateModele');
+
 var variablesConnexion = new credentials.Credentials();
 
 var connexion = {
@@ -15,8 +17,10 @@ var connexion = {
 
 exports.selectionnerDonneesId = async function (table, bdd, donnees, derniersId, callback) {
     
+    console.log('selectionnerDonneesId()');
+    
     var id = 'id_' + table;
-    console.log((derniersId[id]+1));
+    // console.log((derniersId[id]+1));
     
 
     const SELECT_TABLE_PARAMETRE = {
@@ -34,10 +38,13 @@ exports.selectionnerDonneesId = async function (table, bdd, donnees, derniersId,
         var date = res.rows[0]['date_saisie'];
         date = fonctionDateModele.convertirChaine((''+date));
         
-        var dateFin = fonctionDateModele.augmenterDateModeleXHeure(date, 1);
+        var dateTransition = new datemodele.DateModele(date.seconde, date.minute, date.heure,
+            date.jour, date.mois, date.annee);
+        
+        var dateFin = fonctionDateModele.augmenterDateModeleXHeure(dateTransition, 1);
 
-        console.log('dateFin', dateFin);
-
+        // console.log('date', date);        
+        // console.log('dateFin', dateFin);
 
         baseDeDonnees = await new Pool(connexion);
         await callback(donnees, derniersId, baseDeDonnees, table, id, date, dateFin, callback);
@@ -48,8 +55,10 @@ exports.selectionnerDonneesId = async function (table, bdd, donnees, derniersId,
 }
 
 exports.selectionner = async function (donnees, derniersId, bdd, table, idTable, date, dateFin, callback) {
-
-    if (fonctionDateModele.dateModeleEgales(date, dateFin)) {
+    
+    console.log('selectionner()');
+    
+    if (!fonctionDateModele.dateModeleEgales(date, dateFin)) {
         
         var dateChaine = fonctionDateModele.toString(date);
         console.log(dateChaine);
@@ -68,7 +77,7 @@ exports.selectionner = async function (donnees, derniersId, bdd, table, idTable,
 
             for (let index = 0; index < resultat.length; index++) {
 
-                valeursAModifiees = await verificateur.verifier(donnees, derniersId, resultat[index], table);
+                valeursAModifiees = await verificateur.verifier(donnees, derniersId, resultat[index], table, date);
 
                 donnees[index] = valeursAModifiees[0];
                 derniersId['id_historique'] = valeursAModifiees[1];
@@ -80,7 +89,6 @@ exports.selectionner = async function (donnees, derniersId, bdd, table, idTable,
             baseDeDonnees = await new Pool(connexion);
             await callback(donnees, derniersId, baseDeDonnees, table, idTable, date, dateFin, callback);
             await baseDeDonnees.end();
-            console.log('sifbhshfbsdujhfbsujh');
 
 
         });

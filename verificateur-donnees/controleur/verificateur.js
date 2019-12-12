@@ -1,8 +1,11 @@
 const bddMongo = require('../donnee/BaseDeDonneesMongoDB');
 const historique = require('../modele/Historique');
 const donnee = require('../modele/Donnee');
+const fonctionDate = require('../fonction/fonctionDateModele');
 
-exports.verifier = async function (donnees, derniersId, donneesATester, table) {
+exports.verifier = async function (donnees, derniersId, donneesATester, table, date) {
+
+    console.log('verifier()');    
     
     var dernierIdTable = parseInt(derniersId[('id_') + table], 10) +1;
 
@@ -127,7 +130,12 @@ exports.verifier = async function (donnees, derniersId, donneesATester, table) {
     
     var valide = validiteTemperature || validiteDebit || validiteSalinite || validiteLongitude || validiteLatitude || validiteBatterie;
 
-    var historiqueTemporaire = new historique.Historique(idHistorique, idBouee, date, temperature, debit, salinite, longitude, latitude, batterie, valide);
+    var bouee = await bddMongo.selectionnerDocument('id_bouee', idBouee, 'bouee');
+    // console.log('>>>>>>>',bouee[0]['id_region']);
+    var idRegion = bouee[0]['id_region'];
+
+    var historiqueTemporaire = new historique.Historique(idHistorique, idBouee, idRegion, fonctionDate.toString(date), temperature, debit, salinite, 
+                                                            longitude, latitude, batterie, valide);
     
     var donneeTemporaire = new donnee.Donnee(idBouee,
         temperature,valideTemperatureDonnee,

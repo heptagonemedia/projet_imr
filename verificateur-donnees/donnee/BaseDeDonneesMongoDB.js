@@ -2,7 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 const credentials = require('../../../credentials/CredentialsMongo');
 
-const credentialsMongo = credentials.Credentials();
+const credentialsMongo = new credentials.Credentials();
 
 // Connection URL
 // const url = 'mongodb://localhost:27017';
@@ -64,7 +64,7 @@ exports.selectionnerDocument = async function (clef, valeur, collection) {
     const c = await client.connect();
 
     const db = c.db(this.dbName());
-    var resultat = await db.collection(collection).findOne(document).toArray();
+    var resultat = await db.collection(collection).find(document).toArray();
     // console.log('bdd :', resultat);
 
     return resultat;
