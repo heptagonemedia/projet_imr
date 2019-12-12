@@ -1,25 +1,25 @@
 
 // <G><L><P x="test col11" y="test col21" /></L></G>
-exports.version = function() {
-    return '<? xml version = "1.0" ?>\n';
+exports.version = function () {
+    return '<? xml version = "1.0" ?>';
 }
 
-exports.debutRoot = function() {
-    return '<G>\n';
+exports.debutRoot = function () {
+    return '<G>';
 }
 
 exports.finRoot = function () {
-    return '</G>\n';
+    return '</G>';
 }
 
 exports.debutLigne = function () {
-    return '\t<L>\n';
+    return '<L>';
 }
 
 exports.finLigne = function () {
-    return '\t</L>\n';
+    return '</L>';
 }
 
 exports.point = function (x, y) {
-    return '\t\t<P x="' + x + '" y="' + y + '" />\n';
+    return '<P x="' + x + '" y="' + y + '" />';
 }
