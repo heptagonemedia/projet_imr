@@ -1,23 +1,18 @@
 
-$('.dropdown-trigger').dropdown();
-$('select').formSelect();
+
+// $('select').formSelect();
 $(document).ready(function () {
     $('.fixed-action-btn').floatingActionButton();
-});
-
-$(document).ready(function () {
+    $('.dropdown-trigger').dropdown();
     $('.collapsible').collapsible();
-});
-$(document).ready(function(){
     $('.datepicker').datepicker();
-});
-$(document).ready(function(){
     $('.timepicker').timepicker();
-});
-$(document).ready(function () {
     $('.sidenav').sidenav();
     $('.modal').modal();
+    $('.tooltipped').tooltip();
+    $('select').formSelect();
 });
+
 
 function ouvrirSidenav(){
     $("#slide-out").show();
@@ -27,10 +22,6 @@ function fermerSidenav(){
     $("#slide-out").hide();
     console.log("fermeture")
 }
-
-$(document).ready(function(){
-    $('.modal').modal();
-});
 
 if (document.location.href.indexOf("enr") != -1){
     M.toast({html: document.getElementById("texteSucces").innerHTML});
@@ -70,27 +61,6 @@ function detecterErreurs() {
     }
 
 }
-
-function retourFormulaire() {
-    var url = document.location.href;
-    // window.location.href = "formulaireRecherche.php"+ url.substr(url.indexOf('?'));
-}
-
-function enregistrer() {
-    $('.modal').modal();
-}
-function enregistrerForm() {
-    $("#formulaireType").submit();
-
-}
-
-$(document).ready(function () {
-    $('.tooltipped').tooltip();
-});
-
-
-
-
 
 //fonction qui affiche le message d'erreur pour le champ region
 function verifierErreurRegion() {
@@ -293,14 +263,20 @@ function initMap() {
     var coordonnees = document.getElementById("coordonnees").innerHTML;
     listeCoordonnees = coordonnees.split("&amp;");
     macarte.setView([listeCoordonnees[1], listeCoordonnees[0]], 2);
-    for (let i = 0; i < coordonnees.length; i+=12) {
+    for (let i = 0; i < coordonnees.length/50; i+=2) {
         L.marker([listeCoordonnees[i+1], listeCoordonnees[i]]).addTo(macarte);
+
+    }
+    var elements = document.querySelectorAll(".Leaflet-control img, .leaflet-container, .leaflet-marker-pane img");
+    for (var h = 0; h < elements.length; ++h) {
+        elements[h].setAttribute("tabindex", "-1");
     }
 
 }
 window.onload = function () {
     // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
     initMap();
+    document.getElementsByTagName('img').tabIndex="-1"
 };
 
 function agrandirCarte(_element) {

@@ -38,12 +38,6 @@ body {
 	background-color: #1e2229;
 }
 
-div{
-	text-align: center;
-}
-
-
-
 #header{
 	background-color: #1e2229; font-size: 18pt;color: white
 }
@@ -76,10 +70,17 @@ div{
 #ligneFooter{
 	margin-bottom: -20px;
 }
-div:focus{
+button:focus{
+    border: solid 2px blue;
+}
+
+a:focus{
+    border: solid 1px blue;
+}
+canvas:focus{
     border: solid 1px blue;
 }
 
 div:focus{
-    border: solid 2px blue;
+    border: solid 1px blue;
 }

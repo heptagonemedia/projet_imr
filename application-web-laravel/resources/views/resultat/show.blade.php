@@ -58,6 +58,9 @@
     </nav>
 
 </header>
+
+@include('navigation_side_bar')
+
 <div id="modal1" class="modal">
     <div class="modal-content">
         <h4>Modal Header</h4>
@@ -67,23 +70,23 @@
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
     </div>
 </div>
-@include('navigation_side_bar')
+
 <main role="main">
     <!-- Ligne de la carte et du premier Graphique -->
     <div  id="col1">
         <div class="row">
 
-            <div class="map col s6 " role="geomap" id="map"></div>
+            <div class="map col s6 " tabIndex="-1" role="geomap" id="map"></div>
 
             <div class="stat1 col s6 ">
                 <div class="card">
 
                     <div class="card-image">
-                        <div role="linegraph" class="chart" id="myChart" ></div>
+                        <div tabIndex="-1" role="linegraph" class="chart" id="myChart" ></div>
                     </div>
 
                     <div class="card-content">
-                        <p>{!! __('message.agrandirCarte') !!}</p>
+                        <p>{!! __('message.vitesseCourant') !!}</p>
                     </div>
 
                 </div>
@@ -96,8 +99,8 @@
     <div class="container-fluid black" id='ligne2' >
         <div class="row ">
 
-            <div class="col s6 colLigne2">
-                <a href="#" id="btnCarte" class="lien" onclick="agrandirCarte(document.getElementById('map'))" >{!! __('message.vitesseCourant') !!}</a>
+            <div class="col s6 colLigne2 center-align">
+                <a href="#" id="btnCarte" class="lien" onclick="agrandirCarte(document.getElementById('map'))" >{!! __('message.agrandirCarte') !!}</a>
             </div>
 
             <div class='col s6 colLigne2' >
@@ -113,7 +116,7 @@
                 <div class="card">
 
                     <div class="card-image">
-                        <div class="chart" role="linegraph" id="myChart2" ></div>
+                        <div tabIndex="-1" class="chart" role="linegraph" id="myChart2" ></div>
                     </div>
 
                     <div class="card-content">
@@ -127,7 +130,7 @@
                 <div class="card">
 
                     <div class="card-image">
-                        <div class="chart" role="linegraph" id="myChart3" ></div>
+                        <div tabIndex="-1" class="chart" role="linegraph" id="myChart3" ></div>
                     </div>
 
                     <div class="card-content">

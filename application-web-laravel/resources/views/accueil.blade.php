@@ -59,13 +59,13 @@
 @section('main')
     <div id="conformes" hidden>
         <?php
-        if (isset($conformes) && isset($nonConformes))
+        if (isset($conformes) && isset($nonConformes) && ($conformes+$nonConformes) >0)
             echo ($conformes/($conformes+$nonConformes))*100;
         ?>
     </div>
     <div id="non-conformes" hidden>
         <?php
-        if (isset($conformes) && isset($nonConformes))
+        if (isset($conformes) && isset($nonConformes) && ($conformes+$nonConformes) >0)
             echo ($nonConformes/($conformes+$nonConformes))*100;
         ?>
     </div>
@@ -85,7 +85,7 @@
 
                 <div class="card">
                     <div >
-                        <div class="" role="geomap"  id="map" ></div>
+                        <div class="" tabIndex="-1" role="geomap"  id="map" ></div>
                     </div>
 
                     <div class="card-content">
@@ -98,9 +98,7 @@
                                         <option value="" disabled <?php if (!isset($id_region)){echo "selected";} ?>>{!! __('message.region') !!}</option>
                                         <?php
                                         foreach ($regions as $region){ ?>
-                                        <option title="region <?php echo $region->getEtiquette() ?>" aria-label="region <?php echo $region->getEtiquette() ?>"  value="<?php echo $region->getId() ?>" <?php if (isset($id_region) && $id_region == $region->getId()){
-                                            echo "selected";
-                                        } ?> ><?php echo $region->getEtiquette() ?></option>
+                                        <option title="region <?php echo $region->getEtiquette() ?>" aria-label="region <?php echo $region->getEtiquette() ?>"  value="<?php echo $region->getId() ?>" <?php if (isset($id_region) && $id_region == $region->getId()){echo "selected";} ?> ><?php echo $region->getEtiquette() ?></option>
                                         <?php
                                         }
                                         ?>
@@ -114,7 +112,6 @@
                     </div>
 
                 </div>
-
             </section>
             <section class="col l4 s12 m6" id="camembert" >
                 <div class="card white">
