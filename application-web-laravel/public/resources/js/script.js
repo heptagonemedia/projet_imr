@@ -1,4 +1,4 @@
-initFormulaire();
+
 $('.dropdown-trigger').dropdown();
 $('select').formSelect();
 $(document).ready(function () {
@@ -63,10 +63,10 @@ function detecterErreurs() {
     let verificationIntervalle = verifierErreurIntervalle();
     let verificationRecursivite = verifierErreurRecursivite();
 
-    if (verificationFrequence  && verificationIntervalle && verificationBouee) {
+    if (verificationFrequence  && verificationIntervalle && verificationBouee && verificationRecursivite) {
         $("#texteAlerte").text("");
         $("#divAlerte").hide();
-        // $('#formulaire').submit();
+        $('#formulaire').submit();
     }
 
 }
@@ -90,24 +90,7 @@ $(document).ready(function () {
 
 
 
-//remplit les champs du formulaire avec les données de l'url si il y en a
-function initFormulaire() {
-    donnees = window.location.href.substr(window.location.href.indexOf('?') + 1);
-    var tabDonnees = donnees.split('&');
-    console.log(tabDonnees);
-    var nom;
-    var valeur;
-    for (i = 0; i < tabDonnees.length - 1; i++) {
-        var nom = tabDonnees[i].substr(0, tabDonnees[i].indexOf("="));
-        var valeur = tabDonnees[i].substr(tabDonnees[i].indexOf("=") + 1);
-        if (nom == 'calcul') {
-            $("#" + valeur).attr('checked', true);
-        } else {
-            console.log(nom + ' ==> ' + valeur);
-            $('#' + nom).val(valeur);
-        }
-    }
-}
+
 
 //fonction qui affiche le message d'erreur pour le champ region
 function verifierErreurRegion() {
@@ -189,7 +172,7 @@ function verifierErreurFrequence() {
             if (!verificationMinute) {
                 erreur = erreur + "Minute, "
             }
-            $("#frequence").html("<label id=\"alerte\"> " + erreur + "Il faut entrer un entier non négatif cohérent</label>");
+            $("#frequence").html("<label id=\"alerte\" class=\"alerte\"> " + erreur + "Il faut entrer un entier non négatif cohérent</label>");
             $("#frequence").show();
             return false;
         }

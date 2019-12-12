@@ -32,7 +32,6 @@ class ResultatController extends Controller
         $boueesDAO = BoueeDAO::getInstance();
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
         return view('resultat.show', compact("calcul", "id", "coordonnees"));
-        return view('resultat.show'/*, compact('resultat')*/);
 
     }
 
