@@ -5,15 +5,15 @@ const calculDAO = require('./donnee/CalculDAO');
 
 var repondeur = async function(requete,reponse) {
 
-    console.log('methode ' + requete.method);
-    console.log('url ' + requete.url);
+    // console.log('methode ' + requete.method);
+    // console.log('url ' + requete.url);
 
 	if(requete.method === 'POST') {
 
         var body = '';
         requete.on('data', function (data) {
             
-            console.log('on.data');
+            // console.log('on.data');
 
             body += data;
 
@@ -28,10 +28,10 @@ var repondeur = async function(requete,reponse) {
 
         requete.on('end', function () {
 
-            console.log('on.end');
+            // console.log('on.end');
 
             var POST = qs.parse(body);
-            console.log(body);
+            // console.log(body);
 
             var etiquetteCalcul = POST['nomCalcul'];
 
@@ -83,4 +83,6 @@ var repondeur = async function(requete,reponse) {
 }
 
 var serveur = http.createServer(repondeur);
-serveur.listen(3000, 'localhost', ()=>{console.log('Serveur en ligne.');});
+serveur.listen(3000, 'localhost', ()=>{
+    // console.log('Serveur en ligne.');
+});

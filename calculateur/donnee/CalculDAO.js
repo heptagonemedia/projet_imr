@@ -13,7 +13,7 @@ module.exports = {
     async ajouterCalcul(etiquetteCalcul, typeCalcul, annee, mois, jour, heure, minute, idRegion,
         dateDebut, heureDebut, dateFin, heureFin, calculEnregistrer, repeter, repeterTousLesCombien) {
 
-        console.log();
+        // console.log();
 
         var frequenceValeur = fonctionGenerique.convertirDonneeEnMilliseconde('annee', annee, annee, mois) +
             fonctionGenerique.convertirDonneeEnMilliseconde('mois', mois, annee, mois) +
@@ -76,7 +76,7 @@ module.exports = {
 
     async calculer(dateDebutPlage, dateFinPlage, typeCalcul, annee, mois, jour, heure, minute, idRegion) {
 
-        console.log('Caluculer()');
+        // console.log('Caluculer()');
 
         var dateDebutIntervalle = new date.DateModele(dateDebutPlage.seconde, dateDebutPlage.minute, dateDebutPlage.heure,
             dateDebutPlage.jour, dateDebutPlage.mois, dateDebutPlage.annee);
@@ -104,7 +104,7 @@ module.exports = {
         //CONDITION : dateTemporaire <= dateFinPlage
         while (!fonctionDate.dateModeleParametre1EstPlusRecenteQueParametre2(dateTemporaire, dateFinPlage)) {
 
-            console.log('while');
+            // console.log('while');
 
             compteur++;
 
@@ -537,7 +537,7 @@ module.exports = {
 
     async trouverDernierId() {
 
-        console.log('trouverDernierId()');
+        // console.log('trouverDernierId()');
 
         var client = baseDeDonnees.client();
 

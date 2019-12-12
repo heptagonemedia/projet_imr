@@ -35,7 +35,7 @@ exports.insererTableau = async function (tableauValeur, collection) {
     const db = c.db(this.dbName());
     await db.collection(collection).insertMany(tableauValeur);
 
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Inserer dans la base de données');
+    // console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Inserer dans la base de données');
 
     // client.close();
 
@@ -50,7 +50,7 @@ exports.insererDocument = async function (element, collection) {
     const db = c.db(this.dbName());
     await db.collection(collection).insertOne(element);
 
-    console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Inserer dans la base de données');
+    // console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Inserer dans la base de données');
 
     // client.close();
 
