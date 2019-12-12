@@ -4,14 +4,14 @@ const bddPostgres = require('./donnee/BaseDeDonneesPG');
 
     var nomTable;
 
-    var dateMaintenant = new Date();
-    if (dateMaintenant.getHours()%2 == 0) {
-        nomTable = 'heure_paire';
-    } else {
-        nomTable = 'heureImpaire';
-    }
+    // var dateMaintenant = new Date();
+    // if (dateMaintenant.getHours()%2 == 0) {
+    //     nomTable = 'heure_paire';
+    // } else {
+    //     nomTable = 'heureImpaire';
+    // }
 
-    var dernierIdTablePg = await bddPostgres.recupererDernierId(nomTable);
+    var dernierIdTablePg = await bddPostgres.recupererDernierId('heure_impaire');
 
     console.log(dernierIdTablePg);
     
