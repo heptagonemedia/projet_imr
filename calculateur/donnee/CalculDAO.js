@@ -33,6 +33,8 @@ module.exports = {
         var temps = new Date();
         var dateGeneration = new date.DateModele(temps.getSeconds(), temps.getMinutes(), temps.getHours(),
             temps.getDate(), (temps.getMonth() + 1), temps.getFullYear());
+        var dateGeneration2 = new date.DateModele(dateGeneration.seconde, dateGeneration.minute, dateGeneration.heure,
+            dateGeneration.jour, dateGeneration.mois, dateGeneration.annee);
 
         // console.log();
         var dateProchaineGeneration = null;
@@ -41,13 +43,13 @@ module.exports = {
 
             switch (repeterTousLesCombien) {
                 case 1:
-                    dateProchaineGeneration = fonctionDate.toString(fonctionDate.augmenterDate1Jour(dateGeneration));
+                    dateProchaineGeneration = fonctionDate.toString(fonctionDate.augmenterDate1Jour(dateGeneration2));
                     break;
                 case 2:
-                    dateProchaineGeneration = fonctionDate.toString(fonctionDate.augmenterDate1Semaine(dateGeneration));
+                    dateProchaineGeneration = fonctionDate.toString(fonctionDate.augmenterDate1Semaine(dateGeneration2));
                     break;
                 case 3:
-                    dateProchaineGeneration = fonctionDate.toString(fonctionDate.augmenterDate1An(dateGeneration));
+                    dateProchaineGeneration = fonctionDate.toString(fonctionDate.augmenterDate1An(dateGeneration2));
                     break;
                 default:
                     break;
@@ -63,10 +65,12 @@ module.exports = {
         dateFinPlage = fonctionDate.toString(dateFinPlage);
 
         await baseDeDonnees.insererDocument(
-            new calcul.Calcul(idCalcul, etiquetteCalcul, dateGeneration, dateProchaineGeneration, calculEnregistrer, idRegion,
-            typeCalcul, dateDebutPlage, dateFinPlage, frequenceValeur, calc[0], calc[2], calc[1]),
-            'calcul'
+            /*var c = */new calcul.Calcul(idCalcul, etiquetteCalcul, dateGeneration, dateProchaineGeneration, calculEnregistrer, idRegion,
+            typeCalcul, dateDebutPlage, dateFinPlage, frequenceValeur, calc[0], calc[2], calc[1])
+            , 'calcul'
         );
+
+        // console.log(c);
 
     },
 
@@ -105,7 +109,7 @@ module.exports = {
             compteur++;
 
             tableauDates = await fonctionDate.trouverToutesLesDatesEntre2Dates(dateDebutIntervalle, dateTemporaire);
-            console.log(tableauDates);
+            // console.log(tableauDates);
 
             switch (typeCalcul) {
                 case 1:
@@ -130,11 +134,11 @@ module.exports = {
 
                 case 3:
 
-                    resultat = await this.listerMedianeHistorique();
+                    resultat = await this.listerMedianeHistorique(tableauDates, idRegion);
 
-                    xmlTemp += fonctionXml.point(compteur, resultat[0]['mediane_temperature']);
-                    xmlDebit += fonctionXml.point(compteur, resultat[0]['mediane_debit']);
-                    xmlSalinite += fonctionXml.point(compteur, resultat[0]['mediane_salinite']);
+                    xmlTemp += fonctionXml.point(compteur, resultat[0]);
+                    xmlDebit += fonctionXml.point(compteur, resultat[1]);
+                    xmlSalinite += fonctionXml.point(compteur, resultat[2]);
 
                     break;
 
@@ -217,8 +221,7 @@ module.exports = {
 
     },
 
-    //TODO: Mediane
-    async listerMedianeHistorique() {
+    async listerMedianeHistorique(tableauDates, idRegion) {
 
         console.log('listerMediane()');
 
@@ -228,7 +231,9 @@ module.exports = {
 
         const db = c.db(baseDeDonnees.dbName());
 
-        var resultat = await db.collection('historique_donnee_bouee').aggregate([
+        var resultat = [];
+
+        var resultatTemperature = await db.collection('historique_donnee_bouee').aggregate([
             {
                 $match: {
                     $and: [
@@ -237,19 +242,263 @@ module.exports = {
                     ]
                 }
             },
-
             {
                 $group: {
-                    _id: "null",
-                    moyenne_temperature: { $avg: "$temperature" },
-                    moyenne_debit: { $avg: "$debit" },
-                    moyenne_salinite: { $avg: "salinite" }
+                    _id: null,
+                    count: {
+                        $sum: 1
+                    },
+                    values: {
+                        $push: "$temperature"
+                    }
+                }
+            },
+            {
+                $unwind: "$values"
+            },
+            {
+                $sort: {
+                    values: 1
+                }
+            },
+            {
+                $project: {
+                    "count": 1,
+                    "values": 1,
+                    "midpoint": {
+                        $divide: [
+                            "$count",
+                            2
+                        ]
+                    }
+                }
+            }, {
+                $project: {
+                    "count": 1,
+                    "values": 1,
+                    "midpoint": 1,
+                    "high": {
+                        $ceil: "$midpoint"
+                    },
+                    "low": {
+                        $floor: "$midpoint"
+                    }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    values: {
+                        $push: "$values"
+                    },
+                    high: {
+                        $avg: "$high"
+                    },
+                    low: {
+                        $avg: "$low"
+                    }
+                }
+            }, {
+                $project: {
+                    "beginValue": {
+                        "$arrayElemAt": ["$values", "$high"]
+                    },
+                    "endValue": {
+                        "$arrayElemAt": ["$values", "$low"]
+                    }
+                }
+            }, {
+                $project: {
+                    "median": {
+                        "$avg": ["$beginValue", "$endValue"]
+                    }
                 }
             }
 
+
         ]).toArray();
 
+        resultat.push(resultatTemperature[0]['median']);
+
+        var resultatDebit = await db.collection('historique_donnee_bouee').aggregate([
+            {
+                $match: {
+                    $and: [
+                        { $or: tableauDates },
+                        { "id_region": idRegion }
+                    ]
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    count: {
+                        $sum: 1
+                    },
+                    values: {
+                        $push: "$debit"
+                    }
+                }
+            },
+            {
+                $unwind: "$values"
+            },
+            {
+                $sort: {
+                    values: 1
+                }
+            },
+            {
+                $project: {
+                    "count": 1,
+                    "values": 1,
+                    "midpoint": {
+                        $divide: [
+                            "$count",
+                            2
+                        ]
+                    }
+                }
+            }, {
+                $project: {
+                    "count": 1,
+                    "values": 1,
+                    "midpoint": 1,
+                    "high": {
+                        $ceil: "$midpoint"
+                    },
+                    "low": {
+                        $floor: "$midpoint"
+                    }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    values: {
+                        $push: "$values"
+                    },
+                    high: {
+                        $avg: "$high"
+                    },
+                    low: {
+                        $avg: "$low"
+                    }
+                }
+            }, {
+                $project: {
+                    "beginValue": {
+                        "$arrayElemAt": ["$values", "$high"]
+                    },
+                    "endValue": {
+                        "$arrayElemAt": ["$values", "$low"]
+                    }
+                }
+            }, {
+                $project: {
+                    "median": {
+                        "$avg": ["$beginValue", "$endValue"]
+                    }
+                }
+            }
+
+
+        ]).toArray();
+
+        resultat.push(resultatDebit[0]['median']);
+
+
+        var resultatSalinite = await db.collection('historique_donnee_bouee').aggregate([
+            {
+                $match: {
+                    $and: [
+                        { $or: tableauDates },
+                        { "id_region": idRegion }
+                    ]
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    count: {
+                        $sum: 1
+                    },
+                    values: {
+                        $push: "$salinite"
+                    }
+                }
+            },
+            {
+                $unwind: "$values"
+            },
+            {
+                $sort: {
+                    values: 1
+                }
+            },
+            {
+                $project: {
+                    "count": 1,
+                    "values": 1,
+                    "midpoint": {
+                        $divide: [
+                            "$count",
+                            2
+                        ]
+                    }
+                }
+            }, {
+                $project: {
+                    "count": 1,
+                    "values": 1,
+                    "midpoint": 1,
+                    "high": {
+                        $ceil: "$midpoint"
+                    },
+                    "low": {
+                        $floor: "$midpoint"
+                    }
+                }
+            },
+            {
+                $group: {
+                    _id: null,
+                    values: {
+                        $push: "$values"
+                    },
+                    high: {
+                        $avg: "$high"
+                    },
+                    low: {
+                        $avg: "$low"
+                    }
+                }
+            }, {
+                $project: {
+                    "beginValue": {
+                        "$arrayElemAt": ["$values", "$high"]
+                    },
+                    "endValue": {
+                        "$arrayElemAt": ["$values", "$low"]
+                    }
+                }
+            }, {
+                $project: {
+                    "median": {
+                        "$avg": ["$beginValue", "$endValue"]
+                    }
+                }
+            }
+
+
+        ]).toArray();
+
+        resultat.push(resultatSalinite[0]['median']);
+
+
         baseDeDonnees.fermer(client);
+
+        // console.log(resultat);
 
         return resultat;
 
@@ -315,6 +564,5 @@ module.exports = {
         return resultat[0]['id_calcul'];
 
     }
-
 
 }
