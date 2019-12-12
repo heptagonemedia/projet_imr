@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<architect-project version="1.0" appversion="1.0.8">
+ <project-name>base_de_donnees_reception</project-name>
+ <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
+ <project-data-sources>
+  <data-source id="DS0">
+   <property key="Logical" value="PlayPen Database" />
+  </data-source>
+ </project-data-sources>
+ <source-databases>
+ </source-databases>
+ <target-database id="ppdb" dbcs-ref="DS0">
+  <table id="TAB1" populated="true" UUID="c0e14c95-8e4f-4dd8-8103-8317932ce337" name="donnee" objectType="TABLE" physicalName="donnee" >
+   <remarks></remarks>
+   <folder id="FOLTAB11" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL2" populated="true" UUID="2d07c661-28db-4f73-9183-b22b5f46704f" autoIncrement="false" autoIncrementSequenceName="donnee_id_seq" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL3" populated="true" UUID="dae8207f-182a-4a1c-952a-511cb4a48a4d" autoIncrement="false" autoIncrementSequenceName="bouee_id_bouee_seq" defaultValue="" name="id_bouee" nullable="0" physicalName="id_bouee" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL4" populated="true" UUID="ff8f20c3-dd92-4a05-966d-7fa58c3a97be" autoIncrement="false" autoIncrementSequenceName="donnee_longitude_reelle_seq" defaultValue="" name="longitude_reelle" nullable="0" physicalName="longitude_reelle" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL5" populated="true" UUID="6931dace-62e7-44ea-a8a7-2c86beb3c629" autoIncrement="false" autoIncrementSequenceName="donnee_latitude_reelle_seq" defaultValue="" name="latitude_reelle" nullable="0" physicalName="latitude_reelle" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL6" populated="true" UUID="f618f6e6-3b14-4f2b-ba6e-beca4a2cf76e" autoIncrement="false" autoIncrementSequenceName="donnee_date_saisie_seq" defaultValue="" name="date_saisie" nullable="0" physicalName="date_saisie" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="92" userDefinedTypeUUID="10d6960f-169d-47c2-860a-37341342b1d5" >
+     <remarks></remarks>
+    </column>
+    <column id="COL7" populated="true" UUID="9904ce06-7789-4ca6-b735-00519afa1382" autoIncrement="false" autoIncrementSequenceName="donnee_batterie_seq" defaultValue="" name="batterie" nullable="0" physicalName="batterie" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL8" populated="true" UUID="32094459-a039-445a-aff9-bce21b05490d" autoIncrement="false" autoIncrementSequenceName="donnee_temperature_seq" defaultValue="" name="temperature" nullable="0" physicalName="temperature" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL9" populated="true" UUID="46643570-87bd-447f-894d-ca50dee400ea" autoIncrement="false" autoIncrementSequenceName="donnee_salinite_seq" defaultValue="" name="salinite" nullable="0" physicalName="salinite" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL10" populated="true" UUID="50198f21-5a2a-4cfb-aaee-b1bb2c281a1a" autoIncrement="false" autoIncrementSequenceName="donnee_debit_seq" defaultValue="" name="debit" nullable="0" physicalName="debit" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL11" populated="true" UUID="e6cf12aa-2d27-46db-93ca-74cab25ee81a" autoIncrement="false" autoIncrementSequenceName="donnee_inserted_at_seq" defaultValue="" name="inserted_at" nullable="0" physicalName="inserted_at" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
+     <remarks></remarks>
+    </column>
+    <column id="COL12" populated="true" UUID="ddfe3e6e-80b6-4d9a-a0a7-1618df848a9f" autoIncrement="false" autoIncrementSequenceName="donnee_updated_at_seq" defaultValue="" name="updated_at" nullable="0" physicalName="updated_at" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB13" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB12" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB14" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX13" populated="true" UUID="06c3163d-43cd-4220-8488-e51384bae0c9" clustered="false" name="id" physicalName="id" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC14" populated="true" UUID="1b32b3eb-b5e3-463d-9731-f4e8002c8a64" ascendingOrDescending="UNSPECIFIED" column-ref="COL2" name="id" physicalName="id" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB15" populated="true" UUID="b2a2fbf1-c5ff-43b8-841a-b33192b7e407" name="bouee" objectType="TABLE" physicalName="bouee" >
+   <remarks></remarks>
+   <folder id="FOLTAB151" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL16" populated="true" UUID="aa231357-e74a-488d-829e-6dd13b1ad877" autoIncrement="false" autoIncrementSequenceName="bouee_id_bouee_seq" defaultValue="" name="id_bouee" nullable="0" physicalName="id_bouee" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL17" populated="true" UUID="b8857dd6-04b9-4273-8dd4-b90d23f023e8" autoIncrement="false" autoIncrementSequenceName="bouee_valeur_depart_longitude_seq" defaultValue="" name="valeur_depart_longitude" nullable="0" physicalName="valeur_depart_longitude" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL18" populated="true" UUID="09782b3b-5ada-4b10-b752-758ed93356ba" autoIncrement="false" autoIncrementSequenceName="bouee_valeur_depart_latitude_seq" defaultValue="" name="valeur_depart_latitude" nullable="0" physicalName="valeur_depart_latitude" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL19" populated="true" UUID="03c0db02-1914-4e86-9e76-2b4c4f019792" autoIncrement="false" autoIncrementSequenceName="bouee_valeur_depart_batterie_seq" defaultValue="" name="valeur_depart_batterie" nullable="0" physicalName="valeur_depart_batterie" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB153" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB152" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB154" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX20" populated="true" UUID="4482dab6-dfc9-407f-bc0f-0cc22c73823d" clustered="false" name="id_bouee" physicalName="id_bouee" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC21" populated="true" UUID="4e0f9864-fc2f-445e-94f3-1004a073c12c" ascendingOrDescending="UNSPECIFIED" column-ref="COL16" name="id_bouee" physicalName="id_bouee" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB22" populated="true" UUID="895917fa-ae8e-4ff2-94b3-f51032db1558" name="scenario" objectType="TABLE" physicalName="scenario" >
+   <remarks></remarks>
+   <folder id="FOLTAB221" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL23" populated="true" UUID="fa17dd50-6ffb-429f-9422-7b9167bd6110" autoIncrement="false" autoIncrementSequenceName="scenario_id_seq" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL24" populated="true" UUID="25ff14a4-75dd-400d-82c1-62cdac525733" autoIncrement="false" autoIncrementSequenceName="scenario_type_seq" defaultValue="" name="type" nullable="0" physicalName="type" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL25" populated="true" UUID="e3029183-9a7e-4c6b-8090-b72366f40bdd" autoIncrement="false" autoIncrementSequenceName="scenario_description_seq" defaultValue="" name="description" nullable="0" physicalName="description" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL26" populated="true" UUID="6e03050d-11ad-43e0-b205-68dfa288500f" autoIncrement="false" autoIncrementSequenceName="scenario_erreur_temperature_seq" defaultValue="" name="erreur_temperature" nullable="0" physicalName="erreur_temperature" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL27" populated="true" UUID="ff0e6976-a5e0-45c1-9fa1-da89782f1e77" autoIncrement="false" autoIncrementSequenceName="scenario_erreur_debit_seq" defaultValue="" name="erreur_debit" nullable="0" physicalName="erreur_debit" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL28" populated="true" UUID="b2b956bd-9c67-42cc-b55a-454545e9b8cf" autoIncrement="false" autoIncrementSequenceName="scenario_erreur_salinite_seq" defaultValue="" name="erreur_salinite" nullable="0" physicalName="erreur_salinite" precision="0" referenceCount="1" scale="0" source-column-ref="COL27" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL29" populated="true" UUID="ca4e3e5e-fdc3-4a47-b875-1ebe6231e6d4" autoIncrement="false" autoIncrementSequenceName="scenario_erreur_longitude_seq" defaultValue="" name="erreur_longitude" nullable="0" physicalName="erreur_longitude" precision="0" referenceCount="1" scale="0" source-column-ref="COL27" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL30" populated="true" UUID="36c9259d-b267-45f7-8b2e-953bc19863a1" autoIncrement="false" autoIncrementSequenceName="scenario_erreur_latitude_seq" defaultValue="" name="erreur_latitude" nullable="0" physicalName="erreur_latitude" precision="0" referenceCount="1" scale="0" source-column-ref="COL27" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL31" populated="true" UUID="1d0f7f0c-fe59-4d0f-ae15-c347f24fdbb1" autoIncrement="false" autoIncrementSequenceName="scenario_valeur_decrementation_batterie_seq" defaultValue="" name="valeur_decrementation_batterie" nullable="0" physicalName="valeur_decrementation_batterie" precision="0" referenceCount="1" scale="0" source-column-ref="COL27" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL32" populated="true" UUID="c5f051d1-d2ff-4387-a354-713be2e71716" autoIncrement="false" autoIncrementSequenceName="scenario_valeur_depart_temperature_seq" defaultValue="" name="valeur_depart_temperature" nullable="0" physicalName="valeur_depart_temperature" precision="0" referenceCount="1" scale="0" source-column-ref="COL27" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL33" populated="true" UUID="fa294f18-44f1-4292-91ec-09fe790049cd" autoIncrement="false" autoIncrementSequenceName="scenario_ valeur_depart_debit_seq" defaultValue="" name=" valeur_depart_debit" nullable="0" physicalName=" valeur_depart_debit" precision="0" referenceCount="1" scale="0" source-column-ref="COL27" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL34" populated="true" UUID="cfa08523-ea56-492b-aecb-950f3653558b" autoIncrement="false" autoIncrementSequenceName="scenario_valeur_depart_salinite_seq" defaultValue="" name="valeur_depart_salinite" nullable="0" physicalName="valeur_depart_salinite" precision="0" referenceCount="1" scale="0" source-column-ref="COL27" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
+     <remarks></remarks>
+    </column>
+    <column id="COL35" populated="true" UUID="bd6a6c50-cdb2-451d-ac7a-07b2c0044b06" autoIncrement="false" autoIncrementSequenceName="scenario_prendre_compte_seq" defaultValue="" name="prendre_compte" nullable="0" physicalName="prendre_compte" precision="0" referenceCount="1" scale="0" source-column-ref="COL27" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB223" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB222" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB224" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX36" populated="true" UUID="155d1065-1bc9-4dad-9454-9abf39bc2ec2" clustered="false" name="id" physicalName="id" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC37" populated="true" UUID="d2a26aa1-802c-46db-9651-6b53e27d8637" ascendingOrDescending="UNSPECIFIED" column-ref="COL23" name="id" physicalName="id" />
+    </index>
+   </folder>
+  </table>
+  <relationships>
+   <relationship id="REL38" populated="true" UUID="32ec4200-3ccf-40a9-8789-9de37c9ff412" deferrability="7" deleteRule="3" fk-table-ref="TAB1" fkCardinality="7" identifying="false" name="bouee_donnee_fk" physicalName="bouee_donnee_fk" pk-table-ref="TAB15" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP39" populated="true" UUID="0e749254-0ae8-46da-a9f9-d4d5272645b2" fk-column-ref="COL3" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL16" />
+   </relationship>
+  </relationships>
+ </target-database>
+ <ddl-generator type="ca.sqlpower.architect.ddl.GenericDDLGenerator" allow-connection="true"> </ddl-generator>
+ <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
+ <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
+ <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+  <table-pane table-ref="TAB1" x="58" y="97" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB15" x="117" y="457" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB22" x="343" y="92" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-link relationship-ref="REL38" pkConnection="0.4037735849056604" fkConnection="0.7366071428571429" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
+ </play-pen>
+ <critic-manager>
+  <critic-grouping platformType="Generic" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PrimaryKeyCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.RelationshipMappingTypeCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.EmptyRelationshipCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericSequenceNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetDefaultOnColumnWithNoDefaultCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetNullOnNonNullableColumnCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DuplicateNameCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="DB2" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DB2UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="H2" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.H2UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="HSQLDB" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.HSQLDBUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="MySQL" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLCommentCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLReservedWordsCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="Oracle" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OraclePhysicalNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleReservedWordsCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="PostgreSQL" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PostgreSQLReservedWordsCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerUnsupportedFeaturesCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerReservedWordsCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server 2000" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2000UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server 2005" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2005UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+ </critic-manager>
+ <profiles topNCount="10">
+  </profiles>
+  <olap>
+  </olap>
+  <olap-gui>
+  </olap-gui>
+</architect-project>
