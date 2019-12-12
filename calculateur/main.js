@@ -33,7 +33,7 @@ var repondeur = async function(requete,reponse) {
             var POST = qs.parse(body);
             // console.log(body);
 
-            var etiquetteCalcul = POST['nomCalcul'];
+            var etiquetteCalcul = POST['etiquette'];
 
             var typeCalcul = POST['calcul'];
 
