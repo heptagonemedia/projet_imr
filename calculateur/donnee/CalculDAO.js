@@ -84,16 +84,16 @@ module.exports = {
             dateDebutPlage.jour, dateDebutPlage.mois, dateDebutPlage.annee);
         var dateTemporaire = fonctionDate.augmenter(dateTemp, annee, mois, jour, heure, minute, 0);
 
-        var xmlTemp = fonctionXml.version();
-        xmlTemp += fonctionXml.debutRoot();
+        // var xmlTemp = fonctionXml.version();
+        var xmlTemp = fonctionXml.debutRoot();
         xmlTemp += fonctionXml.debutLigne();
 
-        var xmlDebit = fonctionXml.version();
-        xmlDebit += fonctionXml.debutRoot();
+        // var xmlDebit = fonctionXml.version();
+        var xmlDebit = fonctionXml.debutRoot();
         xmlDebit += fonctionXml.debutLigne();
 
-        var xmlSalinite = fonctionXml.version();
-        xmlSalinite += fonctionXml.debutRoot();
+        // var xmlSalinite = fonctionXml.version();
+        var xmlSalinite = fonctionXml.debutRoot();
         xmlSalinite += fonctionXml.debutLigne();
 
         var compteur = 0;
