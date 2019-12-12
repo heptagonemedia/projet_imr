@@ -159,4 +159,9 @@ class CalculDAO
         );
     }
 
+    public function supprimerCalculParEtiquette($etiquette)
+    {
+        $this->connection->collection('calcul')->where(Calcul::CLE_ETIQUETTE, $etiquette)->delete();
+    }
+
 }

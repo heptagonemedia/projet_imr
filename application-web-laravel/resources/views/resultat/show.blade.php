@@ -27,7 +27,9 @@
     <title>Resultat du calcul</title>
 
 </head>
+<?php
 
+?>
 <body>
 
 <div id="coordonnees" hidden >
@@ -40,6 +42,21 @@
     ?>
 </div>
 
+<?php
+$fichier = fopen('resources/js/examples/includes/data/calcul-courant.xml', "r+");
+fputs($fichier, $calcul->getCheminFichierXmlDebit());
+fclose($fichier);
+
+$fichier = fopen('resources/js/examples/includes/data/calcul-salinite.xml', "r+");
+fputs($fichier, $calcul->getCheminFichierXmlSalinite());
+fclose($fichier);
+
+$fichier = fopen('resources/js/examples/includes/data/calcul-temperature.xml', "r+");
+fputs($fichier, $calcul->getCheminFichierXmlTemperature());
+fclose($fichier); 
+
+?>
+
 <header>
 
     <nav role="navigation" aria-label="header">
@@ -49,9 +66,8 @@
                 <div class="black col s12 m5 l3 center-align" style="font-size: 18pt"><h1>{!! __('message.resultatCalcul') !!}</h1></div>
                 <div class="black col s12 m6 l5 center align ">
 
-                    <a href="accueil.php" class="breadcrumb">{!! __('message.accueilMenu') !!}</a>
-                    <a href="formulaireRecherche.php" class="breadcrumb">{!! __('message.formulaire') !!}</a>
-                    <a href="#" class="breadcrumb">{!! __('message.calculDeuxPoints') !!}</a>
+                    <a href="{{action('PagesController@naviguerVersAccueil')}}" class="breadcrumb">{!! __('message.accueilMenu') !!}</a>
+                    <a href="#" class="breadcrumb">{!! __('message.calculDeuxPoints') !!}<?php echo $calcul->getEtiquette(); ?></a>
                 </div>
             </div>
         </div>
@@ -151,11 +167,9 @@
 
         <ul>
             <li><button class="btn-floating purple tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Agrandir la carte"  onfocusin="afficherLiens()" onclick="agrandirCarte(document.getElementById('map'))"><i  aria-label="Bouton agrandir la carte" aria-hidden="true"  class="material-icons">crop_free</i></button></li>
-            <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="{{action('PagesController@naviguerVersFormulaire')}}"><i aria-hidden="true"  aria-label="Faire un nouveau calcul"  class="material-icons" >  add_circle_outline</i></a></li>
             <li><a class="btn-floating pink tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Accueil" href="{{action('PagesController@naviguerVersAccueil')}}"><i aria-hidden="true"  aria-label="Lien vers l'accueil"  class="material-icons">home</i></a></li>
 
             @php if(isset($enregistre) && !$enregistre ): @endphp
-            <li><a class="btn-floating yellow darken-1 tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Retourner au formulaire" href="{{action('PagesController@retourFormulaire', $calcul->getId())}}"><i aria-hidden="true"  aria-label="Retour au formulaire"  class="material-icons">arrow_back</i></a></li>
             <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Enregistrer le calcul" href="{{action('ResultatController@enregistrerCalcul', $calcul->getId())}}"><i aria-hidden="true"  aria-label="Enregistrer le calcul"  class="material-icons">save</i></a></li>
             @php endif;@endphp
         </ul>
@@ -164,6 +178,17 @@
 
 </main>
 
+<script type="text/xml" id="xml-courant">
+    <?php echo $calcul->getCheminFichierXmlDebit() ?>
+</script>
+
+<script type="text/xml" id="xml-salinite">
+    <?php echo $calcul->getCheminFichierXmlSalinite() ?>
+</script>
+
+<script type="text/xml" id="xml-temperature">
+    <?php echo $calcul->getCheminFichierXmlTemperature() ?>
+</script>
 
 @include('footer')
 
@@ -186,13 +211,14 @@
 <script>
     var myChart1 = new EJSC.Chart( 'myChart' , {
         title: "Sample Line Chart" ,
-        axis_bottom: { caption: "Frequency (Hz)" , crosshair: { show: true } } ,
-        axis_left: { caption: "Velocity (in/s)" , crosshair: { show: false } } ,
+        axis_bottom: { caption: "{!! __('message.temps') !!}" , crosshair: { show: true } } ,
+        axis_left: { caption: "{!! __('message.vitesseGraph') !!} (m/h)" , crosshair: { show: false } } ,
         auto_zoom: 'y' ,
         auto_find_point_by_x: true
     } );
     myChart1.addSeries( new EJSC.LineSeries(
-        new EJSC.XMLDataHandler("EJSCharts/examples/includes/data/fullData.xml") , {
+        {{--{{asset('resources/js/examples/includes/data/shortData.xml')}}--}}
+        new EJSC.XMLDataHandler("{{asset('resources/js/examples/includes/data/calcul-courant.xml')}}") , {
             title: "Line 1",
             padding: { x_min: 0, y_min: 1, x_max: 0, y_max: 5 }
         } ) );
@@ -201,13 +227,13 @@
 
     var myChart2 = new EJSC.Chart( 'myChart2' , {
         title: "Sample Line Chart" ,
-        axis_bottom: { caption: "Frequency (Hz)" , crosshair: { show: true } } ,
-        axis_left: { caption: "Velocity (in/s)" , crosshair: { show: false } } ,
+        axis_bottom: { caption: "{!! __('message.temps') !!}" , crosshair: { show: true } } ,
+        axis_left: { caption: "{!! __('message.saliniteGraph') !!} (g/L)" , crosshair: { show: false } } ,
         auto_zoom: 'y' ,
         auto_find_point_by_x: true
     } );
     myChart2.addSeries( new EJSC.LineSeries(
-        new EJSC.XMLDataHandler("EJSCharts/examples/includes/data/fullDataPie.xml") , {
+        new EJSC.XMLDataHandler("{{asset('resources/js/examples/includes/data/calcul-salinite.xml')}}") , {
             title: "Line 2",
             padding: { x_min: 0, y_min: 1, x_max: 0, y_max: 5 }
         } ) );
@@ -216,13 +242,13 @@
 
     var myChart3 = new EJSC.Chart( 'myChart3' , {
         title: "Sample Line Chart" ,
-        axis_bottom: { caption: "Frequency (Hz)" , crosshair: { show: true } } ,
-        axis_left: { caption: "Velocity (in/s)" , crosshair: { show: false } } ,
+        axis_bottom: { caption: "{!! __('message.temps') !!}" , crosshair: { show: true } } ,
+        axis_left: { caption: " {!! __('message.temperatureGraph') !!} (C°)" , crosshair: { show: false } } ,
         auto_zoom: 'y' ,
         auto_find_point_by_x: true
     } );
     myChart3.addSeries( new EJSC.LineSeries(
-        new EJSC.XMLDataHandler("EJSCharts/examples/includes/data/shortData.xml") , {
+        new EJSC.XMLDataHandler("{{asset('resources/js/examples/includes/data/calcul-temperature.xml')}}") , {
             title: "Line 3",
             padding: { x_min: 0, y_min: 1, x_max: 0, y_max: 5 }
         }

@@ -27,7 +27,6 @@
         <div class="nav-wrapper black">
             <div class="row">
                 <div class="col l4 center-align"><button role="button" onclick="ouvrirSidenav()" data-target="slide-out" class="sidenav-trigger btn black white-text" ><i aria-hidden="true" class="material-icons" id="menu">menu</i></button></div>
-                <div class="col l4 center-align" style="font-size: 20pt"><h1>{!! __('message.titleFormulaireRecherche') !!}</h1></div>
                 <div class="col l4 center align ">
                     <a href="{{action('PagesController@naviguerVersAccueil')}}" class="breadcrumb">{!! __('message.accueilMenu') !!}</a>
                     <a href="#" class="breadcrumb">{!! __('message.formulaire') !!}</a>
@@ -152,12 +151,12 @@
                             </div>
 
                             <div class="input-field col s2">
-                                <input title="{!! __('message.champHeureDebut') !!}" aria-labelledby="labelHeureDeb" value="<?php if (isset($calcul)){echo(date("h:i A", strtotime( $calcul->getDateDebutPlage())));} ?>" name="heureDeb" id="heureDeb" type="text" class="timepicker">
+                                <input title="{!! __('message.champHeureDebut') !!}" aria-labelledby="labelHeureDeb" value="<?php if (isset($calcul)){echo(date("h:i A", strtotime( $calcul->getDateDebutPlage())));} ?>"  name="heureDeb" id="heureDeb" type="text" class="timepicker">
                                 <label id="labelHeureDeb" for="heureDeb">{!! __('message.heureDebut') !!}</label>
                             </div>
 
                             <div class="input-field col s3">
-                                <input title="{!! __('message.champDateFin') !!}" value="<?php if (isset($calcul)){echo(date("m/d/Y", strtotime( $calcul->getDateFinPlage())));} ?>" name="dateFin" id="dateFin" type="text" class="datepicker">
+                                <input title="{!! __('message.champDateFin') !!}" value="<?php if (isset($calcul)){echo(date("m/d/Y", strtotime( $calcul->getDateFinPlage())));} ?>" name="dateFin"  id="dateFin" type="text" class="datepicker">
                                 <label for="dateFin">{!! __('message.dateFin') !!}</label>
                             </div>
 

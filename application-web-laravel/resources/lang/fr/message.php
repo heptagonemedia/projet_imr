@@ -88,6 +88,10 @@ return [
     "ouvrirMenu"=>"Ouvrir le menu",
     "fermer"=>"Fermer",
     // resultats.php
+    "temps"=>"temps",
+    "vitesseGraph"=>"vitesse",
+    "temperatureGraph"=>"temp&eacute;rature",
+    "saliniteGraph"=>"salinit&eacute;",
     "titleResultat"=>"R&eacute;sultats du calcul",
     "messageSalinite"=>"graphique montrant le calcul pour la salinit&eacute",
     "messageTemperature"=>"graphique montrant le calcul pour la temp&eacuterature",

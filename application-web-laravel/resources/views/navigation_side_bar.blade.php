@@ -63,12 +63,6 @@
 
     <li><div class="divider"></div></li>
 
-    <li><a class="subheader">{!! __('message.faireDesCalculs') !!}</a></li>
-
-    <li><a class="waves-effect waves-teal" href="{{action('PagesController@naviguerVersFormulaire')}}"><i aria-hidden="true" class="material-icons">add_circle_outline</i>{!! __('message.nouveauCalcul') !!}</a></li>
-
-    <li><div class="divider"></div></li>
-
     <li><a class="subheader">{!! __('message.choixLangue') !!}</a></li>
 
     <li><a class="waves-effect waves-teal" href="{{ url('locale/en') }}"><i aria-hidden="true" class="material-icons">language</i>{!! __('message.anglais') !!}</a></li>

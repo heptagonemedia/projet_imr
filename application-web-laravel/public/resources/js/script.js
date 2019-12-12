@@ -328,6 +328,19 @@ $(document).ready(function () {
     });
 });
 
+function ouvrirDatePicker() {
+    var elem = document.querySelector('.datepicker');
+    var instance = M.Datepicker.getInstance(elem);
+
+    instance.open();
+}
+
+function ouvrirTimePicker() {
+    var elem = document.querySelector('.timepicker');
+    var instance = M.Timepicker.getInstance(elem);
+    instance.open();
+}
+
 function afficherRecursivite(){
     if($("#recursif").is(":checked")){
         document.getElementById("ligne-select").innerHTML = document.getElementById("select-recursivite").innerHTML;
