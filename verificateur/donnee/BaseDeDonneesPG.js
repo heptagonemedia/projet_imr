@@ -3,7 +3,7 @@ const { Pool, Client } = require('pg');
 const credentials = require('../../../credentials/CredentialsPg');
 const fonctionDateModele = require('../fonction/fonctionDateModele');
 
-const datemodele = require('../modele/DateModele');
+const dateModele = require('../modele/DateModele');
 
 var variablesConnexion = new credentials.Credentials();
 
@@ -33,22 +33,18 @@ exports.recupererDernierId = async function (table) {
     
 }
 
-exports.supprimerDonneesTable = function (table, bdd) {
+exports.supprimerDonneesTableAvantId = async function (table, id) {
 
     const DELETE_TABLE = {
         name: 'supprimerDonneesTable',
-        text: 'DELETE FROM ' + table + 'WHERE 1=1'
+        text: 'DELETE FROM ' + table + 'WHERE ' + ('id_' + table) + '<' + id
     }
-    // callback
-    bdd.query(DELETE_TABLE, (err, res) => {
-        if (err) {
-            console.log('Erreur suppr', err);
+    
+    var baseDeDonnees = await this.connexion();
 
-        } else {
-            console.log(res);
+    await baseDeDonnees.query(DELETE_TABLE);
 
-        }
-    })
+    await this.deconnexion(baseDeDonnees);
 
 }
 

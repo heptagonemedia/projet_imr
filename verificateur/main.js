@@ -1,8 +1,10 @@
 const bddPostgres = require('./donnee/BaseDeDonneesPG');
+const bddMongo = require('./donnee/BaseDeDonneeMongo');
+
 
 (async function() {
 
-    var nomTable;
+    var nomTable = 'heure_paire';
 
     // var dateMaintenant = new Date();
     // if (dateMaintenant.getHours()%2 == 0) {
@@ -11,9 +13,17 @@ const bddPostgres = require('./donnee/BaseDeDonneesPG');
     //     nomTable = 'heureImpaire';
     // }
 
-    var dernierIdTablePg = await bddPostgres.recupererDernierId('heure_impaire');
+    // var dernierIdTablePg = await bddPostgres.recupererDernierId(nomTable);
+    // console.log(dernierIdTablePg);
 
-    console.log(dernierIdTablePg);
+    // var dernierIdHistorique = await bddMongo.recupererDernierIdHistorique();
+    // console.log(dernierIdHistorique);
+
+    var t = await bddMongo.t();
+    console.log(t);
+
+    // bddMongo.insererTableauElement(t,'donnee_validite_historique');
+    
     
 
 })()

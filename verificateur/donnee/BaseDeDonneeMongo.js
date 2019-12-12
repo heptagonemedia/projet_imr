@@ -20,6 +20,66 @@ exports.fermer = function (client) {
     client.close();
 }
 
+exports.recupererDernierIdHistorique = async function() {
+   
+    console.log('recupererDernierIdHistorique()');
+
+    var client = this.client();
+
+    const c = await client.connect();
+
+    const db = c.db(this.dbName());
+
+    var resultat = await db.collection('historique_donnee_bouee').aggregate([
+
+        {
+            $sort: { "id_historique_bouee": -1 }
+        },
+
+        {
+            $limit: 1
+        }
+
+    ]).toArray();
+
+    await this.fermer(client);
+
+    // console.log(resultat.length, resultat);
+
+    return resultat[0]['id_historique_bouee'];
+}
+
+
+exports.t = async function () {
+
+    console.log('recupererDernierIdHistorique()');
+
+    var client = this.client();
+
+    const c = await client.connect();
+
+    const db = c.db(this.dbName());
+
+    var resultat = await db.collection('historique_donnee_bouee').aggregate([
+
+        {
+            $project:
+            {
+                qtyGte250: { $gte: ["id_historique_bouee", 11685000] },
+                _id: 0
+            }
+        }
+        
+
+    ]).toArray();
+
+    await this.fermer(client);
+
+    // console.log(resultat.length, resultat);
+
+    return resultat;
+}
+
 exports.insererTableauElement = async function (tableauValeur, collection) {
 
     var client = this.client();
