@@ -5,7 +5,7 @@ config :recepteur, Recepteur.Repo,
   username: "postgres",
   password: "mission",
   database: "recepteur_dev",
-  hostname: "localhost",
+  hostname: System.get_env("DB_HOST", "localhost"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -17,7 +17,7 @@ config :recepteur, Recepteur.Repo,
 # with webpack to recompile .js and .css sources.
 config :recepteur, RecepteurWeb.Endpoint,
   http: [port: 4000],
-  debug_errors: false,
+  debug_errors: true,
   code_reloader: true,
   check_origin: false,
   watchers: []

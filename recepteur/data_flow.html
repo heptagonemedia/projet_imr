@@ -1,0 +1,26 @@
+<html>
+<body>
+ <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.0/dist/mermaid.min.js"></script>
+ <script>mermaid.initialize({startOnLoad:true});</script>
+ <div class="mermaid">
+   graph TD
+   subgraph Génération de données
+       A[Générateur de scénario] --> |Définition des scénarios|B[Simulateur de données]
+   end
+   
+   subgraph Réception
+       B --> |Génère et envoie les données|C[Récepteur]
+       C --> |Insertion|D(Base de données relationnelle 'buffer')
+       D --> E[Formateur de données]
+   end
+
+   subgraph Affichage
+   E --> |Récupère les données et les formatte pour MongoDB|G(Base de données non relationnelle)
+   G --> |Données produites par les bouées|I[Calculateur]
+   G --> |Informations des bouées|H[Application Laravel]
+   H --> |Requête|I
+   I --> |Insère le résultat des calculs|G
+   end
+ </div>
+</body>
+</html>

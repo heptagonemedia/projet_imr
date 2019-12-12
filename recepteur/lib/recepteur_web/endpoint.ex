@@ -38,7 +38,7 @@ defmodule RecepteurWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_recepteur_key",
-    signing_salt: "VDd4+jIJ"
+    signing_salt: "/15awSpH"
 
   plug RecepteurWeb.Router
 end

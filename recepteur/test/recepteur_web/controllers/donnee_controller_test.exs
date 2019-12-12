@@ -1,19 +1,33 @@
 defmodule RecepteurWeb.DonneeControllerTest do
   use RecepteurWeb.ConnCase
 
-  alias Recepteur.Reception
-  alias Recepteur.Reception.Donnee
+  alias Recepteur.Donnees
+  alias Recepteur.Donnees.Donnee
 
   @create_attrs %{
-
+    batterie: 42,
+    date_saisie: "2010-04-17T14:00:00Z",
+    debit: 120.5,
+    id_bouee: 42,
+    latitude_reelle: 120.5,
+    longitude_reelle: 120.5,
+    salinite: 120.5,
+    temperature: 120.5
   }
   @update_attrs %{
-
+    batterie: 43,
+    date_saisie: "2011-05-18T15:01:01Z",
+    debit: 456.7,
+    id_bouee: 43,
+    latitude_reelle: 456.7,
+    longitude_reelle: 456.7,
+    salinite: 456.7,
+    temperature: 456.7
   }
-  @invalid_attrs %{}
+  @invalid_attrs %{batterie: nil, date_saisie: nil, debit: nil, id_bouee: nil, latitude_reelle: nil, longitude_reelle: nil, salinite: nil, temperature: nil}
 
   def fixture(:donnee) do
-    {:ok, donnee} = Reception.create_donnee(@create_attrs)
+    {:ok, donnee} = Donnees.create_donnee(@create_attrs)
     donnee
   end
 
@@ -36,7 +50,15 @@ defmodule RecepteurWeb.DonneeControllerTest do
       conn = get(conn, Routes.donnee_path(conn, :show, id))
 
       assert %{
-               "id" => id
+               "id" => id,
+               "batterie" => 42,
+               "date_saisie" => "2010-04-17T14:00:00Z",
+               "debit" => 120.5,
+               "id_bouee" => 42,
+               "latitude_reelle" => 120.5,
+               "longitude_reelle" => 120.5,
+               "salinite" => 120.5,
+               "temperature" => 120.5
              } = json_response(conn, 200)["data"]
     end
 
@@ -56,7 +78,15 @@ defmodule RecepteurWeb.DonneeControllerTest do
       conn = get(conn, Routes.donnee_path(conn, :show, id))
 
       assert %{
-               "id" => id
+               "id" => id,
+               "batterie" => 43,
+               "date_saisie" => "2011-05-18T15:01:01Z",
+               "debit" => 456.7,
+               "id_bouee" => 43,
+               "latitude_reelle" => 456.7,
+               "longitude_reelle" => 456.7,
+               "salinite" => 456.7,
+               "temperature" => 456.7
              } = json_response(conn, 200)["data"]
     end
 

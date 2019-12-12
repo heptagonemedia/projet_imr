@@ -8,13 +8,12 @@
 use Mix.Config
 
 config :recepteur,
-  ecto_repos: [Recepteur.Repo],
-  generators: [binary_id: true]
+  ecto_repos: [Recepteur.Repo]
 
 # Configures the endpoint
 config :recepteur, RecepteurWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "iGvogMHLeVwDEnPJsd9xIsKzvK8ZMD6uz0uyTRxx381eROgDDnb7BtUbKaSyeouH",
+  secret_key_base: "oGrtYpuDmLvRTsIASQHy2TOYf8ZCmIjijWzjjgvRL0Wq2rQSGrfkzEJXGQFpOws0",
   render_errors: [view: RecepteurWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: Recepteur.PubSub, adapter: Phoenix.PubSub.PG2]
 

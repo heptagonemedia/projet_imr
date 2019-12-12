@@ -11,6 +11,14 @@ defmodule RecepteurWeb.DonneeView do
   end
 
   def render("donnee.json", %{donnee: donnee}) do
-    %{id: donnee.id}
+    %{id: donnee.id,
+      id_bouee: donnee.id_bouee,
+      longitude_reelle: donnee.longitude_reelle,
+      latitude_reelle: donnee.latitude_reelle,
+      date_saisie: donnee.date_saisie,
+      batterie: donnee.batterie,
+      temperature: donnee.temperature,
+      salinite: donnee.salinite,
+      debit: donnee.debit}
   end
 end

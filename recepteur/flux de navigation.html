@@ -1,0 +1,18 @@
+<html>
+<body>
+ <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.0/dist/mermaid.min.js"></script>
+ <script>mermaid.initialize({startOnLoad:true});</script>
+ <div class="mermaid">
+   graph TD
+   subgraph Diagramme de navigation de l'application Laravel
+        A[Accueil]--> B[Formulaire]
+        B --> |Paramétrer un calcul|C[Affichage Calcul]
+	C --> |Modifier calcul|B
+	A --> |Afficher calculs existants|C
+	A --> FAQ
+	B --> FAQ
+	C --> FAQ
+   end
+ </div>
+</body>
+</html>

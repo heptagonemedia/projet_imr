@@ -1,0 +1,4 @@
+ curl -H "Content-Type: application/json" -X POST -d '{"donnee":{"batterie": 42, "date_saisie": "2010-04-17T14:00:00Z", "debit": 120.5, "id_bouee": 42, "latitude_reelle": 120.5, "longitude_reelle": 120.5, "salinite": 120.5, "temperature": 120.5}}' http://localhost:4000/api/donnee
+
+
+     @valid_attrs %{batterie: 42, date_saisie: "2010-04-17T14:00:00Z", debit: 120.5, id_bouee: 42, latitude_reelle: 120.5, longitude_reelle: 120.5, salinite: 120.5, temperature: 120.5}
