@@ -31,10 +31,13 @@ defmodule SimulateurBouees.BoueeGen do
   end
 
   def calcul(lastval, errval) do
-    valeur = errval + 0.95
-    random = :rand.uniform_real() * 0.1
-    valeur2 = valeur + random
-    lastval + valeur2
+    valeur = Decimal.add(errval, Decimal.from_float(0.95))
+    random = Decimal.mult(Decimal.from_float(:rand.uniform_real()), Decimal.from_float(0.1))
+    # random = :rand.uniform_real() * 0.1
+    #  valeur2 = valeur + random
+    valeur2 = Decimal.add(valeur, random)
+    Decimal.mult(lastval, valeur2)
+    # lastval + valeur2
   end
 
   def decrementBatterie(valeur, decrement) do
@@ -50,13 +53,13 @@ defmodule SimulateurBouees.BoueeGen do
     last = state.dernieres_valeurs
     scenario = List.first(state.scenario) 
 
-    temperature = Decimal.to_string(calcul(last.temperature, scenario.erreur_temperature))
-    salinite = Decimal.to_string(calcul(last.salinite, scenario.erreur_salinite))
-    debit = Decimal.to_string(calcul(last.debit, scenario.erreur_debit))
+    {temperature, _} = Float.parse(Decimal.to_string(calcul(last.temperature, scenario.erreur_temperature)))
+    {salinite, _} = Float.parse(Decimal.to_string(calcul(last.salinite, scenario.erreur_salinite)))
+    {debit, _} = Float.parse(Decimal.to_string(calcul(last.debit, scenario.erreur_debit)))
     Map.replace!(state, :dernieres_valeurs, %{temperature: temperature, salinite: salinite, debit: debit})
 
-    latitude = Decimal.to_string(calcul(last.latitude, scenario.erreur_latitude))
-    longitude = Decimal.to_string(calcul(last.longitude, scenario.erreur_longitude))
+    {latitude, _} = Float.parse(Decimal.to_string(calcul(last.latitude, scenario.erreur_latitude)))
+    {longitude, _} = Float.parse(Decimal.to_string(calcul(last.longitude, scenario.erreur_longitude)))
     batterie = decrementBatterie(last.batterie, scenario.valeur_decrementation_batterie)
     moment = DateTime.to_string(DateTime.utc_now)
 
@@ -66,16 +69,19 @@ defmodule SimulateurBouees.BoueeGen do
     date_saisie: moment, batterie: batterie, temperature: temperature, salinite: salinite, debit: debit}
 
     # IO.inspect data
-    {:ok, body} = Poison.encode(data)
+    
 
+    map = %{donnee: data}
+
+    {:ok, body} = Poison.encode(map)
     Mojito.post(
-      # "http://localhost:3000/",
-      "https://putsreq.com/vjJng1E7cT0TFdiE00DJ",
-      [],
+      "http://127.0.0.1:4000/api/donnee",
+      # "https://putsreq.com/vjJng1E7cT0TFdiE00DJ",
+      [{"content-type", "application/json; charset=utf-8"}],
       body
     )
 
-    # IO.inspect body
+    IO.inspect body
     # SimulateurBouees.EmetteurMint.request(state.pid, "POST", "/vjJng1E7cT0TFdiE00DJ", [], body)
     
   end
