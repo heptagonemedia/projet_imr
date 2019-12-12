@@ -19,7 +19,7 @@ defmodule SimulateurBouees.Simulateur do
     id_scenario = Enum.take_random(1..40, Enum.random(5..10))
     liste_scenario = getScenarios(id_scenario)
     
-    demarrerToutesBouees(1, liste_scenario)
+    demarrerToutesBouees(100, liste_scenario)
   end
   
   def getBoueesMongo do
