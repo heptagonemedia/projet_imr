@@ -103,5 +103,7 @@ return [
     "question3"=>"How to return on the previous usaved calculation view?",
     "question4"=>"How to see a saved calculation?",
     "question5"=>"How to change the site language?",
-    "question6"=>"How to access the site menu?"
+    "question6"=>"How to access the site menu?",
+    "question7"=>"How to navigate with the keyboard?",
+    "question8"=>"How to quit the full-screen mode?"
 ];

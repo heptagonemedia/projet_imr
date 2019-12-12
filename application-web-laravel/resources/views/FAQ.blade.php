@@ -97,6 +97,24 @@
                         {!! __('message.question6') !!}
                     </a>
 
+                    <a
+                        href="https://www.youtube.com/watch?v=jlz3SJyT9qc"
+                        data-youtube-id="jlz3SJyT9qc"
+                        class=" bouton-faq js-lanceur-liseuse-video"
+                    >
+                        <!-- Comment naviguer au clavier&nbsp;? -->
+                        {!! __('message.question7') !!}
+                    </a>
+
+                    <a
+                        href="https://www.youtube.com/watch?v=HNoJ0hIElOo"
+                        data-youtube-id="HNoJ0hIElOo"
+                        class=" bouton-faq js-lanceur-liseuse-video"
+                    >
+                        <!-- Comment quitter le mode plein-écran&nbsp;? -->
+                        {!! __('message.question8') !!}
+                    </a>
+
                 </div>
             </div>
         </div>
