@@ -1,0 +1,16 @@
+{
+  "name": "verificateur",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Estevan Gay",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.4.0",
+    "pg": "^7.14.0"
+  }
+}
