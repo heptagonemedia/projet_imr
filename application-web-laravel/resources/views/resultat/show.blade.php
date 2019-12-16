@@ -70,6 +70,7 @@ print_r($coordonnees);
                 <div class="black col s12 m6 l5 center align ">
 
                     <a href="{{action('PagesController@naviguerVersAccueil')}}" class="breadcrumb">{!! __('message.accueilMenu') !!}</a>
+                    <a href="formulaireRecherche.php" class="breadcrumb">{!! __('message.formulaire') !!}</a>
                     <a href="#" class="breadcrumb">{!! __('message.calculDeuxPoints') !!}<?php echo $calcul->getEtiquette(); ?></a>
                 </div>
             </div>
@@ -170,9 +171,11 @@ print_r($coordonnees);
 
         <ul>
             <li><button class="btn-floating purple tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Agrandir la carte"  onfocusin="afficherLiens()" onclick="agrandirCarte(document.getElementById('map'))"><i  aria-label="Bouton agrandir la carte" aria-hidden="true"  class="material-icons">crop_free</i></button></li>
+            <li><a class="btn-floating blue tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Nouveau calcul" href="{{action('PagesController@naviguerVersFormulaire')}}"><i aria-hidden="true"  aria-label="Faire un nouveau calcul"  class="material-icons" >  add_circle_outline</i></a></li>
             <li><a class="btn-floating pink tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Accueil" href="{{action('PagesController@naviguerVersAccueil')}}"><i aria-hidden="true"  aria-label="Lien vers l'accueil"  class="material-icons">home</i></a></li>
 
             @php if(isset($enregistre) && !$enregistre ): @endphp
+            <li><a class="btn-floating yellow darken-1 tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Retourner au formulaire" href="{{action('PagesController@retourFormulaire', $calcul->getId())}}"><i aria-hidden="true"  aria-label="Retour au formulaire"  class="material-icons">arrow_back</i></a></li>
             <li><a class="btn-floating green waves-effect waves-light btn modal-trigger tooltipped waves-effect waves-orange" data-position="left" data-tooltip="Enregistrer le calcul" href="{{action('ResultatController@enregistrerCalcul', $calcul->getId())}}"><i aria-hidden="true"  aria-label="Enregistrer le calcul"  class="material-icons">save</i></a></li>
             @php endif;@endphp
         </ul>

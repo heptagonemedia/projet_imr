@@ -33,7 +33,7 @@
                         <?php if(isset($calculs)){
                             foreach ($calculs as $calcul){
                             if($calcul->getEnregistre()) { ?>
-                            <li><a class="waves-effect waves-teal" href="{{action('ResultatController@naviguerVersResultat', $calcul->getId())}}"><i aria-hidden="true" class="material-icons">insert_chart_outlined</i> <span style="font-size: 10px" ><?php echo $calcul->getEtiquette(); ?></a></li>
+                        <li><a class="waves-effect waves-teal" href="{{action('ResultatController@naviguerVersResultat', $calcul->getId())}}"><i aria-hidden="true" class="material-icons">insert_chart_outlined</i> <span style="font-size: 10px" ><?php echo $calcul->getEtiquette(); ?></span></a></li>
                             <?php }
                             }
                         }?>
@@ -60,6 +60,12 @@
             </li>
         </ul>
     </li>
+
+    <li><div class="divider"></div></li>
+
+    <li><a class="subheader">{!! __('message.faireDesCalculs') !!}</a></li>
+
+    <li><a class="waves-effect waves-teal" href="{{action('PagesController@naviguerVersFormulaire')}}"><i aria-hidden="true" class="material-icons">add_circle_outline</i>{!! __('message.nouveauCalcul') !!}</a></li>
 
     <li><div class="divider"></div></li>
 
