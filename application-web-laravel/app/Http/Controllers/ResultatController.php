@@ -28,7 +28,7 @@ class ResultatController extends Controller
         /* passage à la vue show : ressources/views/resultat/show.blade.php*/
         //generation de l'etiquette
         $region = RegionDAO::getInstance()->recupererRegionParId((int)request('region'));
-        $typeCalcul = TypeCalculDAO::getInstance()->recupererTypeDeCalculParId((int)\request("calcul"));
+        $typeCalcul = TypeCalculDAO::getInstance()->recupererTypeDeCalculParId((int)request("calcul"));
         $etiquette = $typeCalcul->getEtiquette().date("m/d/Y", strtotime( request('dateDeb'))).$region->getEtiquette();
         $data = array(
             'etiquette' => $etiquette,
@@ -47,6 +47,7 @@ class ResultatController extends Controller
             'recursif' => request("recursif"),
             'recursivite' => request("recursivite")
         );
+        print_r($data);
     # Create a connection
         $url = 'http://localhost:3000';
         // use key 'http' even if you send the request to https://...
@@ -66,7 +67,6 @@ class ResultatController extends Controller
         $calcul = $calculDao->recupererCalculParEtiquette($etiquette);
         $boueesDAO = BoueeDAO::getInstance();
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
-        return view('resultat.show', compact("calcul", "etiquette", "coordonnees"));
 
     }
 
@@ -85,16 +85,20 @@ class ResultatController extends Controller
         $calculDao = CalculDAO::getInstance();
         $calcul = $calculDao->recupererCalculParId((int)$id);
         $boueesDAO = BoueeDAO::getInstance();
+        echo "\nRegion :".$calcul->getRegion()->getId()."\n";
+
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
         $enregistre = false;
         return view('resultat.show', compact("calcul", "id", "enregistre", "coordonnees"));
     }
 
     public function naviguerVersResultat($id){
+
         $calculDao = CalculDAO::getInstance();
         $calcul = $calculDao->recupererCalculParId((int)$id);
         $boueesDAO = BoueeDAO::getInstance();
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
+        echo "\nRegion :".$calcul->getRegion()->getId()."\n";
         return view('resultat.show', compact("calcul", "id", "coordonnees"));
     }
 

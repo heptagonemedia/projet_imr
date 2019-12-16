@@ -53,7 +53,10 @@ fclose($fichier);
 
 $fichier = fopen('resources/js/examples/includes/data/calcul-temperature.xml', "r+");
 fputs($fichier, $calcul->getCheminFichierXmlTemperature());
-fclose($fichier); 
+fclose($fichier);
+
+
+print_r($coordonnees);
 
 ?>
 

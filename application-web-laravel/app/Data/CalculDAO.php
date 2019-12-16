@@ -74,11 +74,14 @@ class CalculDAO
 
     public function recupererCalculParId($id){
         $calcul = $this->connection->collection('calcul')->where(Calcul::CLE_ID, (int)$id)->first();
+        print_r($calcul);
         $regionDAO = RegionDAO::getInstance();
+        echo "\n Regiondddddddddddddddd :".$calcul[Region::CLE_ID];
         $region = $regionDAO->recupererRegionParId($calcul[Region::CLE_ID]);
         $typeCalculDAO = TypeCalculDAO::getInstance();
         $typeCalcul = $typeCalculDAO->recupererTypeDeCalculParId($calcul[TypeCalcul::CLE_ID]);
-        return new Calcul($calcul[Calcul::CLE_ID],
+        return new Calcul(
+            $calcul[Calcul::CLE_ID],
             $calcul[Calcul::CLE_ETIQUETTE],
             $calcul[Calcul::CLE_XML_TEMPERATURE],
             $calcul[Calcul::CLE_XML_SALINITE],
