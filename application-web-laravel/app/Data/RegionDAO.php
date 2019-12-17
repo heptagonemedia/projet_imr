@@ -26,9 +26,7 @@ class RegionDAO
     }
 
     public function recupererRegionParId($id){
-        echo "recuperer region par id : ".$id;
         $region = $this->connection->collection('region')->where("id_region", (int)$id)->first();
-        print_r($region);
         return new Region($region[Region::CLE_ID], $region[Region::CLE_ETIQUETTE]);
     }
 

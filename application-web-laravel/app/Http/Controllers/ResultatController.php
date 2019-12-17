@@ -47,7 +47,7 @@ class ResultatController extends Controller
             'recursif' => request("recursif"),
             'recursivite' => request("recursivite")
         );
-        print_r($data);
+
     # Create a connection
         $url = 'http://localhost:3000';
         // use key 'http' even if you send the request to https://...
@@ -64,10 +64,12 @@ class ResultatController extends Controller
 
 
         $calculDao = CalculDAO::getInstance();
-        $calcul = $calculDao->recupererCalculParEtiquette($etiquette);
+        do{
+            $calcul = $calculDao->recupererCalculParEtiquette($etiquette);
+        }while($calcul->getCheminFichierXmlTemperature()== null);
         $boueesDAO = BoueeDAO::getInstance();
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
-
+        return view('resultat.show', compact("calcul", "coordonnees"));
     }
 
     public function enregistrerCalcul($id){
@@ -85,7 +87,6 @@ class ResultatController extends Controller
         $calculDao = CalculDAO::getInstance();
         $calcul = $calculDao->recupererCalculParId((int)$id);
         $boueesDAO = BoueeDAO::getInstance();
-        echo "\nRegion :".$calcul->getRegion()->getId()."\n";
 
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
         $enregistre = false;
@@ -98,7 +99,6 @@ class ResultatController extends Controller
         $calcul = $calculDao->recupererCalculParId((int)$id);
         $boueesDAO = BoueeDAO::getInstance();
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
-        echo "\nRegion :".$calcul->getRegion()->getId()."\n";
         return view('resultat.show', compact("calcul", "id", "coordonnees"));
     }
 
