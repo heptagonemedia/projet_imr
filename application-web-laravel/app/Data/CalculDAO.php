@@ -165,4 +165,10 @@ class CalculDAO
         $this->connection->collection('calcul')->where(Calcul::CLE_ETIQUETTE, $etiquette)->delete();
     }
 
+    public function supprimerCalculParId($id)
+    {
+        $this->connection->collection('calcul')->where(Calcul::CLE_ID, $id)->delete();
+    }
+
+
 }

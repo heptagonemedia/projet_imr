@@ -49,6 +49,7 @@
                             if (isset($calcul)){
                                 ?>
                                 <input type="hidden" value="<?php echo $calcul->getId();?>" name="id_calcul">
+                                <input type="hidden" value="<?php echo $calcul->getEtiquette();?>" name="etiquette_calcul">
                                 <?php
                             }
                         ?>
@@ -146,7 +147,7 @@
                             </legend>
 
                             <div class="input-field col s3">
-                                <input title="{!! __('message.champDateDebut') !!}" aria-labelledby="labelDateDeb" name="dateDeb" value="<?php if (isset($calcul)){echo(date("m/d/Y", strtotime( $calcul->getDateDebutPlage())));} ?>" id="dateDeb" type="text" class="datepicker">
+                                <input title="{!! __('message.champDateDebut') !!}" aria-labelledby="labelDateDeb" name="dateDeb" value="<?php if (isset($calcul)){echo(date("M d, Y", strtotime( $calcul->getDateDebutPlage())));} ?>" id="dateDeb" type="text" class="datepicker">
                                 <label id="labelDateDeb" for="dateDeb">{!! __('message.dateDebut') !!}</label>
                             </div>
 
@@ -156,7 +157,7 @@
                             </div>
 
                             <div class="input-field col s3">
-                                <input title="{!! __('message.champDateFin') !!}" value="<?php if (isset($calcul)){echo(date("m/d/Y", strtotime( $calcul->getDateFinPlage())));} ?>" name="dateFin"  id="dateFin" type="text" class="datepicker">
+                                <input title="{!! __('message.champDateFin') !!}" value="<?php if (isset($calcul)){echo(date("M d, Y", strtotime( $calcul->getDateFinPlage())));} ?>" name="dateFin"  id="dateFin" type="text" class="datepicker">
                                 <label for="dateFin">{!! __('message.dateFin') !!}</label>
                             </div>
 

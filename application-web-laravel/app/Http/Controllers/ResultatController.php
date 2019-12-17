@@ -48,6 +48,12 @@ class ResultatController extends Controller
             'recursivite' => request("recursivite")
         );
 
+        if (request("enregistre")=="on"){
+            $enregistre = true;
+        }else{
+            $enregistre = false;
+        }
+
     # Create a connection
         $url = 'http://localhost:3000';
         // use key 'http' even if you send the request to https://...
@@ -69,7 +75,7 @@ class ResultatController extends Controller
         }while($calcul->getCheminFichierXmlTemperature()== null);
         $boueesDAO = BoueeDAO::getInstance();
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
-        return view('resultat.show', compact("calcul", "coordonnees"));
+        return view('resultat.show', compact("calcul", "enregistre", "coordonnees"));
     }
 
     public function enregistrerCalcul($id){
@@ -107,6 +113,7 @@ class ResultatController extends Controller
         $region = RegionDAO::getInstance()->recupererRegionParId((int)request('region'));
         $typeCalcul = TypeCalculDAO::getInstance()->recupererTypeDeCalculParId((int)\request("calcul"));
         $etiquette = $typeCalcul->getEtiquette().date("m/d/Y", strtotime( request('dateDeb'))).$region->getEtiquette();
+        $id = request("id_calcul");
         $data = array(
             'etiquette' => $etiquette,
             'calcul' => request("calcul"),
@@ -138,12 +145,21 @@ class ResultatController extends Controller
         $result = file_get_contents($url, false, $context);
         if ($result === FALSE) { /* Handle error */ }
 
+        if (request("enregistre")=="on"){
+            $enregistre = true;
+        }else{
+            $enregistre = false;
+        }
+
         $calculDao = CalculDAO::getInstance();
-        $calcul = $calculDao->recupererCalculParId((int)request('id'));
-        $calculDao->supprimerCalculParEtiquette($calcul->getEtiquette());
+        $calculDao->supprimerCalculParId((int)$id);
+
+        do{
+            $calcul = $calculDao->recupererCalculParEtiquette($etiquette);
+        }while($calcul->getCheminFichierXmlTemperature()== null);
         $boueesDAO = BoueeDAO::getInstance();
         $coordonnees = $boueesDAO->recupererCoordonneesBoueesParRegion((int) $calcul->getRegion()->getId());
-        return view('resultat.show', compact("calcul", "id", "coordonnees"));
+        return view('resultat.show', compact("calcul", "enregistre","id", "coordonnees"));
     }
 
     // CF routes > web.php
