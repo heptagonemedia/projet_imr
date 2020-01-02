@@ -1,15 +1,15 @@
-# projet_imr
+# Projet IMR
 
 ## Membres :
 
-Lachance Christophe
-Carrières Adrian-Paul
-Bertrand Loïc
-Gay Estevan
-Pascuzzi Louis
-Cousson Théo
-Richard Antoine
-Barçon Lucien
+* Lachance Christophe
+* Carrières Adrian-Paul
+* Bertrand Loïc
+* Gay Estevan
+* Pascuzzi Louis
+* Cousson Théo
+* Richard Antoine
+* Barçon Lucien
 
 ## Principe :
 
