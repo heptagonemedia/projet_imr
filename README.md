@@ -50,7 +50,7 @@ Au niveau des bases de données nous en avons une en PostgreSQL qui sert de buff
 * PostgreSQL : Base de données buffer
 * MongoDB : Base de données "finale"
 * Elixir : Première version du générateur de scénario, simulateur de bouées et récepteur
-* Phoenix (Elixir) : Récepteur
+* Phoenix (Elixir) : Récepteur en webservice
 * Docker : Mise en production pour les bases de données et application laravel
 
 
